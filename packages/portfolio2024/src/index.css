@@ -1,16 +1,3 @@
-@charset "UTF-8";
-/**** RESET ****/
-* {
-  word-wrap: break-word;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-html,
-body {
-  overflow-x: hidden;
-}
-
 html,
 body,
 div,
@@ -47,6 +34,8 @@ samp,
 small,
 strike,
 strong,
+sub,
+sup,
 tt,
 var,
 b,
@@ -102,22 +91,13 @@ video,
   outline: 0;
   font-family: "Pretendard";
   font-size: 100%;
-  line-height: 1;
+  font: inherit;
   vertical-align: baseline;
   text-decoration: none;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  line-height: 1.2;
-}
-
+/* HTML5 display-role reset for older browsers */
 article,
 aside,
 details,
@@ -134,7 +114,6 @@ section {
 
 body {
   line-height: 1;
-  background: #fff;
 }
 
 ol,
@@ -154,7 +133,10 @@ q::after {
   content: "";
   content: none;
 }
-
+a {
+  text-decoration: none;
+  color: inherit;
+}
 table {
   border-collapse: collapse;
   border-spacing: 0;
