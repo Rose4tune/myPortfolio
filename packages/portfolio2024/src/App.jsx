@@ -1,5 +1,3 @@
-import "./App.css";
-
 function App() {
   return <h1>Rose's Portfolio</h1>;
 }
