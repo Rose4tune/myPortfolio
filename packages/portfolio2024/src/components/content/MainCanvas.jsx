@@ -1,9 +1,15 @@
+import { Suspense } from "react";
 import { ScrollControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import * as THREE from "three";
+import { useRecoilValue } from "recoil";
+import { IsEnteredAtom } from "../../stores";
+import Loader from "./Loader";
+import Space from "./Space";
 
 export default function MainCanvas() {
   const aspectRatio = window.innerWidth / window.innerHeight;
+  const isEntered = useRecoilValue(IsEnteredAtom);
   return (
     <Canvas
       id="canvas"
@@ -16,9 +22,13 @@ export default function MainCanvas() {
         far: 1000,
         position: [0, 0, 12],
       }}
-      scene={{ background: new THREE.Color(0xffffff) }}
+      scene={{ background: new THREE.Color("pink") }}
     >
-      <ScrollControls pages={10} damping={0.25}></ScrollControls>
+      <ScrollControls pages={isEntered ? 10 : 0} damping={0.25}>
+        <Suspense fallback={<Loader />}>
+          <Space />
+        </Suspense>
+      </ScrollControls>
     </Canvas>
   );
 }
