@@ -1,6 +1,7 @@
 import { RecoilRoot } from "recoil";
 import MainCanvas from "./components/content/MainCanvas";
 import styled from "styled-components";
+import "./assets/css/reset.css";
 
 function App() {
   return (
