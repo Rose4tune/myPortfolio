@@ -37,13 +37,11 @@ body {
   font-style: normal;
 }
 
-ol,
-ul {
+ol, ul {
   list-style: none;
 }
 
-blockquote,
-q {
+blockquote, q {
   quotes: none;
 }
 
@@ -70,4 +68,8 @@ table td {
 a,
 button {
   cursor: pointer;
+}
+
+img {
+  width: 100%;
 }

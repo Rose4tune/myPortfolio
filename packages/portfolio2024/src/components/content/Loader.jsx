@@ -12,8 +12,7 @@ export default function Loader() {
   } else {
     useEffect(() => {
       let timeout;
-      timeout = setTimeout(() => setIsEntered(true), 5000);
-
+      timeout = setTimeout(() => setIsEntered(true), 10000);
       return () => {
         clearTimeout(timeout);
       };
@@ -22,9 +21,11 @@ export default function Loader() {
 
   return (
     <Html center>
-      <EnterBtn onClick={() => setIsEntered(true)}>
-        <img src="/icons/mainCharacter.svg" alt="rose fortune cookie" />
-        <span>click !</span>
+      <EnterBtn>
+        <EnterIcon onClick={() => setIsEntered(true)}>
+          <img src="/icons/mainCharacter.svg" alt="rose fortune cookie" />
+        </EnterIcon>
+        <EnterBtnText>click !</EnterBtnText>
       </EnterBtn>
     </Html>
   );
@@ -33,32 +34,57 @@ export default function Loader() {
 const blink = keyframes`
   0% {
     opacity: 1;
-    margin-top: -.5rem;
   }
   50% {
     opacity: 0.4;
-    margin-top: .5rem;
   }
   100% {
     opacity: 1;
-    margin-top: -.5rem;
   }
 `;
 
-const EnterBtn = styled.div`
-  animation: ${blink} 1.3s infinite;
+const bounce = keyframes`
+  0% {
+    transform: translateY(-.3rem);
+  }
+  50% {
+    transform: translateY(.3rem);
+  }
+  100% {
+    transform: translateY(-.3rem);
+  }
+`;
+
+const EnterBtn = styled.button`
+  &:hover {
+    div {
+      animation: none;
+      opacity: 1;
+    }
+    span {
+      display: none;
+    }
+  }
+`;
+
+const EnterIcon = styled.div`
+  width: 15vw;
+  max-width: 195px;
+  animation: ${bounce} 1.3s ease-out infinite;
   transition-duration: 0.4s;
   cursor: pointer;
-  text-align: center;
-  font-family: "Rammetto One";
-  color: #fff;
-  &:hover {
-    animation: none;
-  }
+  opacity: 0.7;
+  
+`;
 
-  span {
-    display: block;
-    margin-top: 1rem;
-    transform: translateX(-5%);
-  }
+const EnterBtnText = styled.span`
+  animation: ${blink} 1.3s infinite;
+  transition-duration: 0.4s;
+  display: block;
+  margin-top: 1rem;
+  transform: translateX(-5%);
+  font-family: "Rammetto One";
+  font-size: 1rem;
+  text-align: center;
+  color: #fff;
 `;
