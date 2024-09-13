@@ -12,7 +12,7 @@ export default function Loader() {
   } else {
     useEffect(() => {
       let timeout;
-      timeout = setTimeout(() => setIsEntered(true), 10000);
+      timeout = setTimeout(() => setIsEntered(true), 6000);
       return () => {
         clearTimeout(timeout);
       };
@@ -21,25 +21,25 @@ export default function Loader() {
 
   return (
     <Html center>
-      <EnterBtn>
+      <EnterWrap>
         <EnterIcon onClick={() => setIsEntered(true)}>
           <img src="/icons/mainCharacter.svg" alt="rose fortune cookie" />
         </EnterIcon>
         <EnterBtnText>click !</EnterBtnText>
-      </EnterBtn>
+      </EnterWrap>
     </Html>
   );
 }
 
 const blink = keyframes`
   0% {
-    opacity: 1;
+    opacity: .4;
   }
   50% {
-    opacity: 0.4;
+    opacity: 1;
   }
   100% {
-    opacity: 1;
+    opacity: .4;
   }
 `;
 
@@ -55,14 +55,48 @@ const bounce = keyframes`
   }
 `;
 
-const EnterBtn = styled.button`
+const bounceStop = keyframes`
+  0% {
+    transform: translateY(.3rem);
+  }
+  100% {
+    transform: translateY(0);
+  }
+`;
+
+const fadeOut = keyframes`
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+`;
+
+const fadeIn = keyframes`
+  0% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
+
+const EnterWrap = styled.div`
   &:hover {
     div {
-      animation: none;
-      opacity: 1;
+      animation:
+        ${bounceStop} .5s ease-out 0 forwards,
+        ${fadeIn} .5s ease-in forwards;
+
+      &::after {
+        opacity: 0.4;
+        transition: opacity 0.5s;
+      }
     }
+
     span {
-      display: none;
+      animation: ${fadeOut} .5s ease-out forwards;
     }
   }
 `;
@@ -70,16 +104,30 @@ const EnterBtn = styled.button`
 const EnterIcon = styled.div`
   width: 15vw;
   max-width: 195px;
-  animation: ${bounce} 1.3s ease-out infinite;
-  transition-duration: 0.4s;
+  animation:
+    ${bounce} 1s ease-out infinite,
+    ${bounceStop} .5s ease-out 4.5s forwards,
+    ${fadeIn} .5s ease-in 4.5s forwards;
   cursor: pointer;
   opacity: 0.7;
-  
+
+  &::after {
+    display: block;
+    content: "";
+    width: 20%;
+    height: .7vw;
+    margin: auto;
+    background: radial-gradient(#aaa, transparent);
+    border-radius: 100%;
+    transform: translate(-1vw, .5rem);
+    opacity: 0;
+  }
 `;
 
 const EnterBtnText = styled.span`
-  animation: ${blink} 1.3s infinite;
-  transition-duration: 0.4s;
+  animation:
+    ${blink} 1s ease-in-out infinite,
+    ${fadeOut} .5s ease-out 4.5s forwards;
   display: block;
   margin-top: 1rem;
   transform: translateX(-5%);
