@@ -4,6 +4,10 @@ import { useRecoilState } from "recoil";
 import { IsEnteredAtom } from "../../stores";
 import styled, { keyframes } from "styled-components";
 
+const animaTime = 6;
+const animaStopDuration = 0.5;
+const animaDelay = animaTime - (1 + animaStopDuration);
+
 export default function Loader() {
   const [isEntered, setIsEntered] = useRecoilState(IsEnteredAtom);
 
@@ -12,7 +16,7 @@ export default function Loader() {
   } else {
     useEffect(() => {
       let timeout;
-      timeout = setTimeout(() => setIsEntered(true), 6000);
+      timeout = setTimeout(() => setIsEntered(true), animaTime * 1000);
       return () => {
         clearTimeout(timeout);
       };
@@ -86,17 +90,17 @@ const EnterWrap = styled.div`
   &:hover {
     div {
       animation:
-        ${bounceStop} .5s ease-out 0 forwards,
-        ${fadeIn} .5s ease-in forwards;
+        ${bounceStop} ${animaStopDuration}s ease-out 0s 1 forwards,
+        ${fadeIn} ${animaStopDuration}s ease-in 0s 1 forwards;
 
       &::after {
         opacity: 0.4;
-        transition: opacity 0.5s;
+        transition: opacity ${animaStopDuration}s;
       }
     }
 
     span {
-      animation: ${fadeOut} .5s ease-out forwards;
+      animation: ${fadeOut} ${animaStopDuration}s ease-out 0s 1 forwards;
     }
   }
 `;
@@ -106,8 +110,8 @@ const EnterIcon = styled.div`
   max-width: 195px;
   animation:
     ${bounce} 1s ease-out infinite,
-    ${bounceStop} .5s ease-out 4.5s forwards,
-    ${fadeIn} .5s ease-in 4.5s forwards;
+    ${bounceStop} ${animaStopDuration}s ease-out ${animaDelay}s forwards,
+    ${fadeIn} ${animaStopDuration}s ease-in ${animaDelay}s forwards;
   cursor: pointer;
   opacity: 0.7;
 
@@ -127,7 +131,7 @@ const EnterIcon = styled.div`
 const EnterBtnText = styled.span`
   animation:
     ${blink} 1s ease-in-out infinite,
-    ${fadeOut} .5s ease-out 4.5s forwards;
+    ${fadeOut} ${animaStopDuration}s ease-out ${animaDelay}s forwards;
   display: block;
   margin-top: 1rem;
   transform: translateX(-5%);
