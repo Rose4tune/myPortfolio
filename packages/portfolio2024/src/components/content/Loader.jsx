@@ -94,7 +94,7 @@ const EnterWrap = styled.div`
         ${fadeIn} ${animaStopDuration}s ease-in 0s 1 forwards;
 
       &::after {
-        opacity: 0.4;
+        opacity: 0.6;
         transition: opacity ${animaStopDuration}s;
       }
     }
@@ -138,5 +138,5 @@ const EnterBtnText = styled.span`
   font-family: "Rammetto One";
   font-size: 1rem;
   text-align: center;
-  color: #fff;
+  color: var(--primary-0);
 `;

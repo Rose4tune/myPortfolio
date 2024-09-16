@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Rammetto+One&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Rammetto+One&display=swap");
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre, a,
 abbr, acronym, address, big, cite, code, button,
@@ -21,20 +20,13 @@ time, mark, audio, video,
   vertical-align: baseline;
   text-decoration: none;
   -webkit-box-sizing: border-box;
-  box-sizing: border-box;
+          box-sizing: border-box;
+  word-wrap: break-word;
 }
-/* HTML5 display-role reset for older browsers */
+
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
   display: block;
-}
-
-body {
-  line-height: 1;
-  font-family: "Pretendard";
-  font-size: 100%;
-  font-weight: 400;
-  font-style: normal;
 }
 
 ol, ul {
@@ -52,14 +44,17 @@ q::after {
   content: "";
   content: none;
 }
+
 a {
   text-decoration: none;
   color: inherit;
 }
+
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
 table th,
 table td {
   vertical-align: middle;
@@ -72,4 +67,13 @@ button {
 
 img {
   width: 100%;
+}
+
+/* FONT */
+body {
+  line-height: 1;
+  font-family: "Pretendard";
+  font-size: 100%;
+  font-weight: 400;
+  font-style: normal;
 }

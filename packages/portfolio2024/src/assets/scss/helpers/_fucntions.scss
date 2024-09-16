@@ -1,0 +1,7 @@
+@use 'sass:map';
+@use 'sass:string';
+
+$browser-context: 10;
+@function rem($px, $context: $browser-context) {
+  @return #{calc($px/$context)}rem;
+}

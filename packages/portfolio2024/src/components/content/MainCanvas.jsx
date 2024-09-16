@@ -22,7 +22,7 @@ export default function MainCanvas() {
         far: 1000,
         position: [0, 0, 12],
       }}
-      scene={{ background: new THREE.Color("pink") }}
+      scene={{ background: new THREE.Color(0xffffff) }}
     >
       <ScrollControls pages={isEntered ? 10 : 0} damping={0.25}>
         <Suspense fallback={<Loader />}>
