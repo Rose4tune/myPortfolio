@@ -136,7 +136,6 @@ const EnterBtnText = styled.span`
   margin-top: 1rem;
   transform: translateX(-5%);
   font-family: "Rammetto One";
-  font-size: 1rem;
   text-align: center;
   color: var(--intro-text);
 `;
