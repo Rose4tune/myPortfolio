@@ -1,1 +1,6 @@
-@use './base' as *; 
+@use "./base" as *;
+@use "./helpers" as *;
+
+:root {
+  --intro-text: hsl(#{color(pink-025)});
+}

@@ -138,5 +138,5 @@ const EnterBtnText = styled.span`
   font-family: "Rammetto One";
   font-size: 1rem;
   text-align: center;
-  color: var(--primary-0);
+  color: var(--intro-text);
 `;

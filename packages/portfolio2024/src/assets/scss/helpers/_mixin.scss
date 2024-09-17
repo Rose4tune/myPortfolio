@@ -8,13 +8,13 @@
   $l: null,
   $r: null
 ){
-  @if 
+  @if (
   $p == absolute
   or $p == fixed
   or not $p == relative
   or not $p == static
   or not $p == inherit
-  {
+  ) {
     position: $p;
     top: $t;
     bottom: $b;
