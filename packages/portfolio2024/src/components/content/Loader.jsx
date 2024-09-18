@@ -137,5 +137,5 @@ const EnterBtnText = styled.span`
   transform: translateX(-5%);
   font-family: "Rammetto One";
   text-align: center;
-  color: var(--intro-text);
+  color: var(--pink-fore-030);
 `;

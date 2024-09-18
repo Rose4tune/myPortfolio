@@ -82,7 +82,3 @@ body {
   font-weight: 400;
   font-style: normal;
 }
-
-:root {
-  --intro-text: hsl(338, 100%, 75%);
-}

@@ -2,6 +2,7 @@ import { RecoilRoot } from "recoil";
 import MainCanvas from "./components/content/MainCanvas";
 import styled from "styled-components";
 import "./assets/css/style.css";
+import "./assets/css/theme.css";
 
 function App() {
   return (
