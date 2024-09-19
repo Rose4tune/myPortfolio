@@ -1,7 +1,6 @@
 import { Suspense } from "react";
 import { ScrollControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import * as THREE from "three";
 import { useRecoilValue } from "recoil";
 import { IsEnteredAtom } from "../../stores";
 import Loader from "./Loader";
@@ -22,7 +21,6 @@ export default function MainCanvas() {
         far: 1000,
         position: [0, 0, 12],
       }}
-      scene={{ background: new THREE.Color(0xffffff) }}
     >
       <ScrollControls pages={isEntered ? 10 : 0} damping={0.25}>
         <Suspense fallback={<Loader />}>
