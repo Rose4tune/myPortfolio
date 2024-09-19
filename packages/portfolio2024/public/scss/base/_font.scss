@@ -1,5 +1,4 @@
 @use "../helpers/functions" as *;
-
 @import url("https://fonts.googleapis.com/css2?family=Rammetto+One&display=swap");
 
 /* FONT */
@@ -13,4 +12,5 @@ body {
   font-size: rem(20);
   font-weight: 400;
   font-style: normal;
+  color: var(--gray-fore-100)
 }
