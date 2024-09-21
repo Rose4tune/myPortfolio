@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { ScrollControls } from "@react-three/drei";
+import { OrbitControls, ScrollControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { useRecoilValue } from "recoil";
 import { IsEnteredAtom } from "../../stores";
@@ -27,6 +27,7 @@ export default function MainCanvas() {
           <Space />
         </Suspense>
       </ScrollControls>
+      <OrbitControls />
     </Canvas>
   );
 }
