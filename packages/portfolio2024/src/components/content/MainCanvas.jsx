@@ -19,7 +19,7 @@ export default function MainCanvas() {
         aspect: aspectRatio,
         near: 0.01,
         far: 1000,
-        position: [0, 0, 12],
+        position: [0, 0, 3],
       }}
     >
       <ScrollControls pages={isEntered ? 10 : 0} damping={0.25}>

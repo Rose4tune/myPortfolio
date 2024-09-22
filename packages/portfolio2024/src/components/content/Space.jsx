@@ -20,90 +20,96 @@ export default function Space() {
   });
 
   const textRef1 = useRef(null);
+  const textRef1_2 = useRef(null);
+  const textRef1_3 = useRef(null);
+  const textRef1_4 = useRef(null);
   const textRef2 = useRef(null);
   const fontUrl = "/src/assets/fonts/RammettoOne.json";
   const fontStyle = {
     font: fontUrl,
-    size: 0.5,
-    letterSpacing: 0.01,
+    size: 1,
     height: 1,
     lineHeight: 1,
     fontSize: 1,
   };
 
-  const text = `ROSE'S PORTFOLIO`.split("");
-  const x = 10;
   useFrame(() => {
     if (!textRef1.current) return;
     if (!textRef2.current) return;
-    // textRef1.current.rotation.y -= 0.01;
-    // textRef2.current.rotation.y -= 0.015;
+    textRef1.current.rotation.y += 0.003;
+    textRef1_2.current.rotation.y += 0.003;
+    textRef1_3.current.rotation.y += 0.003;
+    textRef1_4.current.rotation.y += 0.003;
+    textRef2.current.rotation.y += 0.0035;
   });
 
+  const textGroup = (text) => {
+    text = text.split("").reverse();
+    return text.map((t, i) => {
+      const angle = (i / text.length) * (Math.PI / 1.4) + 0.55;
+      const radius = 5;
+      const positionX = 20 + radius * Math.sin(angle).toFixed(2);
+      const positionZ = (text.length / 2 - i) * 1.3;
+      const rotationY = Math.PI / -2 + (angle - text.length * 0.1) / 2;
+      return (
+        <Text3D
+          key={i + "textKey"}
+          position={[positionX, 0, positionZ]}
+          {...fontStyle}
+          rotation-y={rotationY}
+        >
+          {t}
+          <meshNormalMaterial />
+        </Text3D>
+      );
+    });
+  };
   if (isEntered) {
     return (
       <>
         <ambientLight intensity={2} color={0xff80ae} />
         <rectAreaLight position={[0, 10, 0]} intensity={10} />
-        {/* <Box position={[0, 0, 0]} args={[100, 100, 100]}>
-          <meshStandardMaterial color={"#fff"} side={THREE.DoubleSide} />
-        </Box> */}
 
+        <Box ref={textRef1} position={[0, 2, 0]} args={[0, 0, 0]}>
+          <meshStandardMaterial />
+          <axesHelper args={[12]} />
+          {textGroup(`ROSE'S PORTFOLIO`)}
+        </Box>
         <Box
-          ref={textRef1}
-          position={[0, 3, 0]}
+          ref={textRef1_2}
+          position={[0, 2, 0]}
           args={[0, 0, 0]}
-          rotationY={Math.PI / 2}
+          rotation-y={Math.PI / 2}
         >
           <meshStandardMaterial />
           <axesHelper args={[12]} />
-          {text.map((t, i) => {
-            const angle = (i / (text.length - 1)) * (Math.PI / 1.5) + 0.55;
-            const radius = 5;
-            // const z = radius * Math.sin(angle).toFixed(2);
-            const x = 10 + radius * Math.sin(angle).toFixed(2);
-            const z = 10 + -i * 1.2;
-            return (
-              <Text3D
-                key={i + "text1Key"}
-                position={[x, 0, z]}
-                {...fontStyle}
-                rotation-y={Math.PI / 2}
-              >
-                {t}
-                <meshNormalMaterial />
-              </Text3D>
-            );
-          })}
-          {/* <Text3D
-            position={[10, 0, 3.5]}
-            {...fontStyle}
-            rotation-y={Math.PI / 2}
-          >
-            ROSE'S
-            <meshNormalMaterial />
-          </Text3D>
-          <Text3D position={[10, 0, 0]} {...fontStyle} rotation-y={Math.PI / 2}>
-            PORTFOLIO
-            <meshNormalMaterial />
-          </Text3D> */}
+          {textGroup(`ROSE'S PORTFOLIO`)}
         </Box>
-        <Box ref={textRef2} position={[0, 0, 0]} args={[0, 0, 0]}>
+        <Box
+          ref={textRef1_3}
+          position={[0, 2, 0]}
+          args={[0, 0, 0]}
+          rotation-y={Math.PI}
+        >
           <meshStandardMaterial />
           <axesHelper args={[12]} />
-          <Text3D position={[10, 1, 5]} {...fontStyle} rotation-y={Math.PI / 2}>
-            FRONT-END DEVELOPER
-            <meshNormalMaterial />
-          </Text3D>
+          {textGroup(`ROSE'S PORTFOLIO`)}
         </Box>
-
-        {/* <Text3D ref={textRef} position={[0, 0, 0]} {...fontStyle}>
-          <meshNormalMaterial />
-          <Text3D position={[10, 3, 0]} {...fontStyle} rotation-y={Math.PI / 2}>
-            2222
-            <meshNormalMaterial />
-          </Text3D>
-        </Text3D> */}
+        <Box
+          ref={textRef1_4}
+          position={[0, 2, 0]}
+          args={[0, 0, 0]}
+          rotation-y={Math.PI / -2}
+        >
+          <meshStandardMaterial />
+          <axesHelper args={[12]} />
+          {textGroup(`ROSE'S PORTFOLIO`)}
+        </Box>
+        <Box ref={textRef2} position={[0, -2, 0]} args={[0, 0, 0]}>
+          <meshStandardMaterial />
+          <axesHelper args={[12]} />
+          {textGroup(`FRONT-END DEVELOPER`)}
+        </Box>
       </>
     );
   }
