@@ -33,29 +33,11 @@ export default function Space() {
 
   const text = `ROSE'S PORTFOLIO`.split("");
   const x = 10;
-
-  const textGroup = new THREE.Group();
-  text.map((t, i) => {
-    const angle = (i / (text.length - 1)) * (Math.PI / 1.5) + 0.55;
-    const radius = 1.3;
-    // const z = radius * Math.sin(angle).toFixed(2);
-    const x = 10 + i * 1.2;
-    textGroup.add(
-      <Text3D
-        position={[x, 0, 0]}
-        {...fontStyle}
-        // rotationY={Math.PI / 2}
-      >
-        {t}
-        <meshNormalMaterial />
-      </Text3D>
-    );
-  });
   useFrame(() => {
     if (!textRef1.current) return;
     if (!textRef2.current) return;
-    textRef1.current.rotation.y -= 0.01;
-    textRef2.current.rotation.y -= 0.015;
+    // textRef1.current.rotation.y -= 0.01;
+    // textRef2.current.rotation.y -= 0.015;
   });
 
   if (isEntered) {
@@ -63,14 +45,36 @@ export default function Space() {
       <>
         <ambientLight intensity={2} color={0xff80ae} />
         <rectAreaLight position={[0, 10, 0]} intensity={10} />
-        <Box position={[0, 0, 0]} args={[100, 100, 100]}>
+        {/* <Box position={[0, 0, 0]} args={[100, 100, 100]}>
           <meshStandardMaterial color={"#fff"} side={THREE.DoubleSide} />
-        </Box>
+        </Box> */}
 
-        <Box ref={textRef1} position={[0, 3, 0]} args={[0, 0, 0]}>
+        <Box
+          ref={textRef1}
+          position={[0, 3, 0]}
+          args={[0, 0, 0]}
+          rotationY={Math.PI / 2}
+        >
           <meshStandardMaterial />
           <axesHelper args={[12]} />
-          {textGroup}
+          {text.map((t, i) => {
+            const angle = (i / (text.length - 1)) * (Math.PI / 1.5) + 0.55;
+            const radius = 5;
+            // const z = radius * Math.sin(angle).toFixed(2);
+            const x = 10 + radius * Math.sin(angle).toFixed(2);
+            const z = 10 + -i * 1.2;
+            return (
+              <Text3D
+                key={i + "text1Key"}
+                position={[x, 0, z]}
+                {...fontStyle}
+                rotation-y={Math.PI / 2}
+              >
+                {t}
+                <meshNormalMaterial />
+              </Text3D>
+            );
+          })}
           {/* <Text3D
             position={[10, 0, 3.5]}
             {...fontStyle}
