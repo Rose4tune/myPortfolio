@@ -6,6 +6,7 @@ import gsap from "gsap";
 import Loader from "./Loader";
 import { useEffect, useMemo, useRef } from "react";
 import { useFrame, useThree } from "@react-three/fiber";
+import IntroText from "./IntroText";
 
 const colors = {
   boxMaterialColor: "#ff80ae",
@@ -37,7 +38,7 @@ export default function Space() {
     gsap.fromTo(
       three.camera.position,
       { x: 0, y: 0, z: 25 },
-      { x: 0, y: 0, z: 3, duration: 1.5 }
+      { x: 0, y: 0, z: 1, duration: 1.5 }
     );
 
     gsap.fromTo(
@@ -80,51 +81,24 @@ export default function Space() {
     starGroupRef03,
   ]);
 
-  const textRef1 = useRef(null);
+  const textRef1_1 = useRef(null);
   const textRef1_2 = useRef(null);
-  const textRef1_3 = useRef(null);
-  const textRef1_4 = useRef(null);
-  const textRef2 = useRef(null);
-  const fontUrl = "/src/assets/fonts/RammettoOne.json";
-  const fontStyle = {
-    font: fontUrl,
-    size: 1,
-    height: 1,
-    lineHeight: 1,
-    fontSize: 1,
-  };
+  const textRef2_1 = useRef(null);
+  const textRef2_2 = useRef(null);
+  const textRef3 = useRef(null);
+  const textRef4 = useRef(null);
 
   useFrame(() => {
-    if (!textRef1.current) return;
-    if (!textRef2.current) return;
-    textRef1.current.rotation.y += 0.003;
-    textRef1_2.current.rotation.y += 0.003;
-    textRef1_3.current.rotation.y += 0.003;
-    textRef1_4.current.rotation.y += 0.003;
-    textRef2.current.rotation.y += 0.0035;
+    if (!textRef1_1.current) return;
+    if (!textRef2_1.current) return;
+    textRef1_1.current.rotation.y += 0.0015;
+    textRef1_2.current.rotation.y += 0.0015;
+    textRef2_1.current.rotation.y += 0.002;
+    textRef2_2.current.rotation.y += 0.002;
+    textRef3.current.rotation.y += 0.0025;
+    textRef4.current.rotation.y += 0.003;
   });
 
-  const textGroup = (text) => {
-    text = text.split("").reverse();
-    return text.map((t, i) => {
-      const angle = (i / text.length) * (Math.PI / 1.4) + 0.55;
-      const radius = 5 + angle;
-      const positionX = 20 + radius * Math.sin(angle).toFixed(2);
-      const positionZ = (text.length / 2 - i) * 1.3;
-      const rotationY = Math.PI / -2 + (angle - text.length * 0.1) / 2;
-      return (
-        <Text3D
-          key={i + "textKey"}
-          position={[positionX, 0, positionZ]}
-          {...fontStyle}
-          rotation-y={rotationY}
-        >
-          {t}
-          <meshNormalMaterial />
-        </Text3D>
-      );
-    });
-  };
   if (isEntered) {
     return (
       <>
@@ -153,45 +127,42 @@ export default function Space() {
         <Box ref={boxRef} position={[0, 0, 0]} args={[500, 500, 500]}>
           <meshStandardMaterial color={"#fff"} side={THREE.DoubleSide} />
         </Box>
-        <Box ref={textRef1} position={[0, 2, 0]} args={[0, 0, 0]}>
+        <Box ref={textRef1_1} position={[0, 5, 0]} args={[0, 0, 0]}>
           <meshStandardMaterial />
-          <axesHelper args={[12]} />
-          {textGroup(`ROSE'S PORTFOLIO`)}
+          <IntroText text={`ROSE'S PORTFOLIO`} distance={15} />
         </Box>
         <Box
           ref={textRef1_2}
-          position={[0, 2, 0]}
+          position={[0, 5, 0]}
           args={[0, 0, 0]}
           rotation-y={Math.PI / 2}
         >
           <meshStandardMaterial />
-          <axesHelper args={[12]} />
-          {textGroup(`ROSE'S PORTFOLIO`)}
+          <IntroText text={`ROSE'S PORTFOLIO`} distance={15} />
+        </Box>
+        <Box ref={textRef2_1} position={[0, 3, 0]} args={[0, 0, 0]}>
+          <meshStandardMaterial />
+          <IntroText text={`FRONT-END DEVELOPER`} distance={25} />
         </Box>
         <Box
-          ref={textRef1_3}
-          position={[0, 2, 0]}
+          ref={textRef2_2}
+          position={[0, 3, 0]}
           args={[0, 0, 0]}
-          rotation-y={Math.PI}
+          rotation-y={Math.PI / 2}
         >
           <meshStandardMaterial />
-          <axesHelper args={[12]} />
-          {textGroup(`ROSE'S PORTFOLIO`)}
+          <IntroText text={`FRONT-END DEVELOPER`} distance={25} />
         </Box>
-        <Box
-          ref={textRef1_4}
-          position={[0, 2, 0]}
-          args={[0, 0, 0]}
-          rotation-y={Math.PI / -2}
-        >
+        <Box ref={textRef3} position={[0, -2, 0]} args={[0, 0, 0]}>
           <meshStandardMaterial />
-          <axesHelper args={[12]} />
-          {textGroup(`ROSE'S PORTFOLIO`)}
+          <IntroText text={`WHO CONSTANTLY THINK AND THINK`} distance={25} />
         </Box>
-        <Box ref={textRef2} position={[0, -2, 0]} args={[0, 0, 0]}>
+        <Box ref={textRef4} position={[0, -6, 0]} args={[0, 0, 0]}>
           <meshStandardMaterial />
-          <axesHelper args={[12]} />
-          {textGroup(`FRONT-END DEVELOPER`)}
+          <IntroText
+            text={`FOR MORE EFFICIENT DEVELOPMENT AND COMMUNICATION`}
+            distance={5}
+          />
         </Box>
 
         <Points positions={positions.slice(0, positions.length / 3)}>
