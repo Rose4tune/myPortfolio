@@ -1,23 +1,84 @@
 import { useRecoilValue } from "recoil";
 import { IsEnteredAtom } from "../stores";
-import { Box, Text3D, useTexture } from "@react-three/drei";
+import { Box, Points, Text3D, useScroll, useTexture } from "@react-three/drei";
 import * as THREE from "three";
+import gsap from "gsap";
 import Loader from "./Loader";
 import { useEffect, useMemo, useRef } from "react";
-import { useFrame } from "@react-three/fiber";
+import { useFrame, useThree } from "@react-three/fiber";
+
+const colors = {
+  boxMaterialColor: "#ff80ae",
+};
 
 export default function Space() {
+  const three = useThree();
   const isEntered = useRecoilValue(IsEnteredAtom);
 
+  const boxRef = useRef(null);
+  const starGroupRef01 = useRef(null);
+  const starGroupRef02 = useRef(null);
+  const starGroupRef03 = useRef(null);
+  const rectAreaLightRef = useRef(null);
+  const hemisphereLightRef = useRef(null);
+
   const texture = useTexture("texture/star.png");
-  const { position } = useMemo(() => {
-    const count = 500;
-    const position = new Float32Array(count * 3);
+  const { positions } = useMemo(() => {
+    const count = 15000;
+    const positions = new Float32Array(count);
     for (let i = 0; i < count; i++) {
-      position[i] = (Math.random() - 0.5) * 25;
+      positions[i] = (Math.random() - 0.5) * 118;
     }
-    return { position };
-  });
+    return { positions };
+  }, []);
+
+  useEffect(() => {
+    if (!isEntered) return;
+    gsap.fromTo(
+      three.camera.position,
+      { x: 0, y: 0, z: 25 },
+      { x: 0, y: 0, z: 3, duration: 1.5 }
+    );
+
+    gsap.fromTo(
+      colors,
+      { boxMaterialColor: "#0c0400" },
+      {
+        duration: 2.5,
+        boxMaterialColor: "#dc4f00",
+      }
+    );
+
+    gsap.to(starGroupRef01.current, {
+      yoyo: true,
+      duration: 2,
+      repeat: -1, // 무한적으로 재샐
+      ease: "linear", // 선형적으로 재생
+      size: 0.08,
+    });
+
+    gsap.to(starGroupRef02.current, {
+      yoyo: true,
+      duration: 3,
+      repeat: -1,
+      ease: "linear",
+      size: 0.05,
+    });
+
+    gsap.to(starGroupRef03.current, {
+      yoyo: true,
+      duration: 4,
+      repeat: -1,
+      ease: "linear",
+      size: 0.05,
+    });
+  }, [
+    isEntered,
+    three.camera.position,
+    starGroupRef01,
+    starGroupRef02,
+    starGroupRef03,
+  ]);
 
   const textRef1 = useRef(null);
   const textRef1_2 = useRef(null);
@@ -47,7 +108,7 @@ export default function Space() {
     text = text.split("").reverse();
     return text.map((t, i) => {
       const angle = (i / text.length) * (Math.PI / 1.4) + 0.55;
-      const radius = 5;
+      const radius = 5 + angle;
       const positionX = 20 + radius * Math.sin(angle).toFixed(2);
       const positionZ = (text.length / 2 - i) * 1.3;
       const rotationY = Math.PI / -2 + (angle - text.length * 0.1) / 2;
@@ -67,9 +128,31 @@ export default function Space() {
   if (isEntered) {
     return (
       <>
-        <ambientLight intensity={10} color={0xff80ae} />
-        <rectAreaLight position={[0, 0, 0]} intensity={10} color={0xff80ae} />
+        <ambientLight intensity={10} />
+        <rectAreaLight
+          ref={rectAreaLightRef}
+          position={[0, 10, 0]}
+          intensity={30}
+          color={"#ff80ae"}
+        />
+        <pointLight
+          position={[0, 30, 0]}
+          intensity={45}
+          color={"#ff80ae"}
+          castShadow
+          receiveShadow
+        />
+        <hemisphereLight
+          ref={hemisphereLightRef}
+          position={[0, 5, 0]}
+          intensity={0}
+          groundColor={"#ff80ae"}
+          color={"#ff80ae"}
+        />
 
+        <Box ref={boxRef} position={[0, 0, 0]} args={[500, 500, 500]}>
+          <meshStandardMaterial color={"#fff"} side={THREE.DoubleSide} />
+        </Box>
         <Box ref={textRef1} position={[0, 2, 0]} args={[0, 0, 0]}>
           <meshStandardMaterial />
           <axesHelper args={[12]} />
@@ -110,6 +193,48 @@ export default function Space() {
           <axesHelper args={[12]} />
           {textGroup(`FRONT-END DEVELOPER`)}
         </Box>
+
+        <Points positions={positions.slice(0, positions.length / 3)}>
+          <pointsMaterial
+            ref={starGroupRef01}
+            size={0.8}
+            color={new THREE.Color("#ff80ae")}
+            sizeAttenuation
+            depthWrite
+            alphaMap={texture}
+            transparent
+            alphaTest={0.001}
+          />
+        </Points>
+        <Points
+          positions={positions.slice(
+            positions.length / 3,
+            (positions.length * 2) / 3
+          )}
+        >
+          <pointsMaterial
+            ref={starGroupRef02}
+            size={1.3}
+            color={new THREE.Color("#ff80ae")}
+            sizeAttenuation
+            depthWrite
+            alphaMap={texture}
+            transparent
+            alphaTest={0.001}
+          />
+        </Points>
+        <Points positions={positions.slice((positions.length * 2) / 3)}>
+          <pointsMaterial
+            ref={starGroupRef03}
+            size={1.8}
+            color={new THREE.Color("#ff80ae")}
+            sizeAttenuation
+            depthWrite
+            alphaMap={texture}
+            transparent
+            alphaTest={0.001}
+          />
+        </Points>
       </>
     );
   }
