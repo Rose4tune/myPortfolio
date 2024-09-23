@@ -1,5 +1,5 @@
 import { useRecoilValue } from "recoil";
-import { IsEnteredAtom } from "../../stores";
+import { IsEnteredAtom } from "../stores";
 import { Box, Text3D, useTexture } from "@react-three/drei";
 import * as THREE from "three";
 import Loader from "./Loader";
@@ -67,8 +67,8 @@ export default function Space() {
   if (isEntered) {
     return (
       <>
-        <ambientLight intensity={2} color={0xff80ae} />
-        <rectAreaLight position={[0, 10, 0]} intensity={10} />
+        <ambientLight intensity={10} color={0xff80ae} />
+        <rectAreaLight position={[0, 0, 0]} intensity={10} color={0xff80ae} />
 
         <Box ref={textRef1} position={[0, 2, 0]} args={[0, 0, 0]}>
           <meshStandardMaterial />

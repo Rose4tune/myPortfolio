@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Html } from "@react-three/drei";
 import { useRecoilState } from "recoil";
-import { IsEnteredAtom } from "../../stores";
+import { IsEnteredAtom } from "../stores";
 import styled, { keyframes } from "styled-components";
 
 const animaTime = 6;

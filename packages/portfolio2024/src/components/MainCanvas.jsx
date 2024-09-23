@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import { OrbitControls, ScrollControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { useRecoilValue } from "recoil";
-import { IsEnteredAtom } from "../../stores";
+import { IsEnteredAtom } from "../stores";
 import Loader from "./Loader";
 import Space from "./Space";
 

@@ -1,5 +1,5 @@
 import { RecoilRoot } from "recoil";
-import MainCanvas from "./components/content/MainCanvas";
+import MainCanvas from "./components/MainCanvas";
 import styled from "styled-components";
 
 function App() {
