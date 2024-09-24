@@ -1,16 +1,12 @@
 import { useRecoilValue } from "recoil";
 import { IsEnteredAtom } from "../stores";
-import { Box, Points, Text3D, useScroll, useTexture } from "@react-three/drei";
+import { Box, Points, useTexture } from "@react-three/drei";
 import * as THREE from "three";
 import gsap from "gsap";
 import Loader from "./Loader";
 import { useEffect, useMemo, useRef } from "react";
 import { useFrame, useThree } from "@react-three/fiber";
 import IntroText from "./IntroText";
-
-const colors = {
-  boxMaterialColor: "#ff80ae",
-};
 
 export default function Space() {
   const three = useThree();
@@ -41,20 +37,11 @@ export default function Space() {
       { x: 0, y: 0, z: 1, duration: 1.5 }
     );
 
-    gsap.fromTo(
-      colors,
-      { boxMaterialColor: "#0c0400" },
-      {
-        duration: 2.5,
-        boxMaterialColor: "#dc4f00",
-      }
-    );
-
     gsap.to(starGroupRef01.current, {
       yoyo: true,
       duration: 2,
-      repeat: -1, // 무한적으로 재샐
-      ease: "linear", // 선형적으로 재생
+      repeat: -1,
+      ease: "linear",
       size: 0.08,
     });
 
