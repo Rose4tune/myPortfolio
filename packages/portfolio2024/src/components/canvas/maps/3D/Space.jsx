@@ -1,12 +1,12 @@
 import { useRecoilValue } from "recoil";
-import { IsEnteredAtom } from "../stores";
+import { IsEnteredAtom } from "../../../../stores";
 import { Box, Points, useTexture } from "@react-three/drei";
 import * as THREE from "three";
 import gsap from "gsap";
-import Loader from "./Loader";
+import Loader from "../../../Loader";
 import { useEffect, useMemo, useRef } from "react";
 import { useFrame, useThree } from "@react-three/fiber";
-import IntroText from "./IntroText";
+import IntroText from "../../../IntroText";
 
 export default function Space() {
   const three = useThree();

@@ -2,10 +2,11 @@ import { Suspense } from "react";
 import { OrbitControls, ScrollControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { useRecoilValue } from "recoil";
-import { IsEnteredAtom } from "../stores";
+import { IsEnteredAtom } from "../../stores";
 import * as THREE from "three";
-import Loader from "./Loader";
-import Space from "./Space";
+import Loader from "../Loader";
+import Space from "./maps/3D/Space";
+import RootMap from "./maps/RootMap";
 
 export default function MainCanvas() {
   const aspectRatio = window.innerWidth / window.innerHeight;
@@ -26,7 +27,8 @@ export default function MainCanvas() {
     >
       <ScrollControls pages={isEntered ? 10 : 0} damping={0.25}>
         <Suspense fallback={<Loader />}>
-          <Space />
+          {/* <Space /> */}
+          <RootMap />
         </Suspense>
       </ScrollControls>
       <OrbitControls />
