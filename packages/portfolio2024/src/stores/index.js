@@ -7,5 +7,5 @@ export const IsEnteredAtom = atom({
 
 export const DimensionAtom = atom({
   key: "DimensionAtom",
-  default: "3D",
+  default: "2D",
 });

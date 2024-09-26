@@ -4,9 +4,8 @@ import { Canvas } from "@react-three/fiber";
 import { useRecoilValue } from "recoil";
 import { IsEnteredAtom } from "../../stores";
 import * as THREE from "three";
-import Loader from "../Loader";
-import Space from "./maps/3D/Space";
-import RootMap from "./maps/RootMap";
+import Loader from "./Loader";
+import Space from "./Space";
 
 export default function MainCanvas() {
   const aspectRatio = window.innerWidth / window.innerHeight;
@@ -27,8 +26,7 @@ export default function MainCanvas() {
     >
       <ScrollControls pages={isEntered ? 10 : 0} damping={0.25}>
         <Suspense fallback={<Loader />}>
-          {/* <Space /> */}
-          <RootMap />
+          <Space />
         </Suspense>
       </ScrollControls>
       <OrbitControls />

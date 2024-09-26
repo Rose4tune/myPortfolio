@@ -1,14 +1,16 @@
-import { RecoilRoot } from "recoil";
+import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 import MainCanvas from "./components/canvas/MainCanvas";
+import { DimensionAtom } from "./stores";
+import MainPage from "./components/page/MainPage";
 
 function App() {
+  const currentDimension = useRecoilValue(DimensionAtom);
   return (
-    <RecoilRoot>
-      <Wrapper>
-        <MainCanvas />
-      </Wrapper>
-    </RecoilRoot>
+    <Wrapper>
+      {currentDimension === "3D" && <MainCanvas />}
+      {currentDimension === "2D" && <MainPage />}
+    </Wrapper>
   );
 }
 

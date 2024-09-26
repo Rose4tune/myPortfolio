@@ -1,12 +1,12 @@
-import { useRecoilValue } from "recoil";
-import { IsEnteredAtom } from "../../../../stores";
 import { Box, Points, useTexture } from "@react-three/drei";
 import * as THREE from "three";
 import gsap from "gsap";
-import Loader from "../../../Loader";
 import { useEffect, useMemo, useRef } from "react";
 import { useFrame, useThree } from "@react-three/fiber";
-import IntroText from "../../../IntroText";
+import IntroText from "./IntroText";
+import Loader from "./Loader";
+import { useRecoilValue } from "recoil";
+import { IsEnteredAtom } from "../../stores";
 
 export default function Space() {
   const three = useThree();
@@ -60,13 +60,7 @@ export default function Space() {
       ease: "linear",
       size: 0.05,
     });
-  }, [
-    isEntered,
-    three.camera.position,
-    starGroupRef01,
-    starGroupRef02,
-    starGroupRef03,
-  ]);
+  }, [three.camera.position, starGroupRef01, starGroupRef02, starGroupRef03]);
 
   const textRef1_1 = useRef(null);
   const textRef1_2 = useRef(null);
