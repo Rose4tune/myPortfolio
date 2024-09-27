@@ -1,37 +1,17 @@
-import { useEffect } from "react";
-import { Html } from "@react-three/drei";
-import { useRecoilState } from "recoil";
-import { IsEnteredAtom } from "../../stores";
 import styled, { keyframes } from "styled-components";
+import { loadingAniTime } from "../../data/constants";
 
-const animaTime = 6;
 const animaStopDuration = 0.5;
-const animaDelay = animaTime - (1 + animaStopDuration);
+const animaDelay = loadingAniTime - (1 + animaStopDuration);
 
-export default function Loader() {
-  const [isEntered, setIsEntered] = useRecoilState(IsEnteredAtom);
-
-  if (isEntered) {
-    return null;
-  } else {
-    useEffect(() => {
-      let timeout;
-      timeout = setTimeout(() => setIsEntered(true), animaTime * 1000);
-      return () => {
-        clearTimeout(timeout);
-      };
-    }, [isEntered, setIsEntered]);
-  }
-
+export default function EnterBtn({ onclick }) {
   return (
-    <Html center>
-      <EnterWrap>
-        <EnterIcon onClick={() => setIsEntered(true)}>
-          <img src="/icons/mainCharacter.svg" alt="rose fortune cookie" />
-        </EnterIcon>
-        <EnterBtnText>click !</EnterBtnText>
-      </EnterWrap>
-    </Html>
+    <BtnWrap>
+      <Icon onClick={onclick}>
+        <img src="/icons/mainCharacter.svg" alt="rose's fortune cookie" />
+      </Icon>
+      <Text>click !</Text>
+    </BtnWrap>
   );
 }
 
@@ -86,7 +66,11 @@ const fadeIn = keyframes`
   }
 `;
 
-const EnterWrap = styled.div`
+const BtnWrap = styled.button`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   &:hover {
     div {
       animation:
@@ -105,7 +89,7 @@ const EnterWrap = styled.div`
   }
 `;
 
-const EnterIcon = styled.div`
+const Icon = styled.div`
   width: 15vw;
   max-width: 195px;
   animation:
@@ -128,7 +112,7 @@ const EnterIcon = styled.div`
   }
 `;
 
-const EnterBtnText = styled.span`
+const Text = styled.span`
   animation:
     ${blink} 1s ease-in-out infinite,
     ${fadeOut} ${animaStopDuration}s ease-out ${animaDelay}s forwards;

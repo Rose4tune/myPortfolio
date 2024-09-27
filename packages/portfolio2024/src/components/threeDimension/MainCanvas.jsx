@@ -4,12 +4,13 @@ import { Canvas } from "@react-three/fiber";
 import { useRecoilValue } from "recoil";
 import { IsEnteredAtom } from "../../stores";
 import * as THREE from "three";
-import Loader from "./Loader";
+import Loader from "../loader/Loader";
 import Space from "./Space";
 
 export default function MainCanvas() {
   const aspectRatio = window.innerWidth / window.innerHeight;
   const isEntered = useRecoilValue(IsEnteredAtom);
+
   return (
     <Canvas
       id="canvas"

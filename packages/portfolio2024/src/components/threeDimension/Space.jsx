@@ -4,7 +4,7 @@ import gsap from "gsap";
 import { useEffect, useMemo, useRef } from "react";
 import { useFrame, useThree } from "@react-three/fiber";
 import IntroText from "./IntroText";
-import Loader from "./Loader";
+import Loader from "../loader/Loader";
 import { useRecoilValue } from "recoil";
 import { IsEnteredAtom } from "../../stores";
 

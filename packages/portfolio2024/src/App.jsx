@@ -1,15 +1,16 @@
 import { useRecoilValue } from "recoil";
 import styled from "styled-components";
-import MainCanvas from "./components/canvas/MainCanvas";
-import { DimensionAtom } from "./stores";
-import MainPage from "./components/page/MainPage";
+import MainCanvas from "./components/threeDimension/MainCanvas";
+import { DimensionModeAtom } from "./stores";
+import MainRoot from "./components/twoDimension/MainRoot";
 
 function App() {
-  const currentDimension = useRecoilValue(DimensionAtom);
+  const DimensionMode = useRecoilValue(DimensionModeAtom);
+
   return (
     <Wrapper>
-      {currentDimension === "3D" && <MainCanvas />}
-      {currentDimension === "2D" && <MainPage />}
+      {DimensionMode === "3D" && <MainCanvas />}
+      {DimensionMode === "2D" && <MainRoot />}
     </Wrapper>
   );
 }
