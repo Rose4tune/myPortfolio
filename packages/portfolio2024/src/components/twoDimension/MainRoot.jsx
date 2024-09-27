@@ -4,7 +4,6 @@ import Loader from "../loader/Loader";
 
 export default function MainPage() {
   const isEntered = useRecoilValue(IsEnteredAtom);
-  console.log("this is two dimension page");
 
   if (isEntered) {
     return (
