@@ -7,6 +7,7 @@ import IntroText from "./IntroText";
 import Loader from "../loader/Loader";
 import { useRecoilValue } from "recoil";
 import { IsEnteredAtom } from "../../stores";
+import { introTexts } from "../../data/constants";
 
 let timeline;
 
@@ -79,14 +80,14 @@ export default function Space() {
       .to(three.camera.position, {
         duration: 10,
         x: 0,
-        y: -8,
-        z: 60,
+        y: -4,
+        z: 52,
       })
       .to(
         pivot.rotation,
         {
           duration: 2,
-          x: -Math.PI / 14,
+          x: -Math.PI / 20,
         },
         "<"
       )
@@ -113,29 +114,45 @@ export default function Space() {
     };
   }, [isEntered, three.camera, three.camera.position, three.scene]);
 
-  const textRef1_1 = useRef(null);
-  const textRef1_2 = useRef(null);
-  const textRef2_1 = useRef(null);
-  const textRef2_2 = useRef(null);
-  const textRef3 = useRef(null);
-  const textRef4 = useRef(null);
+  const textRefs = useRef([]);
+  const textValues = [
+    {
+      position: [0, 5, 0],
+      rotationY: 0.5,
+      distance: 27,
+      repeat: 4,
+      speed: 0.0015,
+    },
+    {
+      position: [0, 2, 0],
+      rotationY: 0.1,
+      distance: 35,
+      repeat: 4,
+      speed: 0.002,
+    },
+    {
+      position: [0, -2, 0],
+      rotationY: 0,
+      distance: 32,
+      repeat: 3,
+      speed: 0.003,
+    },
+    {
+      position: [0, -5, 0],
+      rotationY: -1.2,
+      distance: 27,
+      repeat: 2,
+      speed: 0.0035,
+    },
+  ];
 
   useFrame(() => {
-    if (
-      !textRef1_1.current ||
-      !textRef1_2.current ||
-      !textRef2_1.current ||
-      !textRef1_2.current ||
-      !textRef3.current ||
-      !textRef4.current
-    )
-      return;
-    textRef1_1.current.rotation.y += 0.0015;
-    textRef1_2.current.rotation.y += 0.0015;
-    textRef2_1.current.rotation.y += 0.002;
-    textRef2_2.current.rotation.y += 0.002;
-    textRef3.current.rotation.y += 0.003;
-    textRef4.current.rotation.y += 0.0035;
+    if (!textRefs) return;
+    textRefs.current.forEach((textRef, i) => {
+      if (textRef) {
+        textRef.rotation.y += textValues[i].speed;
+      }
+    });
   });
 
   if (isEntered) {
@@ -167,67 +184,21 @@ export default function Space() {
           <meshStandardMaterial color={"#fff"} side={THREE.DoubleSide} />
         </Box>
 
-        <Box
-          ref={textRef1_1}
-          position={[0, 3.5, 0]}
-          args={[0, 0, 0]}
-          rotation-y={-0.1}
-        >
-          <meshStandardMaterial />
-          <IntroText text={`ROSE'S PORTFOLIO`} distance={10} />
-        </Box>
-        <Box
-          ref={textRef1_2}
-          position={[0, 3.5, 0]}
-          args={[0, 0, 0]}
-          rotation-y={Math.PI / 2 - 0.1}
-        >
-          <meshStandardMaterial />
-          <IntroText text={`ROSE'S PORTFOLIO`} distance={10} />
-        </Box>
-
-        <Box
-          ref={textRef2_1}
-          position={[0, 2, 0]}
-          args={[0, 0, 0]}
-          rotation-y={-0.5}
-        >
-          <meshStandardMaterial />
-          <IntroText text={`FRONT-END DEVELOPER`} distance={25} />
-        </Box>
-        <Box
-          ref={textRef2_2}
-          position={[0, 2, 0]}
-          args={[0, 0, 0]}
-          rotation-y={Math.PI / 2 - 0.5}
-        >
-          <meshStandardMaterial />
-          <IntroText text={`FRONT-END DEVELOPER`} distance={25} />
-        </Box>
-
-        <Box
-          ref={textRef3}
-          position={[0, -2.5, 0]}
-          args={[0, 0, 0]}
-          size={2}
-          rotation-y={1}
-        >
-          <meshStandardMaterial />
-          <IntroText text={`WHO CONSTANTLY THINK AND THINK`} distance={25} />
-        </Box>
-
-        <Box
-          ref={textRef4}
-          position={[0, -7.5, 0]}
-          args={[0, 0, 0]}
-          rotation-y={0.4}
-        >
-          <meshStandardMaterial />
-          <IntroText
-            text={`FOR MORE EFFICIENT DEVELOPMENT AND COMMUNICATION`}
-            distance={10}
-          />
-        </Box>
+        {introTexts.map((text, i) => {
+          const { position, rotationY, distance, repeat } = textValues[i];
+          return (
+            <Box
+              key={`roundingText${i}`}
+              ref={(el) => (textRefs.current[i] = el)}
+              position={position}
+              args={[0, 0, 0]}
+              rotation-y={rotationY}
+            >
+              <meshStandardMaterial />
+              <IntroText text={text} distance={distance} repeat={repeat} />
+            </Box>
+          );
+        })}
 
         <Points positions={positions.slice(0, positions.length / 3)}>
           <pointsMaterial
