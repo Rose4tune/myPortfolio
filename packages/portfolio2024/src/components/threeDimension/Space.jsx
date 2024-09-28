@@ -70,8 +70,15 @@ export default function Space() {
   const textRef4 = useRef(null);
 
   useFrame(() => {
-    if (!textRef1_1.current) return;
-    if (!textRef2_1.current) return;
+    if (
+      !textRef1_1.current ||
+      !textRef1_2.current ||
+      !textRef2_1.current ||
+      !textRef1_2.current ||
+      !textRef3.current ||
+      !textRef4.current
+    )
+      return;
     textRef1_1.current.rotation.y += 0.0015;
     textRef1_2.current.rotation.y += 0.0015;
     textRef2_1.current.rotation.y += 0.002;
@@ -108,41 +115,45 @@ export default function Space() {
         <Box ref={boxRef} position={[0, 0, 0]} args={[500, 500, 500]}>
           <meshStandardMaterial color={"#fff"} side={THREE.DoubleSide} />
         </Box>
-        <Box ref={textRef1_1} position={[0, 5, 0]} args={[0, 0, 0]}>
+
+        <Box ref={textRef1_1} position={[0, 3.5, 0]} args={[0, 0, 0]}>
           <meshStandardMaterial />
-          <IntroText text={`ROSE'S PORTFOLIO`} distance={15} />
+          <IntroText text={`ROSE'S PORTFOLIO`} distance={10} />
         </Box>
         <Box
           ref={textRef1_2}
-          position={[0, 5, 0]}
+          position={[0, 3.5, 0]}
           args={[0, 0, 0]}
           rotation-y={Math.PI / 2}
         >
           <meshStandardMaterial />
-          <IntroText text={`ROSE'S PORTFOLIO`} distance={15} />
+          <IntroText text={`ROSE'S PORTFOLIO`} distance={10} />
         </Box>
-        <Box ref={textRef2_1} position={[0, 3, 0]} args={[0, 0, 0]}>
+
+        <Box ref={textRef2_1} position={[0, 2, 0]} args={[0, 0, 0]}>
           <meshStandardMaterial />
           <IntroText text={`FRONT-END DEVELOPER`} distance={25} />
         </Box>
         <Box
           ref={textRef2_2}
-          position={[0, 3, 0]}
+          position={[0, 2, 0]}
           args={[0, 0, 0]}
           rotation-y={Math.PI / 2}
         >
           <meshStandardMaterial />
           <IntroText text={`FRONT-END DEVELOPER`} distance={25} />
         </Box>
-        <Box ref={textRef3} position={[0, -2, 0]} args={[0, 0, 0]}>
+
+        <Box ref={textRef3} position={[0, -2.5, 0]} args={[0, 0, 0]} size={2}>
           <meshStandardMaterial />
           <IntroText text={`WHO CONSTANTLY THINK AND THINK`} distance={25} />
         </Box>
-        <Box ref={textRef4} position={[0, -6, 0]} args={[0, 0, 0]}>
+
+        <Box ref={textRef4} position={[0, -7.5, 0]} args={[0, 0, 0]}>
           <meshStandardMaterial />
           <IntroText
             text={`FOR MORE EFFICIENT DEVELOPMENT AND COMMUNICATION`}
-            distance={5}
+            distance={10}
           />
         </Box>
 
