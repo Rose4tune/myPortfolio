@@ -6,59 +6,33 @@ const fontStyle = {
   size: 1,
   height: 1,
   lineHeight: 1,
-  fontSize: 1.5,
 };
 
-export default function IntroText({ text, distance }) {
-  const textLen = text.length;
-  text = [...text.split(""), ...text.split("").reverse()];
+export default function IntroText({ text, distance, repeat }) {
+  let repeatedText = [];
 
-  const calRadius = (num) => Math.floor(textLen * num);
+  for (let i = 0; i < repeat; i++) {
+    repeatedText.push(...text.split(""));
+    const gap = Math.round((distance / text.length) * 10);
 
-  let afterM = 0;
-  let countM = 0;
-
-  return text.map((t, i) => {
-    const proceed = i < textLen;
-    let angle =
-      ((proceed ? i : i - textLen) / textLen) * (Math.PI / 1.5) + 0.55;
-
-    let radius = calRadius(0.4);
-    let xAdjustment = 5;
-    let y = (angle - textLen * 0.1) / 2;
-    let z = -(textLen / 2 - i + (proceed ? 0 : textLen)) * 1.3;
-
-    if (textLen > 20) {
-      radius = calRadius(0.6);
-      xAdjustment = -15;
-      y = angle.toFixed(2) - 1.6;
+    for (let j = 0; j < gap; j++) {
+      repeatedText.push(" ");
     }
+  }
 
-    if (textLen > 40) {
-      radius = calRadius(0.8);
-    }
+  const angleStep = (Math.PI * 2) / repeatedText.length;
 
-    let x = distance + radius * Math.sin(angle).toFixed(2) + xAdjustment;
-    let rotationY = Math.PI / (proceed ? -2 : 2) + (proceed ? -y : y);
+  return repeatedText.map((t, i) => {
+    const angle = i * angleStep;
 
-    if (t === "I" || t === "L" || t === "'") {
-      z += proceed ? 0.3 : -0.3;
-    } else if (t === "W") {
-      z += proceed ? -0.6 : 0.6;
-    } else if (t === "M") {
-      afterM += 0.6;
-      countM += 1;
-      z += proceed ? -0.6 : 0;
-      x += 0.1;
-    }
-
-    z += afterM;
+    let x = distance * Math.cos(angle);
+    let z = distance * Math.sin(angle);
 
     return (
       <Text3D
         key={i + "textKey"}
-        position={[proceed ? x : -x, 0, z]}
-        rotation-y={rotationY}
+        position={[x, 0, z]}
+        rotation-y={Math.PI / -2 - angle}
         {...fontStyle}
       >
         {t}
