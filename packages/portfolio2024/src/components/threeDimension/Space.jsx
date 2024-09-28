@@ -1,4 +1,4 @@
-import { Box, Points, useTexture } from "@react-three/drei";
+import { Box, Points, useScroll, useTexture } from "@react-three/drei";
 import * as THREE from "three";
 import gsap from "gsap";
 import { useEffect, useMemo, useRef } from "react";
@@ -7,6 +7,8 @@ import IntroText from "./IntroText";
 import Loader from "../loader/Loader";
 import { useRecoilValue } from "recoil";
 import { IsEnteredAtom } from "../../stores";
+
+let timeline;
 
 export default function Space() {
   const three = useThree();
@@ -21,22 +23,24 @@ export default function Space() {
 
   const texture = useTexture("texture/star.png");
   const { positions } = useMemo(() => {
-    const count = 15000;
-    const positions = new Float32Array(count);
-    for (let i = 0; i < count; i++) {
+    const count = 5000;
+    const positions = new Float32Array(count * 3);
+    for (let i = 0; i < positions.length; i++) {
       positions[i] = (Math.random() - 0.5) * 118;
     }
     return { positions };
   }, []);
 
+  const scroll = useScroll();
+
+  useFrame(() => {
+    if (!timeline) return;
+    timeline.seek(scroll.offset * timeline.duration());
+  });
+
   useEffect(() => {
     if (!isEntered) return;
-    gsap.fromTo(
-      three.camera.position,
-      { x: 0, y: 0, z: 25 },
-      { x: 0, y: 0, z: 1, duration: 1.5 }
-    );
-
+    three.camera.lookAt(0, 0, 0);
     gsap.to(starGroupRef01.current, {
       yoyo: true,
       duration: 2,
@@ -62,6 +66,53 @@ export default function Space() {
     });
   }, [three.camera.position, starGroupRef01, starGroupRef02, starGroupRef03]);
 
+  useEffect(() => {
+    if (!isEntered) return;
+
+    const pivot = new THREE.Group();
+    pivot.position.copy(boxRef.current.position);
+    pivot.add(three.camera);
+    three.scene.add(pivot);
+
+    timeline = gsap.timeline();
+    timeline
+      .to(three.camera.position, {
+        duration: 10,
+        x: 0,
+        y: -8,
+        z: 60,
+      })
+      .to(
+        pivot.rotation,
+        {
+          duration: 2,
+          x: -Math.PI / 14,
+        },
+        "<"
+      )
+      .to(three.camera.position, {
+        duration: 4,
+        x: 0,
+        y: 0,
+        z: 0,
+      })
+      .to(
+        pivot.rotation,
+        {
+          duration: 3,
+          x: Math.PI / 2,
+        },
+        "<"
+      )
+      .to(pivot.rotation, {
+        duration: 30,
+        x: -Math.PI / 2,
+      });
+    return () => {
+      three.scene.remove(pivot);
+    };
+  }, [isEntered, three.camera, three.camera.position, three.scene]);
+
   const textRef1_1 = useRef(null);
   const textRef1_2 = useRef(null);
   const textRef2_1 = useRef(null);
@@ -83,8 +134,8 @@ export default function Space() {
     textRef1_2.current.rotation.y += 0.0015;
     textRef2_1.current.rotation.y += 0.002;
     textRef2_2.current.rotation.y += 0.002;
-    textRef3.current.rotation.y += 0.0025;
-    textRef4.current.rotation.y += 0.003;
+    textRef3.current.rotation.y += 0.003;
+    textRef4.current.rotation.y += 0.0035;
   });
 
   if (isEntered) {
@@ -116,7 +167,12 @@ export default function Space() {
           <meshStandardMaterial color={"#fff"} side={THREE.DoubleSide} />
         </Box>
 
-        <Box ref={textRef1_1} position={[0, 3.5, 0]} args={[0, 0, 0]}>
+        <Box
+          ref={textRef1_1}
+          position={[0, 3.5, 0]}
+          args={[0, 0, 0]}
+          rotation-y={-0.1}
+        >
           <meshStandardMaterial />
           <IntroText text={`ROSE'S PORTFOLIO`} distance={10} />
         </Box>
@@ -124,13 +180,18 @@ export default function Space() {
           ref={textRef1_2}
           position={[0, 3.5, 0]}
           args={[0, 0, 0]}
-          rotation-y={Math.PI / 2}
+          rotation-y={Math.PI / 2 - 0.1}
         >
           <meshStandardMaterial />
           <IntroText text={`ROSE'S PORTFOLIO`} distance={10} />
         </Box>
 
-        <Box ref={textRef2_1} position={[0, 2, 0]} args={[0, 0, 0]}>
+        <Box
+          ref={textRef2_1}
+          position={[0, 2, 0]}
+          args={[0, 0, 0]}
+          rotation-y={-0.5}
+        >
           <meshStandardMaterial />
           <IntroText text={`FRONT-END DEVELOPER`} distance={25} />
         </Box>
@@ -138,18 +199,29 @@ export default function Space() {
           ref={textRef2_2}
           position={[0, 2, 0]}
           args={[0, 0, 0]}
-          rotation-y={Math.PI / 2}
+          rotation-y={Math.PI / 2 - 0.5}
         >
           <meshStandardMaterial />
           <IntroText text={`FRONT-END DEVELOPER`} distance={25} />
         </Box>
 
-        <Box ref={textRef3} position={[0, -2.5, 0]} args={[0, 0, 0]} size={2}>
+        <Box
+          ref={textRef3}
+          position={[0, -2.5, 0]}
+          args={[0, 0, 0]}
+          size={2}
+          rotation-y={1}
+        >
           <meshStandardMaterial />
           <IntroText text={`WHO CONSTANTLY THINK AND THINK`} distance={25} />
         </Box>
 
-        <Box ref={textRef4} position={[0, -7.5, 0]} args={[0, 0, 0]}>
+        <Box
+          ref={textRef4}
+          position={[0, -7.5, 0]}
+          args={[0, 0, 0]}
+          rotation-y={0.4}
+        >
           <meshStandardMaterial />
           <IntroText
             text={`FOR MORE EFFICIENT DEVELOPMENT AND COMMUNICATION`}

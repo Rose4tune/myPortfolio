@@ -30,7 +30,6 @@ export default function MainCanvas() {
           <Space />
         </Suspense>
       </ScrollControls>
-      <OrbitControls />
     </Canvas>
   );
 }
