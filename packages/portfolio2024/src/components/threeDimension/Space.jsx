@@ -121,36 +121,37 @@ export default function Space() {
       rotationY: 0.5,
       distance: 27,
       repeat: 4,
-      speed: 0.0015,
+      speed: 0.03,
     },
     {
       position: [0, 2, 0],
       rotationY: 0.1,
       distance: 35,
       repeat: 4,
-      speed: 0.002,
+      speed: 0.04,
     },
     {
       position: [0, -2, 0],
       rotationY: 0,
       distance: 32,
       repeat: 3,
-      speed: 0.003,
+      speed: 0.06,
     },
     {
       position: [0, -5, 0],
       rotationY: -1.2,
       distance: 27,
       repeat: 2,
-      speed: 0.0035,
+      speed: 0.07,
     },
   ];
 
-  useFrame(() => {
+  useFrame((state, delta) => {
     if (!textRefs) return;
     textRefs.current.forEach((textRef, i) => {
       if (textRef) {
-        textRef.rotation.y += textValues[i].speed;
+        const rotationSpeed = Math.PI * textValues[i].speed;
+        textRef.rotation.y += delta * rotationSpeed;
       }
     });
   });
