@@ -8,6 +8,7 @@ import Loader from "../loader/Loader";
 import { useRecoilValue } from "recoil";
 import { IsEnteredAtom } from "../../stores";
 import { introTexts } from "../../data/constants";
+import { chunk } from "../../util/Calculate";
 
 let timeline;
 
@@ -16,56 +17,94 @@ export default function Space() {
   const isEntered = useRecoilValue(IsEnteredAtom);
 
   const boxRef = useRef(null);
-  const starGroupRef01 = useRef(null);
-  const starGroupRef02 = useRef(null);
-  const starGroupRef03 = useRef(null);
+  const textRefs = useRef([]);
+  const starRefs = useRef([]);
   const rectAreaLightRef = useRef(null);
   const hemisphereLightRef = useRef(null);
 
   const texture = useTexture("texture/star.png");
   const { positions } = useMemo(() => {
-    const count = 5000;
+    const count = 5100;
     const positions = new Float32Array(count * 3);
+
     for (let i = 0; i < positions.length; i++) {
-      positions[i] = (Math.random() - 0.5) * 118;
+      let randomValue = (Math.random() - 0.5) * 118;
+      if (isNaN(randomValue)) randomValue = 0;
+      positions[i] = randomValue;
     }
-    return { positions };
+
+    return { positions: chunk(positions, count) };
   }, []);
 
   const scroll = useScroll();
+  const starValues = [
+    { size: 0.8, twinkleSize: 0.08, duration: 1 },
+    { size: 1.3, twinkleSize: 0.05, duration: 1.5 },
+    { size: 1.8, twinkleSize: 0.1, duration: 2.5 },
+  ];
+  const textValues = [
+    {
+      position: [0, 3.5, 0],
+      rotationY: 0.5,
+      distance: 19,
+      repeat: 4,
+      speed: 0.03,
+    },
+    {
+      position: [0, 1.8, 0],
+      rotationY: 0.1,
+      distance: 27,
+      repeat: 4,
+      speed: 0.04,
+    },
+    {
+      position: [0, -1.8, 0],
+      rotationY: 0,
+      distance: 24,
+      repeat: 3,
+      speed: 0.06,
+    },
+    {
+      position: [0, -4.2, 0],
+      rotationY: -1.2,
+      distance: 19,
+      repeat: 2,
+      speed: 0.07,
+    },
+  ];
 
-  useFrame(() => {
-    if (!timeline) return;
+  useFrame((state, delta) => {
+    if (!textRefs || !starRefs || !timeline) return;
+
     timeline.seek(scroll.offset * timeline.duration());
+
+    textRefs.current.forEach((textRef, i) => {
+      if (textRef) {
+        const rotationSpeed = Math.PI * textValues[i].speed;
+        textRef.rotation.y += delta * rotationSpeed;
+      }
+    });
   });
 
   useEffect(() => {
     if (!isEntered) return;
+    if (!starRefs.current[0] || !starRefs.current[1] || !starRefs.current[2])
+      return;
+
     three.camera.lookAt(0, 0, 0);
-    gsap.to(starGroupRef01.current, {
-      yoyo: true,
-      duration: 2,
-      repeat: -1,
-      ease: "linear",
-      size: 0.08,
+    starRefs.current.forEach((starRef, i) => {
+      const { twinkleSize, duration } = starValues[i];
+      if (starRef) {
+        gsap.to(starRef, {
+          yoyo: true,
+          duration: duration,
+          repeat: -1,
+          ease: "linear",
+          size: twinkleSize,
+        });
+      }
     });
-
-    gsap.to(starGroupRef02.current, {
-      yoyo: true,
-      duration: 3,
-      repeat: -1,
-      ease: "linear",
-      size: 0.05,
-    });
-
-    gsap.to(starGroupRef03.current, {
-      yoyo: true,
-      duration: 4,
-      repeat: -1,
-      ease: "linear",
-      size: 0.05,
-    });
-  }, [three.camera.position, starGroupRef01, starGroupRef02, starGroupRef03]);
+  }, [three.camera.position, isEntered, starRefs.current]);
 
   useEffect(() => {
     if (!isEntered) return;
@@ -81,7 +120,7 @@ export default function Space() {
         duration: 10,
         x: 0,
         y: -4,
-        z: 52,
+        z: 44,
       })
       .to(
         pivot.rotation,
@@ -113,48 +152,6 @@ export default function Space() {
       three.scene.remove(pivot);
     };
   }, [isEntered, three.camera, three.camera.position, three.scene]);
-
-  const textRefs = useRef([]);
-  const textValues = [
-    {
-      position: [0, 5, 0],
-      rotationY: 0.5,
-      distance: 27,
-      repeat: 4,
-      speed: 0.03,
-    },
-    {
-      position: [0, 2, 0],
-      rotationY: 0.1,
-      distance: 35,
-      repeat: 4,
-      speed: 0.04,
-    },
-    {
-      position: [0, -2, 0],
-      rotationY: 0,
-      distance: 32,
-      repeat: 3,
-      speed: 0.06,
-    },
-    {
-      position: [0, -5, 0],
-      rotationY: -1.2,
-      distance: 27,
-      repeat: 2,
-      speed: 0.07,
-    },
-  ];
-
-  useFrame((state, delta) => {
-    if (!textRefs) return;
-    textRefs.current.forEach((textRef, i) => {
-      if (textRef) {
-        const rotationSpeed = Math.PI * textValues[i].speed;
-        textRef.rotation.y += delta * rotationSpeed;
-      }
-    });
-  });
 
   if (isEntered) {
     return (
@@ -189,7 +186,7 @@ export default function Space() {
           const { position, rotationY, distance, repeat } = textValues[i];
           return (
             <Box
-              key={`roundingText${i}`}
+              key={`roundingTextKey${i}`}
               ref={(el) => (textRefs.current[i] = el)}
               position={position}
               args={[0, 0, 0]}
@@ -201,47 +198,22 @@ export default function Space() {
           );
         })}
 
-        <Points positions={positions.slice(0, positions.length / 3)}>
-          <pointsMaterial
-            ref={starGroupRef01}
-            size={0.8}
-            color={new THREE.Color("#ff80ae")}
-            sizeAttenuation
-            depthWrite
-            alphaMap={texture}
-            transparent
-            alphaTest={0.001}
-          />
-        </Points>
-        <Points
-          positions={positions.slice(
-            positions.length / 3,
-            (positions.length * 2) / 3
-          )}
-        >
-          <pointsMaterial
-            ref={starGroupRef02}
-            size={1.3}
-            color={new THREE.Color("#ff80ae")}
-            sizeAttenuation
-            depthWrite
-            alphaMap={texture}
-            transparent
-            alphaTest={0.001}
-          />
-        </Points>
-        <Points positions={positions.slice((positions.length * 2) / 3)}>
-          <pointsMaterial
-            ref={starGroupRef03}
-            size={1.8}
-            color={new THREE.Color("#ff80ae")}
-            sizeAttenuation
-            depthWrite
-            alphaMap={texture}
-            transparent
-            alphaTest={0.001}
-          />
-        </Points>
+        {positions.map((position, i) => {
+          return (
+            <Points key={`starKey${i}`} positions={position}>
+              <pointsMaterial
+                ref={(el) => (starRefs.current[i] = el)}
+                size={starValues[i].size}
+                color={new THREE.Color("#ff80ae")}
+                sizeAttenuation
+                depthWrite
+                alphaMap={texture}
+                transparent
+                alphaTest={0.001}
+              />
+            </Points>
+          );
+        })}
       </>
     );
   }
