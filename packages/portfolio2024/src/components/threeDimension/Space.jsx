@@ -46,7 +46,7 @@ export default function Space() {
     {
       position: [0, 3.5, 0],
       rotationY: 0.5,
-      distance: 19,
+      distance: 20,
       repeat: 4,
       speed: 0.03,
     },
@@ -67,7 +67,7 @@ export default function Space() {
     {
       position: [0, -4.2, 0],
       rotationY: -1.2,
-      distance: 19,
+      distance: 20,
       repeat: 2,
       speed: 0.07,
     },

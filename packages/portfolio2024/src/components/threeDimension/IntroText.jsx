@@ -13,7 +13,7 @@ export default function IntroText({ text, distance, repeat }) {
 
   for (let i = 0; i < repeat; i++) {
     repeatedText.push(...text.split(""));
-    const gap = Math.round((distance / text.length) * 10);
+    let gap = text.length < 40 ? Math.round((distance / text.length) * 6) : 0;
 
     for (let j = 0; j < gap; j++) {
       repeatedText.push(" ");
@@ -30,7 +30,7 @@ export default function IntroText({ text, distance, repeat }) {
 
     return (
       <Text3D
-        key={i + "textKey"}
+        key={`introTextKey${i}`}
         position={[x, 0, z]}
         rotation-y={Math.PI / -2 - angle}
         {...fontStyle}
