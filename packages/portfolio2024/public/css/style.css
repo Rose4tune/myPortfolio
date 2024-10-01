@@ -91,3 +91,8 @@ body {
   font-style: normal;
   color: var(--gray-fore-100);
 }
+
+.frame-shadow-right {
+  -webkit-filter: drop-shadow(4rem 4rem var(--pink-fore-010));
+          filter: drop-shadow(4rem 4rem var(--pink-fore-010));
+}

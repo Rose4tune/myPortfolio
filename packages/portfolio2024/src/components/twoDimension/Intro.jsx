@@ -6,7 +6,14 @@ export default function Intro() {
     <>
       <IntroTextWrap>
         {introTexts.map((text, i) => {
-          return <IntroTextBox key={`introTextKey${i}`}>{text}</IntroTextBox>;
+          return (
+            <IntroTextBox
+              key={`introTextKey${i}`}
+              className="frame-shadow-right"
+            >
+              {text}
+            </IntroTextBox>
+          );
         })}
       </IntroTextWrap>
     </>
@@ -14,26 +21,26 @@ export default function Intro() {
 }
 
 const sliding1 = keyframes`
-  from {transform: translateX(120%)}
+  from {transform: translateX(100%)}
   to {transform: translateX(-100%)}
 `;
 const sliding2 = keyframes`
-  from {transform: translateX(150%)}
-  to {transform: translateX(-100%)}
-`;
-const sliding3 = keyframes`
   from {transform: translateX(120%)}
   to {transform: translateX(-100%)}
 `;
+const sliding3 = keyframes`
+  from {transform: translateX(100%)}
+  to {transform: translateX(-100%)}
+`;
 const sliding4 = keyframes`
-  from {transform: translateX(50%)}
+  from {transform: translateX(30%)}
   to {transform: translateX(-100%)}
 `;
 
 const IntroTextWrap = styled.div`
   position: relative;
   width: 100vw;
-  height: 120vw;
+  height: 100vh;
   overflow: hidden;
   font-family: "Rammetto One";
   white-space: nowrap;
@@ -42,7 +49,6 @@ const IntroTextWrap = styled.div`
 const IntroTextBox = styled.div`
   position: absolute;
   color: var(--pink-fore-030);
-  filter: drop-shadow(4rem 4rem var(--pink-fore-010));
 
   &:nth-child(1){
     font-size: 18rem;
