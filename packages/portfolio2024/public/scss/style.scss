@@ -15,6 +15,43 @@ body {
   color: var(--gray-fore-100);
 }
 
-.frame-shadow-right {
-  filter: drop-shadow(4rem 4rem var(--pink-fore-010));
+.frame-shadow {
+  &-right {
+    filter: drop-shadow(4rem 4rem var(--pink-fore-010));
+  }
+  &-left {
+    filter: drop-shadow(-4rem 4rem var(--pink-fore-010));
+  }
+}
+
+.overlapBox {
+  position: relative;
+  width: fit-content;
+  background: var(--gray-back-100);
+  border: 1px solid var(--pink-fore-050);
+
+  &::before {
+    display: block;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--pink-fore-050);
+    top: -1.25rem;
+    right: -1.25rem;
+    z-index: -1;
+    background: var(--gray-back-100);
+  }
+  &::after {
+    display: block;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--pink-fore-050);
+    top: -2.5rem;
+    right: -2.5rem;
+    z-index: -2;
+    background: var(--gray-back-100);
+  }
 }

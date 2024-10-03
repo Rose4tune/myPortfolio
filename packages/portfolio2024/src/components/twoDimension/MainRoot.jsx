@@ -13,9 +13,9 @@ export default function MainPage() {
       <>
         <Intro />
         <About />
-        <MenuBtn>
+        {/* <MenuBtn>
           <img src="/icons/mainCharacter.svg" alt="rose's fortune cookie" />
-        </MenuBtn>
+        </MenuBtn> */}
       </>
     );
   }
