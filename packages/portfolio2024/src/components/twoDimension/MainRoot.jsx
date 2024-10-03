@@ -2,7 +2,7 @@ import { useRecoilValue } from "recoil";
 import { IsEnteredAtom } from "../../stores";
 import Loader from "../loader/Loader";
 import Intro from "./Intro";
-import Introduce from "./Introduce";
+import About from "./About";
 
 export default function MainPage() {
   const isEntered = useRecoilValue(IsEnteredAtom);
@@ -11,7 +11,7 @@ export default function MainPage() {
     return (
       <>
         <Intro />
-        <Introduce />
+        <About />
       </>
     );
   }
