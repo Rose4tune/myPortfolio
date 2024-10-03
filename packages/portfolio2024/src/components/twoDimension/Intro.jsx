@@ -8,6 +8,27 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Intro() {
   const boxRef2 = useRef(null);
+  const textRefs = useRef([]);
+
+  const textDurations = [8, 6, 9, 16];
+
+  useEffect(() => {
+    if (!textRefs.current[0]) return;
+    textRefs.current.forEach((starRef, i) => {
+      if (starRef) {
+        gsap.fromTo(
+          starRef,
+          { x: "100%" },
+          {
+            duration: textDurations[i],
+            repeat: -1,
+            ease: "linear",
+            x: "-100%",
+          }
+        );
+      }
+    });
+  }, [textRefs.current]);
 
   useEffect(() => {
     const boxItems = gsap.context((self) => {
@@ -15,9 +36,7 @@ export default function Intro() {
       boxes.forEach((box) => {
         gsap.to(box, {
           opacity: 0,
-          y: -200,
-          z: 100,
-          rotationX: 90,
+          y: -100,
           scrollTrigger: {
             trigger: box,
             start: "40% 10%",
@@ -39,6 +58,7 @@ export default function Intro() {
           return (
             <IntroTextBox
               key={`introTextKey${i}`}
+              ref={(el) => (textRefs.current[i] = el)}
               className="introTextBox frame-shadow-right"
             >
               {text}
@@ -50,23 +70,6 @@ export default function Intro() {
   );
 }
 
-const sliding1 = keyframes`
-  from {transform: translateX(100%)}
-  to {transform: translateX(-100%)}
-`;
-const sliding2 = keyframes`
-  from {transform: translateX(120%)}
-  to {transform: translateX(-100%)}
-`;
-const sliding3 = keyframes`
-  from {transform: translateX(100%)}
-  to {transform: translateX(-100%)}
-`;
-const sliding4 = keyframes`
-  from {transform: translateX(30%)}
-  to {transform: translateX(-100%)}
-`;
-
 const IntroTextWrap = styled.div`
   position: relative;
   width: 100vw;
@@ -74,35 +77,29 @@ const IntroTextWrap = styled.div`
   overflow: hidden;
   font-family: "Rammetto One";
   white-space: nowrap;
-	perspective: 31.25rem;
 `;
 
-const IntroTextBox = styled.div`
+const IntroTextBox = styled.p`
   position: absolute;
   color: var(--pink-fore-030);
-  /* transform: rotateX(90deg); */
 
   &:nth-child(1){
     font-size: 18rem;
-    /* animation: ${sliding1} 10s linear infinite; */
     top: 3rem;
   }
   &:nth-child(2){
     font-size: 10rem;
-    /* animation: ${sliding2} 8s linear infinite; */
     opacity: 0.6;
     top: 28rem;
   }
   &:nth-child(3){
     font-size: 10rem;
-    /* animation: ${sliding3} 8s linear infinite; */
     opacity: 0.7;
-    top: 58vh;
+    bottom: 31rem;
   }
   &:nth-child(4){
     font-size: 18rem;
-    /* animation: ${sliding4} 16s linear infinite; */
     opacity: 0.6;
-    top: 75vh;
+    bottom: 6rem;
   }
 `;
