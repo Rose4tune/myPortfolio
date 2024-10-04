@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export default function About() {
   return (
-    <Wrap>
+    <Wrap id="about" className="section">
       <ProfileBox1 className="frame-shadow-right">
         <img src="/images/profile1.jpg" alt="flower picture" />
       </ProfileBox1>
@@ -43,7 +43,7 @@ export default function About() {
   );
 }
 
-const Wrap = styled.div`
+const Wrap = styled.section`
   position: relative;
   width: 100vw;
   height: 238vh;

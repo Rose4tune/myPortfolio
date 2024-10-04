@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
-import styled, { keyframes } from "styled-components";
-import { introTexts } from "../../data/constants";
+import styled from "styled-components";
+import { introTexts } from "../../../../data/constants";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -14,10 +14,10 @@ export default function Intro() {
 
   useEffect(() => {
     if (!textRefs.current[0]) return;
-    textRefs.current.forEach((starRef, i) => {
-      if (starRef) {
+    textRefs.current.forEach((textRef, i) => {
+      if (textRef) {
         gsap.fromTo(
-          starRef,
+          textRef,
           { x: "100%" },
           {
             duration: textDurations[i],
@@ -52,25 +52,23 @@ export default function Intro() {
   }, []);
 
   return (
-    <>
-      <IntroTextWrap ref={boxRef2}>
-        {introTexts.map((text, i) => {
-          return (
-            <IntroTextBox
-              key={`introTextKey${i}`}
-              ref={(el) => (textRefs.current[i] = el)}
-              className="introTextBox frame-shadow-right"
-            >
-              {text}
-            </IntroTextBox>
-          );
-        })}
-      </IntroTextWrap>
-    </>
+    <Wrap id="intro" className="section" ref={boxRef2}>
+      {introTexts.map((text, i) => {
+        return (
+          <IntroTextBox
+            key={`introTextKey${i}`}
+            ref={(el) => (textRefs.current[i] = el)}
+            className="introTextBox frame-shadow-right"
+          >
+            {text}
+          </IntroTextBox>
+        );
+      })}
+    </Wrap>
   );
 }
 
-const IntroTextWrap = styled.div`
+const Wrap = styled.section`
   position: relative;
   width: 100vw;
   height: 100vh;
