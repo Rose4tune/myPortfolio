@@ -54,7 +54,7 @@ q::after {
   content: none;
 }
 
-a {
+a, button {
   text-decoration: none;
   color: inherit;
 }
