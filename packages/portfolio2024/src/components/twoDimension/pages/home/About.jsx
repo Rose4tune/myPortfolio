@@ -1,8 +1,9 @@
+import { forwardRef } from "react";
 import styled from "styled-components";
 
-export default function About() {
+const About = forwardRef((props, ref) => {
   return (
-    <Wrap id="about" className="section">
+    <Wrap ref={ref}>
       <ProfileBox1 className="frame-shadow-right">
         <img src="/images/profile1.jpg" alt="flower picture" />
       </ProfileBox1>
@@ -41,7 +42,7 @@ export default function About() {
       </div>
     </Wrap>
   );
-}
+});
 
 const Wrap = styled.section`
   position: relative;
@@ -90,3 +91,5 @@ const ImgBox3 = styled.div`
   transform: translateY(50%);
   opacity: 0.6;
 `;
+
+export default About;

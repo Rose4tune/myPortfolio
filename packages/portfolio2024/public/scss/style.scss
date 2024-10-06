@@ -55,3 +55,26 @@ body {
     background: var(--gray-back-100);
   }
 }
+
+.navbar {
+  @include position($p: fixed, $t: 1rem, $r: 1rem);
+  width: fit-content;
+  background-color: var(--pink-back-090);
+  color: var(--gray-fore-030);
+  padding: 1rem;
+  border-radius: 2rem;
+  z-index: 1000;
+
+  & ul {
+    display: flex;
+    justify-content: center;
+
+    & li {
+      margin: 0 1rem;
+
+      &.active {
+        color: var(--pink-fore-040);
+      }
+    }
+  }
+}

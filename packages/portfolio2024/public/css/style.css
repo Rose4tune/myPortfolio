@@ -133,3 +133,31 @@ body {
   z-index: -2;
   background: var(--gray-back-100);
 }
+
+.navbar {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  background-color: var(--pink-back-090);
+  color: var(--gray-fore-030);
+  padding: 1rem;
+  border-radius: 2rem;
+  z-index: 1000;
+}
+.navbar ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.navbar ul li {
+  margin: 0 1rem;
+}
+.navbar ul li.active {
+  color: var(--pink-fore-040);
+}

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { forwardRef, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { introTexts } from "../../../../data/constants";
 import gsap from "gsap";
@@ -6,10 +6,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function Intro() {
-  const boxRef2 = useRef(null);
+const Intro = forwardRef((props, ref) => {
   const textRefs = useRef([]);
-
   const textDurations = [8, 6, 9, 16];
 
   useEffect(() => {
@@ -47,12 +45,12 @@ export default function Intro() {
           },
         });
       });
-    }, boxRef2);
+    }, ref);
     return () => boxItems.revert();
   }, []);
 
   return (
-    <Wrap id="intro" className="section" ref={boxRef2}>
+    <Wrap ref={ref}>
       {introTexts.map((text, i) => {
         return (
           <IntroTextBox
@@ -66,7 +64,7 @@ export default function Intro() {
       })}
     </Wrap>
   );
-}
+});
 
 const Wrap = styled.section`
   position: relative;
@@ -101,3 +99,5 @@ const IntroTextBox = styled.p`
     bottom: 6rem;
   }
 `;
+
+export default Intro;

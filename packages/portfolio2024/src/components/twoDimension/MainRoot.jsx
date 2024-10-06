@@ -3,20 +3,18 @@ import { IsEnteredAtom } from "../../stores";
 import Loader from "../loader/Loader";
 import styled from "styled-components";
 import Home from "./pages/home";
-import Nav from "./elements/Nav";
 
 export default function MainPage() {
   const isEntered = useRecoilValue(IsEnteredAtom);
 
   if (isEntered) {
     return (
-      <div className="container">
-        <Nav />
+      <>
         <Home />
         {/* <MenuBtn>
           <img src="/icons/mainCharacter.svg" alt="rose's fortune cookie" />
         </MenuBtn> */}
-      </div>
+      </>
     );
   }
   return <Loader isCompleted />;

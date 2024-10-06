@@ -1,14 +1,12 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import styled from "styled-components";
 
-export default function Skills({ id, classNames }) {
-  return (
-    <Wrap id={id} className={{ classNames }}>
-      Skills
-    </Wrap>
-  );
-}
+const Skills = forwardRef((props, ref) => {
+  return <Wrap ref={ref}>Skills</Wrap>;
+});
 const Wrap = styled.section`
   width: 100vw;
-  height: 200vh;
+  height: 100vh;
 `;
+
+export default Skills;
