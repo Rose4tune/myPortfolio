@@ -6,3 +6,5 @@ export const introTexts = [
   `WHO CONSTANTLY THINK AND THINK`,
   `FOR MORE EFFICIENT DEVELOPMENT AND COMMUNICATION`,
 ];
+
+export const sections = ["Intro", "About", "Skills", "Projects", "Contect"];

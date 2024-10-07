@@ -1,11 +1,10 @@
 import { useRef } from "react";
+import { sections } from "../../../../data/constants";
 import Intro from "./Intro";
 import About from "./About";
 import Skills from "./Skills";
 import Projects from "./Projects";
 import Contect from "./Contect";
-
-const sections = ["Intro", "About", "Skills", "Projects", "Contect"];
 
 export default function Home() {
   const sectionRef = useRef([]);
@@ -15,7 +14,7 @@ export default function Home() {
   };
 
   return (
-    <div>
+    <>
       <nav className="navbar">
         <ul>
           {sections.map((title, i) => {
@@ -35,6 +34,6 @@ export default function Home() {
       <Skills ref={(el) => (sectionRef.current[2] = el)} />
       <Projects ref={(el) => (sectionRef.current[3] = el)} />
       <Contect ref={(el) => (sectionRef.current[4] = el)} />
-    </div>
+    </>
   );
 }
