@@ -2,9 +2,9 @@ import { forwardRef, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { introTexts } from "../../../../data/constants";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+// import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger);
+// gsap.registerPlugin(ScrollTrigger);
 
 const Intro = forwardRef((props, ref) => {
   const textRefs = useRef([]);
@@ -27,27 +27,6 @@ const Intro = forwardRef((props, ref) => {
       }
     });
   }, [textRefs.current]);
-
-  useEffect(() => {
-    const boxItems = gsap.context((self) => {
-      const boxes = self.selector(".introTextBox");
-      boxes.forEach((box) => {
-        gsap.to(box, {
-          opacity: 0,
-          y: -100,
-          scrollTrigger: {
-            trigger: box,
-            start: "40% 10%",
-            end: "300% 10%",
-            scrub: true,
-            // markers: true,
-            toggleActions: "restart pause reverse pause",
-          },
-        });
-      });
-    }, ref);
-    return () => boxItems.revert();
-  }, []);
 
   return (
     <Wrap ref={ref}>
