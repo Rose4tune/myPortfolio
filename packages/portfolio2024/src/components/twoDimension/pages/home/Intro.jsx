@@ -41,6 +41,9 @@ const Intro = forwardRef((props, ref) => {
           </IntroTextBox>
         );
       })}
+      <MyChracter>
+        <img src="/icons/mainCharacter.svg" alt="rose's fortune cookie" />
+      </MyChracter>
     </Wrap>
   );
 });
@@ -77,6 +80,15 @@ const IntroTextBox = styled.p`
     opacity: 0.6;
     bottom: 6rem;
   }
+`;
+
+const MyChracter = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 15vw;
+  max-width: 195px;
+  transform: translate(-50%, -50%);
 `;
 
 export default Intro;
