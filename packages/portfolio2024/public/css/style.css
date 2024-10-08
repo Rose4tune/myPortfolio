@@ -99,11 +99,12 @@ body {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  background-color: var(--pink-back-090);
-  color: var(--gray-fore-030);
+  background-color: hsla(var(--pink-back-090), 0.7);
+  color: hsla(var(--gray-fore-030), 0.7);
   padding: 1rem;
   border-radius: 2rem;
   z-index: 1000;
+  opacity: 0.5;
 }
 .navbar ul {
   display: -webkit-box;
@@ -116,8 +117,11 @@ body {
 .navbar ul li {
   margin: 0 1rem;
 }
+.navbar ul li:hover {
+  color: hsla(var(--pink-fore-030), 1);
+}
 .navbar ul li.active {
-  color: var(--pink-fore-040);
+  color: hsla(var(--pink-fore-040), 1);
 }
 
 .overlapBox {
@@ -125,8 +129,8 @@ body {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  background: var(--gray-back-100);
-  border: 1px solid var(--pink-fore-050);
+  background: hsl(var(--gray-back-100));
+  border: 1px solid hsl(var(--pink-fore-050));
 }
 .overlapBox::before {
   display: block;
@@ -134,11 +138,11 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
-  border: 1px solid var(--pink-fore-050);
+  border: 1px solid hsl(var(--pink-fore-050));
   top: -1.25rem;
   right: -1.25rem;
   z-index: -1;
-  background: var(--gray-back-100);
+  background: hsl(var(--gray-back-100));
 }
 .overlapBox::after {
   display: block;
@@ -146,18 +150,18 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
-  border: 1px solid var(--pink-fore-050);
+  border: 1px solid hsl(var(--pink-fore-050));
   top: -2.5rem;
   right: -2.5rem;
   z-index: -2;
-  background: var(--gray-back-100);
+  background: hsl(var(--gray-back-100));
 }
 
 .frame-shadow-right {
-  -webkit-filter: drop-shadow(4rem 4rem var(--pink-fore-010));
-          filter: drop-shadow(4rem 4rem var(--pink-fore-010));
+  -webkit-filter: drop-shadow(4rem 4rem hsl(var(--pink-fore-010)));
+          filter: drop-shadow(4rem 4rem hsl(var(--pink-fore-010)));
 }
 .frame-shadow-left {
-  -webkit-filter: drop-shadow(-4rem 4rem var(--pink-fore-010));
-          filter: drop-shadow(-4rem 4rem var(--pink-fore-010));
+  -webkit-filter: drop-shadow(-4rem 4rem hsl(var(--pink-fore-010)));
+          filter: drop-shadow(-4rem 4rem hsl(var(--pink-fore-010)));
 }

@@ -56,7 +56,7 @@ const Wrap = styled.section`
 
 const IntroTextBox = styled.p`
   position: absolute;
-  color: var(--pink-fore-030);
+  color: hsl(var(--pink-fore-030));
 
   &:nth-child(1){
     font-size: 18rem;

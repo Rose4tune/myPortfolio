@@ -1,13 +1,15 @@
 @use "../helpers" as *;
 
 .navbar {
+  $text_opacity: 0.7;
   @include position($p: fixed, $t: 1rem, $r: 1rem);
   width: fit-content;
-  background-color: var(--pink-back-090);
-  color: var(--gray-fore-030);
+  background-color: hsla(var(--pink-back-090), $text_opacity);
+  color: hsla(var(--gray-fore-030), $text_opacity);
   padding: 1rem;
   border-radius: 2rem;
   z-index: 1000;
+  opacity: 0.5;
 
   & ul {
     display: flex;
@@ -16,8 +18,12 @@
     & li {
       margin: 0 1rem;
 
+      &:hover {
+        color: hsla(var(--pink-fore-030), 1);
+      }
+
       &.active {
-        color: var(--pink-fore-040);
+        color: hsla(var(--pink-fore-040), 1);
       }
     }
   }

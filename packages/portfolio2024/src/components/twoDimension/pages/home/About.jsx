@@ -48,7 +48,7 @@ const Wrap = styled.section`
   position: relative;
   width: 100vw;
   height: 238vh;
-  background: linear-gradient(180deg, var(--gray-back-100) 20%, var(--pink-back-090) 60%, var(--gray-back-100) 100%);
+  background: linear-gradient(180deg, hsl(var(--gray-back-100)) 20%, hsl(var(--pink-back-090)) 60%, hsl(var(--gray-back-100)) 100%);
   perspective: 30rem;
 `;
 

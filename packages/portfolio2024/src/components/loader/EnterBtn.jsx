@@ -121,5 +121,5 @@ const Text = styled.span`
   transform: translateX(-5%);
   font-family: "Rammetto One";
   text-align: center;
-  color: var(--pink-fore-030);
+  color: hsl(var(--pink-fore-030));
 `;
