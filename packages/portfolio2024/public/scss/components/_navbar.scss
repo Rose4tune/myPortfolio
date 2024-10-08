@@ -4,11 +4,20 @@
   $text_opacity: 0.5;
   @include position($p: fixed, $t: 1rem, $r: 1rem);
   width: fit-content;
-  background-color: hsla(var(--pink-back-090), $text_opacity);
-  color: hsla(var(--gray-fore-030), $text_opacity);
   padding: 1rem;
+  background-color: hsla(var(--pink-back-090), $text_opacity);
   border-radius: 2rem;
+  transition: transform 0.5s ease;
+  color: hsla(var(--gray-fore-030), $text_opacity);
   z-index: 1000;
+
+  &.hide {
+    transform: translateY(-150%);
+  }
+
+  &.show {
+    transform: translateY(0);
+  }
 
   & ul {
     display: flex;

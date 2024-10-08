@@ -8,6 +8,8 @@ gsap.registerPlugin(ScrollToPlugin);
 const NavBar = forwardRef((props, ref) => {
   const [currentSection, setCurrentSection] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
+  const [showNav, setShowNav] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   const scrollToSection = (i) => {
     ref.current[i].scrollIntoView({ behavior: "smooth" });
@@ -33,6 +35,16 @@ const NavBar = forwardRef((props, ref) => {
         setCurrentSection(currentSection - 1);
       }
     }
+  };
+
+  const handleScroll = () => {
+    const currentScrollY = window.scrollY;
+    if (currentScrollY > lastScrollY) {
+      setShowNav(false);
+    } else {
+      setShowNav(true);
+    }
+    setLastScrollY(currentScrollY);
   };
 
   useEffect(() => {
@@ -67,6 +79,16 @@ const NavBar = forwardRef((props, ref) => {
   }, [ref, isScrolling]);
 
   useEffect(() => {
+    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("scroll", handleScroll); // 스크롤 방향 감지 리스너 추가
+    setActiveMenu(currentSection);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("scroll", handleScroll); // 스크롤 리스너 제거
+    };
+  }, [currentSection]);
+
+  useEffect(() => {
     if (!ref.current[currentSection]) return;
     setIsScrolling(true);
     gsap.to(window, {
@@ -76,16 +98,8 @@ const NavBar = forwardRef((props, ref) => {
     });
   }, [currentSection, ref]);
 
-  useEffect(() => {
-    window.addEventListener("keydown", handleKeyDown);
-    setActiveMenu(currentSection);
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [currentSection]);
-
   return (
-    <nav className="navbar">
+    <nav className={`navbar ${showNav ? "show" : "hide"}`}>
       <ul>
         {sections.map((title, i) => {
           return (

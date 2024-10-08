@@ -99,11 +99,23 @@ body {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  background-color: hsla(var(--pink-back-090), 0.5);
-  color: hsla(var(--gray-fore-030), 0.5);
   padding: 1rem;
+  background-color: hsla(var(--pink-back-090), 0.5);
   border-radius: 2rem;
+  -webkit-transition: -webkit-transform 0.5s ease;
+  transition: -webkit-transform 0.5s ease;
+  transition: transform 0.5s ease;
+  transition: transform 0.5s ease, -webkit-transform 0.5s ease;
+  color: hsla(var(--gray-fore-030), 0.5);
   z-index: 1000;
+}
+.navbar.hide {
+  -webkit-transform: translateY(-150%);
+          transform: translateY(-150%);
+}
+.navbar.show {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
 }
 .navbar ul {
   display: -webkit-box;
