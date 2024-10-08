@@ -2,9 +2,6 @@ import { forwardRef, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { introTexts } from "../../../../data/constants";
 import gsap from "gsap";
-// import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-// gsap.registerPlugin(ScrollTrigger);
 
 const Intro = forwardRef((props, ref) => {
   const textRefs = useRef([]);

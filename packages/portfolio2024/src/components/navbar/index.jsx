@@ -80,11 +80,11 @@ const NavBar = forwardRef((props, ref) => {
 
   useEffect(() => {
     window.addEventListener("keydown", handleKeyDown);
-    window.addEventListener("scroll", handleScroll); // 스크롤 방향 감지 리스너 추가
+    window.addEventListener("scroll", handleScroll);
     setActiveMenu(currentSection);
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
-      window.removeEventListener("scroll", handleScroll); // 스크롤 리스너 제거
+      window.removeEventListener("scroll", handleScroll);
     };
   }, [currentSection]);
 
