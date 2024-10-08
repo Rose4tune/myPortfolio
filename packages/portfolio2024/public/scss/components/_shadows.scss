@@ -1,0 +1,10 @@
+@use "../helpers" as *;
+
+.frame-shadow {
+  &-right {
+    filter: drop-shadow(4rem 4rem var(--pink-fore-010));
+  }
+  &-left {
+    filter: drop-shadow(-4rem 4rem var(--pink-fore-010));
+  }
+}

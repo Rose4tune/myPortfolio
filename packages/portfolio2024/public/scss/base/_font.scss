@@ -1,0 +1,15 @@
+@use "../helpers" as *;
+
+/* STYLE */
+html {
+  font-size: 10px;
+}
+
+body {
+  line-height: 1;
+  font-family: "Pretendard";
+  font-size: rem(20);
+  font-weight: 400;
+  font-style: normal;
+  color: var(--gray-fore-100);
+}
