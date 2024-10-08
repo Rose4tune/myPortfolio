@@ -7,6 +7,7 @@ gsap.registerPlugin(ScrollToPlugin);
 
 const NavBar = forwardRef((props, ref) => {
   const [currentSection, setCurrentSection] = useState(0);
+  const [isScrolling, setIsScrolling] = useState(false);
 
   const scrollToSection = (i) => {
     ref.current[i].scrollIntoView({ behavior: "smooth" });
@@ -35,13 +36,45 @@ const NavBar = forwardRef((props, ref) => {
   };
 
   useEffect(() => {
-    if (ref.current[currentSection]) {
-      gsap.to(window, {
-        duration: 1,
-        scrollTo: ref.current[currentSection],
+    const observerOptions = {
+      root: null,
+      threshold: 0.2,
+    };
+
+    const observerCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const index = ref.current.indexOf(entry.target);
+          if (!isScrolling) {
+            setCurrentSection(index);
+          }
+        }
       });
-    }
-  }, [currentSection]);
+    };
+
+    const observer = new IntersectionObserver(
+      observerCallback,
+      observerOptions
+    );
+
+    ref.current.forEach((section) => {
+      observer.observe(section);
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [ref, isScrolling]);
+
+  useEffect(() => {
+    if (!ref.current[currentSection]) return;
+    setIsScrolling(true);
+    gsap.to(window, {
+      duration: 1,
+      scrollTo: ref.current[currentSection],
+      onComplete: () => setIsScrolling(false),
+    });
+  }, [currentSection, ref]);
 
   useEffect(() => {
     window.addEventListener("keydown", handleKeyDown);
