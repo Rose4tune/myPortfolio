@@ -1,7 +1,7 @@
 @use "../helpers" as *;
 
 .navbar {
-  $text_opacity: 0.7;
+  $text_opacity: 0.5;
   @include position($p: fixed, $t: 1rem, $r: 1rem);
   width: fit-content;
   background-color: hsla(var(--pink-back-090), $text_opacity);
@@ -9,17 +9,16 @@
   padding: 1rem;
   border-radius: 2rem;
   z-index: 1000;
-  opacity: 0.5;
 
   & ul {
     display: flex;
     justify-content: center;
 
-    & li {
+    & button {
       margin: 0 1rem;
 
       &:hover {
-        color: hsla(var(--pink-fore-030), 1);
+        color: hsla(var(--pink-fore-030), $text_opacity);
       }
 
       &.active {
