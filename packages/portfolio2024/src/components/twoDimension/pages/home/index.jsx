@@ -4,7 +4,7 @@ import About from "./About";
 import Skills from "./Skills";
 import Projects from "./Projects";
 import Contect from "./Contect";
-import NavBar from "../../../navbar";
+import NavBar from "../../../nav/NavBar";
 
 export default function Home() {
   const sectionRefs = useRef([]);

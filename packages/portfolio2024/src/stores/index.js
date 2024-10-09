@@ -10,3 +10,8 @@ export const DimensionModeAtom = atom({
   key: `DimensionModeAtom/${v1()}`,
   default: "2D",
 });
+
+export const showNavAtom = atom({
+  key: `showNav`,
+  default: false,
+});

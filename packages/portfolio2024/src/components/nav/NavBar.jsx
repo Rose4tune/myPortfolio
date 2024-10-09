@@ -2,14 +2,16 @@ import { forwardRef, useEffect, useState } from "react";
 import { sections } from "../../data/constants";
 import gsap from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import { useRecoilState } from "recoil";
+import { showNavAtom } from "../../stores";
 
 gsap.registerPlugin(ScrollToPlugin);
 
 const NavBar = forwardRef((props, ref) => {
   const [currentSection, setCurrentSection] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
-  const [showNav, setShowNav] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [showNav, setShowNav] = useRecoilState(showNavAtom);
 
   const scrollToSection = (i) => {
     ref.current[i].scrollIntoView({ behavior: "smooth" });
@@ -39,7 +41,7 @@ const NavBar = forwardRef((props, ref) => {
 
   const handleScroll = () => {
     const currentScrollY = window.scrollY;
-    if (currentScrollY > lastScrollY) {
+    if (currentScrollY > lastScrollY || currentScrollY === 0) {
       setShowNav(false);
     } else {
       setShowNav(true);
@@ -99,22 +101,24 @@ const NavBar = forwardRef((props, ref) => {
   }, [currentSection, ref]);
 
   return (
-    <nav className={`navbar ${showNav ? "show" : "hide"}`}>
-      <ul>
-        {sections.map((title, i) => {
-          return (
-            <li key={`navItem${i}`}>
-              <button
-                className={`navItem ${i === 0 && "active"}`}
-                onClick={() => scrollToSection(i)}
-              >
-                {title}
-              </button>
-            </li>
-          );
-        })}
-      </ul>
-    </nav>
+    <>
+      <nav className={`nav ${showNav ? "show" : "hide"}`}>
+        <ul>
+          {sections.map((title, i) => {
+            return (
+              <li key={`navItem${i}`}>
+                <button
+                  className={`navItem ${i === 0 && "active"}`}
+                  onClick={() => scrollToSection(i)}
+                >
+                  {title}
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
+    </>
   );
 });
 

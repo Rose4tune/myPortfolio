@@ -1,7 +1,8 @@
 @use "../helpers" as *;
 
-.navbar {
-  $text_opacity: 0.5;
+$text_opacity: 0.5;
+
+.nav {
   @include position($p: fixed, $t: 1rem, $r: 1rem);
   width: fit-content;
   padding: 1rem;
