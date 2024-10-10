@@ -11,7 +11,12 @@ export const DimensionModeAtom = atom({
   default: "2D",
 });
 
-export const showNavAtom = atom({
-  key: `showNav`,
+export const ShowNavAtom = atom({
+  key: `ShowNavAtom`,
   default: false,
+});
+
+export const LanguageAtom = atom({
+  key: `LanguageAtom`,
+  default: "kor",
 });

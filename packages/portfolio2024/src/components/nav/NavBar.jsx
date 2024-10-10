@@ -3,7 +3,7 @@ import { sections } from "../../data/constants";
 import gsap from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { useRecoilState } from "recoil";
-import { showNavAtom } from "../../stores";
+import { ShowNavAtom } from "../../stores";
 
 gsap.registerPlugin(ScrollToPlugin);
 
@@ -11,7 +11,7 @@ const NavBar = forwardRef((props, ref) => {
   const [currentSection, setCurrentSection] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
-  const [showNav, setShowNav] = useRecoilState(showNavAtom);
+  const [showNav, setShowNav] = useRecoilState(ShowNavAtom);
 
   const scrollToSection = (i) => {
     ref.current[i].scrollIntoView({ behavior: "smooth" });

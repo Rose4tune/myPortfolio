@@ -51,9 +51,11 @@ q::after {
   content: none;
 }
 
-a, button {
+a, button,
+select, option {
   text-decoration: none;
   color: inherit;
+  cursor: pointer;
 }
 
 table {
@@ -66,11 +68,6 @@ table td {
   vertical-align: middle;
 }
 
-a,
-button {
-  cursor: pointer;
-}
-
-img, select, option {
+img {
   width: 100%;
 }
