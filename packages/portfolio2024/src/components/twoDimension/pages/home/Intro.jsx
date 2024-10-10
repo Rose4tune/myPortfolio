@@ -5,7 +5,7 @@ import gsap from "gsap";
 
 const Intro = forwardRef((props, ref) => {
   const textRefs = useRef([]);
-  const textDurations = [8, 6, 9, 16];
+  const textDurations = [12, 9, 14, 24];
 
   useEffect(() => {
     if (!textRefs.current[0]) return;
