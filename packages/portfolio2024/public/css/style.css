@@ -199,7 +199,7 @@ body {
   color: hsla(var(--pink-fore-040), 1);
 }
 
-.overlapBoxes {
+.tripleLayered {
   position: relative;
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -208,7 +208,7 @@ body {
   border: 1px solid hsl(var(--pink-fore-050));
   white-space: pre-line;
 }
-.overlapBoxes::before {
+.tripleLayered::before {
   display: block;
   content: "";
   position: absolute;
@@ -220,7 +220,7 @@ body {
   z-index: -1;
   background: hsl(var(--gray-back-100));
 }
-.overlapBoxes::after {
+.tripleLayered::after {
   display: block;
   content: "";
   position: absolute;

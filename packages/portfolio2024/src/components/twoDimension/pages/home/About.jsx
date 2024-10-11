@@ -1,12 +1,32 @@
 import { forwardRef } from "react";
 import styled from "styled-components";
-import OverlapBoxes from "./elements/OverlapBoxes";
 import { useRecoilValue } from "recoil";
 import { LanguageAtom } from "../../../../stores";
 import DoubleLIneBox from "./elements/DoubleLIneBox";
+import TripleLayeredBox from "./elements/TripleLayeredBox";
 
 const About = forwardRef((props, ref) => {
   const language = useRecoilValue(LanguageAtom);
+
+  const greetings =
+    language === "kor" ? (
+      <>
+        보다 효율적인 <span className="boldUpper">개발</span>과{" "}
+        <span className="boldUpper">소통</span>을 위해{"\n"}
+        끊임없이 <span className="boldUpper">고민하고 생각하는</span>
+        {"\n"}
+        <span className="boldUpper">개발자 이예서</span>입니다.
+      </>
+    ) : (
+      <>
+        I’m <span className="boldUpper">Rose</span>, who is constantly thinking
+        about
+        {"\n"}
+        for <span className="boldUpper">more efficient development</span>
+        {"\n"}
+        and <span className="boldUpper">communication</span>
+      </>
+    );
 
   const introduce =
     language === "kor"
@@ -36,8 +56,8 @@ const About = forwardRef((props, ref) => {
             key: "favorites",
             value: "\nDesign, Discussion,\nWater play, Boyfriend",
           },
-        ];
-
+      ];
+  
   return (
     <Wrap ref={ref}>
       <ImgBox1>
@@ -52,8 +72,8 @@ const About = forwardRef((props, ref) => {
         />
         <p>Halo</p>
         <div className="caption">
-          i want to stick to the basics
-          <div className="caption-link">my resume is here</div>
+          I Want To Stick To The Basics
+          <div className="caption-link">MY RESUME IS HERE</div>
         </div>
       </ProfileBox1>
       <ProfileBox2 className="frameShadow_left">
@@ -67,41 +87,24 @@ const About = forwardRef((props, ref) => {
         <img src="/images/flower-img3.jpg" alt="flower picture" />
       </ImgBox3>
 
-      <OverlapBoxes
+      <TripleLayeredBox
+        contents={greetings}
         style={{
-          top: "9vh",
+          top: "17vh",
           left: "50%",
         }}
-      >
-        {language === "kor" ? (
-          <Greetings>
-            보다 효율적인 <span className="boldUpper">개발</span>과{" "}
-            <span className="boldUpper">소통</span>을 위해{"\n"}
-            끊임없이 <span className="boldUpper">고민하고 생각하는</span>
-            {"\n"}
-            <span className="boldUpper">개발자 이예서</span>입니다.
-          </Greetings>
-        ) : (
-          <Greetings>
-            I’m <span className="boldUpper">Rose</span>, who is constantly
-            thinking about
-            {"\n"}
-            for <span className="boldUpper">more efficient development</span>
-            {"\n"}
-            and <span className="boldUpper">communication</span>
-          </Greetings>
-        )}
-      </OverlapBoxes>
+        redText={true}
+      />
 
       <DoubleLIneBox
-        list={introduce}
+        contents={introduce}
         even={true}
         style={{
           top: "48vh",
           left: "65%",
           transform: "translateX(-50%)",
         }}
-      ></DoubleLIneBox>
+      />
     </Wrap>
   );
 });
@@ -170,10 +173,6 @@ const ImgBox3 = styled.div`
   left: 0;
   transform: translateY(50%);
   opacity: 0.6;
-`;
-
-const Greetings = styled.p`
-  color: hsl(var(--red-fore-030));
 `;
 
 export default About;
