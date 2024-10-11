@@ -1,0 +1,32 @@
+@use "../helpers" as *;
+
+.doubleLineBox {
+  position: absolute;
+  width: fit-content;
+  text-align: center;
+  color: hsl(var(--red-fore-030));
+  line-height: 1.4;
+  white-space: pre-line;
+
+  &::before,
+  &::after {
+    content: "";
+    display: block;
+    width: 7.3vw;
+    border: 2px solid hsl(var(--pink-fore-050));
+  }
+  &::before {
+    margin: 0 auto 6rem;
+  }
+  &::after {
+    margin: 6rem auto 0;
+  }
+
+  &.even > span {
+    display: block;
+
+    &:nth-child(even) {
+      margin-bottom: 0.8rem;
+    }
+  }
+}

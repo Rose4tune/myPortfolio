@@ -20,11 +20,11 @@ $text_opacity: 0.5;
     transform: translateY(0);
   }
 
-  & ul {
+  &-menu {
     display: flex;
     justify-content: center;
 
-    & button {
+    &-btn {
       margin: 0 1rem;
 
       &:hover {

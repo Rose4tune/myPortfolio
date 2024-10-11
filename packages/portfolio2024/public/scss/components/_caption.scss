@@ -1,0 +1,37 @@
+@use "../helpers" as *;
+
+.caption {
+  position: absolute;
+  @include font(
+    $s: 15,
+    $wght: 300,
+    $ln: 1.3,
+    $align: right,
+    $trans: capitalize
+  );
+
+  &-link {
+    width: fit-content;
+    margin-left: auto;
+    padding: 0 0.5rem;
+    @include font($wght: 600, $trans: uppercase, $cr: inherit);
+    cursor: pointer;
+    transition: color 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+    transition: all 0.5s ease-out;
+    background: linear-gradient(
+      110deg,
+      hsla(var(--pink-back-080), 0.2),
+      hsla(var(--pink-back-080), 0.2),
+      hsla(var(--white), 1),
+      hsla(var(--pink-back-080), 0.4),
+      hsla(var(--pink-back-080), 0.4)
+    );
+    background-position: 1% 0%;
+    background-size: 400% 100%;
+
+    &:hover {
+      color: hsl(var(--pink-fore-040));
+      background-position: 100% 0%;
+    }
+  }
+}

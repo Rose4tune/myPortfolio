@@ -20,11 +20,11 @@ const NavBar = forwardRef((props, ref) => {
   };
 
   const setActiveMenu = (i) => {
-    const navItems = document.querySelectorAll(".navItem");
-    navItems.forEach((navItem) => {
-      navItem.classList?.remove("active");
+    const navBtns = document.querySelectorAll(".nav-menu-btn");
+    navBtns.forEach((navBtns) => {
+      navBtns.classList?.remove("active");
     });
-    navItems[i].classList.add("active");
+    navBtns[i].classList.add("active");
   };
 
   const handleKeyDown = (e) => {
@@ -103,12 +103,12 @@ const NavBar = forwardRef((props, ref) => {
   return (
     <>
       <nav className={`nav ${showNav ? "show" : "hide"}`}>
-        <ul>
+        <ul className="nav-menu">
           {sections.map((title, i) => {
             return (
               <li key={`navItem${i}`}>
                 <button
-                  className={`navItem ${i === 0 && "active"}`}
+                  className={`nav-menu-btn ${i === 0 && "active"}`}
                   onClick={() => scrollToSection(i)}
                 >
                   {title}

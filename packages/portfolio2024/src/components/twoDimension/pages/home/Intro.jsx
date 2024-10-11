@@ -32,7 +32,7 @@ const Intro = forwardRef((props, ref) => {
           <IntroTextBox
             key={`introTextKey${i}`}
             ref={(el) => (textRefs.current[i] = el)}
-            className="introTextBox frame-shadow-right"
+            className="introTextBox frameShadow_right"
           >
             {text}
           </IntroTextBox>
