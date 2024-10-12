@@ -4,6 +4,7 @@ import { useRecoilValue } from "recoil";
 import { LanguageAtom } from "../../../../stores";
 import DoubleLIneBox from "./elements/DoubleLIneBox";
 import TripleLayeredBox from "./elements/TripleLayeredBox";
+import Caption from "./elements/Caption";
 
 const About = forwardRef((props, ref) => {
   const language = useRecoilValue(LanguageAtom);
@@ -56,8 +57,8 @@ const About = forwardRef((props, ref) => {
             key: "favorites",
             value: "\nDesign, Discussion,\nWater play, Boyfriend",
           },
-      ];
-  
+        ];
+
   return (
     <Wrap ref={ref}>
       <ImgBox1>
@@ -71,10 +72,7 @@ const About = forwardRef((props, ref) => {
           alt="flower picture"
         />
         <p>Halo</p>
-        <div className="caption">
-          I Want To Stick To The Basics
-          <div className="caption-link">MY RESUME IS HERE</div>
-        </div>
+        <Caption type="resume" />
       </ProfileBox1>
       <ProfileBox2 className="frameShadow_left">
         <img src="/images/profile2.jpg" alt="flower picture" />
