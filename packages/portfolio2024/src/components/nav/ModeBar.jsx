@@ -29,7 +29,7 @@ const ModeBar = () => {
         <option name="language" value="kor">
           한국어
         </option>
-        <option name="language" value="eng">
+        <option name="language" value="en">
           English
         </option>
       </select>

@@ -6,58 +6,64 @@ import DoubleLIneBox from "./elements/DoubleLIneBox";
 import TripleLayeredBox from "./elements/TripleLayeredBox";
 import Caption from "./elements/Caption";
 
-const About = forwardRef((props, ref) => {
-  const language = useRecoilValue(LanguageAtom);
-
-  const greetings =
-    language === "kor" ? (
+const getGreetings = (language) =>
+  ({
+    kor: (
       <>
         보다 효율적인 <span className="boldUpper">개발</span>과{" "}
         <span className="boldUpper">소통</span>을 위해{"\n"}
-        끊임없이 <span className="boldUpper">고민하고 생각하는</span>
+        <span className="boldUpper">끊임없이 고민하고 생각하는</span>
         {"\n"}
-        <span className="boldUpper">개발자 이예서</span>입니다.
+        개발자 <span className="boldUpper">이예서</span>입니다.
       </>
-    ) : (
+    ),
+    en: (
       <>
-        I’m <span className="boldUpper">Rose</span>, who is constantly thinking
-        about
+        I’m <span className="boldUpper">Rose</span>, who is{" "}
+        <span style={{ fontWeight: 600 }}>constantly thinking</span> about
         {"\n"}
         for <span className="boldUpper">more efficient development</span>
         {"\n"}
         and <span className="boldUpper">communication</span>
       </>
-    );
+    ),
+  }[language]);
 
-  const introduce =
-    language === "kor"
-      ? [
-          { key: "목표", value: "브랜드의 가치 상승" },
-          { key: "지향점", value: "기술과 디자인의 융합" },
-          { key: "열정 포인트", value: "최적의 사용자 경험 제공" },
-          { key: "노력 포인트", value: "유지보수 좋은 코드 개발" },
-          { key: "요즘 관심사", value: "웹 3D 인터렉티브" },
-          {
-            key: "요즘 취미",
-            value: "클라이밍, 독서토론, \n전시회, 영화, 여행",
-          },
-          { key: "좋아하는 것", value: "\n디자인, 토론, 물놀이, 남친" },
-        ]
-      : [
-          { key: "Goals", value: "brand value growth" },
-          { key: "Aim", value: "harmony of tech and design" },
-          { key: "Passion", value: "Provides optimal user experience" },
-          { key: "Effort", value: "Good code for maintenance" },
-          { key: "interests", value: "Web 3D Interactive" },
-          {
-            key: "Hobbies",
-            value: "Bouldering, Reading, \nExhibitions, Movies, Travel",
-          },
-          {
-            key: "favorites",
-            value: "\nDesign, Discussion,\nWater play, Boyfriend",
-          },
-        ];
+const getIntroduction = (language) =>
+  ({
+    kor: [
+      { key: "목표", value: "브랜드의 가치 상승" },
+      { key: "지향점", value: "기술과 디자인의 융합" },
+      { key: "열정 포인트", value: "최적의 사용자 경험 제공" },
+      { key: "노력 포인트", value: "유지보수 좋은 코드 개발" },
+      { key: "요즘 관심사", value: "웹 3D 인터렉티브" },
+      {
+        key: "요즘 취미",
+        value: "클라이밍, 독서토론, \n전시회, 영화, 여행",
+      },
+      { key: "좋아하는 것", value: "\n디자인, 토론, 물놀이, 남친" },
+    ],
+    en: [
+      { key: "Goals", value: "brand value growth" },
+      { key: "Aim", value: "harmony of tech and design" },
+      { key: "Passion", value: "Provides optimal user experience" },
+      { key: "Effort", value: "Good code for maintenance" },
+      { key: "Interests", value: "Web 3D Interactive" },
+      {
+        key: "Hobbies",
+        value: "Bouldering, Reading, \nExhibitions, Movies, Travel",
+      },
+      {
+        key: "Favorites",
+        value: "\nDesign, Discussion,\nWater play, Boyfriend",
+      },
+    ],
+  }[language]);
+
+const About = forwardRef((props, ref) => {
+  const language = useRecoilValue(LanguageAtom);
+  const greetings = getGreetings(language);
+  const introduce = getIntroduction(language);
 
   return (
     <Wrap ref={ref}>
