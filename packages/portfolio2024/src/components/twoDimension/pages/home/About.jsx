@@ -73,6 +73,12 @@ const getSayHello = (language) =>
     en: <p className="font_rampartOne">Hello</p>,
   }[language]);
 
+const getKeywords = (language) =>
+  ({
+    ko: "넘치는 열정과\n지치않는 에너지,\n끊임없는 호기심,\n단단한 체력과\n유연한 생각도\n능력이다",
+    en: "PASSION\nENERGY\nCURIOSITY\nPHYSICAL\nMENTAL\nSTRENGTH",
+  }[language]);
+
 const About = forwardRef((props, ref) => {
   const language = useRecoilValue(LanguageAtom);
   const greetings = getGreetings(language);
@@ -94,16 +100,6 @@ const About = forwardRef((props, ref) => {
         {sayHello}
         <Caption type="resume" />
       </ProfileBox1>
-      <ProfileBox2 className="frameShadow_left">
-        <img src="/images/profile2.jpg" alt="flower picture" />
-      </ProfileBox2>
-
-      <ImgBox2>
-        <img src="/images/flower-img2.jpg" alt="flower picture" />
-      </ImgBox2>
-      <ImgBox3>
-        <img src="/images/flower-img3.jpg" alt="flower picture" />
-      </ImgBox3>
 
       <TripleLayeredBox
         contents={greetings}
@@ -124,19 +120,23 @@ const About = forwardRef((props, ref) => {
         }}
       />
 
-      <KeyWords>
-        Passion{"\n"}
-        energy{"\n"}
-        curiosity{"\n"}
-        Physical{"\n"}
-        mental{"\n"}
-        strength
-      </KeyWords>
+      <Keywords>{getKeywords(language)}</Keywords>
+
+      <ProfileBox2 className="frameShadow_left">
+        <img src="/images/profile2.jpg" alt="flower picture" />
+      </ProfileBox2>
+      <ImgBox2>
+        <img src="/images/flower-img2.jpg" alt="flower picture" />
+      </ImgBox2>
+
+      <ImgBox3>
+        <img src="/images/flower-img3.jpg" alt="flower picture" />
+      </ImgBox3>
     </Wrap>
   );
 });
 
-const KeyWords = styled.div`
+const Keywords = styled.div`
   margin-right: 6vw;
   font-size: 4rem;
   text-align: right;
@@ -145,13 +145,13 @@ const KeyWords = styled.div`
   text-transform: uppercase;
   white-space: pre-line;
   text-shadow: 4px 0 0 hsl(var(--white));
-  transform: translateY(-11vh);
+  transform: translateY(-8vh);
 `;
 
 const Wrap = styled.section`
   position: relative;
   width: 100vw;
-  height: 238vh;
+  padding-bottom: 11rem;
   background: linear-gradient(
     180deg,
     hsl(var(--gray-back-100)) 20%,
@@ -183,11 +183,9 @@ const ProfileBox1 = styled.div`
   }
 `;
 const ProfileBox2 = styled.div`
-  position: absolute;
   width: 31.3vw;
   min-width: 21rem;
-  top: 138vh;
-  right: 0;
+  margin-left: auto;
 `;
 
 const ImgBox1 = styled.div`
@@ -200,7 +198,7 @@ const ImgBox1 = styled.div`
 const ImgBox2 = styled.div`
   position: absolute;
   width: 15.6vw;
-  top: 50%;
+  top: 51%;
   right: 22.8vw;
   transform: translateY(-50%);
   opacity: 0.6;
@@ -210,7 +208,7 @@ const ImgBox3 = styled.div`
   width: 41.7vw;
   top:50%;
   left: 0;
-  transform: translateY(50%);
+  transform: translateY(15%);
   opacity: 0.6;
 `;
 
