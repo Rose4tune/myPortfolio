@@ -1,40 +1,86 @@
 import React from "react";
+import { useRecoilValue } from "recoil";
+import { LanguageAtom } from "../../../../../stores";
 
 const Caption = ({ type }) => {
+  const language = useRecoilValue(LanguageAtom);
+
   const captions = {
     resume: {
-      text: "I Want To Stick To The Basics",
-      linkText: "MY RESUME IS HERE",
+      text: {
+        en: "I Want To Stick To The Basics",
+        ko: "언제나 기본부터 충실하고자 합니다.",
+      },
+      linkText: {
+        en: "MY RESUME IS HERE",
+        ko: "이력서 보러가기",
+      },
       isDiv: true,
     },
     study: {
-      text: "I Want To Enjoy The Growth Of Knowledge",
-      linkText: "MY STUDY IS HERE",
+      text: {
+        en: "I Want To Enjoy The Growth Of Knowledge",
+        ko: "개발과 지식의 성장을 즐기고자 합니다.",
+      },
+      linkText: {
+        en: "MY STUDY IS HERE",
+        ko: "공부 기록 보러가기",
+      },
       isDiv: true,
     },
     code: {
-      text: "I Want To Record Everything Meticulously",
-      linkText: "MY CODE IS HERE",
+      text: {
+        en: "I Want To Record Everything Meticulously",
+        ko: "모든 것을 꼼꼼하게 기록하고자 합니다.",
+      },
+      linkText: {
+        en: "MY CODE IS HERE",
+        ko: "코드 기록 보러가기",
+      },
       isDiv: true,
     },
     more: {
-      text: "Are You",
-      linkText: "MORE CURIOUS ABOUT THIS?",
+      text: {
+        en: "Are You",
+        ko: "",
+      },
+      linkText: {
+        en: "MORE CURIOUS ABOUT THIS?",
+        ko: "이 프로젝트가 더 궁금하신가요?",
+      },
       isDiv: false,
     },
     email: {
-      text: "If You Want To Talk To Me,",
-      linkText: "SEND ME AN EMAIL",
+      text: {
+        en: "If You Want To Talk To Me,",
+        ko: "저와 얘기하고 싶으시다면,",
+      },
+      linkText: {
+        en: "SEND ME AN EMAIL",
+        ko: "메일을 보내주세요.",
+      },
       isDiv: false,
     },
     git: {
-      text: "Curious About My Code,",
-      linkText: "GO GITHUB",
+      text: {
+        en: "Curious About My Code,",
+        ko: "저의 코트가 궁금하시다면,",
+      },
+      linkText: {
+        en: "GO GITHUB",
+        ko: "깃헙을 방문해보세요.",
+      },
       isDiv: false,
     },
     blog: {
-      text: "Want To Know What I Study,",
-      linkText: "GO BLOG",
+      text: {
+        en: "Want To Know What I Study,",
+        ko: "무엇을 공부하는지 궁금하시다면,",
+      },
+      linkText: {
+        en: "GO BLOG",
+        ko: "블로그를 방문해주세요.",
+      },
       isDiv: false,
     },
   };
@@ -56,8 +102,11 @@ const Caption = ({ type }) => {
     >
       {currentCaption ? (
         <>
-          {currentCaption.text}
-          {renderCaptionLink(currentCaption.linkText, currentCaption.isDiv)}
+          {currentCaption.text[language]}
+          {renderCaptionLink(
+            currentCaption.linkText[language],
+            currentCaption.isDiv
+          )}
         </>
       ) : (
         console.log(`This type (${type}) is not valid.`)

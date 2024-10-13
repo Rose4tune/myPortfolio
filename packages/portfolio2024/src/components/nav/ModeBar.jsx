@@ -26,7 +26,7 @@ const ModeBar = () => {
         </option>
       </select>
       <select id="languageSelect" onChange={handleLanguage}>
-        <option name="language" value="kor">
+        <option name="language" value="ko">
           한국어
         </option>
         <option name="language" value="en">

@@ -8,7 +8,7 @@ import Caption from "./elements/Caption";
 
 const getGreetings = (language) =>
   ({
-    kor: (
+    ko: (
       <>
         보다 효율적인 <span className="boldUpper">개발</span>과{" "}
         <span className="boldUpper">소통</span>을 위해{"\n"}
@@ -31,7 +31,7 @@ const getGreetings = (language) =>
 
 const getIntroduction = (language) =>
   ({
-    kor: [
+    ko: [
       { key: "목표", value: "브랜드의 가치 상승" },
       { key: "지향점", value: "기술과 디자인의 융합" },
       { key: "열정 포인트", value: "최적의 사용자 경험 제공" },
@@ -62,7 +62,14 @@ const getIntroduction = (language) =>
 
 const getSayHello = (language) =>
   ({
-    kor: <p className="font_cafe24Supermagic">안녕하세요</p>,
+    ko: (
+      <p
+        className="font_cafe24Supermagic"
+        style={{ transform: "scale(.8) translate(15%, 20%)" }}
+      >
+        안녕하세요
+      </p>
+    ),
     en: <p className="font_rampartOne">Hello</p>,
   }[language]);
 
@@ -112,13 +119,34 @@ const About = forwardRef((props, ref) => {
         even={true}
         style={{
           top: "48vh",
-          left: "65%",
+          left: "66%",
           transform: "translateX(-50%)",
         }}
       />
+
+      <KeyWords>
+        Passion{"\n"}
+        energy{"\n"}
+        curiosity{"\n"}
+        Physical{"\n"}
+        mental{"\n"}
+        strength
+      </KeyWords>
     </Wrap>
   );
 });
+
+const KeyWords = styled.div`
+  margin-right: 6vw;
+  font-size: 4rem;
+  text-align: right;
+  line-height: 1.5;
+  color: hsl(var(--red-fore-030));
+  text-transform: uppercase;
+  white-space: pre-line;
+  text-shadow: 4px 0 0 hsl(var(--white));
+  transform: translateY(-11vh);
+`;
 
 const Wrap = styled.section`
   position: relative;
@@ -146,6 +174,7 @@ const ProfileBox1 = styled.div`
     right: -2rem;
     font-size: 18rem;
     color: hsl(var(--white));
+    word-break: keep-all;
   }
   
   .caption {

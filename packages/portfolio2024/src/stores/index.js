@@ -18,5 +18,5 @@ export const ShowNavAtom = atom({
 
 export const LanguageAtom = atom({
   key: `LanguageAtom`,
-  default: "kor",
+  default: "ko",
 });

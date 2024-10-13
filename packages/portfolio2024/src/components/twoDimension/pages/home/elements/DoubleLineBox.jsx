@@ -7,7 +7,6 @@ const DoubleLIneBox = ({ contents, style, even = false }) => {
         return (
           <span key={`doubleLine-item${i}`}>
             {key} <span className="boldUpper">{value}</span>
-            {"\n"}
           </span>
         );
       })}
