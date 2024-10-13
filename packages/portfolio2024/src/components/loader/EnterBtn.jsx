@@ -10,7 +10,7 @@ export default function EnterBtn({ onclick }) {
       <Icon onClick={onclick}>
         <img src="/icons/mainCharacter.svg" alt="rose's fortune cookie" />
       </Icon>
-      <Text>click !</Text>
+      <Text className="font_rammettoOne">click !</Text>
     </BtnWrap>
   );
 }
@@ -119,7 +119,6 @@ const Text = styled.span`
   display: block;
   margin-top: 1rem;
   transform: translateX(-5%);
-  font-family: "Rammetto One";
   text-align: center;
   color: hsl(var(--pink-fore-030));
 `;

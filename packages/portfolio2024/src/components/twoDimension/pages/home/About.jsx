@@ -60,10 +60,17 @@ const getIntroduction = (language) =>
     ],
   }[language]);
 
+const getSayHello = (language) =>
+  ({
+    kor: <p className="font_cafe24Supermagic">안녕하세요</p>,
+    en: <p className="font_rampartOne">Hello</p>,
+  }[language]);
+
 const About = forwardRef((props, ref) => {
   const language = useRecoilValue(LanguageAtom);
   const greetings = getGreetings(language);
   const introduce = getIntroduction(language);
+  const sayHello = getSayHello(language);
 
   return (
     <Wrap ref={ref}>
@@ -77,7 +84,7 @@ const About = forwardRef((props, ref) => {
           src="/images/profile1.jpg"
           alt="flower picture"
         />
-        <p>Halo</p>
+        {sayHello}
         <Caption type="resume" />
       </ProfileBox1>
       <ProfileBox2 className="frameShadow_left">
@@ -138,7 +145,6 @@ const ProfileBox1 = styled.div`
     bottom: -2rem;
     right: -2rem;
     font-size: 18rem;
-    font-family: "Rampart One";
     color: hsl(var(--white));
   }
   

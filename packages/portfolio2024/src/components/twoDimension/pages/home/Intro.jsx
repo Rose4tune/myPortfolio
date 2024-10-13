@@ -26,7 +26,7 @@ const Intro = forwardRef((props, ref) => {
   }, [textRefs.current]);
 
   return (
-    <Wrap ref={ref}>
+    <Wrap ref={ref} className="font_rammettoOne">
       {introTexts.map((text, i) => {
         return (
           <IntroTextBox
@@ -50,7 +50,6 @@ const Wrap = styled.section`
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  font-family: "Rammetto One";
   white-space: nowrap;
 `;
 

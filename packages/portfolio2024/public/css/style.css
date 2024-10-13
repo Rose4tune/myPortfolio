@@ -89,6 +89,16 @@ body {
   color: var(--gray-fore-100);
 }
 
+.font_rammettoOne {
+  font-family: "RammettoOne";
+}
+.font_rampartOne {
+  font-family: "RampartOne";
+}
+.font_cafe24Supermagic {
+  font-family: "Cafe24Supermagic";
+}
+
 .boldUpper {
   font-weight: 600;
   color: hsl(var(--red-fore-040));
