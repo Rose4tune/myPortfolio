@@ -183,6 +183,12 @@ body {
   transition: transform 0.5s ease, -webkit-transform 0.5s ease;
   z-index: 1000;
 }
+.nav:hover {
+  background-color: hsla(var(--pink-back-090), 1);
+  -webkit-box-shadow: 0 0 1rem hsl(var(--gray-back-070));
+          box-shadow: 0 0 1rem hsl(var(--gray-back-070));
+  border: 1px solid hsl(var(--pink-back-080));
+}
 .nav.hide {
   -webkit-transform: translateY(-150%);
           transform: translateY(-150%);
@@ -250,4 +256,35 @@ body {
 .frameShadow_left {
   -webkit-filter: drop-shadow(-4rem 4rem hsl(var(--pink-back-080)));
           filter: drop-shadow(-4rem 4rem hsl(var(--pink-back-080)));
+}
+
+.infoBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 2rem;
+  width: 27vw;
+  max-width: 51rem;
+}
+.infoBox-content {
+  margin-left: 4rem;
+  line-height: 1.4;
+}
+.infoBox-content::before {
+  display: inline-block;
+  content: url(../icons/pArrow-left.svg);
+  padding-top: 3px;
+  -webkit-transform: translate(-1rem, 3px);
+          transform: translate(-1rem, 3px);
+}
+.infoBox-content::after {
+  display: inline-block;
+  content: url(../icons/pArrow-right.svg);
+  padding-top: 3px;
+  -webkit-transform: translate(1rem, 3px);
+          transform: translate(1rem, 3px);
 }

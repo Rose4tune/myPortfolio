@@ -79,6 +79,37 @@ const getKeywords = (language) =>
     en: "PASSION\nENERGY\nCURIOSITY\nPHYSICAL\nMENTAL\nSTRENGTH",
   }[language]);
 
+const information = [
+  {
+    title: "* DESIGN SYSTEM",
+    content: {
+      ko: "디자인과 개발간의 시스템을 체계화하여 팀간의 협력과 이후 코드의 유지보수까지 고려한 개발을 지향합니다.",
+      en: "I aim to systematize the system between design and development, taking into account cooperation between teams and the maintenance of the code afterwards.",
+    },
+  },
+  {
+    title: "* OPTIMIZATION",
+    content: {
+      ko: "최적화 툴 Performance, lighthouse 등을 사용하여 렌더링 성능을 고려한 개발을 합니다. 다방면에서 사용자를 고려하여 최적의 경험을 제공하고자 합니다.",
+      en: "I use optimization tools Performance and lighthouse to develop things that take into account rendering performance. And I want to provide the best experience in consideration of users in many ways.",
+    },
+  },
+  {
+    title: "* STUDY",
+    content: {
+      ko: "프론트 외에 디자인과 데이터에 대한 지식에도 관심이 많으며, 블로그나 노션에 정리하고 기록하여 성장하는 습관을 만들어가고 있습니다.",
+      en: "In addition to the front, I am also interested in design and data knowledge, and I am creating a habit of growing by organizing and recording it in my blog or commentary.",
+    },
+  },
+  {
+    title: "* CO-WORK",
+    content: {
+      ko: "함께 일하는 동료 및 유관 부서와의 협업을 중요하게 생각합니다. 서로의 생각과 의도를 온전히 이해할 수 있도록 항상 소통하며 작업합니다.",
+      en: "I value collaboration with colleagues and related departments I work with. Therefore, I always communicate and work so that I can fully understand each other's thoughts and intentions.",
+    },
+  },
+];
+
 const About = forwardRef((props, ref) => {
   const language = useRecoilValue(LanguageAtom);
   const greetings = getGreetings(language);
@@ -103,9 +134,12 @@ const About = forwardRef((props, ref) => {
 
       <TripleLayeredBox
         contents={greetings}
-        style={{
+        position={{
           top: "17vh",
           left: "50%",
+        }}
+        style={{
+          padding: "2rem 4rem",
         }}
         redText={true}
       />
@@ -120,24 +154,70 @@ const About = forwardRef((props, ref) => {
         }}
       />
 
-      <Keywords>{getKeywords(language)}</Keywords>
+      <Keywords
+        style={
+          language === "ko"
+            ? {
+                transform: "scale(.9) translateY(-7vh)",
+                transformOrigin: "top right",
+              }
+            : {}
+        }
+      >
+        {getKeywords(language)}
+      </Keywords>
 
-      <ProfileBox2 className="frameShadow_left">
-        <img src="/images/profile2.jpg" alt="flower picture" />
+      <ProfileBox2>
+        <img
+          className="frameShadow_left"
+          src="/images/profile2.jpg"
+          alt="flower picture"
+        />
+        <img
+          className="bgImg d"
+          src="/images/flower-img2.jpg"
+          alt="flower picture"
+        />
+        <img className="fyi" src="/images/FYI.svg" alt="for your information" />
       </ProfileBox2>
-      <ImgBox2>
-        <img src="/images/flower-img2.jpg" alt="flower picture" />
-      </ImgBox2>
 
       <ImgBox3>
-        <img src="/images/flower-img3.jpg" alt="flower picture" />
+        <div
+          style={{
+            position: "relative",
+          }}
+        >
+          <img src="/images/flower-img3.jpg" alt="flower picture" />
+          <Caption type="study" />
+          <TripleLayeredBox
+            classNames="infoBox"
+            contents={information.map(({ title, content }, i) => (
+              <div className="infoBox-item" key={`info${i}`}>
+                <div className="boldUpper">{title}</div>
+                <p className="infoBox-content">
+                  {content[language]}
+                  {/* <img src="/icons/pArrow-right.svg" /> */}
+                </p>
+              </div>
+            ))}
+            position={{
+              bottom: "-40vh",
+              right: "-15vw",
+              transform: "translate(0, 0)",
+            }}
+            style={{
+              padding: "4rem 3rem",
+            }}
+          />
+        </div>
       </ImgBox3>
     </Wrap>
   );
 });
 
 const Keywords = styled.div`
-  margin-right: 6vw;
+  width: fit-content;
+  margin: 0 6vw 0 auto;
   font-size: 4rem;
   text-align: right;
   line-height: 1.5;
@@ -183,9 +263,25 @@ const ProfileBox1 = styled.div`
   }
 `;
 const ProfileBox2 = styled.div`
+  position: relative;
   width: 31.3vw;
   min-width: 21rem;
   margin-left: auto;
+
+  .bgImg {
+    position: absolute;
+    width: 15.6vw;
+    top: -45%;
+    left: -22%;
+    opacity: 0.6;
+  }
+
+  .fyi {
+    position: absolute;
+    width: 20vw;
+    bottom: -5%;
+    left: -22%;
+  }
 `;
 
 const ImgBox1 = styled.div`
@@ -195,21 +291,23 @@ const ImgBox1 = styled.div`
   right: 0;
   opacity: 0.6;
 `;
-const ImgBox2 = styled.div`
-  position: absolute;
-  width: 15.6vw;
-  top: 51%;
-  right: 22.8vw;
-  transform: translateY(-50%);
-  opacity: 0.6;
-`;
+
 const ImgBox3 = styled.div`
   position: absolute;
   width: 41.7vw;
-  top:50%;
+  top: 50%;
   left: 0;
   transform: translateY(15%);
-  opacity: 0.6;
+
+  .caption {
+    top: 35%;
+    right: 55%;
+    transform: translateY(-50%);
+  }
+
+  img {
+    opacity: 0.6;
+  }
 `;
 
 export default About;

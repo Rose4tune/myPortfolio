@@ -32,7 +32,7 @@ const Intro = forwardRef((props, ref) => {
           <IntroTextBox
             key={`introTextKey${i}`}
             ref={(el) => (textRefs.current[i] = el)}
-            className="introTextBox frameShadow_right"
+            className="introTextBox"
           >
             {text}
           </IntroTextBox>
@@ -56,6 +56,7 @@ const Wrap = styled.section`
 const IntroTextBox = styled.p`
   position: absolute;
   color: hsl(var(--pink-fore-030));
+  text-shadow: 4rem 4rem 0 hsl(var(--pink-fore-020));
 
   &:nth-child(1){
     font-size: 18rem;
