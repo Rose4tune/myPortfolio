@@ -15,15 +15,15 @@
 
     &::before {
       display: inline-block;
-      content: url(../icons/pArrow-left.svg);
+      content: url(../icons/arrow_red.svg);
       padding-top: 3px;
       transform: translate(-1rem, 3px);
     }
     &::after {
       display: inline-block;
-      content: url(../icons/pArrow-right.svg);
+      content: url(../icons/arrow_red.svg);
       padding-top: 3px;
-      transform: translate(1rem, 3px);
+      transform: translate(1rem, 3px) rotateY(180deg);
     }
   }
 }

@@ -96,3 +96,32 @@
   font-weight: 700;
   font-style: normal;
 }
+
+/* Noto Sans */
+@font-face {
+  font-family: "Noto Sans";
+  font-weight: 600;
+  font-display: swap;
+  src: url(./notoSans/noto-sans-kr-v36-korean-regular.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: "Noto Sans";
+  font-weight: 700;
+  font-display: swap;
+  src: url(./notoSans/noto-sans-kr-v36-korean-700.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: "Noto Sans";
+  font-weight: 800;
+  font-display: swap;
+  src: url(./notoSans/noto-sans-kr-v36-korean-800.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: "Noto Sans";
+  font-weight: 900;
+  font-display: swap;
+  src: url(./notoSans/noto-sans-kr-v36-korean-900.woff2) format("woff2");
+}
