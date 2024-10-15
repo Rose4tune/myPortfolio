@@ -194,10 +194,7 @@ const About = forwardRef((props, ref) => {
             contents={information.map(({ title, content }, i) => (
               <div className="infoBox-item" key={`info${i}`}>
                 <div className="boldUpper">{title}</div>
-                <p className="infoBox-content">
-                  {content[language]}
-                  {/* <img src="/icons/pArrow-right.svg" /> */}
-                </p>
+                <p className="infoBox-content">{content[language]}</p>
               </div>
             ))}
             position={{
