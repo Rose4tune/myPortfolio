@@ -25,7 +25,7 @@ const Skills = forwardRef((props, ref) => {
   };
 
   return (
-    <div ref={ref} className="skills">
+    <section ref={ref} className="skills">
       <ul className="frameShadow_left skills-board">
         {skills[selectedTab].map(({ title, des, per }, i) => {
           const Title = <div className="title">{`${title} /`}</div>;
@@ -72,7 +72,7 @@ const Skills = forwardRef((props, ref) => {
         </ul>
         <Caption type="code" />
       </div>
-    </div>
+    </section>
   );
 });
 

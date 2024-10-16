@@ -156,15 +156,12 @@ body {
   border: 2px solid hsl(var(--pink-fore-050));
 }
 .doubleLineBox::before {
-  margin: 0 auto 6rem;
+  margin: 0 auto 5.5vh;
 }
 .doubleLineBox::after {
-  margin: 6rem auto 0;
+  margin: 5.5vh auto 0;
 }
-.doubleLineBox.even > span {
-  display: block;
-}
-.doubleLineBox.even > span:nth-child(even) {
+.doubleLineBox.even > div:nth-child(even) {
   margin-bottom: 0.8rem;
 }
 

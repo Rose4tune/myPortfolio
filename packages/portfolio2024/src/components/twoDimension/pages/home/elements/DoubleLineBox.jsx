@@ -1,17 +1,17 @@
 import React from "react";
 
-const DoubleLIneBox = ({ contents, style, even = false }) => {
+const DoubleLineBox = ({ contents, style, even = false }) => {
   return (
     <div className={`doubleLineBox ${even && `even`}`} style={style}>
       {contents.map(({ key, value }, i) => {
         return (
-          <span key={`doubleLine-item${i}`}>
+          <div key={`doubleLine-item${i}`}>
             {key} <span className="boldUpper">{value}</span>
-          </span>
+          </div>
         );
       })}
     </div>
   );
 };
 
-export default DoubleLIneBox;
+export default DoubleLineBox;

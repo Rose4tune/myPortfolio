@@ -2,7 +2,7 @@ import { forwardRef } from "react";
 import styled from "styled-components";
 import { useRecoilValue } from "recoil";
 import { LanguageAtom } from "../../../../stores";
-import DoubleLIneBox from "./elements/DoubleLIneBox";
+import DoubleLineBox from "./elements/DoubleLineBox";
 import TripleLayeredBox from "./elements/TripleLayeredBox";
 import Caption from "./elements/Caption";
 
@@ -117,7 +117,7 @@ const About = forwardRef((props, ref) => {
   const sayHello = getSayHello(language);
 
   return (
-    <Wrap ref={ref}>
+    <Section ref={ref}>
       <ImgBox1>
         <img src="/images/flower-img1.jpg" alt="flower picture" />
       </ImgBox1>
@@ -144,7 +144,7 @@ const About = forwardRef((props, ref) => {
         redText={true}
       />
 
-      <DoubleLIneBox
+      <DoubleLineBox
         contents={introduce}
         even={true}
         style={{
@@ -208,24 +208,11 @@ const About = forwardRef((props, ref) => {
           />
         </div>
       </ImgBox3>
-    </Wrap>
+    </Section>
   );
 });
 
-const Keywords = styled.div`
-  width: fit-content;
-  margin: 0 6vw 0 auto;
-  font-size: 4rem;
-  text-align: right;
-  line-height: 1.5;
-  color: hsl(var(--red-fore-030));
-  text-transform: uppercase;
-  white-space: pre-line;
-  text-shadow: 4px 0 0 hsl(var(--white));
-  transform: translateY(-8vh);
-`;
-
-const Wrap = styled.section`
+const Section = styled.section`
   position: relative;
   width: 100vw;
   padding-bottom: 11rem;
@@ -305,6 +292,19 @@ const ImgBox3 = styled.div`
   img {
     opacity: 0.6;
   }
+`;
+
+const Keywords = styled.div`
+  width: fit-content;
+  margin: 0 6vw 0 auto;
+  font-size: 4rem;
+  text-align: right;
+  line-height: 1.5;
+  color: hsl(var(--red-fore-030));
+  text-transform: uppercase;
+  white-space: pre-line;
+  text-shadow: 4px 0 0 hsl(var(--white));
+  transform: translateY(-8vh);
 `;
 
 export default About;

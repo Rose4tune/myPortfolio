@@ -26,7 +26,7 @@ const Intro = forwardRef((props, ref) => {
   }, [textRefs.current]);
 
   return (
-    <Wrap ref={ref} className="font_rammettoOne">
+    <Section ref={ref} className="font_rammettoOne">
       {introTexts.map((text, i) => {
         return (
           <IntroTextBox
@@ -41,11 +41,11 @@ const Intro = forwardRef((props, ref) => {
       <MyChracter>
         <img src="/icons/mainCharacter.svg" alt="rose's fortune cookie" />
       </MyChracter>
-    </Wrap>
+    </Section>
   );
 });
 
-const Wrap = styled.section`
+const Section = styled.section`
   position: relative;
   width: 100vw;
   height: 100vh;
