@@ -28,7 +28,6 @@
       position: relative;
       width: 13vw;
       height: 13vw;
-      background: hsl(var(--pink-back-090));
       border: 1px solid hsl(var(--pink-back-070));
       word-break: break-all;
       cursor: pointer;
@@ -150,10 +149,15 @@
     line-height: 1.6;
     font-size: 3rem;
     font-weight: 600;
-    color: hsl(var(--pink-fore-030));
+    text-transform: uppercase;
+    color: hsl(var(--gray-fore-020));
 
     li {
       cursor: pointer;
+
+      &.active {
+        color: hsl(var(--pink-fore-030));
+      }
 
       &::before {
         display: inline-block;

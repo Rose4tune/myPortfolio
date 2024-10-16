@@ -299,7 +299,6 @@ body {
   position: relative;
   width: 13vw;
   height: 13vw;
-  background: hsl(var(--pink-back-090));
   border: 1px solid hsl(var(--pink-back-070));
   word-break: break-all;
   cursor: pointer;
@@ -425,10 +424,14 @@ body {
   line-height: 1.6;
   font-size: 3rem;
   font-weight: 600;
-  color: hsl(var(--pink-fore-030));
+  text-transform: uppercase;
+  color: hsl(var(--gray-fore-020));
 }
 .skills-menus li {
   cursor: pointer;
+}
+.skills-menus li.active {
+  color: hsl(var(--pink-fore-030));
 }
 .skills-menus li::before {
   display: inline-block;

@@ -1,14 +1,6 @@
 export const skills = {
   front: [
     {
-      title: "css",
-      des: {
-        ko: "",
-        en: "",
-      },
-      per: "100",
-    },
-    {
       title: "javascript",
       des: {
         ko: "",
@@ -80,6 +72,33 @@ export const skills = {
       },
       per: "50",
     },
+  ],
+
+  publish: [
+    {
+      title: "html5",
+      des: {
+        ko: "",
+        en: "",
+      },
+      per: "100",
+    },
+    {
+      title: "css3",
+      des: {
+        ko: "",
+        en: "",
+      },
+      per: "100",
+    },
+    {
+      title: "sass",
+      des: {
+        ko: "",
+        en: "",
+      },
+      per: "100",
+    },
     {
       title: "styled components",
       des: {
@@ -90,6 +109,57 @@ export const skills = {
     },
     {
       title: "tailwind",
+      des: {
+        ko: "",
+        en: "",
+      },
+      per: "80",
+    },
+  ],
+
+  design: [
+    {
+      title: "figma",
+      des: {
+        ko: "",
+        en: "",
+      },
+      per: "100",
+    },
+    {
+      title: "photoshop",
+      des: {
+        ko: "",
+        en: "",
+      },
+      per: "100",
+    },
+    {
+      title: "illustrator",
+      des: {
+        ko: "",
+        en: "",
+      },
+      per: "100",
+    },
+    {
+      title: "xd",
+      des: {
+        ko: "",
+        en: "",
+      },
+      per: "100",
+    },
+    {
+      title: "indesign",
+      des: {
+        ko: "",
+        en: "",
+      },
+      per: "100",
+    },
+    {
+      title: "sketch",
       des: {
         ko: "",
         en: "",
@@ -207,121 +277,4 @@ export const skills = {
       per: "50",
     },
   ],
-
-  design: [
-    {
-      title: "figma",
-      des: {
-        ko: "",
-        en: "",
-      },
-      per: "100",
-    },
-    {
-      title: "photoshop",
-      des: {
-        ko: "",
-        en: "",
-      },
-      per: "100",
-    },
-    {
-      title: "illustrator",
-      des: {
-        ko: "",
-        en: "",
-      },
-      per: "100",
-    },
-    {
-      title: "xd",
-      des: {
-        ko: "",
-        en: "",
-      },
-      per: "100",
-    },
-    {
-      title: "indesign",
-      des: {
-        ko: "",
-        en: "",
-      },
-      per: "100",
-    },
-    {
-      title: "sketch",
-      des: {
-        ko: "",
-        en: "",
-      },
-      per: "80",
-    },
-  ],
 };
-
-// {
-//   title: "drei",
-//   des: {
-//     ko: "",
-//     en: "",
-//   },
-//   per: "50",
-// },
-// {
-//   title: "eslint",
-//   des: {
-//     ko: "",
-//     en: "",
-//   },
-//   per: "50",
-// },
-// {
-//   title: "fiber",
-//   des: {
-//     ko: "",
-//     en: "",
-//   },
-//   per: "50",
-// },
-
-// {
-//   title: "pnpm",
-//   des: {
-//     ko: "",
-//     en: "",
-//   },
-//   per: "50",
-// },
-// {
-//   title: "prettier",
-//   des: {
-//     ko: "",
-//     en: "",
-//   },
-//   per: "50",
-// },
-// {
-//   title: "pwa",
-//   des: {
-//     ko: "",
-//     en: "",
-//   },
-//   per: "50",
-// },
-// {
-//   title: "react query",
-//   des: {
-//     ko: "",
-//     en: "",
-//   },
-//   per: "50",
-// },
-// {
-//   title: "react router dom",
-//   des: {
-//     ko: "",
-//     en: "",
-//   },
-//   per: "50",
-// },
