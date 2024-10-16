@@ -1,0 +1,166 @@
+@use "../helpers" as *;
+
+.skills {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4vw;
+
+  &-board {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3vw;
+    width: 70vw;
+    height: 47vw;
+    padding: 15rem 20rem;
+    margin: 0 0 4rem 4rem;
+    background: hsl(var(--gray-back-100));
+    perspective: 50rem;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    border: 1px solid hsl(var(--pink-back-070));
+    z-index: 50;
+
+    li {
+      position: relative;
+      width: 13vw;
+      height: 13vw;
+      background: hsl(var(--pink-back-090));
+      border: 1px solid hsl(var(--pink-back-070));
+      word-break: break-all;
+      cursor: pointer;
+      font-size: 1.4rem;
+      transform-style: preserve-3d;
+      transform: rotateY(0deg);
+      transition: 0.5s;
+
+      .title {
+        font-family: "Noto Sans";
+        font-weight: 800;
+        text-transform: uppercase;
+
+        &::before {
+          display: inline-block;
+          content: url(/icons/arrow_black.svg);
+          transform: translate(-2px, 4px) scale(0.8);
+        }
+        &::after {
+          display: inline-block;
+          content: url(/icons/arrow_black.svg);
+          transform: translate(2px, 4px) rotateY(180deg) scale(0.8);
+        }
+      }
+
+      .des {
+        padding: 0.5rem;
+        line-height: 1.2;
+      }
+
+      .front {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        display: flex;
+        gap: 1rem;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        backface-visibility: hidden;
+
+        &:hover {
+          background: hsl(var(--pink-back-070));
+        }
+      }
+
+      .imgWrap {
+        width: 50%;
+      }
+
+      .back {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        padding: 1.5rem;
+        backface-visibility: hidden;
+        transform: rotateY(180deg);
+
+        .title {
+          padding-bottom: 1rem;
+          margin-bottom: 1rem;
+          border-bottom: 2px solid hsl(var(--pink-back-070));
+        }
+      }
+
+      &.flipped {
+        transform: rotateY(-180deg) translateZ(-15rem);
+        filter: none;
+        z-index: 100;
+        box-shadow: 1rem 1rem 1.5rem hsla(var(--pink-back-070), 0.5);
+        background: hsl(var(--gray-back-100));
+
+        &:hover {
+          background: hsl(var(--pink-back-100));
+        }
+      }
+    }
+  }
+
+  &-menubar {
+    width: 15vw;
+    height: 20vw;
+    margin-bottom: 5rem;
+    background: url(/images/skill-bg.svg) no-repeat center center;
+    background-size: contain;
+    border: none;
+
+    &::before {
+      width: 90%;
+      height: 90%;
+      top: 6rem;
+      left: -2rem;
+      background: hsl(var(--pink-back-100));
+    }
+    &::after {
+      width: 90%;
+      height: 90%;
+      top: 7.5rem;
+      left: -3.5rem;
+      background: hsl(var(--pink-back-100));
+    }
+
+    .caption {
+      position: absolute;
+      text-align: left;
+      bottom: -9rem;
+      left: -3rem;
+
+      &-link {
+        margin-left: 0;
+      }
+    }
+  }
+
+  &-menus {
+    width: calc(100% - 6rem);
+    height: 78%;
+    margin: 19% 3rem;
+    line-height: 1.6;
+    font-size: 3rem;
+    font-weight: 600;
+    color: hsl(var(--pink-fore-030));
+
+    li {
+      cursor: pointer;
+
+      &::before {
+        display: inline-block;
+        content: "*";
+        margin-right: 0.5rem;
+        transform: translateY(0.5rem);
+      }
+    }
+  }
+}
