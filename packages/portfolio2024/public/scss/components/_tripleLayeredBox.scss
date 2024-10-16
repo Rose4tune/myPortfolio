@@ -1,0 +1,34 @@
+@use "../helpers" as *;
+
+.tripleLayered {
+  position: relative;
+  width: fit-content;
+  background: hsl(var(--gray-back-100));
+  border: 1px solid hsl(var(--pink-fore-050));
+  white-space: pre-line;
+
+  &::before {
+    display: block;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 1px solid hsl(var(--pink-fore-050));
+    top: -1.5rem;
+    right: -1.5rem;
+    z-index: -1;
+    background: hsl(var(--gray-back-100));
+  }
+  &::after {
+    display: block;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 1px solid hsl(var(--pink-fore-050));
+    top: -3rem;
+    right: -3rem;
+    z-index: -2;
+    background: hsl(var(--gray-back-100));
+  }
+}

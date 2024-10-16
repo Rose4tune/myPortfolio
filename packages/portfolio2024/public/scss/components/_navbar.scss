@@ -1,0 +1,45 @@
+@use "../helpers" as *;
+
+$opacity: 0.5;
+
+.nav {
+  @include position($p: fixed, $t: 1rem, $r: 1rem);
+  @include font($s: 16, $cr: hsla(var(--gray-fore-030), $opacity));
+  width: fit-content;
+  padding: 1rem;
+  background-color: hsla(var(--pink-back-090), $opacity);
+  border-radius: 2rem;
+  transition: transform 0.5s ease;
+  z-index: 1000;
+
+  &:hover {
+    background-color: hsla(var(--pink-back-090), 1);
+    box-shadow: 0 0 1rem hsl(var(--gray-back-070));
+    border: 1px solid hsl(var(--pink-back-080));
+  }
+
+  &.hide {
+    transform: translateY(-150%);
+  }
+
+  &.show {
+    transform: translateY(0);
+  }
+
+  &-menu {
+    display: flex;
+    justify-content: center;
+
+    &-btn {
+      margin: 0 1rem;
+
+      &:hover {
+        color: hsla(var(--pink-fore-030), $opacity);
+      }
+
+      &.active {
+        color: hsla(var(--pink-fore-040), 1);
+      }
+    }
+  }
+}

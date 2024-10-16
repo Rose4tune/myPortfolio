@@ -1,13 +1,17 @@
 import { useRecoilValue } from "recoil";
 import { IsEnteredAtom } from "../../stores";
-import { Html } from "@react-three/drei";
-import Loader from "./Loader";
+import Loader from "../loader/Loader";
+import Home from "./pages/home";
 
-export default function Space() {
+export default function MainPage() {
   const isEntered = useRecoilValue(IsEnteredAtom);
 
   if (isEntered) {
-    return <Html center>hello</Html>;
+    return (
+      <>
+        <Home />
+      </>
+    );
   }
   return <Loader isCompleted />;
 }

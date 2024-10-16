@@ -1,0 +1,127 @@
+/* Pretendard */
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 900;
+  font-display: swap;
+  src: url(./pretendard-woff2-subset/Pretendard-Black.subset.woff2)
+    format("woff2");
+}
+
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 800;
+  font-display: swap;
+  src: url(./pretendard-woff2-subset/Pretendard-ExtraBold.subset.woff2)
+    format("woff2");
+}
+
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 700;
+  font-display: swap;
+  src: url(./pretendard-woff2-subset/Pretendard-Bold.subset.woff2)
+    format("woff2");
+}
+
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 600;
+  font-display: swap;
+  src: url(./pretendard-woff2-subset/Pretendard-SemiBold.subset.woff2)
+    format("woff2");
+}
+
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 500;
+  font-display: swap;
+  src: url(./pretendard-woff2-subset/Pretendard-Medium.subset.woff2)
+    format("woff2");
+}
+
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 400;
+  font-display: swap;
+  src: url(./pretendard-woff2-subset/Pretendard-Regular.subset.woff2)
+    format("woff2");
+}
+
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 300;
+  font-display: swap;
+  src: url(./pretendard-woff2-subset/Pretendard-Light.subset.woff2)
+    format("woff2");
+}
+
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 200;
+  font-display: swap;
+  src: url(./pretendard-woff2-subset/Pretendard-ExtraLight.subset.woff2)
+    format("woff2");
+}
+
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 100;
+  font-display: swap;
+  src: url(./pretendard-woff2-subset/Pretendard-Thin.subset.woff2)
+    format("woff2");
+}
+
+/* Rammetto One */
+@font-face {
+  font-family: "RammettoOne";
+  font-weight: normal;
+  font-display: swap;
+  src: url(./rammettoOne/RammettoOne-Regular.woff) format("woff");
+  font-style: normal;
+}
+
+/* Rampart One */
+@font-face {
+  font-family: "RampartOne";
+  font-weight: normal;
+  font-display: swap;
+  src: url(./rampartOne/RampartOne-Regular.woff) format("woff");
+  font-style: normal;
+}
+
+/* Cafe24 Super Magic */
+@font-face {
+  font-family: "Cafe24Supermagic";
+  src: url(./cafe24Supermagic/Cafe24Supermagic-Bold-v1.0.woff2) format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* Noto Sans */
+@font-face {
+  font-family: "Noto Sans";
+  font-weight: 600;
+  font-display: swap;
+  src: url(./notoSans/noto-sans-kr-v36-korean-regular.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: "Noto Sans";
+  font-weight: 700;
+  font-display: swap;
+  src: url(./notoSans/noto-sans-kr-v36-korean-700.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: "Noto Sans";
+  font-weight: 800;
+  font-display: swap;
+  src: url(./notoSans/noto-sans-kr-v36-korean-800.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: "Noto Sans";
+  font-weight: 900;
+  font-display: swap;
+  src: url(./notoSans/noto-sans-kr-v36-korean-900.woff2) format("woff2");
+}

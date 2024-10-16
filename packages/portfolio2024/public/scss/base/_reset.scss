@@ -1,4 +1,11 @@
 /* RESET */
+* {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+*::-webkit-scrollbar {
+  display: none;
+}
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre, a,
 abbr, acronym, address, big, cite, code, button,
@@ -44,9 +51,11 @@ q::after {
   content: none;
 }
 
-a {
+a, button,
+select, option {
   text-decoration: none;
   color: inherit;
+  cursor: pointer;
 }
 
 table {
@@ -57,11 +66,6 @@ table {
 table th,
 table td {
   vertical-align: middle;
-}
-
-a,
-button {
-  cursor: pointer;
 }
 
 img {

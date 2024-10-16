@@ -24,11 +24,12 @@
 }
 
 // FONT
-@mixin font($s: '', $wght: '', $ln: '', $cr: '', $align: '') {
+@mixin font($s: '', $wght: '', $ln: '', $cr: '', $align: '', $trans: '') {
   @if($s != '') {font-size: rem($s);}
   @if($wght != '') {font-weight: $wght;}
   @if($ln != '') {line-height: $ln;}
   @if($cr != '') {color: $cr;}
   @if($align != '') {text-align: $align;}
+  @if($trans != '') {text-transform: $trans;}
   @content;
 }
