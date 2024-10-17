@@ -11,6 +11,11 @@ export const DimensionModeAtom = atom({
   default: "2D",
 });
 
+export const ThemeModeAtom = atom({
+  key: `ThemeModeAtom`,
+  default: "light",
+});
+
 export const ShowNavAtom = atom({
   key: `ShowNavAtom`,
   default: false,
