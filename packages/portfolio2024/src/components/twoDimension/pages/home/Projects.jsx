@@ -35,9 +35,9 @@ const Projects = forwardRef((props, ref) => {
       className="projectSection"
       style={{ height: `${(projects.length + 1) * 100}vh` }}
     >
-      <StickyFrame className="stickyFrame">
-        <Wrap className="projcetWrap">
-          <PictureBox>
+      <StickyFrame>
+        <Wrap>
+          <div className="project-picture">
             {projects.map(({ img }, i) => (
               <img
                 key={i}
@@ -47,7 +47,7 @@ const Projects = forwardRef((props, ref) => {
               />
             ))}
             <div className="font_rampartOne">Project</div>
-          </PictureBox>
+          </div>
           <DoubleLineBox
             contents={projects.map(({ key, value }, i) => ({
               key,
@@ -56,26 +56,26 @@ const Projects = forwardRef((props, ref) => {
             }))}
             style={{ position: "static", marginTop: "5vh" }}
           />
-          <ProjectDetail>
+          <div className="project-detail">
             <div className="tripleLayered">
               {projects.map(({ title, period, role, des, link }, i) => (
                 <div
                   key={`project${i}`}
-                  className={`projectDetail-wrap ${
+                  className={`project-detail-wrap ${
                     i === activeIndex ? "active" : ""
                   }`}
                 >
-                  <h3 className="projectDetail-title">
+                  <h3 className="project-detail-title">
                     {title[language]}
-                    <span className="projectDetail-period">'{period}</span>
+                    <span className="project-detail-period">'{period}</span>
                   </h3>
-                  <p className="projectDetail-role">{role}</p>
-                  <div className="projectDetail-des">{des[language]}</div>
+                  <p className="project-detail-role">{role}</p>
+                  <div className="project-detail-des">{des[language]}</div>
                   <Caption type="more" link={link} />
                 </div>
               ))}
             </div>
-          </ProjectDetail>
+          </div>
         </Wrap>
       </StickyFrame>
     </Section>
@@ -106,117 +106,6 @@ const Wrap = styled.div`
   align-items: flex-start;
   justify-content: center;
   position: relative;
-`;
-
-const PictureBox = styled.div`
-  position: relative;
-  width: 60vw;
-  height: 70vh;
-  outline: 2rem solid hsla(var(--pink-back-060), .3);
-  border: 2px solid hsl(var(--white));
-  z-index: -2;
-  overflow: hidden;
-
-  &::after {
-    display: block;
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: hsla(var(--gray-fore-080), .1);
-    background-blend-mode: multiply;
-  }
-
-  img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-    object-fit: cover;
-  }
-
-  img.active {
-    opacity: 1;
-  }
-
-  .font_rampartOne {
-    position: absolute;
-    bottom: 3rem;
-    left: 2rem;
-    font-size: 9rem;
-    color: hsl(var(--white));
-    z-index: 10;
-  }
-`;
-
-const ProjectDetail = styled.div`
-  position: absolute;
-  bottom: -9.4vh;
-  left: 34vw;
-
-  .tripleLayered,
-  .tripleLayered::before,
-  .tripleLayered::after {
-    background: linear-gradient(
-      250deg,
-      hsla(var(--gray-back-100), 0.1) 0%,
-      hsl(var(--gray-back-100), 0.8) 40%
-    );
-  }
-
-  .tripleLayered {
-    width: 52vw;
-    height: 39.8vh;
-    padding: 4rem;
-  }
-
-  .projectDetail {
-    &-wrap {
-      position: relative;
-      display: none;
-      padding-bottom: 2rem;
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.3s ease, transform 0.3s ease;
-
-      &.active {
-        display: block;
-        width: 100%;
-        height: 100%;
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    &-title {
-      display: flex;
-      align-items: flex-start;
-      gap: 1rem;
-      font-size: 2.8rem;
-      font-weight: 600;
-    }
-    &-period {
-      font-size: 2rem;
-      font-weight: 400;
-      color: hsl(var(--gray-fore-040));
-    }
-    &-role {
-      margin: 1rem 0;
-    }
-    &-des {
-      column-count: 2;
-      column-gap: 3rem;
-    }
-  }
-
-  .caption {
-    bottom: 0;
-    left: 0;
-  }
 `;
 
 export default Projects;
