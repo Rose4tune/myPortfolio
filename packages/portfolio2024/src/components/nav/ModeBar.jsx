@@ -38,7 +38,7 @@ const ModeBar = () => {
           3D
         </option>
       </select>
-      <select id="themeSelect" onChange={handleTheme}>
+      <select id="themeSelect" onChange={handleTheme} hidden>
         <option name="theme" value={"light"}>
           light
         </option>
