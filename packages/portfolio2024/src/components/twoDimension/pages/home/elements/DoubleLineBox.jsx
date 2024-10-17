@@ -2,10 +2,13 @@ import React from "react";
 
 const DoubleLineBox = ({ contents, style, even = false }) => {
   return (
-    <div className={`doubleLineBox ${even && `even`}`} style={style}>
-      {contents.map(({ key, value }, i) => {
+    <div className={`doubleLine ${even ? `even` : ""}`} style={style}>
+      {contents.map(({ key, value, isActive }, i) => {
         return (
-          <div key={`doubleLine-item${i}`}>
+          <div
+            key={`doubleLine-item${i}`}
+            className={`doubleLine-item${isActive ? " active" : ""}`}
+          >
             {key} <span className="boldUpper">{value}</span>
           </div>
         );

@@ -139,30 +139,34 @@ body {
   background-position: 100% 0%;
 }
 
-.doubleLineBox {
+.doubleLine {
   position: absolute;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  text-align: center;
-  color: hsl(var(--red-fore-030));
   line-height: 1.4;
+  color: hsl(var(--red-fore-030));
+  text-align: center;
   white-space: pre-line;
 }
-.doubleLineBox::before, .doubleLineBox::after {
+.doubleLine::before, .doubleLine::after {
   content: "";
   display: block;
   width: 7.3vw;
   border: 2px solid hsl(var(--pink-fore-050));
 }
-.doubleLineBox::before {
+.doubleLine::before {
   margin: 0 auto 5.5vh;
 }
-.doubleLineBox::after {
+.doubleLine::after {
   margin: 5.5vh auto 0;
 }
-.doubleLineBox.even > div:nth-child(even) {
+.doubleLine.even > div:nth-child(even) {
   margin-bottom: 0.8rem;
+}
+.doubleLine .active {
+  font-weight: 600;
+  color: hsl(var(--red-fore-030));
 }
 
 .nav {

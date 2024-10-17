@@ -1,11 +1,9 @@
 @use "../helpers" as *;
 
-.doubleLineBox {
+.doubleLine {
   position: absolute;
   width: fit-content;
-  text-align: center;
-  color: hsl(var(--red-fore-030));
-  line-height: 1.4;
+  @include font($align: center, $ln: 1.4, $cr: hsl(var(--red-fore-030)));
   white-space: pre-line;
 
   &::before,
@@ -24,5 +22,9 @@
 
   &.even > div:nth-child(even) {
     margin-bottom: 0.8rem;
+  }
+
+  .active {
+    @include font($wght: 600, $cr: hsl(var(--red-fore-030)));
   }
 }

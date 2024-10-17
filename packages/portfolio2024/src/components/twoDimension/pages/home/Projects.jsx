@@ -3,114 +3,68 @@ import styled from "styled-components";
 import DoubleLineBox from "./elements/DoubleLineBox";
 import { useRecoilValue } from "recoil";
 import { LanguageAtom } from "../../../../stores";
-import TripleLayeredBox from "./elements/TripleLayeredBox";
 import Caption from "./elements/Caption";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { projects } from "../../../../data/projects";
 
-const projectList = [
-  {
-    key: "Scheduling Service",
-    value: "DATE LEAF",
-    title: {
-      ko: "DATE LEAF 스케쥴링 서비스",
-      en: "DATE LEAF scheduling service",
-    },
-    period: "24.3~5",
-    role: "Design / UXUI / React / TypeScript",
-    des: {
-      ko: "",
-      en: "",
-    },
-    link: "https://www.date-leaf.com/",
-    img: "dateleaf",
-  },
-  {
-    key: "Homepage",
-    value: "mendel’s",
-    title: {
-      ko: "MENDEL'S 홈페이지",
-      en: "MENDEL'S homepage",
-    },
-    period: "21~24",
-    role: "JavaScript / Sass / Data Visualization",
-    des: {
-      ko: "",
-      en: "",
-    },
-    link: "https://service.mendels.me/",
-    img: "mendels",
-  },
-  {
-    key: "portfolio page",
-    value: "ROES'S PORTFOLIO",
-    title: {
-      ko: "포트폴리오 2024",
-      en: "PORTFOLIO 2024",
-    },
-    period: "24.9~10",
-    role: "Design / UXUI / React / R3F / Supabase",
-    des: {
-      ko: "",
-      en: "",
-    },
-    link: "http://dlfly.seoul.kr/",
-    img: "portfolio2024",
-  },
-  {
-    key: "Shopping Mall Page",
-    value: "UNKNOWN",
-    title: {
-      ko: "UNKNOWN 쇼핑몰 페이지",
-      en: "UNKNOWN shopping mall page",
-    },
-    period: "20.10",
-    role: "Design / UXUI / JavaScript",
-    des: {
-      ko: "",
-      en: "",
-    },
-    link: "",
-    img: "unknown",
-  },
-  {
-    key: "Advertising Page",
-    value: "O-MANAGER",
-    title: {
-      ko: "",
-      en: "",
-    },
-    period: "20.01",
-    role: "",
-    des: {
-      ko: "",
-      en: "",
-    },
-    link: "http://www.omanager.kr/",
-    img: "omanager",
-  },
-];
+gsap.registerPlugin(ScrollTrigger);
 
 const Projects = forwardRef((props, ref) => {
   const language = useRecoilValue(LanguageAtom);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    gsap.to(".projectSection", {
+      scrollTrigger: {
+        trigger: ".projectSection",
+        start: "0% bottom",
+        end: "bottom top",
+        scrub: true,
+        onUpdate: (self) => {
+          const index = Math.floor(self.progress * projects.length - 1);
+          setActiveIndex(index);
+        },
+      },
+    });
+  }, [projects, setActiveIndex]);
 
   return (
     <Section
       ref={ref}
-      style={{ height: `${(projectList.length + 1) * 100}vh` }}
+      className="projectSection"
+      style={{ height: `${(projects.length + 1) * 100}vh` }}
     >
-      <StickyFrame>
-        <Wrap>
+      <StickyFrame className="stickyFrame">
+        <Wrap className="projcetWrap">
           <PictureBox>
-            <img src="/images/projects/danceweb.jpg" alt="dance web" />
+            {projects.map(({ img }, i) => (
+              <img
+                key={i}
+                src={`/images/projects/${img}.jpg`}
+                alt={img}
+                className={i === activeIndex ? "active" : ""}
+              />
+            ))}
             <div className="font_rampartOne">Project</div>
           </PictureBox>
           <DoubleLineBox
-            contents={projectList}
+            contents={projects.map(({ key, value }, i) => ({
+              key,
+              value,
+              isActive: i === activeIndex,
+            }))}
             style={{ position: "static", marginTop: "5vh" }}
           />
           <ProjectDetail>
             <div className="tripleLayered">
-              {projectList.map(({ title, period, role, des, link }, i) => (
-                <div key={`project${i}`} className="projectDetail-wrap">
+              {projects.map(({ title, period, role, des, link }, i) => (
+                <div
+                  key={`project${i}`}
+                  className={`projectDetail-wrap ${
+                    i === activeIndex ? "active" : ""
+                  }`}
+                >
                   <h3 className="projectDetail-title">
                     {title[language]}
                     <span className="projectDetail-period">'{period}</span>
@@ -152,7 +106,6 @@ const Wrap = styled.div`
   align-items: flex-start;
   justify-content: center;
   position: relative;
-
 `;
 
 const PictureBox = styled.div`
@@ -174,6 +127,21 @@ const PictureBox = styled.div`
     height: 100%;
     background: hsla(var(--gray-fore-080), .1);
     background-blend-mode: multiply;
+  }
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    object-fit: cover;
+  }
+
+  img.active {
+    opacity: 1;
   }
 
   .font_rampartOne {
@@ -210,9 +178,19 @@ const ProjectDetail = styled.div`
   .projectDetail {
     &-wrap {
       position: relative;
-      width: 100%;
-      height: 100%;
+      display: none;
       padding-bottom: 2rem;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+
+      &.active {
+        display: block;
+        width: 100%;
+        height: 100%;
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
     &-title {
       display: flex;
