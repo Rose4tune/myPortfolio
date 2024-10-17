@@ -4,81 +4,124 @@ import DoubleLineBox from "./elements/DoubleLineBox";
 import { useRecoilValue } from "recoil";
 import { LanguageAtom } from "../../../../stores";
 import TripleLayeredBox from "./elements/TripleLayeredBox";
+import Caption from "./elements/Caption";
 
 const projectList = [
   {
     key: "Scheduling Service",
     value: "DATE LEAF",
-    bg: "/images/projects/dateleaf.jpg",
+    title: {
+      ko: "DATE LEAF 스케쥴링 서비스",
+      en: "DATE LEAF scheduling service",
+    },
+    period: "24.3~5",
+    role: "Design / UXUI / React / TypeScript",
+    des: {
+      ko: "",
+      en: "",
+    },
+    link: "https://www.date-leaf.com/",
+    img: "dateleaf",
   },
-  { key: "Homepage", value: "mendel’s", bg: "/images/projects/mendels.jpg" },
-  { key: "My Music Page", value: "RECODE", bg: "/images/projects/recode.jpg" },
   {
-    key: "Dashboard Page",
-    value: "DASHBOARD",
-    bg: "/images/projects/dashboard.jpg",
+    key: "Homepage",
+    value: "mendel’s",
+    title: {
+      ko: "MENDEL'S 홈페이지",
+      en: "MENDEL'S homepage",
+    },
+    period: "21~24",
+    role: "JavaScript / Sass / Data Visualization",
+    des: {
+      ko: "",
+      en: "",
+    },
+    link: "https://service.mendels.me/",
+    img: "mendels",
+  },
+  {
+    key: "portfolio page",
+    value: "ROES'S PORTFOLIO",
+    title: {
+      ko: "포트폴리오 2024",
+      en: "PORTFOLIO 2024",
+    },
+    period: "24.9~10",
+    role: "Design / UXUI / React / R3F / Supabase",
+    des: {
+      ko: "",
+      en: "",
+    },
+    link: "http://dlfly.seoul.kr/",
+    img: "portfolio2024",
   },
   {
     key: "Shopping Mall Page",
     value: "UNKNOWN",
-    bg: "/images/projects/unknown.jpg",
+    title: {
+      ko: "UNKNOWN 쇼핑몰 페이지",
+      en: "UNKNOWN shopping mall page",
+    },
+    period: "20.10",
+    role: "Design / UXUI / JavaScript",
+    des: {
+      ko: "",
+      en: "",
+    },
+    link: "",
+    img: "unknown",
   },
   {
     key: "Advertising Page",
     value: "O-MANAGER",
-    bg: "/images/projects/omanager.jpg",
+    title: {
+      ko: "",
+      en: "",
+    },
+    period: "20.01",
+    role: "",
+    des: {
+      ko: "",
+      en: "",
+    },
+    link: "http://www.omanager.kr/",
+    img: "omanager",
   },
 ];
 
 const Projects = forwardRef((props, ref) => {
   const language = useRecoilValue(LanguageAtom);
-  const [activeProjectIndex, setActiveProjectIndex] = useState(0);
-
-  // 스크롤 이벤트로 프로젝트 탭과 배경 이미지 변경
-  const handleScroll = () => {
-    const scrollY = window.scrollY;
-    const projectIndex = Math.min(
-      projectList.length - 1,
-      Math.floor(scrollY / (window.innerHeight / projectList.length))
-    );
-    setActiveProjectIndex(projectIndex);
-  };
-
-  useEffect(() => {
-    // 스크롤 이벤트 리스너 추가
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      // 컴포넌트 언마운트 시 이벤트 리스너 제거
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
 
   return (
-    <Section ref={ref}>
+    <Section
+      ref={ref}
+      style={{ height: `${(projectList.length + 1) * 100}vh` }}
+    >
       <StickyFrame>
         <Wrap>
-          <PictureBox />
-          <div className="font_rampartOne">Project</div>
+          <PictureBox>
+            <img src="/images/projects/danceweb.jpg" alt="dance web" />
+            <div className="font_rampartOne">Project</div>
+          </PictureBox>
           <DoubleLineBox
             contents={projectList}
             style={{ position: "static", marginTop: "5vh" }}
           />
-          <TripleLayeredBox
-            contents={
-              "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores aspernatur, vero maiores deleniti, ullam laborum magni odit nemo illum alias expedita molestias consequatur, veniam ut mollitia libero fugit? Sed, facere."
-            }
-            position={{
-              bottom: "-7.4vh",
-              left: "34vw",
-              transform: "none",
-            }}
-            style={{
-              width: "52vw",
-              height: "39.8vh",
-              padding: "5rem 4rem",
-            }}
-            classNames=""
-          />
+          <ProjectDetail>
+            <div className="tripleLayered">
+              {projectList.map(({ title, period, role, des, link }, i) => (
+                <div key={`project${i}`} className="projectDetail-wrap">
+                  <h3 className="projectDetail-title">
+                    {title[language]}
+                    <span className="projectDetail-period">'{period}</span>
+                  </h3>
+                  <p className="projectDetail-role">{role}</p>
+                  <div className="projectDetail-des">{des[language]}</div>
+                  <Caption type="more" link={link} />
+                </div>
+              ))}
+            </div>
+          </ProjectDetail>
         </Wrap>
       </StickyFrame>
     </Section>
@@ -88,43 +131,114 @@ const Projects = forwardRef((props, ref) => {
 const Section = styled.section`
   position: relative;
   width: 100vw;
-  height: 600vh;
   background: linear-gradient(
     180deg,
-    hsl(var(--gray-back-100)) 10%,
+    hsl(var(--gray-back-100)) 0%,
+    hsla(var(--pink-back-090),.8) 30%,
+    hsla(var(--pink-back-080),.6) 60%,
     hsl(var(--pink-back-080)) 100%
   );
 `;
 
 const StickyFrame = styled.div`
   position: sticky;
-  top: 9vh;
-  margin-bottom: 16.7vh;
+  top: 11vh;
+  margin: 11vh 0 16.7vh;
 `;
 
 const Wrap = styled.div`
   display: flex;
-  gap: 1rem;
+  gap: 3rem;
+  align-items: flex-start;
   justify-content: center;
   position: relative;
 
-  .font_rampartOne {
-    position: absolute;
-    bottom: 5rem;
-    left: 12.5vw;
-    font-size: 9rem;
-    color: hsl(var(--white))
-  }
 `;
 
 const PictureBox = styled.div`
-  width: 62vw;
-  height: 74vh;
-  padding: 2px;
-  background: url(/images/projects/danceweb.jpg) no-repeat center center content-box;
-  background-size: cover;
-  border: 2rem solid hsla(var(--pink-back-060), .3);
+  position: relative;
+  width: 60vw;
+  height: 70vh;
+  outline: 2rem solid hsla(var(--pink-back-060), .3);
+  border: 2px solid hsl(var(--white));
   z-index: -2;
+  overflow: hidden;
+
+  &::after {
+    display: block;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: hsla(var(--gray-fore-080), .1);
+    background-blend-mode: multiply;
+  }
+
+  .font_rampartOne {
+    position: absolute;
+    bottom: 3rem;
+    left: 2rem;
+    font-size: 9rem;
+    color: hsl(var(--white));
+    z-index: 10;
+  }
+`;
+
+const ProjectDetail = styled.div`
+  position: absolute;
+  bottom: -9.4vh;
+  left: 34vw;
+
+  .tripleLayered,
+  .tripleLayered::before,
+  .tripleLayered::after {
+    background: linear-gradient(
+      250deg,
+      hsla(var(--gray-back-100), 0.1) 0%,
+      hsl(var(--gray-back-100), 0.8) 40%
+    );
+  }
+
+  .tripleLayered {
+    width: 52vw;
+    height: 39.8vh;
+    padding: 4rem;
+  }
+
+  .projectDetail {
+    &-wrap {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      padding-bottom: 2rem;
+    }
+    &-title {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      font-size: 2.8rem;
+      font-weight: 600;
+    }
+    &-period {
+      font-size: 2rem;
+      font-weight: 400;
+      color: hsl(var(--gray-fore-040));
+    }
+    &-role {
+      margin: 1rem 0;
+    }
+    &-des {
+      column-count: 2;
+      column-gap: 3rem;
+    }
+  }
+
+  .caption {
+    bottom: 0;
+    left: 0;
+  }
 `;
 
 export default Projects;

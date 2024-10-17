@@ -2,7 +2,7 @@ import React from "react";
 import { useRecoilValue } from "recoil";
 import { LanguageAtom } from "../../../../../stores";
 
-const Caption = ({ type }) => {
+const Caption = ({ type, link }) => {
   const language = useRecoilValue(LanguageAtom);
 
   const captions = {
@@ -87,9 +87,17 @@ const Caption = ({ type }) => {
 
   const renderCaptionLink = (linkText, isDiv) => {
     return isDiv ? (
-      <div className="caption-link">{linkText}</div>
+      <div className="caption-link">
+        <a href={link} target="_blank">
+          {linkText}
+        </a>
+      </div>
     ) : (
-      <span className="caption-link">{linkText}</span>
+      <span className="caption-link">
+        <a href={link} target="_blank">
+          {linkText}
+        </a>
+      </span>
     );
   };
 
