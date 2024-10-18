@@ -88,9 +88,9 @@ const Section = styled.section`
   background: linear-gradient(
     180deg,
     hsl(var(--gray-back-100)) 0%,
-    hsla(var(--pink-back-090),.8) 30%,
-    hsla(var(--pink-back-080),.6) 60%,
-    hsl(var(--pink-back-080)) 100%
+    hsla(var(--pink-back-090), .8) 30%,
+    hsla(var(--pink-back-080), .6) 60%,
+    hsl(var(--pink-back-080), .8) 100%
   );
 `;
 
