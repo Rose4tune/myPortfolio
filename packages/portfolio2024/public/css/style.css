@@ -101,6 +101,9 @@ body {
 .font_notoSans {
   font-family: "Noto Sans";
 }
+.font_ruslanDisplay {
+  font-family: "Ruslan Display";
+}
 
 .boldUpper {
   font-weight: 600;
