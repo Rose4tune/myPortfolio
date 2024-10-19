@@ -3,7 +3,7 @@ import Intro from "./Intro";
 import About from "./About";
 import Skills from "./Skills";
 import Projects from "./Projects";
-import Contect from "./Contect";
+import Contact from "./Contact";
 import NavBar from "../../../nav/NavBar";
 
 export default function Home() {
@@ -16,7 +16,7 @@ export default function Home() {
       <About ref={(el) => (sectionRefs.current[1] = el)} />
       <Skills ref={(el) => (sectionRefs.current[2] = el)} />
       <Projects ref={(el) => (sectionRefs.current[3] = el)} />
-      <Contect ref={(el) => (sectionRefs.current[4] = el)} />
+      <Contact ref={(el) => (sectionRefs.current[4] = el)} />
     </>
   );
 }
