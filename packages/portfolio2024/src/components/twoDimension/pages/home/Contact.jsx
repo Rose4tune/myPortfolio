@@ -11,37 +11,50 @@ const Contact = forwardRef((props, ref) => {
   const coffeeRef = useRef(null);
   const milkTextRef = useRef(null);
   const coffeeTextRef = useRef(null);
-
-  const setupAnimation = (elementRef, textRef) => {
-    const delay = 2;
-    gsap.fromTo(
-      elementRef.current,
-      { opacity: 0, scale: 0.8 },
-      {
-        opacity: 1,
-        scale: 1,
-        duration: 1,
-        delay: delay,
-        scrollTrigger: {
-          trigger: elementRef.current,
-          start: "top 75%",
-          toggleActions: "play none none reset",
-          onEnter: () => {
-            gsap.delayedCall(delay, () => {
-              textRef.current.style.display = "none";
-            });
-          },
-          onLeaveBack: () => {
-            textRef.current.style.display = "block";
-          },
-        },
-      }
-    );
-  };
+  const supRef = useRef(null);
 
   useEffect(() => {
-    setupAnimation(milkRef, milkTextRef);
-    setupAnimation(coffeeRef, coffeeTextRef);
+    const delay = 1;
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: milkRef.current,
+        start: "top 75%",
+        toggleActions: "play none none reset",
+      },
+    });
+
+    tl.add(() => {
+      gsap.delayedCall(delay, () => {
+        milkTextRef.current.style.display = "none";
+      });
+    }, delay)
+      .add(() => {
+        gsap.delayedCall(delay, () => {
+          coffeeTextRef.current.style.display = "none";
+        });
+      }, delay)
+      .fromTo(
+        milkRef.current,
+        { opacity: 0, scale: 0.8 },
+        { opacity: 1, scale: 1, duration: 1, delay }
+      )
+      .fromTo(
+        coffeeRef.current,
+        { opacity: 0, scale: 0.8 },
+        { opacity: 1, scale: 1, duration: 1 },
+        "<"
+      )
+      .fromTo(supRef.current, { y: 0 }, { y: "-30%", duration: 1 }, "<");
+
+    ScrollTrigger.create({
+      trigger: milkRef.current,
+      start: "top 75%",
+      onLeaveBack: () => {
+        milkTextRef.current.style.display = "block";
+        coffeeTextRef.current.style.display = "block";
+      },
+    });
   }, []);
 
   return (
@@ -74,7 +87,7 @@ const Contact = forwardRef((props, ref) => {
               </div>
             </div>
           </MilkCoffee>
-          <sup>2</sup>
+          <sup ref={supRef}>2</sup>
         </Energe>
         <Connect>
           <div className="contact-title">
