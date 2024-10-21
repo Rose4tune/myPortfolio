@@ -556,6 +556,7 @@ body {
 }
 
 .contact {
+  position: relative;
   width: 100vw;
   height: 100vh;
   background: -webkit-gradient(linear, left top, left bottom, from(hsl(var(--pink-back-080))), to(hsl(var(--gray-back-100)))), url(/images/contact-bg.png) no-repeat center center;
@@ -582,14 +583,14 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  height: 26.4rem;
-  font-size: 18rem;
+  height: 20rem;
+  font-size: 14rem;
   color: hsl(var(--gray-back-100));
   -webkit-filter: drop-shadow(0.4rem 0.4rem 0 hsla(var(--pink-back-050), 0.5));
           filter: drop-shadow(0.4rem 0.4rem 0 hsla(var(--pink-back-050), 0.5));
 }
 .energe-sup {
-  font-size: 9rem;
+  font-size: 7rem;
   -webkit-transform: translateY(-2rem);
           transform: translateY(-2rem);
 }
@@ -610,16 +611,16 @@ body {
 
 .milk,
 .coffee {
-  width: 16.5rem;
+  width: 14rem;
 }
 .milk [class$=-icon],
 .coffee [class$=-icon] {
-  font-size: 4rem;
+  font-size: 3rem;
   line-height: 0.8;
 }
 .milk [class$=-icon] p::first-letter,
 .coffee [class$=-icon] p::first-letter {
-  font-size: 9rem;
+  font-size: 7rem;
 }
 .milk [class$=-imgWrap],
 .coffee [class$=-imgWrap] {
@@ -636,7 +637,7 @@ body {
 }
 
 .connect {
-  padding: 8.3vh 5.2vw;
+  padding: 9rem 10rem;
   background: hsla(var(--gray-back-100), 0.6);
   text-align: center;
 }

@@ -2,6 +2,7 @@ import { forwardRef, useRef, useEffect } from "react";
 import Caption from "./elements/Caption";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import FortuneCoffee from "./elements/fortuneCoffee";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -49,7 +50,7 @@ const Contact = forwardRef((props, ref) => {
         { opacity: 1, scale: 1, duration: 0.5 },
         "<"
       )
-      .fromTo(supRef.current, { y: 0 }, { y: "-30%", duration: 1 }, "<");
+      .fromTo(supRef.current, { y: 0 }, { y: "-20%", duration: 1 }, "<");
   };
 
   useEffect(() => {
@@ -92,16 +93,15 @@ const Contact = forwardRef((props, ref) => {
         </div>
         <div className="connect">
           <div className="connect-title">
-            C &nbsp;O &nbsp;N &nbsp;T &nbsp;A &nbsp;C &nbsp;T
+            C&nbsp;O&nbsp;N&nbsp;T&nbsp;A&nbsp;C&nbsp;T
           </div>
           <Caption type="email" lang="en" />
           <Caption type="git" lang="en" />
           <Caption type="blog" lang="en" />
-          <p className="connect-closeGreeting font_ruslanDisplay">
-            I LOVE ALL THE CONVERSATIONS.
-          </p>
+          <p className="connect-closeGreeting">I LOVE ALL THE CONVERSATIONS.</p>
         </div>
       </div>
+      <FortuneCoffee />
     </section>
   );
 });
