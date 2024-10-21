@@ -299,14 +299,13 @@ body {
   border: 1px solid hsl(var(--pink-back-070));
   z-index: 50;
 }
-.skills-board li {
+.skills-item {
   position: relative;
   width: 13vw;
   height: 13vw;
   border: 1px solid hsl(var(--pink-back-070));
   word-break: break-all;
   cursor: pointer;
-  font-size: 1.4rem;
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
   -webkit-transform: rotateY(0deg);
@@ -314,28 +313,38 @@ body {
   -webkit-transition: 0.5s;
   transition: 0.5s;
 }
-.skills-board li .title {
+.skills-item-title {
   font-family: "Noto Sans";
+  font-size: 1.4rem;
   font-weight: 800;
   text-transform: uppercase;
 }
-.skills-board li .title::before {
+.skills-item-title::before {
   display: inline-block;
   content: url(/icons/arrow_black.svg);
   -webkit-transform: translate(-2px, 4px) scale(0.8);
           transform: translate(-2px, 4px) scale(0.8);
 }
-.skills-board li .title::after {
+.skills-item-title::after {
   display: inline-block;
   content: url(/icons/arrow_black.svg);
   -webkit-transform: translate(2px, 4px) rotateY(180deg) scale(0.8);
           transform: translate(2px, 4px) rotateY(180deg) scale(0.8);
 }
-.skills-board li .des {
-  padding: 0.5rem;
-  line-height: 1.2;
+.skills-item.flipped {
+  -webkit-transform: rotateY(-180deg) translateZ(-15rem);
+          transform: rotateY(-180deg) translateZ(-15rem);
+  -webkit-filter: none;
+          filter: none;
+  z-index: 100;
+  -webkit-box-shadow: 1rem 1rem 1.5rem hsla(var(--pink-back-070), 0.5);
+          box-shadow: 1rem 1rem 1.5rem hsla(var(--pink-back-070), 0.5);
+  background: hsl(var(--gray-back-100));
 }
-.skills-board li .front {
+.skills-item.flipped:hover {
+  background: hsl(var(--pink-back-100));
+}
+.skills-front {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -356,13 +365,13 @@ body {
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
 }
-.skills-board li .front:hover {
+.skills-front:hover {
   background: hsl(var(--pink-back-070));
 }
-.skills-board li .imgWrap {
+.skills-front-imgWrap {
   width: 50%;
 }
-.skills-board li .back {
+.skills-back {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -372,25 +381,17 @@ body {
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
 }
-.skills-board li .back .title {
+.skills-back [class$=-title] {
   padding-bottom: 1rem;
   margin-bottom: 1rem;
   border-bottom: 2px solid hsl(var(--pink-back-070));
 }
-.skills-board li.flipped {
-  -webkit-transform: rotateY(-180deg) translateZ(-15rem);
-          transform: rotateY(-180deg) translateZ(-15rem);
-  -webkit-filter: none;
-          filter: none;
-  z-index: 100;
-  -webkit-box-shadow: 1rem 1rem 1.5rem hsla(var(--pink-back-070), 0.5);
-          box-shadow: 1rem 1rem 1.5rem hsla(var(--pink-back-070), 0.5);
-  background: hsl(var(--gray-back-100));
+.skills-back-des {
+  padding: 0.5rem;
+  font-size: 1.3rem;
+  line-height: 1.2;
 }
-.skills-board li.flipped:hover {
-  background: hsl(var(--pink-back-100));
-}
-.skills-menubar {
+.skills-navWrap {
   width: 15vw;
   height: 20vw;
   margin-bottom: 5rem;
@@ -398,46 +399,46 @@ body {
   background-size: contain;
   border: none;
 }
-.skills-menubar::before {
+.skills-navWrap::before {
   width: 90%;
   height: 90%;
   top: 6rem;
   left: -2rem;
   background: hsl(var(--pink-back-100));
 }
-.skills-menubar::after {
+.skills-navWrap::after {
   width: 90%;
   height: 90%;
   top: 7.5rem;
   left: -3.5rem;
   background: hsl(var(--pink-back-100));
 }
-.skills-menubar .caption {
+.skills-navWrap .caption {
   position: absolute;
   text-align: left;
   bottom: -9rem;
   left: -3rem;
 }
-.skills-menubar .caption-link {
+.skills-navWrap .caption-link {
   margin-left: 0;
 }
-.skills-menus {
+.skills-nav {
   width: calc(100% - 6rem);
   height: 78%;
   margin: 19% 3rem;
-  line-height: 1.6;
-  font-size: 3rem;
+  font-size: 2.6rem;
   font-weight: 600;
-  text-transform: uppercase;
+  line-height: 1.6;
   color: hsl(var(--gray-fore-020));
+  text-transform: uppercase;
 }
-.skills-menus li {
+.skills-nav-menu {
   cursor: pointer;
 }
-.skills-menus li.active {
+.skills-nav-menu.active {
   color: hsl(var(--pink-fore-030));
 }
-.skills-menus li::before {
+.skills-nav-menu::before {
   display: inline-block;
   content: "*";
   margin-right: 0.5rem;

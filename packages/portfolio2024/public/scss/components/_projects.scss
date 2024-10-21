@@ -40,8 +40,7 @@
       position: absolute;
       bottom: 3rem;
       left: 2rem;
-      font-size: 9rem;
-      color: hsl(var(--white));
+      @include font($s: 90, $cr: hsl(var(--white)));
       z-index: 10;
     }
   }
@@ -87,13 +86,10 @@
       display: flex;
       align-items: flex-start;
       gap: 1rem;
-      font-size: 2.8rem;
-      font-weight: 600;
+      @include font($s: 28, $wght: 600);
     }
     &-period {
-      font-size: 2rem;
-      font-weight: 400;
-      color: hsl(var(--gray-fore-040));
+      @include font($s: 20, $wght: 400, $cr: hsl(var(--gray-fore-040)));
     }
     &-role {
       margin: 1rem 0;
