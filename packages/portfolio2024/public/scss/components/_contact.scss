@@ -1,0 +1,100 @@
+@use "../helpers" as *;
+
+.contact {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(
+      180deg,
+      hsl(var(--pink-back-080)) 0%,
+      hsl(var(--gray-back-100)) 100%
+    ),
+    url(/images/contact-bg.png) no-repeat center center;
+  background-size: cover;
+  background-blend-mode: hard-light;
+
+  &-wrap {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+  }
+}
+
+.energe {
+  display: flex;
+  height: 26.4rem;
+  @include font($s: 180, $cr: hsl(var(--gray-back-100)));
+  filter: drop-shadow(0.4rem 0.4rem 0 hsla(var(--pink-back-050), 0.5));
+
+  &-sup {
+    @include font($s: 90);
+    transform: translateY(-2rem);
+  }
+}
+
+.milkCoffee {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 2rem;
+  @include font($align: center);
+}
+
+.milk,
+.coffee {
+  width: 16.5rem;
+  [class$="-icon"] {
+    @include font($s: 40, $ln: 0.8);
+    p::first-letter {
+      @include font($s: 90);
+    }
+  }
+  [class$="-imgWrap"] {
+    width: 11rem;
+    margin: 0 auto;
+  }
+}
+
+.xIcon {
+  width: 4rem;
+  height: 6rem;
+  background: url(/icons/X.svg) no-repeat center center;
+  transform: translateX(1rem);
+}
+
+.connect {
+  padding: 8.3vh 5.2vw;
+  background: hsla(var(--gray-back-100), 0.6);
+  @include font($align: center);
+
+  &-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    width: fit-content;
+    margin-bottom: 5rem;
+    @include font($s: 48, $trans: uppercase);
+
+    &::before,
+    &::after {
+      display: block;
+      content: "";
+      width: 7rem;
+      border-top: 2px solid hsl(var(--gray-fore-100));
+    }
+  }
+  &-closeGreeting {
+    margin-top: 5rem;
+    font-family: "Ruslan Display";
+    @include font($s: 15);
+  }
+
+  .caption {
+    position: static;
+    margin: 0.8rem 0;
+    @include font($s: 20, $align: center);
+  }
+}

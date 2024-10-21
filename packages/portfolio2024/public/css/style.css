@@ -555,6 +555,127 @@ body {
   left: 0;
 }
 
+.contact {
+  width: 100vw;
+  height: 100vh;
+  background: -webkit-gradient(linear, left top, left bottom, from(hsl(var(--pink-back-080))), to(hsl(var(--gray-back-100)))), url(/images/contact-bg.png) no-repeat center center;
+  background: linear-gradient(180deg, hsl(var(--pink-back-080)) 0%, hsl(var(--gray-back-100)) 100%), url(/images/contact-bg.png) no-repeat center center;
+  background-size: cover;
+  background-blend-mode: hard-light;
+}
+.contact-wrap {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 5rem;
+}
+
+.energe {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 26.4rem;
+  font-size: 18rem;
+  color: hsl(var(--gray-back-100));
+  -webkit-filter: drop-shadow(0.4rem 0.4rem 0 hsla(var(--pink-back-050), 0.5));
+          filter: drop-shadow(0.4rem 0.4rem 0 hsla(var(--pink-back-050), 0.5));
+}
+.energe-sup {
+  font-size: 9rem;
+  -webkit-transform: translateY(-2rem);
+          transform: translateY(-2rem);
+}
+
+.milkCoffee {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+  gap: 2rem;
+  text-align: center;
+}
+
+.milk,
+.coffee {
+  width: 16.5rem;
+}
+.milk [class$=-icon],
+.coffee [class$=-icon] {
+  font-size: 4rem;
+  line-height: 0.8;
+}
+.milk [class$=-icon] p::first-letter,
+.coffee [class$=-icon] p::first-letter {
+  font-size: 9rem;
+}
+.milk [class$=-imgWrap],
+.coffee [class$=-imgWrap] {
+  width: 11rem;
+  margin: 0 auto;
+}
+
+.xIcon {
+  width: 4rem;
+  height: 6rem;
+  background: url(/icons/X.svg) no-repeat center center;
+  -webkit-transform: translateX(1rem);
+          transform: translateX(1rem);
+}
+
+.connect {
+  padding: 8.3vh 5.2vw;
+  background: hsla(var(--gray-back-100), 0.6);
+  text-align: center;
+}
+.connect-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 2rem;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-bottom: 5rem;
+  font-size: 4.8rem;
+  text-transform: uppercase;
+}
+.connect-title::before, .connect-title::after {
+  display: block;
+  content: "";
+  width: 7rem;
+  border-top: 2px solid hsl(var(--gray-fore-100));
+}
+.connect-closeGreeting {
+  margin-top: 5rem;
+  font-family: "Ruslan Display";
+  font-size: 1.5rem;
+}
+.connect .caption {
+  position: static;
+  margin: 0.8rem 0;
+  font-size: 2rem;
+  text-align: center;
+}
+
 .infoBox {
   display: -webkit-box;
   display: -ms-flexbox;
