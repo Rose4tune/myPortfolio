@@ -19,13 +19,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 5rem;
+    gap: vw(50);
   }
 }
 
 .energe {
   display: flex;
-  height: 20rem;
   @include font($s: 140, $cr: hsl(var(--gray-back-100)));
   filter: drop-shadow(0.4rem 0.4rem 0 hsla(var(--pink-back-050), 0.5));
 
@@ -45,7 +44,7 @@
 
 .milk,
 .coffee {
-  width: 14rem;
+  width: vw(140);
   [class$="-icon"] {
     @include font($s: 30, $ln: 0.8);
     p::first-letter {
@@ -53,20 +52,20 @@
     }
   }
   [class$="-imgWrap"] {
-    width: 11rem;
+    width: vw(110);
     margin: 0 auto;
   }
 }
 
 .xIcon {
-  width: 4rem;
-  height: 6rem;
+  width: vw(40);
+  height: vw(60);
   background: url(/icons/X.svg) no-repeat center center;
   transform: translateX(1rem);
 }
 
 .connect {
-  padding: 9rem 10rem;
+  padding: vw(90) vw(100);
   background: hsla(var(--gray-back-100), 0.6);
   @include font($align: center);
 
@@ -87,6 +86,7 @@
       border-top: 2px solid hsl(var(--gray-fore-100));
     }
   }
+
   &-closeGreeting {
     margin-top: 5rem;
     font-family: "Ruslan Display";
@@ -95,7 +95,6 @@
 
   .caption {
     position: static;
-    margin: 0.8rem 0;
-    @include font($s: 20, $align: center);
+    @include font($s: 20, $ln: 1.5, $align: center);
   }
 }

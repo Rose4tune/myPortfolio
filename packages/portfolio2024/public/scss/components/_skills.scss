@@ -6,17 +6,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 4vw;
+  gap: vw(75);
 
   &-board {
     position: relative;
     display: flex;
     flex-wrap: wrap;
-    gap: 3vw;
-    width: 70vw;
-    height: 47vw;
-    padding: 15rem 20rem;
-    margin: 0 0 4rem 4rem;
+    gap: vw(55);
+    width: vw(1345);
+    height: vh(900);
+    padding: vh(150) vw(200);
+    margin: 0 0 #{$shadowDepth} #{$shadowDepth};
     background: hsl(var(--gray-back-100));
     perspective: 50rem;
     overflow-y: auto;

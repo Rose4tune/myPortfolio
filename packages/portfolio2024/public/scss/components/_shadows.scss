@@ -2,9 +2,9 @@
 
 .frameShadow {
   &_right {
-    filter: drop-shadow(4rem 4rem hsl(var(--pink-back-080)));
+    filter: drop-shadow($shadowDepth $shadowDepth hsl(var(--pink-back-080)));
   }
   &_left {
-    filter: drop-shadow(-4rem 4rem hsl(var(--pink-back-080)));
+    filter: drop-shadow(-$shadowDepth $shadowDepth hsl(var(--pink-back-080)));
   }
 }
