@@ -6,108 +6,110 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 4vw;
+  gap: vw(75);
 
   &-board {
     position: relative;
     display: flex;
     flex-wrap: wrap;
-    gap: 3vw;
-    width: 70vw;
-    height: 47vw;
-    padding: 15rem 20rem;
-    margin: 0 0 4rem 4rem;
+    gap: vw(55);
+    width: vw(1345);
+    height: vh(900);
+    padding: vh(150) vw(200);
+    margin: 0 0 #{$shadowDepth} #{$shadowDepth};
     background: hsl(var(--gray-back-100));
     perspective: 50rem;
     overflow-y: auto;
     scrollbar-width: thin;
     border: 1px solid hsl(var(--pink-back-070));
     z-index: 50;
+  }
 
-    li {
-      position: relative;
-      width: 13vw;
-      height: 13vw;
-      border: 1px solid hsl(var(--pink-back-070));
-      word-break: break-all;
-      cursor: pointer;
-      font-size: 1.4rem;
-      transform-style: preserve-3d;
-      transform: rotateY(0deg);
-      transition: 0.5s;
+  &-item {
+    position: relative;
+    width: 13vw;
+    height: 13vw;
+    border: 1px solid hsl(var(--pink-back-070));
+    word-break: break-all;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transform: rotateY(0deg);
+    transition: 0.5s;
 
-      .title {
-        font-family: "Noto Sans";
-        font-weight: 800;
-        text-transform: uppercase;
+    &-title {
+      @include font(
+        $s: 14,
+        $family: "Noto Sans",
+        $wght: 800,
+        $trans: uppercase
+      );
 
-        &::before {
-          display: inline-block;
-          content: url(/icons/arrow_black.svg);
-          transform: translate(-2px, 4px) scale(0.8);
-        }
-        &::after {
-          display: inline-block;
-          content: url(/icons/arrow_black.svg);
-          transform: translate(2px, 4px) rotateY(180deg) scale(0.8);
-        }
+      &::before {
+        display: inline-block;
+        content: url(/icons/arrow_black.svg);
+        transform: translate(-2px, 4px) scale(0.8);
       }
-
-      .des {
-        padding: 0.5rem;
-        line-height: 1.2;
+      &::after {
+        display: inline-block;
+        content: url(/icons/arrow_black.svg);
+        transform: translate(2px, 4px) rotateY(180deg) scale(0.8);
       }
+    }
 
-      .front {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        display: flex;
-        gap: 1rem;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        backface-visibility: hidden;
+    &.flipped {
+      transform: rotateY(-180deg) translateZ(-15rem);
+      filter: none;
+      z-index: 100;
+      box-shadow: 1rem 1rem 1.5rem hsla(var(--pink-back-070), 0.5);
+      background: hsl(var(--gray-back-100));
 
-        &:hover {
-          background: hsl(var(--pink-back-070));
-        }
-      }
-
-      .imgWrap {
-        width: 50%;
-      }
-
-      .back {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        padding: 1.5rem;
-        backface-visibility: hidden;
-        transform: rotateY(180deg);
-
-        .title {
-          padding-bottom: 1rem;
-          margin-bottom: 1rem;
-          border-bottom: 2px solid hsl(var(--pink-back-070));
-        }
-      }
-
-      &.flipped {
-        transform: rotateY(-180deg) translateZ(-15rem);
-        filter: none;
-        z-index: 100;
-        box-shadow: 1rem 1rem 1.5rem hsla(var(--pink-back-070), 0.5);
-        background: hsl(var(--gray-back-100));
-
-        &:hover {
-          background: hsl(var(--pink-back-100));
-        }
+      &:hover {
+        background: hsl(var(--pink-back-100));
       }
     }
   }
 
-  &-menubar {
+  &-front {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    backface-visibility: hidden;
+
+    &:hover {
+      background: hsl(var(--pink-back-070));
+    }
+
+    &-imgWrap {
+      width: 50%;
+    }
+  }
+
+  &-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    padding: 1.5rem;
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+
+    [class$="-title"] {
+      padding-bottom: 1rem;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid hsl(var(--pink-back-070));
+    }
+
+    &-des {
+      padding: 0.5rem;
+      @include font($s: 13, $ln: 1.2);
+    }
+  }
+
+  &-navWrap {
     width: 15vw;
     height: 20vw;
     margin-bottom: 5rem;
@@ -142,21 +144,23 @@
     }
   }
 
-  &-menus {
+  &-nav {
     width: calc(100% - 6rem);
     height: 78%;
     margin: 19% 3rem;
-    line-height: 1.6;
-    font-size: 3rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    color: hsl(var(--gray-fore-020));
+    @include font(
+      $s: 26,
+      $ln: 1.6,
+      $wght: 600,
+      $trans: uppercase,
+      $cr: hsl(var(--gray-fore-020))
+    );
 
-    li {
+    &-menu {
       cursor: pointer;
 
       &.active {
-        color: hsl(var(--pink-fore-030));
+        @include font($cr: hsl(var(--pink-fore-030)));
       }
 
       &::before {

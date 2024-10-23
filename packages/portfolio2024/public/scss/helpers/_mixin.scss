@@ -24,7 +24,8 @@
 }
 
 // FONT
-@mixin font($s: '', $wght: '', $ln: '', $cr: '', $align: '', $trans: '') {
+@mixin font($family: '', $s: '', $wght: '', $ln: '', $cr: '', $align: '', $trans: '') {
+  @if($family != '') {font-family: $family;}
   @if($s != '') {font-size: rem($s);}
   @if($wght != '') {font-weight: $wght;}
   @if($ln != '') {line-height: $ln;}

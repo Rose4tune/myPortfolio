@@ -1,5 +1,7 @@
 @use "../helpers" as *;
 
+$lineMargin: vh(60);
+
 .doubleLine {
   position: absolute;
   width: fit-content;
@@ -10,14 +12,14 @@
   &::after {
     content: "";
     display: block;
-    width: 7.3vw;
+    width: vw(140);
     border: 2px solid hsl(var(--pink-fore-050));
   }
   &::before {
-    margin: 0 auto 5.5vh;
+    margin: 0 auto $lineMargin;
   }
   &::after {
-    margin: 5.5vh auto 0;
+    margin: $lineMargin auto 0;
   }
 
   &.even > div:nth-child(even) {

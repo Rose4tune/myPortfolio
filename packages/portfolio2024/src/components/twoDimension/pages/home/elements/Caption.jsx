@@ -2,7 +2,7 @@ import React from "react";
 import { useRecoilValue } from "recoil";
 import { LanguageAtom } from "../../../../../stores";
 
-const Caption = ({ type, link }) => {
+const Caption = ({ type, link, lang }) => {
   const language = useRecoilValue(LanguageAtom);
 
   const captions = {
@@ -102,6 +102,7 @@ const Caption = ({ type, link }) => {
   };
 
   const currentCaption = captions[type];
+  const displayLanguage = lang ? lang : language;
 
   return (
     <div
@@ -110,9 +111,9 @@ const Caption = ({ type, link }) => {
     >
       {currentCaption ? (
         <>
-          {currentCaption.text[language]}
+          {currentCaption.text[displayLanguage]}
           {renderCaptionLink(
-            currentCaption.linkText[language],
+            currentCaption.linkText[displayLanguage],
             currentCaption.isDiv
           )}
         </>

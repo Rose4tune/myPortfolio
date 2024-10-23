@@ -1,5 +1,5 @@
-@use 'sass:map';
-@use 'sass:string';
+@use "sass:map";
+@use "sass:string";
 
 @use "./color" as *;
 
@@ -9,5 +9,13 @@ $browser-context: 10;
 }
 
 @function color($cr) {
-  @return unquote(map-get($colors, $cr))
+  @return unquote(map-get($colors, $cr));
+}
+
+@function vw($px, $context: 1920) {
+  @return #{round(calc(($px * 100) / $context), 0.05)}vw;
+}
+
+@function vh($px, $context: 1080) {
+  @return #{round(calc(($px * 100) / $context), 0.05)}vh;
 }

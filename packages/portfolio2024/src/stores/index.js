@@ -12,16 +12,26 @@ export const DimensionModeAtom = atom({
 });
 
 export const ThemeModeAtom = atom({
-  key: `ThemeModeAtom`,
+  key: "ThemeModeAtom",
   default: "light",
 });
 
 export const ShowNavAtom = atom({
-  key: `ShowNavAtom`,
+  key: "ShowNavAtom",
   default: false,
 });
 
 export const LanguageAtom = atom({
-  key: `LanguageAtom`,
+  key: "LanguageAtom",
   default: "ko",
+});
+
+export const ResponsiveWindowSizeAtom = atom({
+  key: "ResponsiveWindowSizeAtom",
+  default: null,
+});
+
+export const WindowDirectionAtom = atom({
+  key: "WindowDirectionAtom",
+  default: "hor",
 });

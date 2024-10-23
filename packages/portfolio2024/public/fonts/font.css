@@ -76,8 +76,8 @@
   font-family: "RammettoOne";
   font-weight: normal;
   font-display: swap;
-  src: url(./rammettoOne/RammettoOne-Regular.woff) format("woff");
   font-style: normal;
+  src: url(./rammettoOne/RammettoOne-Regular.woff) format("woff");
 }
 
 /* Rampart One */
@@ -85,16 +85,17 @@
   font-family: "RampartOne";
   font-weight: normal;
   font-display: swap;
-  src: url(./rampartOne/RampartOne-Regular.woff) format("woff");
   font-style: normal;
+  src: url(./rampartOne/RampartOne-Regular.woff) format("woff");
 }
 
 /* Cafe24 Super Magic */
 @font-face {
   font-family: "Cafe24Supermagic";
-  src: url(./cafe24Supermagic/Cafe24Supermagic-Bold-v1.0.woff2) format("woff2");
   font-weight: 700;
+  font-display: swap;
   font-style: normal;
+  src: url(./cafe24Supermagic/Cafe24Supermagic-Bold-v1.0.woff2) format("woff2");
 }
 
 /* Noto Sans */
@@ -124,4 +125,12 @@
   font-weight: 900;
   font-display: swap;
   src: url(./notoSans/noto-sans-kr-v36-korean-900.woff2) format("woff2");
+}
+
+/* Ruslan Display */
+@font-face {
+  font-family: "Ruslan Display";
+  font-weight: normal;
+  font-display: swap;
+  src: url(./ruslanDisplay/RuslanDisplay-Regular.woff2) format("woff2");
 }

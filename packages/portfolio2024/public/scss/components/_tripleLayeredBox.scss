@@ -1,5 +1,7 @@
 @use "../helpers" as *;
 
+$distance: -1.5vh;
+
 .tripleLayered {
   position: relative;
   width: fit-content;
@@ -14,8 +16,8 @@
     width: 100%;
     height: 100%;
     border: 1px solid hsl(var(--pink-fore-050));
-    top: -1.5rem;
-    right: -1.5rem;
+    top: $distance;
+    right: $distance;
     z-index: -1;
     background: hsl(var(--gray-back-100));
   }
@@ -26,8 +28,8 @@
     width: 100%;
     height: 100%;
     border: 1px solid hsl(var(--pink-fore-050));
-    top: -3rem;
-    right: -3rem;
+    top: $distance * 2;
+    right: $distance * 2;
     z-index: -2;
     background: hsl(var(--gray-back-100));
   }
