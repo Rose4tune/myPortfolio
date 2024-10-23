@@ -25,3 +25,16 @@ export const LanguageAtom = atom({
   key: `LanguageAtom`,
   default: "ko",
 });
+
+export const WindowSizeAtom = atom({
+  key: `WindowSizeAtom`,
+  default: {
+    width: window.innerWidth,
+    height: window.innerHeight,
+  },
+});
+
+export const WindowDirectionAtom = atom({
+  key: `WindowDirectionAtom`,
+  default: "hor",
+});
