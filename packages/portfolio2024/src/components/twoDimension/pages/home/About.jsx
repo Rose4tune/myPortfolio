@@ -158,7 +158,7 @@ const About = forwardRef((props, ref) => {
         style={
           language === "ko"
             ? {
-                transform: "scale(.9) translateY(-7vh)",
+                transform: "scale(.9)",
                 transformOrigin: "top right",
               }
             : {}
@@ -304,7 +304,7 @@ const Keywords = styled.div`
   text-transform: uppercase;
   white-space: pre-line;
   text-shadow: 4px 0 0 hsl(var(--white));
-  transform: translateY(-8vh);
+  transform: translateY(-3vw);
 `;
 
 export default About;

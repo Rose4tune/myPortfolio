@@ -8,8 +8,8 @@ import useWindowSize from "./components/hooks/useWindowSize";
 function App() {
   const DimensionMode = useRecoilValue(DimensionModeAtom);
 
-  const { width, height } = useWindowSize();
-  console.log(width, height);
+  const windowSize = useWindowSize();
+  console.log(windowSize);
   return (
     <>
       <ModeBar />

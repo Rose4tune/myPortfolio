@@ -1,14 +1,20 @@
 import { useEffect, useState } from "react";
 import { debounce } from "lodash";
 import { useRecoilState, useSetRecoilState } from "recoil";
-import { WindowDirectionAtom, WindowSizeAtom } from "../../stores";
+import { WindowDirectionAtom, ResponsiveWindowSizeAtom } from "../../stores";
 
 const useWindowSize = () => {
+  const [currentWindowSize, setCurrentWindowSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
   const setWindowDirection = useSetRecoilState(WindowDirectionAtom);
-  const [windowSize, setWindowSize] = useRecoilState(WindowSizeAtom);
+  const [ResponsiveWindowSize, setResponsiveWindowSize] = useRecoilState(
+    ResponsiveWindowSizeAtom
+  );
 
   const handleResize = debounce(() => {
-    setWindowSize({
+    setCurrentWindowSize({
       width: window.innerWidth,
       height: window.innerHeight,
     });
@@ -16,12 +22,24 @@ const useWindowSize = () => {
 
   useEffect(() => {
     window.addEventListener("resize", handleResize);
-    setWindowDirection(windowSize.width > windowSize.height ? "hor" : "ver");
+
+    const {width, height} = currentWindowSize;
+    setWindowDirection(width > height ? "hor" : "ver");
+    setResponsiveWindowSize(
+      width <= 320 ? "xSmall" :
+      width <= 380 ? "small" :
+      width <= 480 ? "regular" :
+      width <= 600 ? "semiMedium" :
+      width <= 768 ? "medium" :
+      width <= 1300 ? "large" :
+      width <= 1600 ? "xLarge" :
+      "max"
+    );
 
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  return windowSize;
+  return ResponsiveWindowSize;
 };
 
 export default useWindowSize;
