@@ -2,6 +2,9 @@ import { forwardRef, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { introTexts } from "../../../../data/constants";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Intro = forwardRef((props, ref) => {
   const textRefs = useRef([]);
@@ -9,9 +12,10 @@ const Intro = forwardRef((props, ref) => {
 
   useEffect(() => {
     if (!textRefs.current[0]) return;
+
     textRefs.current.forEach((textRef, i) => {
       if (textRef) {
-        gsap.fromTo(
+        const anim = gsap.fromTo(
           textRef,
           { x: "100%" },
           {
@@ -21,9 +25,17 @@ const Intro = forwardRef((props, ref) => {
             x: "-100%",
           }
         );
+
+        ScrollTrigger.create({
+          trigger: ref.current,
+          start: "top top",
+          end: "10% 30%",
+          onLeave: () => anim.pause(),
+          onEnterBack: () => anim.play(),
+        });
       }
     });
-  }, [textRefs.current]);
+  }, [textRefs.current, ref]);
 
   return (
     <Section ref={ref} className="font_rammettoOne">
