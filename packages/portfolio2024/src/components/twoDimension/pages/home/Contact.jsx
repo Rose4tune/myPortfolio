@@ -50,7 +50,7 @@ const Contact = forwardRef((props, ref) => {
         { opacity: 1, scale: 1, duration: 0.5 },
         "<"
       )
-      .fromTo(supRef.current, { y: 0 }, { y: "-20%", duration: 1 }, "<");
+      .fromTo(supRef.current, { y: 0 }, { y: "-40%", duration: 1 }, "<");
   };
 
   useEffect(() => {

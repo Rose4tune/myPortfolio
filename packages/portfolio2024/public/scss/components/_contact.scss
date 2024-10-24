@@ -25,6 +25,7 @@
 
 .energe {
   display: flex;
+  height: rem(140);
   @include font($s: 140, $cr: hsl(var(--gray-back-100)));
   filter: drop-shadow(0.4rem 0.4rem 0 hsla(var(--pink-back-050), 0.5));
 
@@ -44,7 +45,7 @@
 
 .milk,
 .coffee {
-  width: vw(140);
+  width: rem(140);
   [class$="-icon"] {
     @include font($s: 30, $ln: 0.8);
     p::first-letter {

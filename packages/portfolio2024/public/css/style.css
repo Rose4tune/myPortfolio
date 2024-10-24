@@ -580,6 +580,7 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  height: 14rem;
   font-size: 14rem;
   color: hsl(var(--gray-back-100));
   -webkit-filter: drop-shadow(0.4rem 0.4rem 0 hsla(var(--pink-back-050), 0.5));
@@ -607,7 +608,7 @@ body {
 
 .milk,
 .coffee {
-  width: 7.3vw;
+  width: 14rem;
 }
 .milk [class$=-icon],
 .coffee [class$=-icon] {
