@@ -1,6 +1,6 @@
 @use "../helpers" as *;
 
-$lineMargin: vh(60);
+$lineMargin: rem(60);
 
 .doubleLine {
   position: absolute;

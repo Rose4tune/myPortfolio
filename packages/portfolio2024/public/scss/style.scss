@@ -1,29 +1,3 @@
 @use "./base" as *;
 @use "./components" as *;
 @use "./helpers" as *;
-
-.infoBox {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  width: 27vw;
-  max-width: 51rem;
-
-  &-content {
-    margin-left: 4rem;
-    @include font($ln: 1.4);
-
-    &::before {
-      display: inline-block;
-      content: url(../icons/arrow_red.svg);
-      padding-top: 3px;
-      transform: translate(-1rem, 3px);
-    }
-    &::after {
-      display: inline-block;
-      content: url(../icons/arrow_red.svg);
-      padding-top: 3px;
-      transform: translate(1rem, 3px) rotateY(180deg);
-    }
-  }
-}

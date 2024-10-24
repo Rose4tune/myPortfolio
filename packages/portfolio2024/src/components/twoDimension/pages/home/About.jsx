@@ -1,10 +1,11 @@
 import { forwardRef } from "react";
 import styled from "styled-components";
 import { useRecoilValue } from "recoil";
-import { LanguageAtom } from "../../../../stores";
+import { LanguageAtom, windowSizeAtom } from "../../../../stores";
 import DoubleLineBox from "./elements/DoubleLineBox";
 import TripleLayeredBox from "./elements/TripleLayeredBox";
 import Caption from "./elements/Caption";
+import { introduction, keywords, information } from "../../../../data/about";
 
 const getGreetings = (language) =>
   ({
@@ -44,6 +45,9 @@ const getSayHello = (language) =>
 
 const About = forwardRef((props, ref) => {
   const language = useRecoilValue(LanguageAtom);
+  const windowSize = useRecoilValue(windowSizeAtom);
+  const infoSize =
+    windowSize.width < 1300 ? 35 : windowSize.width < 1600 ? 33 : 27;
 
   return (
     <Section ref={ref}>
@@ -77,9 +81,9 @@ const About = forwardRef((props, ref) => {
         contents={introduction[language]}
         even={true}
         style={{
-          top: "48vh",
-          left: "66%",
-          transform: "translateX(-50%)",
+          top: "28%",
+          left: "66vw",
+          transform: "translate(-50%, -50%)",
         }}
       />
 
@@ -127,9 +131,10 @@ const About = forwardRef((props, ref) => {
               </div>
             ))}
             position={{
-              bottom: "-40vh",
-              right: "-15vw",
-              transform: "translate(0, 0)",
+              top: "100%",
+              right: "-14vw",
+              transform: "translate(0, -50%)",
+              width: `${infoSize}vw`,
             }}
             style={{
               padding: "4rem 3rem",
@@ -220,6 +225,34 @@ const ImgBox3 = styled.div`
 
   img {
     opacity: 0.6;
+  }
+
+  .infoBox {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    &-content {
+      margin-left: 4rem;
+      @include font($ln: 1.4);
+
+      &::before, &::after {
+        display: inline-block;
+        content: "";
+        padding-top: 3px;
+        width: 1rem;
+        height: 2.1rem;
+        background: url(../icons/arrow_red.svg) no-repeat center center;
+        background-size: contain;
+      }
+
+      &::before {
+        transform: translate(-1.4rem, 3px);
+      }
+      &::after {
+        transform: translate(1rem, 3px) rotateY(180deg);
+      }
+    }
   }
 `;
 
