@@ -92,6 +92,7 @@ const BtnWrap = styled.button`
 const Icon = styled.div`
   width: 15vw;
   max-width: 195px;
+  min-width: 10rem;
   animation:
     ${bounce} 1s ease-out infinite,
     ${bounceStop} ${animaStopDuration}s ease-out ${animaDelay}s forwards,

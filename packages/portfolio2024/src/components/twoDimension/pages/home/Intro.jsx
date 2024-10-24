@@ -3,12 +3,27 @@ import styled from "styled-components";
 import { introTexts } from "../../../../data/constants";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useRecoilValue } from "recoil";
+import { windowSizeAtom } from "../../../../stores";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Intro = forwardRef((props, ref) => {
   const textRefs = useRef([]);
   const textDurations = [12, 9, 14, 24];
+  const windowSize = useRecoilValue(windowSizeAtom);
+  const fontSize =
+    windowSize.height < 400
+      ? 3
+      : windowSize.height < 490
+      ? 4
+      : windowSize.height < 570
+      ? 5
+      : windowSize.height < 670
+      ? 6
+      : windowSize.height < 810
+      ? 7
+      : 10;
 
   useEffect(() => {
     if (!textRefs.current[0]) return;
@@ -17,7 +32,7 @@ const Intro = forwardRef((props, ref) => {
       if (textRef) {
         const anim = gsap.fromTo(
           textRef,
-          { x: "100%" },
+          { x: "130%" },
           {
             duration: textDurations[i],
             repeat: -1,
@@ -38,7 +53,7 @@ const Intro = forwardRef((props, ref) => {
   }, [textRefs.current, ref]);
 
   return (
-    <Section ref={ref} className="font_rammettoOne">
+    <Section ref={ref} className="font_rammettoOne" fontSize={fontSize}>
       {introTexts.map((text, i) => {
         return (
           <IntroTextBox
@@ -63,31 +78,32 @@ const Section = styled.section`
   height: 100vh;
   overflow: hidden;
   white-space: nowrap;
+  font-size: ${(props) => props.fontSize}px;
 `;
 
 const IntroTextBox = styled.p`
   position: absolute;
   color: hsl(var(--pink-fore-030));
-  text-shadow: 4rem 4rem 0 hsl(var(--pink-fore-020));
+  text-shadow: .25em .25em 0 hsl(var(--pink-fore-020));
 
   &:nth-child(1){
-    font-size: 18rem;
-    top: 3rem;
+    font-size: 18em;
+    top: 3vh;//30
   }
   &:nth-child(2){
-    font-size: 10rem;
+    font-size: 10em;
     opacity: 0.6;
-    top: 28rem;
+    top: 27vh;//280
   }
   &:nth-child(3){
-    font-size: 10rem;
+    font-size: 10em;
     opacity: 0.7;
-    bottom: 31rem;
+    bottom: 30vh;//310
   }
   &:nth-child(4){
-    font-size: 18rem;
+    font-size: 18em;
     opacity: 0.6;
-    bottom: 6rem;
+    bottom: 5.6vh;//60
   }
 `;
 
@@ -97,6 +113,7 @@ const MyChracter = styled.div`
   left: 50%;
   width: 15vw;
   max-width: 195px;
+  min-width: 10rem;
   transform: translate(-50%, -50%);
 `;
 
