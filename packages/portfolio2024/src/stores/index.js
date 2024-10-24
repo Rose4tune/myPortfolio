@@ -26,12 +26,12 @@ export const LanguageAtom = atom({
   default: "ko",
 });
 
-export const ResponsiveWindowSizeAtom = atom({
-  key: "ResponsiveWindowSizeAtom",
-  default: null,
-});
-
-export const WindowDirectionAtom = atom({
-  key: "WindowDirectionAtom",
-  default: "hor",
+export const windowSizeAtom = atom({
+  key: "windowSizeAtom",
+  default: {
+    width: window.innerWidth,
+    height: window.innerHeight,
+    device: "desktop",
+    orientation: "landscape",
+  },
 });

@@ -1,45 +1,47 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { debounce } from "lodash";
-import { useRecoilState, useSetRecoilState } from "recoil";
-import { WindowDirectionAtom, ResponsiveWindowSizeAtom } from "../../stores";
+import { useRecoilState } from "recoil";
+import { windowSizeAtom } from "../../stores";
 
 const useWindowSize = () => {
-  const [currentWindowSize, setCurrentWindowSize] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
-  });
-  const setWindowDirection = useSetRecoilState(WindowDirectionAtom);
-  const [ResponsiveWindowSize, setResponsiveWindowSize] = useRecoilState(
-    ResponsiveWindowSizeAtom
-  );
+  const [windowSize, setWindowSize] = useRecoilState(windowSizeAtom);
 
   const handleResize = debounce(() => {
-    setCurrentWindowSize({
-      width: window.innerWidth,
-      height: window.innerHeight,
+    const { innerWidth: width, innerHeight: height } = window;
+    let device =
+      width <= 360
+        ? "mobileS"
+        : width <= 420
+        ? "mobile"
+        : width <= 600
+        ? "mobileL"
+        : width <= 760
+        ? "tabletS"
+        : width <= 960
+        ? "tablet"
+        : width <= 1024
+        ? "tabletL"
+        : width <= 1300
+        ? "laptop"
+        : width <= 1800
+        ? "laptopL"
+        : "desktop";
+
+    setWindowSize({
+      width: width,
+      height: height,
+      device,
+      orientation: height > width ? "portrait" : "landscape",
     });
   }, 1000);
 
   useEffect(() => {
     window.addEventListener("resize", handleResize);
 
-    const {width, height} = currentWindowSize;
-    setWindowDirection(width > height ? "hor" : "ver");
-    setResponsiveWindowSize(
-      width <= 320 ? "xSmall" :
-      width <= 380 ? "small" :
-      width <= 480 ? "regular" :
-      width <= 600 ? "semiMedium" :
-      width <= 768 ? "medium" :
-      width <= 1300 ? "large" :
-      width <= 1600 ? "xLarge" :
-      "max"
-    );
-
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  }, [handleResize]);
 
-  return ResponsiveWindowSize;
+  console.log(windowSize);
 };
 
 export default useWindowSize;
