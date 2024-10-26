@@ -133,7 +133,7 @@ const About = forwardRef((props, ref) => {
             position={{
               top: "100%",
               right: "-14vw",
-              transform: "translate(0, -50%)",
+              transform: "translate(0, -40%)",
               width: `${infoSize}vw`,
             }}
             style={{
@@ -239,18 +239,17 @@ const ImgBox3 = styled.div`
       &::before, &::after {
         display: inline-block;
         content: "";
-        padding-top: 3px;
         width: 1rem;
-        height: 2.1rem;
+        height: 1.6rem;
         background: url(../icons/arrow_red.svg) no-repeat center center;
         background-size: contain;
       }
 
       &::before {
-        transform: translate(-1.4rem, 3px);
+        transform: translateX(-1rem);
       }
       &::after {
-        transform: translate(1rem, 3px) rotateY(180deg);
+        transform: translateX(1rem) rotateY(180deg);
       }
     }
   }
