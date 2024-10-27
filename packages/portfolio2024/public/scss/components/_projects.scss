@@ -21,7 +21,7 @@
       background-blend-mode: multiply;
     }
 
-    img {
+    &-img {
       position: absolute;
       top: 0;
       left: 0;
@@ -30,10 +30,10 @@
       opacity: 0;
       transition: opacity 0.5s ease-in-out;
       object-fit: cover;
-    }
 
-    img.active {
-      opacity: 1;
+      &.active {
+        opacity: 1;
+      }
     }
 
     .font_rampartOne {
@@ -93,6 +93,8 @@
       margin: 1rem 0;
     }
     &-des {
+      height: calc(100% - 7.5rem);
+      overflow-y: clip;
       column-count: 2;
       column-gap: vw(30);
     }

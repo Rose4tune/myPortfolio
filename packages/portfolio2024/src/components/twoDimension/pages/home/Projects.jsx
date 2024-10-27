@@ -43,19 +43,36 @@ const Projects = forwardRef((props, ref) => {
                 key={i}
                 src={`/images/projects/${img}.jpg`}
                 alt={img}
-                className={i === activeIndex ? "active" : ""}
+                className={`project-picture-img ${
+                  i === activeIndex ? " active" : ""
+                }`}
               />
             ))}
             <div className="font_rampartOne">Project</div>
           </div>
-          <DoubleLineBox
-            contents={projects.map(({ key, value }, i) => ({
-              key,
-              value,
-              isActive: i === activeIndex,
-            }))}
-            style={{ position: "static", marginTop: "5vh" }}
+          <img
+            className="sparkle_double"
+            src="/icons/sparkle_double.svg"
+            alt="+"
           />
+          <DoubleLineWrap>
+            <DoubleLineBox
+              contents={projects.map(({ key, value }, i) => ({
+                key,
+                value,
+                isActive: i === activeIndex,
+              }))}
+              style={{
+                position: "relative",
+              }}
+            >
+              <img
+                className="arrow_curved"
+                src="/icons/arrow_curved.svg"
+                alt="pointing"
+              />
+            </DoubleLineBox>
+          </DoubleLineWrap>
           <div className="project-detail">
             <div className="tripleLayered">
               {projects.map(({ title, period, role, des, link }, i) => (
@@ -74,6 +91,7 @@ const Projects = forwardRef((props, ref) => {
                   <Caption type="more" link={link} />
                 </div>
               ))}
+              <Sparkle className="sparkle" src="/icons/sparkle.svg" alt="+" />
             </div>
           </div>
         </Wrap>
@@ -106,6 +124,38 @@ const Wrap = styled.div`
   align-items: flex-start;
   justify-content: center;
   position: relative;
+
+  .sparkle_double {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: translate(100%, 100%);
+    width: 5.5vw; //105
+  }
+
+`;
+
+const DoubleLineWrap = styled.div`
+  position: static;
+  margin-top: 5vh;
+
+  .doubleLine {
+    .arrow_curved {
+      width: 14.6vh; //158
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      transform: translate(-30%, 110%);
+    }
+  }
+`;
+
+const Sparkle = styled.img`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 2.24vw; //43
+  transform: translate(-150%, 50%);
 `;
 
 export default Projects;

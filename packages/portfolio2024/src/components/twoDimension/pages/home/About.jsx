@@ -6,13 +6,14 @@ import DoubleLineBox from "./elements/DoubleLineBox";
 import TripleLayeredBox from "./elements/TripleLayeredBox";
 import Caption from "./elements/Caption";
 import { introduction, keywords, information } from "../../../../data/about";
-import { getGreetings, getSayHello } from "./elements/getAboutText";
+import { getGreetings, getSayHello } from "../../../../data/getAbout";
 
 const About = forwardRef((props, ref) => {
   const language = useRecoilValue(LanguageAtom);
   const windowSize = useRecoilValue(windowSizeAtom);
   const infoSize =
     windowSize.width < 1300 ? 35 : windowSize.width < 1600 ? 33 : 27;
+  const isPortrait = windowSize.orientation === "portrait";
 
   return (
     <Section ref={ref}>
@@ -28,6 +29,12 @@ const About = forwardRef((props, ref) => {
         />
         {getSayHello(language)}
         <Caption type="resume" />
+        <img
+          className="icon_smile"
+          src="/icons/sparkle_smile.svg"
+          alt="smile"
+        />
+        <img className="sparkle_hello" src="/icons/sparkle.svg" alt="+" />
       </ProfileBox1>
 
       <TripleLayeredBox
@@ -72,11 +79,16 @@ const About = forwardRef((props, ref) => {
           alt="flower picture"
         />
         <img
-          className="bgImg d"
+          className="bgImg"
           src="/images/flower-img2.jpg"
           alt="flower picture"
         />
         <img className="fyi" src="/images/FYI.svg" alt="for your information" />
+        <img
+          className="sparkle_roseL"
+          src="/icons/sparkle_roseL.svg"
+          alt="rose icon"
+        />
       </ProfileBox2>
 
       <ImgBox3>
@@ -85,7 +97,11 @@ const About = forwardRef((props, ref) => {
             position: "relative",
           }}
         >
-          <img src="/images/flower-img3.jpg" alt="flower picture" />
+          <img
+            className="bgImg"
+            src="/images/flower-img3.jpg"
+            alt="flower picture"
+          />
           <Caption type="study" />
           <TripleLayeredBox
             classNames="infoBox"
@@ -106,6 +122,11 @@ const About = forwardRef((props, ref) => {
             }}
           />
         </div>
+        <img
+          className="parkle_roseS"
+          src="/icons/sparkle_roseS.svg"
+          alt="rose icon"
+        />
       </ImgBox3>
     </Section>
   );
@@ -144,6 +165,23 @@ const ProfileBox1 = styled.div`
     bottom: -8rem;
     right: -4rem;
   }
+
+  .icon_smile {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 18.75vw; //360
+    transform: translate(-20%, 105%);
+  }
+
+  .sparkle_hello {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 2.7vw; //50
+    transform: translate(150%, 0%);
+    
+  }
 `;
 const ProfileBox2 = styled.div`
   position: relative;
@@ -164,6 +202,14 @@ const ProfileBox2 = styled.div`
     width: 20vw;
     bottom: -5%;
     left: -22%;
+  }
+
+  .sparkle_roseL {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 19vw; // 364
+    transform: translate(-80%, -100%);
   }
 `;
 
@@ -188,8 +234,16 @@ const ImgBox3 = styled.div`
     transform: translateY(-50%);
   }
 
-  img {
+  .bgImg {
     opacity: 0.6;
+  }
+
+  .parkle_roseS {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 23.5vw; //450
+    transform: translate(4vw, 120%);
   }
 
   .infoBox {

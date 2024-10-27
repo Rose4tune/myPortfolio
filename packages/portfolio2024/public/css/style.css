@@ -503,7 +503,7 @@ body {
   background: hsla(var(--gray-fore-080), 0.1);
   background-blend-mode: multiply;
 }
-.project-picture img {
+.project-picture-img {
   position: absolute;
   top: 0;
   left: 0;
@@ -515,7 +515,7 @@ body {
   -o-object-fit: cover;
      object-fit: cover;
 }
-.project-picture img.active {
+.project-picture-img.active {
   opacity: 1;
 }
 .project-picture .font_rampartOne {
@@ -577,6 +577,8 @@ body {
   margin: 1rem 0;
 }
 .project-detail-des {
+  height: calc(100% - 7.5rem);
+  overflow-y: clip;
   -webkit-column-count: 2;
      -moz-column-count: 2;
           column-count: 2;
