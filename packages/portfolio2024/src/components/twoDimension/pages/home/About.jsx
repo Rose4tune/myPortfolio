@@ -105,7 +105,7 @@ const About = forwardRef((props, ref) => {
           />
           <Caption type="study" />
           <TripleLayeredBox
-            classNames="infoBox"
+            classNames="about-infoBox"
             contents={information.map(({ title, content }, i) => (
               <div className="infoBox-item" key={`info${i}`}>
                 <div className="boldUpper">{title}</div>

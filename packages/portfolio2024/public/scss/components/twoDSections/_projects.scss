@@ -111,32 +111,25 @@
     }
 
     .caption {
-      bottom: 0;
-      left: 0;
+      @include position($b: 0, $l: 0);
     }
   }
 
   &-sparkle_double {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    transform: translate(100%, 100%);
     width: vw(105);
+    @include position($b: 0, $l: 0);
+    transform: translate(100%, 100%);
   }
 
   &-arrow_curved {
-    width: 14.6vh;
-    position: absolute;
-    bottom: 0;
-    right: 0;
+    width: vh(158);
+    @include position($b: 0, $r: 0);
     transform: translate(-30%, 110%);
   }
 
   &-sparkle {
-    position: absolute;
-    bottom: 0;
-    left: 0;
     width: vw(43);
+    @include position($b: 0, $l: 0);
     transform: translate(-150%, 50%);
   }
 }

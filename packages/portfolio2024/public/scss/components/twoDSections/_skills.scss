@@ -142,10 +142,8 @@
 
     .caption {
       width: max-content;
-      position: absolute;
-      text-align: left;
-      bottom: -9rem;
-      left: -3rem;
+      @include position($b: rem(-90), $l: rem(-30));
+      @include font($align: left);
 
       &-link {
         margin-left: 0;

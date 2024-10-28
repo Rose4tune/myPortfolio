@@ -1,7 +1,6 @@
 @use "../helpers" as *;
 
 .caption {
-  position: absolute;
   @include font(
     $s: 15,
     $wght: 200,

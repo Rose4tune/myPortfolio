@@ -19,3 +19,8 @@ $browser-context: 10;
 @function vh($px, $context: 1080) {
   @return #{round(calc(($px * 100) / $context), 0.05)}vh;
 }
+
+@function per($inner, $wrap) {
+  @return #{round(calc(($inner * 100) / $wrap), 0.05) + "%"};
+  // @return #{calc(($inner * $wrap) / 100)};
+}
