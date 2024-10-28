@@ -41,10 +41,10 @@ const NavBar = forwardRef((props, ref) => {
 
   const handleScroll = () => {
     const currentScrollY = window.scrollY;
-    if (currentScrollY > lastScrollY || currentScrollY === 0) {
-      setShowNav(true);
-    } else {
+    if (currentScrollY === 0) {
       setShowNav(false);
+    } else {
+      setShowNav(true);
     }
     setLastScrollY(currentScrollY);
   };
