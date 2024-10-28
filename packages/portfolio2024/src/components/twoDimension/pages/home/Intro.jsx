@@ -53,16 +53,16 @@ const Intro = forwardRef((props, ref) => {
   }, [textRefs.current, ref]);
 
   return (
-    <Section ref={ref} className="font_rammettoOne" fontSize={fontSize}>
+    <Section ref={ref} className="intro font_rammettoOne" fontSize={fontSize}>
       {introTexts.map((text, i) => {
         return (
-          <IntroTextBox
+          <p
+            className="intro-item"
             key={`introTextKey${i}`}
             ref={(el) => (textRefs.current[i] = el)}
-            className="introTextBox"
           >
             {text}
-          </IntroTextBox>
+          </p>
         );
       })}
       <MyChracter>
@@ -73,38 +73,7 @@ const Intro = forwardRef((props, ref) => {
 });
 
 const Section = styled.section`
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  white-space: nowrap;
   font-size: ${(props) => props.fontSize}px;
-`;
-
-const IntroTextBox = styled.p`
-  position: absolute;
-  color: hsl(var(--pink-fore-030));
-  text-shadow: .25em .25em 0 hsl(var(--pink-fore-020));
-
-  &:nth-child(1){
-    font-size: 18em;
-    top: 3vh;//30
-  }
-  &:nth-child(2){
-    font-size: 10em;
-    opacity: 0.6;
-    top: 27vh;//280
-  }
-  &:nth-child(3){
-    font-size: 10em;
-    opacity: 0.7;
-    bottom: 30vh;//310
-  }
-  &:nth-child(4){
-    font-size: 18em;
-    opacity: 0.6;
-    bottom: 5.6vh;//60
-  }
 `;
 
 const MyChracter = styled.div`
