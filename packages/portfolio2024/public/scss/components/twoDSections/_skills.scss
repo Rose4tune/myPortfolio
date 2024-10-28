@@ -25,7 +25,7 @@
     width: vw(1286);
     height: vh(850);
     padding: vh(150) vw(192);
-    margin: 0 0 #{$shadowDepth} #{$shadowDepth};
+    margin: 0 0 rem(40) rem(40);
     background: hsl(var(--gray-back-100));
     perspective: 50rem;
     overflow-y: auto;
@@ -176,6 +176,15 @@
         margin-right: 0.5rem;
         transform: translateY(0.5rem);
       }
+    }
+  }
+}
+
+@include mobileL {
+  $shadowDepth: 2rem;
+  .skills {
+    &-board {
+      margin: 0 0 #{$shadowDepth} #{$shadowDepth};
     }
   }
 }

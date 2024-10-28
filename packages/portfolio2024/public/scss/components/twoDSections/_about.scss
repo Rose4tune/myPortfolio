@@ -12,14 +12,21 @@
   );
   perspective: 30rem;
 
+  &-greeting {
+    @include position($t: vw(185), $l: 50%);
+    transform: translate(-50%, -50%);
+  }
+
   &-profile {
     &Box1 {
       $box1W: 815;
       position: relative;
       width: vw($box1W);
       min-width: rem(280);
-      padding-top: vh(227);
-      margin-left: vw(120);
+      margin: {
+        top: vw(227);
+        left: vw(120);
+      }
 
       p {
         @include position($b: rem(-20), $r: rem(-20));
@@ -28,7 +35,7 @@
       }
 
       .caption {
-        @include position($b: rem(-80), $r: rem(-40));
+        @include position($b: rem(-90), $r: rem(-40));
       }
 
       .icon_smile {
@@ -70,6 +77,11 @@
     }
   }
 
+  .doubleLine {
+    @include position($t: 28%, $l: 66vw);
+    transform: translate(-50%, -50%);
+  }
+
   &-keywords {
     width: fit-content;
     margin: 0 6vw 0 auto;
@@ -90,13 +102,14 @@
       width: vw(480);
       @include position($t: 0, $r: 0);
       opacity: 0.6;
+      z-index: -10;
     }
 
     &_bottom {
       $bgimgBottomW: 800;
       width: vw($bgimgBottomW);
       @include position($t: 50%, $l: 0);
-      transform: translateY(15%);
+      transform: translateY(25%);
 
       .caption {
         @include position($t: 35%, $r: 35%);
@@ -114,45 +127,206 @@
       }
     }
   }
-  &-infoBox {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    width: vw(518);
 
-    &-content {
-      margin-top: rem(5);
-      margin-left: rem(40);
-      line-height: 1.2;
+  &-info {
+    &Wrap {
+      @include position($t: 100%, $r: -14vw);
+      transform: translate(0, -40%);
+    }
+    &Box {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      width: vw(518);
+      padding: 4rem 3rem;
 
-      &::before,
-      &::after {
-        display: inline-block;
-        content: "";
-        width: rem(10);
-        height: rem(16);
-        background: url(../icons/arrow_red.svg) no-repeat center center;
-        background-size: contain;
+      &-content {
+        margin-top: rem(5);
+        margin-left: rem(40);
+        line-height: 1.2;
+
+        &::before,
+        &::after {
+          display: inline-block;
+          content: "";
+          width: rem(10);
+          height: rem(16);
+          background: url(../icons/arrow_red.svg) no-repeat center center;
+          background-size: contain;
+        }
+
+        &::before {
+          transform: translateX(-1rem);
+        }
+        &::after {
+          transform: translateX(1rem) rotateY(180deg);
+        }
       }
+    }
+  }
+}
 
-      &::before {
-        transform: translateX(-1rem);
+@include laptop {
+  .about {
+    &-profileBox1 p {
+      @include font($s: 150);
+    }
+
+    &-infoBox {
+      width: 35vw;
+    }
+  }
+}
+
+@include laptopL {
+  .about-infoBox {
+    width: 33vw;
+  }
+}
+
+$mobileVW: 375;
+$mobileVH: 812;
+
+@include tablet {
+  .about {
+    &-profile {
+      &Box1 {
+        width: vw(275, $mobileVW);
+        margin: vh(38, $mobileVH) auto vw(120, $mobileVW);
+        transform: translateX(-2rem);
       }
-      &::after {
-        transform: translateX(1rem) rotateY(180deg);
+      &Box2 {
+        $box2W: 200;
+        width: vw($box2W, $mobileVW);
       }
     }
 
-    @include laptop {
-      .about-infoBox {
-        width: 35vw;
+    &-keywords {
+      margin: {
+        top: vh(100, $mobileVH);
+        right: vw(30, $mobileVW);
+        bottom: vh(100, $mobileVH);
+        left: auto;
+      }
+      transform: none;
+    }
+
+    .doubleLine {
+      position: initial;
+      transform: none;
+      margin: 0 auto;
+    }
+
+    &-greeting {
+      top: vw(140, $mobileVW);
+      left: vw(30, $mobileVW);
+      transform: none;
+    }
+
+    &-info {
+      &Wrap {
+        top: 65%;
+        left: 10%;
+        right: initial;
+        transform: translateX(0);
+      }
+      &Box {
+        width: vw(200, $mobileVW);
+      }
+    }
+    &-bgimg {
+      &_top {
+        position: inherit;
+        width: vw(240, $mobileVW);
+        margin-left: auto;
+      }
+      &_bottom {
+        position: initial;
+        width: vw(335, $mobileVW);
+        margin-top: vh(60, $mobileVH);
+        transform: none;
+      }
+    }
+  }
+}
+
+@include mobileL {
+  .about {
+    &-profileBox1 {
+      transform: translateX(-1rem);
+      p {
+        @include font($s: 100);
+        bottom: -1rem;
+        right: -1rem;
+      }
+      .caption {
+        bottom: -7rem;
+        right: -2rem;
       }
     }
 
-    @include laptopL {
-      .about-infoBox {
-        width: 33vw;
+    &-profile {
+      &Box2 {
+        $box2W: 250;
+        width: vw($box2W, $mobileVW);
+        .bgImg {
+          @include position($t: -62%, $l: -43%);
+          width: per(170, $box2W);
+        }
       }
+    }
+
+    &-greeting {
+      left: 50%;
+      transform: translateX(calc(-50% - 4rem));
+    }
+
+    &-keywords {
+      margin: {
+        top: vw(150, $mobileVH);
+        bottom: vh(60, $mobileVH);
+      }
+      @include font($s: 35);
+    }
+
+    &-info {
+      &Wrap {
+        left: 50%;
+        transform: translateX(calc(-50% + vw(20)));
+      }
+      &Box {
+        width: vw(315, $mobileVW);
+      }
+    }
+
+    &-bgimg_bottom .caption {
+      right: 8%;
+    }
+  }
+}
+
+@include mobile {
+  .about {
+    &-keywords {
+      margin: {
+        top: vw(100, $mobileVH);
+        right: vw(20, $mobileVW);
+        bottom: vw(100, $mobileVH);
+      }
+      @include font($s: 30);
+    }
+  }
+}
+
+@include mobileS {
+  .about {
+    &-keywords {
+      margin: {
+        top: vw(100, $mobileVH);
+        right: vw(20, $mobileVW);
+        bottom: vw(100, $mobileVH);
+      }
+      @include font($s: 25);
     }
   }
 }

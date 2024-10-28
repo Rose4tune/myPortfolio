@@ -1,10 +1,22 @@
 @use "../helpers" as *;
 
+$shadowDepth: 4rem;
+
 .frameShadow {
   &_right {
     filter: drop-shadow($shadowDepth $shadowDepth hsl(var(--pink-back-080)));
   }
   &_left {
     filter: drop-shadow(-$shadowDepth $shadowDepth hsl(var(--pink-back-080)));
+  }
+
+  @include mobileL {
+    $shadowDepth: 2rem;
+    &_right {
+      filter: drop-shadow($shadowDepth $shadowDepth hsl(var(--pink-back-080)));
+    }
+    &_left {
+      filter: drop-shadow(-$shadowDepth $shadowDepth hsl(var(--pink-back-080)));
+    }
   }
 }

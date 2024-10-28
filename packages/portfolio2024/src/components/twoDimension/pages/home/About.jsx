@@ -32,27 +32,19 @@ const About = forwardRef((props, ref) => {
         <img className="sparkle_hello" src="/icons/sparkle.svg" alt="+" />
       </div>
 
-      <TripleLayeredBox
-        contents={getGreetings(language)}
-        position={{
-          top: "17vh",
-          left: "50%",
-        }}
-        style={{
-          padding: "2rem 4rem",
-        }}
-        redText={true}
-      />
+      <div className="about-greeting">
+        <div
+          className="tripleLayered"
+          style={{
+            padding: "2rem 4rem",
+            color: "hsl(var(--red-fore-030))",
+          }}
+        >
+          {getGreetings(language)}
+        </div>
+      </div>
 
-      <DoubleLineBox
-        contents={introduction[language]}
-        even={true}
-        style={{
-          top: "28%",
-          left: "66vw",
-          transform: "translate(-50%, -50%)",
-        }}
-      />
+      <DoubleLineBox contents={introduction[language]} even={true} />
 
       <div
         className="about-keywords"
@@ -104,7 +96,18 @@ const About = forwardRef((props, ref) => {
             alt="rose icon"
           />
           <Caption type="study" />
-          <TripleLayeredBox
+
+          <div className="about-infoWrap">
+            <div className="about-infoBox tripleLayered">
+              {information.map(({ title, content }, i) => (
+                <div className="infoBox-item" key={`info${i}`}>
+                  <div className="boldUpper">{title}</div>
+                  <p className="infoBox-content">{content[language]}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+          {/* <TripleLayeredBox
             classNames="about-infoBox"
             contents={information.map(({ title, content }, i) => (
               <div className="infoBox-item" key={`info${i}`}>
@@ -120,7 +123,7 @@ const About = forwardRef((props, ref) => {
             style={{
               padding: "4rem 3rem",
             }}
-          />
+          /> */}
         </div>
       </div>
     </section>
