@@ -1,4 +1,16 @@
 :root {
+  --mobileS: $mobileS;
+  --mobile: $mobile;
+  --mobileL: $mobileL;
+  --tabletS: $tabletS;
+  --tablet: $tablet;
+  --tabletL: $tabletL;
+  --laptop: $laptop;
+  --laptopL: $laptopL;
+  --desktop: $desktop;
+}
+
+:root {
   --white: 0, 0%, 100%;
   --gray-fore-100: 0, 0%, 7%;
   --gray-fore-090: 0, 0%, 12%;

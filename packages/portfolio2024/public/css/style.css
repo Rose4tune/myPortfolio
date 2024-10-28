@@ -91,22 +91,7 @@ html {
 }
 @media (max-width: 1024px) {
   html {
-    font-size: 6px;
-  }
-}
-@media (max-width: 960px) {
-  html {
-    font-size: 5px;
-  }
-}
-@media (max-width: 760px) {
-  html {
-    font-size: 4px;
-  }
-}
-@media (max-width: 600px) {
-  html {
-    font-size: 3px;
+    font-size: 7px;
   }
 }
 
@@ -172,6 +157,11 @@ body {
   background-position: 100% 0%;
 }
 
+@media (max-width: 1024px) {
+  .caption {
+    font-size: 1.75rem;
+  }
+}
 .doubleLine {
   position: absolute;
   width: -webkit-fit-content;
@@ -295,6 +285,176 @@ body {
           filter: drop-shadow(-2.1vw 2.1vw hsl(var(--pink-back-080)));
 }
 
+.about {
+  position: relative;
+  width: 100vw;
+  padding-bottom: 11rem;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(20%, hsl(var(--gray-back-100))), color-stop(60%, hsl(var(--pink-back-090))), to(hsl(var(--gray-back-100))));
+  background: linear-gradient(180deg, hsl(var(--gray-back-100)) 20%, hsl(var(--pink-back-090)) 60%, hsl(var(--gray-back-100)) 100%);
+  -webkit-perspective: 30rem;
+          perspective: 30rem;
+}
+.about-profileBox1 {
+  position: relative;
+  width: 42.5vw;
+  min-width: 28rem;
+  padding-top: 21vh;
+  margin-left: 6vw;
+}
+.about-profileBox1 p {
+  position: absolute;
+  bottom: -2rem;
+  right: -2rem;
+  font-size: 18rem;
+  color: hsl(var(--white));
+  word-break: keep-all;
+}
+.about-profileBox1 .caption {
+  bottom: -8rem;
+  right: -4rem;
+}
+.about-profileBox1 .icon_smile {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 18.75vw;
+  -webkit-transform: translate(-20%, 105%);
+          transform: translate(-20%, 105%);
+}
+.about-profileBox1 .sparkle_hello {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 2.7vw;
+  -webkit-transform: translate(150%, 0%);
+          transform: translate(150%, 0%);
+}
+.about-profileBox2 {
+  position: relative;
+  width: 31.3vw;
+  min-width: 21rem;
+  margin-left: auto;
+}
+.about-profileBox2 .bgImg {
+  position: absolute;
+  width: 15.6vw;
+  top: -45%;
+  left: -30%;
+  opacity: 0.6;
+}
+.about-profileBox2 .fyi {
+  position: absolute;
+  width: 20vw;
+  bottom: -5%;
+  left: -22%;
+}
+.about-profileBox2 .sparkle_roseL {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 19vw;
+  -webkit-transform: translate(-80%, -100%);
+          transform: translate(-80%, -100%);
+}
+.about-keywords {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0 6vw 0 auto;
+  font-size: 4rem;
+  text-align: right;
+  line-height: 1.5;
+  color: hsl(var(--red-fore-030));
+  text-transform: uppercase;
+  white-space: pre-line;
+  text-shadow: 4px 0 0 hsl(var(--white));
+  -webkit-transform: translateY(-3vw);
+          transform: translateY(-3vw);
+}
+.about-bgimg_top {
+  position: absolute;
+  width: 25vw;
+  top: 0;
+  right: 0;
+  opacity: 0.6;
+}
+.about-bgimg_bottom {
+  position: absolute;
+  width: 41.7vw;
+  top: 50%;
+  left: 0;
+  -webkit-transform: translateY(15%);
+          transform: translateY(15%);
+}
+.about-bgimg_bottom .caption {
+  top: 35%;
+  right: 55%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+.about-bgimg_bottom .bgImg {
+  opacity: 0.6;
+}
+.about-bgimg_bottom .parkle_roseS {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 23.5vw;
+  -webkit-transform: translate(4vw, 120%);
+          transform: translate(4vw, 120%);
+}
+.about-bgimg_bottom .infoBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 2rem;
+  width: 27vw;
+}
+.about-bgimg_bottom .infoBox-content {
+  margin-top: 0.5rem;
+  margin-left: 4rem;
+  line-height: 1.2;
+}
+.about-bgimg_bottom .infoBox-content::before, .about-bgimg_bottom .infoBox-content::after {
+  display: inline-block;
+  content: "";
+  width: 1rem;
+  height: 1.6rem;
+  background: url(../icons/arrow_red.svg) no-repeat center center;
+  background-size: contain;
+}
+.about-bgimg_bottom .infoBox-content::before {
+  -webkit-transform: translateX(-1rem);
+          transform: translateX(-1rem);
+}
+.about-bgimg_bottom .infoBox-content::after {
+  -webkit-transform: translateX(1rem) rotateY(180deg);
+          transform: translateX(1rem) rotateY(180deg);
+}
+
+@media (max-width: 1300px) {
+  .infoBox {
+    width: 35vw;
+  }
+}
+@media (max-width: 1800px) {
+  .infoBox {
+    width: 33vw;
+  }
+}
+.skills-back, .skills-front {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  padding: 1.5rem;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+
 .skills {
   width: 100vw;
   height: 100vh;
@@ -382,9 +542,6 @@ body {
   background: hsl(var(--pink-back-100));
 }
 .skills-front {
-  width: 100%;
-  height: 100%;
-  position: absolute;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -399,8 +556,6 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
 }
 .skills-front:hover {
   background: hsl(var(--pink-back-070));
@@ -409,12 +564,6 @@ body {
   width: 50%;
 }
 .skills-back {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  padding: 1.5rem;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
 }
@@ -429,8 +578,8 @@ body {
   line-height: 1.2;
 }
 .skills-navWrap {
-  width: 15vw;
-  height: 20vw;
+  width: 15.1vw;
+  height: 20.05vw;
   margin-bottom: 5rem;
   background: url(/images/skill-bg.svg) no-repeat center center;
   background-size: contain;
@@ -451,6 +600,9 @@ body {
   background: hsl(var(--pink-back-100));
 }
 .skills-navWrap .caption {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
   position: absolute;
   text-align: left;
   bottom: -9rem;

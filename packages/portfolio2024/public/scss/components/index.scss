@@ -3,6 +3,8 @@
 @forward "navbar";
 @forward "tripleLayeredBox";
 @forward "shadows";
-@forward "skills";
-@forward "projects";
-@forward "contact";
+
+@forward "./twoDSections/about";
+@forward "./twoDSections/skills";
+@forward "./twoDSections/projects";
+@forward "./twoDSections/contact";

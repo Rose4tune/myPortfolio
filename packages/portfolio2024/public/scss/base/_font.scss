@@ -11,17 +11,17 @@ html {
     font-size: 8px;
   }
   @include tabletL {
-    font-size: 6px;
+    font-size: 7px;
   }
-  @include tablet {
-    font-size: 5px;
-  }
-  @include tabletS {
-    font-size: 4px;
-  }
-  @include mobileL {
-    font-size: 3px;
-  }
+  // @include tablet {
+  //   font-size: 5px;
+  // }
+  // @include tabletS {
+  //   font-size: 4px;
+  // }
+  // @include mobileL {
+  //   font-size: 3px;
+  // }
 }
 
 body {

@@ -1,4 +1,12 @@
-@use "../helpers" as *;
+@use "../../helpers" as *;
+
+%cardSet {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  padding: 1.5rem;
+  backface-visibility: hidden;
+}
 
 .skills {
   width: 100vw;
@@ -28,8 +36,8 @@
 
   &-item {
     position: relative;
-    width: 13vw;
-    height: 13vw;
+    width: vw(250);
+    height: vw(250);
     border: 1px solid hsl(var(--pink-back-070));
     word-break: break-all;
     cursor: pointer;
@@ -77,15 +85,12 @@
   }
 
   &-front {
-    width: 100%;
-    height: 100%;
-    position: absolute;
+    @extend %cardSet;
     display: flex;
     gap: 1rem;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    backface-visibility: hidden;
 
     &:hover {
       background: hsl(var(--pink-back-070));
@@ -97,11 +102,7 @@
   }
 
   &-back {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    padding: 1.5rem;
-    backface-visibility: hidden;
+    @extend %cardSet;
     transform: rotateY(180deg);
 
     [class$="-title"] {
@@ -117,8 +118,8 @@
   }
 
   &-navWrap {
-    width: 15vw;
-    height: 20vw;
+    width: vw(290);
+    height: vw(385);
     margin-bottom: 5rem;
     background: url(/images/skill-bg.svg) no-repeat center center;
     background-size: contain;
@@ -140,6 +141,7 @@
     }
 
     .caption {
+      width: max-content;
       position: absolute;
       text-align: left;
       bottom: -9rem;

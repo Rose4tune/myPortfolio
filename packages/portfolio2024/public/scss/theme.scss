@@ -1,5 +1,25 @@
 @use "./helpers" as *;
 
+// responsive breakpoint
+:root {
+  // 모바일
+  --mobileS: $mobileS;
+  --mobile: $mobile;
+  --mobileL: $mobileL;
+
+  // 태블릿
+  --tabletS: $tabletS;
+  --tablet: $tablet;
+  --tabletL: $tabletL;
+
+  // 노트북
+  --laptop: $laptop;
+  --laptopL: $laptopL;
+
+  // 데스크탑
+  --desktop: $desktop;
+}
+
 //light theme
 :root {
   --white: 0, 0%, 100%;
