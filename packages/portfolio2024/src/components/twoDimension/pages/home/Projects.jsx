@@ -15,9 +15,9 @@ const Projects = forwardRef((props, ref) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
-    gsap.to(".projectSection", {
+    gsap.to(".project", {
       scrollTrigger: {
-        trigger: ".projectSection",
+        trigger: ".project",
         start: "0% bottom",
         end: "bottom top",
         scrub: true,
@@ -30,9 +30,9 @@ const Projects = forwardRef((props, ref) => {
   }, [projects, setActiveIndex]);
 
   return (
-    <Section
+    <section
       ref={ref}
-      className="projectSection"
+      className="project"
       style={{ height: `${(projects.length + 1) * 100}vh` }}
     >
       <StickyFrame>
@@ -51,7 +51,7 @@ const Projects = forwardRef((props, ref) => {
             <div className="font_rampartOne">Project</div>
           </div>
           <img
-            className="sparkle_double"
+            className="project-sparkle_double"
             src="/icons/sparkle_double.svg"
             alt="+"
           />
@@ -67,7 +67,7 @@ const Projects = forwardRef((props, ref) => {
               }}
             >
               <img
-                className="arrow_curved"
+                className="project-arrow_curved"
                 src="/icons/arrow_curved.svg"
                 alt="pointing"
               />
@@ -91,26 +91,18 @@ const Projects = forwardRef((props, ref) => {
                   <Caption type="more" link={link} />
                 </div>
               ))}
-              <Sparkle className="sparkle" src="/icons/sparkle.svg" alt="+" />
+              <img
+                className="project-sparkle"
+                src="/icons/sparkle.svg"
+                alt="+"
+              />
             </div>
           </div>
         </Wrap>
       </StickyFrame>
-    </Section>
+    </section>
   );
 });
-
-const Section = styled.section`
-  position: relative;
-  width: 100vw;
-  background: linear-gradient(
-    180deg,
-    hsl(var(--gray-back-100)) 0%,
-    hsla(var(--pink-back-090), .8) 30%,
-    hsla(var(--pink-back-080), .6) 60%,
-    hsl(var(--pink-back-080), .8) 100%
-  );
-`;
 
 const StickyFrame = styled.div`
   position: sticky;
@@ -124,38 +116,11 @@ const Wrap = styled.div`
   align-items: flex-start;
   justify-content: center;
   position: relative;
-
-  .sparkle_double {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    transform: translate(100%, 100%);
-    width: 5.5vw; //105
-  }
-
 `;
 
 const DoubleLineWrap = styled.div`
   position: static;
   margin-top: 5vh;
-
-  .doubleLine {
-    .arrow_curved {
-      width: 14.6vh; //158
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      transform: translate(-30%, 110%);
-    }
-  }
-`;
-
-const Sparkle = styled.img`
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 2.24vw; //43
-  transform: translate(-150%, 50%);
 `;
 
 export default Projects;

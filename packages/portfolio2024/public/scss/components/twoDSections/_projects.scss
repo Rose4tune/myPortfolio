@@ -1,6 +1,16 @@
 @use "../../helpers" as *;
 
 .project {
+  position: relative;
+  width: 100vw;
+  background: linear-gradient(
+    180deg,
+    hsl(var(--gray-back-100)) 0%,
+    hsla(var(--pink-back-090), 0.8) 30%,
+    hsla(var(--pink-back-080), 0.6) 60%,
+    hsl(var(--pink-back-080), 0.8) 100%
+  );
+
   &-picture {
     position: relative;
     width: vw(1150);
@@ -104,5 +114,29 @@
       bottom: 0;
       left: 0;
     }
+  }
+
+  &-sparkle_double {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: translate(100%, 100%);
+    width: vw(105);
+  }
+
+  &-arrow_curved {
+    width: 14.6vh;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transform: translate(-30%, 110%);
+  }
+
+  &-sparkle {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: vw(43);
+    transform: translate(-150%, 50%);
   }
 }

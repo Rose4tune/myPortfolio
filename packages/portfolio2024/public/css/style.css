@@ -635,6 +635,12 @@ body {
           transform: translateY(0.5rem);
 }
 
+.project {
+  position: relative;
+  width: 100vw;
+  background: -webkit-gradient(linear, left top, left bottom, from(hsl(var(--gray-back-100))), color-stop(30%, hsla(var(--pink-back-090), 0.8)), color-stop(60%, hsla(var(--pink-back-080), 0.6)), to(hsl(var(--pink-back-080), 0.8)));
+  background: linear-gradient(180deg, hsl(var(--gray-back-100)) 0%, hsla(var(--pink-back-090), 0.8) 30%, hsla(var(--pink-back-080), 0.6) 60%, hsl(var(--pink-back-080), 0.8) 100%);
+}
 .project-picture {
   position: relative;
   width: 59.9vw;
@@ -741,6 +747,30 @@ body {
 .project-detail .caption {
   bottom: 0;
   left: 0;
+}
+.project-sparkle_double {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  -webkit-transform: translate(100%, 100%);
+          transform: translate(100%, 100%);
+  width: 5.45vw;
+}
+.project-arrow_curved {
+  width: 14.6vh;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  -webkit-transform: translate(-30%, 110%);
+          transform: translate(-30%, 110%);
+}
+.project-sparkle {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 2.25vw;
+  -webkit-transform: translate(-150%, 50%);
+          transform: translate(-150%, 50%);
 }
 
 .contact {
