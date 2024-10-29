@@ -2,7 +2,6 @@ import { forwardRef } from "react";
 import { useRecoilValue } from "recoil";
 import { LanguageAtom } from "../../../../stores";
 import DoubleLineBox from "./elements/DoubleLineBox";
-import TripleLayeredBox from "./elements/TripleLayeredBox";
 import Caption from "./elements/Caption";
 import { introduction, keywords, information } from "../../../../data/about";
 import { getGreetings, getSayHello } from "../../../../data/getAbout";
@@ -46,19 +45,7 @@ const About = forwardRef((props, ref) => {
 
       <DoubleLineBox contents={introduction[language]} even={true} />
 
-      <div
-        className="about-keywords"
-        style={
-          language === "ko"
-            ? {
-                transform: "scale(.9)",
-                transformOrigin: "top right",
-              }
-            : {}
-        }
-      >
-        {keywords[language]}
-      </div>
+      <div className="about-keywords">{keywords[language]}</div>
 
       <div className="about-profileBox2">
         <img
@@ -107,23 +94,6 @@ const About = forwardRef((props, ref) => {
               ))}
             </div>
           </div>
-          {/* <TripleLayeredBox
-            classNames="about-infoBox"
-            contents={information.map(({ title, content }, i) => (
-              <div className="infoBox-item" key={`info${i}`}>
-                <div className="boldUpper">{title}</div>
-                <p className="infoBox-content">{content[language]}</p>
-              </div>
-            ))}
-            position={{
-              top: "100%",
-              right: "-14vw",
-              transform: "translate(0, -40%)",
-            }}
-            style={{
-              padding: "4rem 3rem",
-            }}
-          /> */}
         </div>
       </div>
     </section>

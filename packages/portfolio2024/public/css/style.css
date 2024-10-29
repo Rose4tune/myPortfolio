@@ -304,6 +304,16 @@ body {
   z-index: -2;
   background: hsl(var(--gray-back-100));
 }
+@media (max-width: 960px) {
+  .tripleLayered::before {
+    top: -1.6rem;
+    right: -1.6rem;
+  }
+  .tripleLayered::after {
+    top: -3.2rem;
+    right: -3.2rem;
+  }
+}
 
 .frameShadow_right {
   -webkit-filter: drop-shadow(4rem 4rem hsl(var(--pink-back-080)));
@@ -359,7 +369,7 @@ body {
 .about {
   position: relative;
   width: 100vw;
-  padding-bottom: 11rem;
+  padding-bottom: 40vh;
   background: -webkit-gradient(linear, left top, left bottom, color-stop(20%, hsl(var(--gray-back-100))), color-stop(60%, hsl(var(--pink-back-090))), to(hsl(var(--gray-back-100))));
   background: linear-gradient(180deg, hsl(var(--gray-back-100)) 20%, hsl(var(--pink-back-090)) 60%, hsl(var(--gray-back-100)) 100%);
   -webkit-perspective: 30rem;
@@ -376,7 +386,7 @@ body {
   position: relative;
   width: 42.45vw;
   min-width: 28rem;
-  margin-top: 11.8vw;
+  padding-top: 11.8vw;
   margin-left: 6.25vw;
 }
 .about-profileBox1 p {
@@ -438,7 +448,7 @@ body {
 .about .doubleLine {
   position: absolute;
   top: 28%;
-  left: 66vw;
+  left: 68vw;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
 }
@@ -446,9 +456,9 @@ body {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  margin: 0 6vw 0 auto;
+  margin: 0 4.15vw 3.15vw auto;
   font-size: 4rem;
-  line-height: 1.5;
+  line-height: 1.7;
   color: hsl(var(--red-fore-030));
   text-align: right;
   text-transform: uppercase;
@@ -553,13 +563,16 @@ body {
             transform: translateX(-2rem);
   }
   .about-profileBox2 {
-    width: 53.35vw;
+    width: 66.65vw;
+  }
+  .about-profileBox2 .bgImg {
+    position: absolute;
+    top: -62%;
+    left: -43%;
+    width: 68%;
   }
   .about-keywords {
-    margin-top: 12.3vh;
-    margin-right: 8vw;
-    margin-bottom: 12.3vh;
-    margin-left: auto;
+    margin: 12.3vh 8vw 12.3vh auto;
     -webkit-transform: none;
             transform: none;
   }
@@ -612,15 +625,6 @@ body {
     bottom: -7rem;
     right: -2rem;
   }
-  .about-profileBox2 {
-    width: 66.65vw;
-  }
-  .about-profileBox2 .bgImg {
-    position: absolute;
-    top: -62%;
-    left: -43%;
-    width: 68%;
-  }
   .about-greeting {
     left: 50%;
     -webkit-transform: translateX(calc(-50% - 4rem));
@@ -633,8 +637,8 @@ body {
   }
   .about-infoWrap {
     left: 50%;
-    -webkit-transform: translateX(calc(-50% + 1.05vw));
-            transform: translateX(calc(-50% + 1.05vw));
+    -webkit-transform: translateX(calc(-50% + 1.6rem));
+            transform: translateX(calc(-50% + 1.6rem));
   }
   .about-infoBox {
     width: 84vw;

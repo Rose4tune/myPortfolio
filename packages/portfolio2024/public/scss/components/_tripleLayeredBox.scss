@@ -33,4 +33,17 @@ $distance: -2rem;
     z-index: -2;
     background: hsl(var(--gray-back-100));
   }
+
+  @include tablet {
+    $distance: -1.6rem;
+
+    &::before {
+      top: $distance;
+      right: $distance;
+    }
+    &::after {
+      top: $distance * 2;
+      right: $distance * 2;
+    }
+  }
 }

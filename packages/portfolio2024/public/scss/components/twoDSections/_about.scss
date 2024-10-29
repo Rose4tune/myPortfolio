@@ -3,7 +3,7 @@
 .about {
   position: relative;
   width: 100vw;
-  padding-bottom: 11rem;
+  padding-bottom: 40vh;
   background: linear-gradient(
     180deg,
     hsl(var(--gray-back-100)) 20%,
@@ -23,10 +23,8 @@
       position: relative;
       width: vw($box1W);
       min-width: rem(280);
-      margin: {
-        top: vw(227);
-        left: vw(120);
-      }
+      padding-top: vw(227);
+      margin-left: vw(120);
 
       p {
         @include position($b: rem(-20), $r: rem(-20));
@@ -78,17 +76,17 @@
   }
 
   .doubleLine {
-    @include position($t: 28%, $l: 66vw);
+    @include position($t: 28%, $l: 68vw);
     transform: translate(-50%, -50%);
   }
 
   &-keywords {
     width: fit-content;
-    margin: 0 6vw 0 auto;
+    margin: 0 vw(80) vw(60) auto;
     @include font(
       $s: 40,
       $align: right,
-      $ln: 1.5,
+      $ln: 1.7,
       $cr: hsl(var(--red-fore-030)),
       $trans: uppercase
     );
@@ -196,18 +194,17 @@ $mobileVH: 812;
         transform: translateX(-2rem);
       }
       &Box2 {
-        $box2W: 200;
+        $box2W: 250;
         width: vw($box2W, $mobileVW);
+        .bgImg {
+          @include position($t: -62%, $l: -43%);
+          width: per(170, $box2W);
+        }
       }
     }
 
     &-keywords {
-      margin: {
-        top: vh(100, $mobileVH);
-        right: vw(30, $mobileVW);
-        bottom: vh(100, $mobileVH);
-        left: auto;
-      }
+      margin: vh(100, $mobileVH) vw(30, $mobileVW) vh(100, $mobileVH) auto;
       transform: none;
     }
 
@@ -265,17 +262,6 @@ $mobileVH: 812;
       }
     }
 
-    &-profile {
-      &Box2 {
-        $box2W: 250;
-        width: vw($box2W, $mobileVW);
-        .bgImg {
-          @include position($t: -62%, $l: -43%);
-          width: per(170, $box2W);
-        }
-      }
-    }
-
     &-greeting {
       left: 50%;
       transform: translateX(calc(-50% - 4rem));
@@ -292,7 +278,7 @@ $mobileVH: 812;
     &-info {
       &Wrap {
         left: 50%;
-        transform: translateX(calc(-50% + vw(20)));
+        transform: translateX(calc(-50% + 1.6rem));
       }
       &Box {
         width: vw(315, $mobileVW);
