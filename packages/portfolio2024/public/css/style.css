@@ -834,11 +834,11 @@ body {
   margin: 19% 3rem;
   font-size: 2.6rem;
   font-weight: 600;
-  line-height: 1.6;
   color: hsl(var(--gray-fore-020));
   text-transform: uppercase;
 }
 .skills-nav-menu {
+  margin: 1rem 0;
   cursor: pointer;
 }
 .skills-nav-menu.active {
@@ -855,6 +855,53 @@ body {
 @media (max-width: 600px) {
   .skills-board {
     margin: 0 0 2rem 2rem;
+  }
+}
+@media (max-width: 960px) {
+  .skills {
+    gap: 4.3vh;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+    padding: 0 5.35vw;
+  }
+  .skills-board {
+    width: 80vw;
+    height: 66.5vh;
+    padding: 11.1vh 8vw;
+  }
+  .skills-item {
+    width: 25vw;
+    height: 25vw;
+  }
+  .skills-navWrap {
+    width: 16vw;
+    height: 16vh;
+    margin-left: auto;
+  }
+  .skills-navWrap::before {
+    top: 4rem;
+    width: 100%;
+  }
+  .skills-navWrap::after {
+    top: 5rem;
+    left: -3rem;
+    width: 100%;
+  }
+  .skills-navWrap .caption {
+    bottom: -8.5rem;
+    left: initial;
+    right: 0;
+    text-align: right;
+  }
+  .skills-navWrap .caption-link {
+    margin-left: auto;
+  }
+  .skills-nav {
+    width: calc(100% - 2rem);
+    margin: 30% 1rem;
+    font-size: 2.3rem;
   }
 }
 .project {

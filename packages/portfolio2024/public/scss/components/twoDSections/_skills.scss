@@ -157,13 +157,13 @@
     margin: 19% 3rem;
     @include font(
       $s: 26,
-      $ln: 1.6,
       $wght: 600,
       $trans: uppercase,
       $cr: hsl(var(--gray-fore-020))
     );
 
     &-menu {
+      margin: 1rem 0;
       cursor: pointer;
 
       &.active {
@@ -185,6 +185,58 @@
   .skills {
     &-board {
       margin: 0 0 #{$shadowDepth} #{$shadowDepth};
+    }
+  }
+}
+
+@include tablet {
+  .skills {
+    gap: vh(35, $mobileVH);
+    flex-direction: column-reverse;
+    padding: 0 vw(20, $mobileVW);
+
+    &-board {
+      width: vw(300, $mobileVW);
+      height: vh(540, $mobileVH);
+      padding: vh(90, $mobileVH) vw(30, $mobileVW);
+    }
+
+    &-item {
+      width: 25vw;
+      height: 25vw;
+    }
+
+    &-navWrap {
+      width: vw(60, $mobileVW);
+      height: vh(130, $mobileVH);
+      margin-left: auto;
+
+      &::before {
+        top: 4rem;
+        width: 100%;
+      }
+      &::after {
+        top: 5rem;
+        left: -3rem;
+        width: 100%;
+      }
+
+      .caption {
+        bottom: -8.5rem;
+        left: initial;
+        right: 0;
+        @include font($align: right);
+
+        &-link {
+          margin-left: auto;
+        }
+      }
+    }
+
+    &-nav {
+      width: calc(100% - 2rem);
+      margin: 30% 1rem;
+      @include font($s: 23);
     }
   }
 }

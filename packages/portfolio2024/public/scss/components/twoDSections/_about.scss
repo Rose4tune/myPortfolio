@@ -182,9 +182,6 @@
   }
 }
 
-$mobileVW: 375;
-$mobileVH: 812;
-
 @include tablet {
   .about {
     &-profile {
