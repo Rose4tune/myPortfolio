@@ -171,13 +171,8 @@
       padding: 0 5rem 0 6rem;
     }
 
-    .font_rampartOne {
-      margin-right: vw(20, $mobileVW);
-    }
-
     &-nav {
       margin-top: 0;
-      margin-right: vw(20, $mobileVW);
 
       .doubleLine {
         @include font($align: right);
@@ -210,6 +205,18 @@
     &-arrow_curved {
       width: vw(76, $mobileVW);
       transform: translate(30%, 100%);
+    }
+  }
+}
+
+@include mobileL {
+  .project .doubleLine {
+    $lineMargin: rem(20);
+    &::before {
+      margin: 0 0 $lineMargin auto;
+    }
+    &::after {
+      margin: $lineMargin 0 0 auto;
     }
   }
 }

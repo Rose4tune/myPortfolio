@@ -212,14 +212,6 @@ body {
     margin: 4rem auto 0;
   }
 }
-@media (max-width: 600px) {
-  .doubleLine::before {
-    margin: 0 auto 2rem;
-  }
-  .doubleLine::after {
-    margin: 2rem auto 0;
-  }
-}
 
 .nav {
   position: fixed;
@@ -457,7 +449,7 @@ body {
   width: -moz-fit-content;
   width: fit-content;
   margin: 0 4.15vw 3.15vw auto;
-  font-size: 4rem;
+  font-size: 3.5rem;
   line-height: 1.7;
   color: hsl(var(--red-fore-030));
   text-align: right;
@@ -627,8 +619,8 @@ body {
   }
   .about-greeting {
     left: 50%;
-    -webkit-transform: translateX(calc(-50% - 4rem));
-            transform: translateX(calc(-50% - 4rem));
+    -webkit-transform: translateX(calc(-50% - 2rem));
+            transform: translateX(calc(-50% - 2rem));
   }
   .about-keywords {
     margin-top: 18.45vw;
@@ -648,6 +640,13 @@ body {
   }
 }
 @media (max-width: 420px) {
+  .about-greeting {
+    top: 30vw;
+  }
+  .about-greeting .tripleLayered {
+    width: auto;
+    white-space: initial;
+  }
   .about-keywords {
     margin-top: 12.3vw;
     margin-right: 5.35vw;
@@ -1129,12 +1128,8 @@ body {
     height: 100%;
     padding: 0 5rem 0 6rem;
   }
-  .project .font_rampartOne {
-    margin-right: 5.35vw;
-  }
   .project-nav {
     margin-top: 0;
-    margin-right: 5.35vw;
   }
   .project-nav .doubleLine {
     text-align: right;
@@ -1161,6 +1156,14 @@ body {
     width: 20.25vw;
     -webkit-transform: translate(30%, 100%);
             transform: translate(30%, 100%);
+  }
+}
+@media (max-width: 600px) {
+  .project .doubleLine::before {
+    margin: 0 0 2rem auto;
+  }
+  .project .doubleLine::after {
+    margin: 2rem 0 0 auto;
   }
 }
 .contact {

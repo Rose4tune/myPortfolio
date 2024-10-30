@@ -38,14 +38,4 @@ $lineMargin: rem(60);
       margin: $lineMargin auto 0;
     }
   }
-
-  @include mobileL {
-    $lineMargin: rem(20);
-    &::before {
-      margin: 0 auto $lineMargin;
-    }
-    &::after {
-      margin: $lineMargin auto 0;
-    }
-  }
 }

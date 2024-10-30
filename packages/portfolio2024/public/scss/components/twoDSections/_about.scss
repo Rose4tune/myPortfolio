@@ -84,7 +84,7 @@
     width: fit-content;
     margin: 0 vw(80) vw(60) auto;
     @include font(
-      $s: 40,
+      $s: 35,
       $align: right,
       $ln: 1.7,
       $cr: hsl(var(--red-fore-030)),
@@ -261,7 +261,7 @@
 
     &-greeting {
       left: 50%;
-      transform: translateX(calc(-50% - 4rem));
+      transform: translateX(calc(-50% - 2rem));
     }
 
     &-keywords {
@@ -290,6 +290,15 @@
 
 @include mobile {
   .about {
+    &-greeting {
+      top: 30vw;
+
+      .tripleLayered {
+        width: auto;
+        white-space: initial;
+      }
+    }
+
     &-keywords {
       margin: {
         top: vw(100, $mobileVH);
