@@ -58,8 +58,11 @@ const Skills = forwardRef((props, ref) => {
           );
         })}
       </ul>
-      <div className="tripleLayered skills-navWrap">
-        <ul className="skills-nav">
+      <div className="skills-navWrap">
+        <div className="skills-navWrap-title font_rampartOne">
+          The skills{"\n"}I can handle
+        </div>
+        <ul className="tripleLayered skills-nav">
           {Object.keys(skills).map((key, i) => (
             <li
               key={`skillNavItem${i}`}

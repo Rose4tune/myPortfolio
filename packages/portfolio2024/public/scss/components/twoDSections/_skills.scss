@@ -22,6 +22,8 @@
     gap: vw(55);
     flex-wrap: wrap;
     justify-content: center;
+    align-items: flex-start;
+    align-content: flex-start;
     width: vw(1286);
     height: vh(850);
     padding: vh(150) vw(192);
@@ -77,6 +79,7 @@
       z-index: 100;
       box-shadow: 1rem 1rem 1.5rem hsla(var(--pink-back-070), 0.5);
       background: hsl(var(--gray-back-100));
+      border: none;
 
       &:hover {
         background: hsl(var(--pink-back-100));
@@ -112,14 +115,50 @@
     }
 
     &-des {
-      padding: 0.5rem;
       @include font($s: 13, $ln: 1.2);
+    }
+
+    .flipped & {
+      height: auto;
+      min-height: 100%;
+      border: 1px solid hsl(var(--pink-back-070));
     }
   }
 
   &-navWrap {
+    position: relative;
+
+    &-title {
+      display: none;
+      position: absolute;
+      top: 60%;
+      right: 5rem;
+      width: max-content;
+      transform: translate(-50%, -50%);
+      @include font(
+        $s: 45,
+        $ln: 1.2,
+        $align: right,
+        $cr: hsl(var(--pink-fore-010))
+      );
+      white-space: pre-line;
+    }
+
+    .caption {
+      width: max-content;
+      @include font($align: left);
+      transform: translateX(-3.5rem);
+
+      &-link {
+        margin-left: 0;
+      }
+    }
+  }
+
+  &-nav {
     width: vw(290);
     height: vw(385);
+    padding: 19% 3rem 0;
     margin-bottom: 5rem;
     background: url(/images/skill-bg.svg) no-repeat center center;
     background-size: contain;
@@ -132,6 +171,7 @@
       left: -2rem;
       background: hsl(var(--pink-back-100));
     }
+
     &::after {
       width: 90%;
       height: 90%;
@@ -140,21 +180,6 @@
       background: hsl(var(--pink-back-100));
     }
 
-    .caption {
-      width: max-content;
-      @include position($b: rem(-90), $l: rem(-30));
-      @include font($align: left);
-
-      &-link {
-        margin-left: 0;
-      }
-    }
-  }
-
-  &-nav {
-    width: calc(100% - 6rem);
-    height: 78%;
-    margin: 19% 3rem;
     @include font(
       $s: 26,
       $wght: 600,
@@ -180,24 +205,16 @@
   }
 }
 
-@include mobileL {
-  $shadowDepth: 2rem;
-  .skills {
-    &-board {
-      margin: 0 0 #{$shadowDepth} #{$shadowDepth};
-    }
-  }
-}
-
 @include tablet {
   .skills {
-    gap: vh(35, $mobileVH);
+    gap: 2rem;
     flex-direction: column-reverse;
+    align-items: flex-end;
     padding: 0 vw(20, $mobileVW);
 
     &-board {
-      width: vw(300, $mobileVW);
-      height: vh(540, $mobileVH);
+      width: calc(100% - 4rem);
+      height: calc(vh(540, $mobileVH) - 8rem);
       padding: vh(90, $mobileVH) vw(30, $mobileVW);
     }
 
@@ -206,19 +223,14 @@
       height: 25vw;
     }
 
-    &-navWrap {
-      width: vw(60, $mobileVW);
-      height: vh(130, $mobileVH);
-      margin-left: auto;
+    &-front,
+    &-back {
+      padding: 1rem;
+    }
 
-      &::before {
-        top: 4rem;
-        width: 100%;
-      }
-      &::after {
-        top: 5rem;
-        left: -3rem;
-        width: 100%;
+    &-navWrap {
+      &-title {
+        display: block;
       }
 
       .caption {
@@ -234,9 +246,64 @@
     }
 
     &-nav {
-      width: calc(100% - 2rem);
-      margin: 30% 1rem;
+      width: 14.5rem;
+      height: 21rem;
+      padding: 3rem 1rem 0;
+      margin-left: auto;
+      margin-bottom: 4rem;
       @include font($s: 23);
+
+      &::before {
+        width: 100%;
+        top: 4rem;
+        left: -1.6rem;
+      }
+
+      &::after {
+        width: 100%;
+        top: 5rem;
+        left: -2.6rem;
+      }
+    }
+  }
+}
+
+@include mobileL {
+  $shadowDepth: 2rem;
+  .skills {
+    &-board {
+      height: calc(vh(540, $mobileVH) - 2rem);
+      margin: 0 0 #{$shadowDepth} #{$shadowDepth};
+    }
+  }
+}
+
+@include mobile {
+  .skills {
+    &-item {
+      width: 50vw;
+      height: 50vw;
+
+      &-title {
+        @include font($s: 16);
+      }
+    }
+
+    &-back-des {
+      @include font($s: 14);
+    }
+  }
+}
+
+@include mobileS {
+  .skills {
+    &-navWrap {
+      &-title {
+        top: 45%;
+        right: 12rem;
+        width: min-content;
+        @include font($s: 40, $trans: capitalize);
+      }
     }
   }
 }
