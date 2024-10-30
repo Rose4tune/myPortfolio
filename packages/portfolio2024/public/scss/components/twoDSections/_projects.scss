@@ -11,6 +11,25 @@
     hsl(var(--pink-back-080), 0.8) 100%
   );
 
+  &-stickyFrame {
+    position: sticky;
+    top: 11vh;
+    margin: 11vh 0 16.7vh;
+  }
+
+  &-wrap {
+    display: flex;
+    gap: 3rem;
+    align-items: flex-start;
+    justify-content: center;
+    position: relative;
+  }
+
+  &-nav {
+    position: static;
+    margin-top: 5vh;
+  }
+
   &-picture {
     position: relative;
     width: vw(1150);
@@ -131,5 +150,66 @@
     width: vw(43);
     @include position($b: 0, $l: 0);
     transform: translate(-150%, 50%);
+  }
+}
+
+// 반응형
+@include tablet {
+  .project {
+    &-stickyFrame {
+      top: 5vh;
+      height: 90vh;
+      margin: 5vh 0 5vh;
+    }
+
+    &-wrap {
+      gap: 4rem;
+      align-items: flex-end;
+      justify-content: flex-end;
+      flex-direction: column-reverse;
+      height: 100%;
+      padding: 0 5rem 0 6rem;
+    }
+
+    .font_rampartOne {
+      margin-right: vw(20, $mobileVW);
+    }
+
+    &-nav {
+      margin-top: 0;
+      margin-right: vw(20, $mobileVW);
+
+      .doubleLine {
+        @include font($align: right);
+        &::before,
+        &::after {
+          margin-right: 0;
+        }
+      }
+    }
+
+    &-picture {
+      width: vw(285, $mobileVW);
+      height: vh(290, $mobileVH);
+      margin-right: auto;
+
+      .font_rampartOne {
+        display: none;
+      }
+    }
+
+    &-detail {
+      bottom: 0;
+      left: vw(50, $mobileVW);
+
+      .tripleLayered {
+        width: vw(286, $mobileVW);
+      }
+    }
+
+    &-arrow_curved {
+      width: vw(76, $mobileVW);
+      transform: translate(30%, 100%);
+    }
   }
 }

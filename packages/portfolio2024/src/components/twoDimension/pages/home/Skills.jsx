@@ -59,7 +59,7 @@ const Skills = forwardRef((props, ref) => {
         })}
       </ul>
       <div className="skills-navWrap">
-        <div className="skills-navWrap-title font_rampartOne">
+        <div className="section-title font_rampartOne">
           The skills{"\n"}I can handle
         </div>
         <ul className="tripleLayered skills-nav">

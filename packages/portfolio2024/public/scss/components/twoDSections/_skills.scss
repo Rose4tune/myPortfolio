@@ -16,6 +16,13 @@
   align-items: center;
   gap: vw(75);
 
+  .section-title {
+    position: absolute;
+    top: 60%;
+    right: 5rem;
+    transform: translate(-50%, -50%);
+  }
+
   &-board {
     position: relative;
     display: flex;
@@ -128,22 +135,6 @@
   &-navWrap {
     position: relative;
 
-    &-title {
-      display: none;
-      position: absolute;
-      top: 60%;
-      right: 5rem;
-      width: max-content;
-      transform: translate(-50%, -50%);
-      @include font(
-        $s: 45,
-        $ln: 1.2,
-        $align: right,
-        $cr: hsl(var(--pink-fore-010))
-      );
-      white-space: pre-line;
-    }
-
     .caption {
       width: max-content;
       @include font($align: left);
@@ -229,15 +220,8 @@
     }
 
     &-navWrap {
-      &-title {
-        display: block;
-      }
-
       .caption {
-        bottom: -8.5rem;
-        left: initial;
-        right: 0;
-        @include font($align: right);
+        transform: none;
 
         &-link {
           margin-left: auto;
@@ -297,13 +281,11 @@
 
 @include mobileS {
   .skills {
-    &-navWrap {
-      &-title {
-        top: 45%;
-        right: 12rem;
-        width: min-content;
-        @include font($s: 40, $trans: capitalize);
-      }
+    .section-title {
+      top: 45%;
+      right: 12rem;
+      width: min-content;
+      @include font($s: 40, $trans: capitalize);
     }
   }
 }

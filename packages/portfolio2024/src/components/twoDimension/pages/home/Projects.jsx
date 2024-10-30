@@ -35,8 +35,8 @@ const Projects = forwardRef((props, ref) => {
       className="project"
       style={{ height: `${(projects.length + 1) * 100}vh` }}
     >
-      <StickyFrame>
-        <Wrap>
+      <div className="project-stickyFrame">
+        <div className="project-wrap">
           <div className="project-picture">
             {projects.map(({ img }, i) => (
               <img
@@ -55,7 +55,7 @@ const Projects = forwardRef((props, ref) => {
             src="/icons/sparkle_double.svg"
             alt="+"
           />
-          <DoubleLineWrap>
+          <div className="project-nav">
             <DoubleLineBox
               contents={projects.map(({ key, value }, i) => ({
                 key,
@@ -72,7 +72,8 @@ const Projects = forwardRef((props, ref) => {
                 alt="pointing"
               />
             </DoubleLineBox>
-          </DoubleLineWrap>
+          </div>
+          <div className="section-title font_rampartOne">Projects</div>
           <div className="project-detail">
             <div className="tripleLayered">
               {projects.map(({ title, period, role, des, link }, i) => (
@@ -98,29 +99,10 @@ const Projects = forwardRef((props, ref) => {
               />
             </div>
           </div>
-        </Wrap>
-      </StickyFrame>
+        </div>
+      </div>
     </section>
   );
 });
-
-const StickyFrame = styled.div`
-  position: sticky;
-  top: 11vh;
-  margin: 11vh 0 16.7vh;
-`;
-
-const Wrap = styled.div`
-  display: flex;
-  gap: 3rem;
-  align-items: flex-start;
-  justify-content: center;
-  position: relative;
-`;
-
-const DoubleLineWrap = styled.div`
-  position: static;
-  margin-top: 5vh;
-`;
 
 export default Projects;
