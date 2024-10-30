@@ -3,7 +3,12 @@ import styled, { keyframes } from "styled-components";
 
 const FortuneCoffee = () => {
   return (
-    <SVG viewBox="0 0 431 285" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <SVG
+      className="contact-img"
+      viewBox="0 0 431 285"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <defs>
         <linearGradient id="steamColor" x1="50%" y1="0%" x2="60%" y2="50%">
           <stop stopColor="#FF80AE" stopOpacity="0.1" />
@@ -47,7 +52,7 @@ const SVG = styled.svg`
   bottom: 5vh;
   right: 5vh;
   /* width: 20vw;//380 */
-  width: 50vh;
+  /* width: 50vh; */
 `;
 
 const Steam1Ani = keyframes`

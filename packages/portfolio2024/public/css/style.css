@@ -877,7 +877,7 @@ body {
     -webkit-box-align: end;
         -ms-flex-align: end;
             align-items: flex-end;
-    padding: 0 5.35vw;
+    padding: 0 8vw;
   }
   .skills-board {
     width: calc(100% - 4rem);
@@ -919,6 +919,7 @@ body {
 }
 @media (max-width: 600px) {
   .skills-board {
+    width: calc(100% - 2rem);
     height: calc(66.5vh - 2rem);
     margin: 0 0 2rem 2rem;
   }
@@ -1185,6 +1186,9 @@ body {
           align-items: center;
   gap: 2.6vw;
 }
+.contact-img {
+  width: 50vh;
+}
 
 .energe {
   display: -webkit-box;
@@ -1197,7 +1201,7 @@ body {
           filter: drop-shadow(0.4rem 0.4rem 0 hsla(var(--pink-back-050), 0.5));
 }
 .energe-sup {
-  font-size: 7rem;
+  font-size: 0.5em;
   -webkit-transform: translateY(-2rem);
           transform: translateY(-2rem);
 }
@@ -1213,32 +1217,32 @@ body {
       -ms-flex-align: baseline;
           align-items: baseline;
   gap: 2rem;
+  font-size: 1em;
+  line-height: 0.8;
   text-align: center;
 }
 
 .milk,
 .coffee {
-  width: 14rem;
+  width: 7.3vw;
+  font-size: 1em;
 }
 .milk [class$=-icon],
 .coffee [class$=-icon] {
-  font-size: 3rem;
-  line-height: 0.8;
+  font-size: 0.21em;
 }
 .milk [class$=-icon] p::first-letter,
 .coffee [class$=-icon] p::first-letter {
-  font-size: 7rem;
+  font-size: 2em;
 }
 .milk [class$=-imgWrap],
 .coffee [class$=-imgWrap] {
-  width: 5.75vw;
+  width: 80%;
   margin: 0 auto;
 }
 
 .xIcon {
   width: 2.1vw;
-  height: 3.15vw;
-  background: url(/icons/X.svg) no-repeat center center;
   -webkit-transform: translateX(1rem);
           transform: translateX(1rem);
 }
@@ -1284,6 +1288,73 @@ body {
   text-align: center;
 }
 
+@media (max-width: 960px) {
+  .contact-wrap {
+    gap: 4.95vh;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    padding-top: 9.85vh;
+  }
+  .contact-img {
+    width: 48vw;
+  }
+  .energe {
+    height: 12rem;
+    font-size: 10rem;
+  }
+  .milk,
+  .coffee {
+    width: 9.35vw;
+    min-width: 8.5rem;
+  }
+  .xIcon {
+    width: 3.2vw;
+    -webkit-transform: translateX(0.5rem);
+            transform: translateX(0.5rem);
+  }
+  .connect {
+    width: 86.4vw;
+    max-width: 58rem;
+    padding: 6.15vh 0;
+  }
+  .connect-title {
+    margin: 0 auto 6.15vh;
+    font-size: 3.5rem;
+  }
+  .connect-title::before, .connect-title::after {
+    width: 9.35vw;
+  }
+  .connect-closeGreeting {
+    margin-top: 6.15vh;
+  }
+  .connect .caption:nth-child(3) {
+    margin: 2.45vh;
+  }
+  .connect .caption-link {
+    display: block;
+    margin: 0 auto;
+  }
+}
+@media (max-width: 420px) {
+  .connect-title {
+    font-size: 3rem;
+  }
+}
+@media (max-width: 360px) {
+  .energe {
+    height: 10rem;
+    font-size: 8rem;
+  }
+  .milk,
+  .coffee {
+    min-width: 7rem;
+  }
+}
 .section-title {
   display: none;
   width: -webkit-max-content;

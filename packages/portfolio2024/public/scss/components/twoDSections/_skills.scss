@@ -201,7 +201,7 @@
     gap: 2rem;
     flex-direction: column-reverse;
     align-items: flex-end;
-    padding: 0 vw(20, $mobileVW);
+    padding: 0 vw(30, $mobileVW);
 
     &-board {
       width: calc(100% - 4rem);
@@ -256,6 +256,7 @@
   $shadowDepth: 2rem;
   .skills {
     &-board {
+      width: calc(100% - 2rem);
       height: calc(vh(540, $mobileVH) - 2rem);
       margin: 0 0 #{$shadowDepth} #{$shadowDepth};
     }

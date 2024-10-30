@@ -74,7 +74,7 @@ const Contact = forwardRef((props, ref) => {
                 <p>milk</p>
               </div>
             </div>
-            <div className="xIcon" />
+            <img className="xIcon" src="/icons/X.svg" alt="X" />
             <div className="coffee">
               <div className="coffee-text" ref={coffeeTextRef}>
                 c
