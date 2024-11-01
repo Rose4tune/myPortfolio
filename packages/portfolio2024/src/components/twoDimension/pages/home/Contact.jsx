@@ -2,7 +2,7 @@ import { forwardRef, useRef, useEffect } from "react";
 import Caption from "./elements/Caption";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import FortuneCoffee from "./elements/fortuneCoffee";
+import FortuneCoffee from "./icons/FortuneCoffee";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -50,7 +50,7 @@ const Contact = forwardRef((props, ref) => {
         { opacity: 1, scale: 1, duration: 0.5 },
         "<"
       )
-      .fromTo(supRef.current, { y: 0 }, { y: "-20%", duration: 1 }, "<");
+      .fromTo(supRef.current, { y: 0 }, { y: "-40%", duration: 1 }, "<");
   };
 
   useEffect(() => {
@@ -74,7 +74,7 @@ const Contact = forwardRef((props, ref) => {
                 <p>milk</p>
               </div>
             </div>
-            <div className="xIcon" />
+            <img className="xIcon" src="/icons/X.svg" alt="X" />
             <div className="coffee">
               <div className="coffee-text" ref={coffeeTextRef}>
                 c

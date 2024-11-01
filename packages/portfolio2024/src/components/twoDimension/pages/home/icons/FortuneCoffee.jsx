@@ -4,8 +4,7 @@ import styled, { keyframes } from "styled-components";
 const FortuneCoffee = () => {
   return (
     <SVG
-      width="431"
-      height="285"
+      className="contact-img"
       viewBox="0 0 431 285"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -50,9 +49,10 @@ const FortuneCoffee = () => {
 
 const SVG = styled.svg`
   position: absolute;
-  bottom: 8vh;
-  right: 8vw;
-  width: 20vw;
+  bottom: 5vh;
+  right: 5vh;
+  /* width: 20vw;//380 */
+  /* width: 50vh; */
 `;
 
 const Steam1Ani = keyframes`

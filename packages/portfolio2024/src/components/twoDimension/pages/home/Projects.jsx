@@ -15,9 +15,9 @@ const Projects = forwardRef((props, ref) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
-    gsap.to(".projectSection", {
+    gsap.to(".project", {
       scrollTrigger: {
-        trigger: ".projectSection",
+        trigger: ".project",
         start: "0% bottom",
         end: "bottom top",
         scrub: true,
@@ -30,32 +30,50 @@ const Projects = forwardRef((props, ref) => {
   }, [projects, setActiveIndex]);
 
   return (
-    <Section
+    <section
       ref={ref}
-      className="projectSection"
+      className="project"
       style={{ height: `${(projects.length + 1) * 100}vh` }}
     >
-      <StickyFrame>
-        <Wrap>
+      <div className="project-stickyFrame">
+        <div className="project-wrap">
           <div className="project-picture">
             {projects.map(({ img }, i) => (
               <img
                 key={i}
                 src={`/images/projects/${img}.jpg`}
                 alt={img}
-                className={i === activeIndex ? "active" : ""}
+                className={`project-picture-img ${
+                  i === activeIndex ? " active" : ""
+                }`}
               />
             ))}
             <div className="font_rampartOne">Project</div>
           </div>
-          <DoubleLineBox
-            contents={projects.map(({ key, value }, i) => ({
-              key,
-              value,
-              isActive: i === activeIndex,
-            }))}
-            style={{ position: "static", marginTop: "5vh" }}
+          <img
+            className="project-sparkle_double"
+            src="/icons/sparkle_double.svg"
+            alt="+"
           />
+          <div className="project-nav">
+            <DoubleLineBox
+              contents={projects.map(({ key, value }, i) => ({
+                key,
+                value,
+                isActive: i === activeIndex,
+              }))}
+              style={{
+                position: "relative",
+              }}
+            >
+              <img
+                className="project-arrow_curved"
+                src="/icons/arrow_curved.svg"
+                alt="pointing"
+              />
+            </DoubleLineBox>
+          </div>
+          <div className="section-title font_rampartOne">Projects</div>
           <div className="project-detail">
             <div className="tripleLayered">
               {projects.map(({ title, period, role, des, link }, i) => (
@@ -74,38 +92,17 @@ const Projects = forwardRef((props, ref) => {
                   <Caption type="more" link={link} />
                 </div>
               ))}
+              <img
+                className="project-sparkle"
+                src="/icons/sparkle.svg"
+                alt="+"
+              />
             </div>
           </div>
-        </Wrap>
-      </StickyFrame>
-    </Section>
+        </div>
+      </div>
+    </section>
   );
 });
-
-const Section = styled.section`
-  position: relative;
-  width: 100vw;
-  background: linear-gradient(
-    180deg,
-    hsl(var(--gray-back-100)) 0%,
-    hsla(var(--pink-back-090), .8) 30%,
-    hsla(var(--pink-back-080), .6) 60%,
-    hsl(var(--pink-back-080), .8) 100%
-  );
-`;
-
-const StickyFrame = styled.div`
-  position: sticky;
-  top: 11vh;
-  margin: 11vh 0 16.7vh;
-`;
-
-const Wrap = styled.div`
-  display: flex;
-  gap: 3rem;
-  align-items: flex-start;
-  justify-content: center;
-  position: relative;
-`;
 
 export default Projects;

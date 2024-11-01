@@ -1,7 +1,6 @@
 @use "../helpers" as *;
 
 .caption {
-  position: absolute;
   @include font(
     $s: 15,
     $wght: 200,
@@ -33,5 +32,11 @@
       color: hsl(var(--pink-fore-040));
       background-position: 100% 0%;
     }
+  }
+}
+
+@include tabletL {
+  .caption {
+    font-size: 1.75rem;
   }
 }

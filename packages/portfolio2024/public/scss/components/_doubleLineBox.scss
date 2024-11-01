@@ -1,9 +1,8 @@
 @use "../helpers" as *;
 
-$lineMargin: vh(60);
+$lineMargin: rem(60);
 
 .doubleLine {
-  position: absolute;
   width: fit-content;
   @include font($align: center, $ln: 1.4, $cr: hsl(var(--red-fore-030)));
   white-space: pre-line;
@@ -12,7 +11,7 @@ $lineMargin: vh(60);
   &::after {
     content: "";
     display: block;
-    width: vw(140);
+    width: 40%;
     border: 2px solid hsl(var(--pink-fore-050));
   }
   &::before {
@@ -28,5 +27,15 @@ $lineMargin: vh(60);
 
   .active {
     @include font($wght: 600, $cr: hsl(var(--red-fore-030)));
+  }
+
+  @include tablet {
+    $lineMargin: rem(40);
+    &::before {
+      margin: 0 auto $lineMargin;
+    }
+    &::after {
+      margin: $lineMargin auto 0;
+    }
   }
 }

@@ -1,3 +1,21 @@
-@use "./functions" as *;
+// responsive breakpoint
+// 모바일
+$mobileS: 360px;
+$mobile: 420px;
+$mobileL: 600px;
 
-$shadowDepth: vw(40);
+// 태블릿
+$tabletS: 760px;
+$tablet: 960px;
+$tabletL: 1024px;
+
+// 노트북
+$laptop: 1300px;
+$laptopL: 1800px;
+
+// 데스크탑
+$desktop: 1800px;
+
+// 모바일 비율 계산
+$mobileVW: 375;
+$mobileVH: 812;

@@ -1,6 +1,6 @@
 import React from "react";
 
-const DoubleLineBox = ({ contents, style, even = false }) => {
+const DoubleLineBox = ({ contents, style, even = false, children }) => {
   return (
     <div className={`doubleLine ${even ? `even` : ""}`} style={style}>
       {contents.map(({ key, value, isActive }, i) => {
@@ -13,6 +13,7 @@ const DoubleLineBox = ({ contents, style, even = false }) => {
           </div>
         );
       })}
+      {children}
     </div>
   );
 };

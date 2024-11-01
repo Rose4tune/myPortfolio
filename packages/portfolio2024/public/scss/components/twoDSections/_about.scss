@@ -1,0 +1,324 @@
+@use "../../helpers" as *;
+
+.about {
+  position: relative;
+  width: 100vw;
+  padding-bottom: 40vh;
+  background: linear-gradient(
+    180deg,
+    hsl(var(--gray-back-100)) 20%,
+    hsl(var(--pink-back-090)) 60%,
+    hsl(var(--gray-back-100)) 100%
+  );
+  perspective: 30rem;
+
+  &-greeting {
+    @include position($t: vw(185), $l: 50%);
+    transform: translate(-50%, -50%);
+  }
+
+  &-profile {
+    &Box1 {
+      $box1W: 815;
+      position: relative;
+      width: vw($box1W);
+      min-width: rem(280);
+      padding-top: vw(227);
+      margin-left: vw(120);
+
+      p {
+        @include position($b: rem(-20), $r: rem(-20));
+        @include font($s: 180, $cr: hsl(var(--white)));
+        word-break: keep-all;
+      }
+
+      .caption {
+        @include position($b: rem(-90), $r: rem(-40));
+      }
+
+      .icon_smile {
+        width: per(360, $box1W);
+        @include position($b: rem(0), $l: rem(0));
+        transform: translate(-20%, 105%);
+      }
+
+      .sparkle_hello {
+        width: per(50, $box1W);
+        @include position($b: rem(0), $r: rem(0));
+        transform: translate(150%, 0%);
+      }
+    }
+
+    &Box2 {
+      $box2W: 600;
+      position: relative;
+      width: vw($box2W);
+      min-width: 21rem;
+      margin-left: auto;
+
+      .bgImg {
+        @include position($t: -45%, $l: -30%);
+        width: per(300, $box2W);
+        opacity: 0.6;
+      }
+
+      .fyi {
+        @include position($b: -5%, $l: -22%);
+        width: per(385, $box2W);
+      }
+
+      .sparkle_roseL {
+        @include position($t: 0, $l: 0);
+        width: per(364, $box2W);
+        transform: translate(-80%, -100%);
+      }
+    }
+  }
+
+  .doubleLine {
+    @include position($t: 28%, $l: 68vw);
+    transform: translate(-50%, -50%);
+  }
+
+  &-keywords {
+    width: fit-content;
+    margin: 0 vw(80) vw(60) auto;
+    @include font(
+      $s: 35,
+      $align: right,
+      $ln: 1.7,
+      $cr: hsl(var(--red-fore-030)),
+      $trans: uppercase
+    );
+    white-space: pre-line;
+    text-shadow: 4px 0 0 hsl(var(--white));
+    transform: translateY(-3vw);
+  }
+
+  &-bgimg {
+    &_top {
+      width: vw(480);
+      @include position($t: 0, $r: 0);
+      opacity: 0.6;
+      z-index: -10;
+    }
+
+    &_bottom {
+      $bgimgBottomW: 800;
+      width: vw($bgimgBottomW);
+      @include position($t: 50%, $l: 0);
+      transform: translateY(25%);
+
+      .caption {
+        @include position($t: 35%, $r: 35%);
+        transform: translateY(-50%);
+      }
+
+      .bgImg {
+        opacity: 0.6;
+      }
+
+      .parkle_roseS {
+        width: per(450, $bgimgBottomW);
+        @include position($b: 0, $l: 0);
+        transform: translate(vw(77), 120%);
+      }
+    }
+  }
+
+  &-info {
+    &Wrap {
+      @include position($t: 100%, $r: -14vw);
+      transform: translate(0, -40%);
+    }
+    &Box {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      width: vw(518);
+      padding: 4rem 3rem;
+
+      &-content {
+        margin-top: rem(5);
+        margin-left: rem(40);
+        line-height: 1.2;
+
+        &::before,
+        &::after {
+          display: inline-block;
+          content: "";
+          width: rem(10);
+          height: rem(16);
+          background: url(../icons/arrow_red.svg) no-repeat center center;
+          background-size: contain;
+        }
+
+        &::before {
+          transform: translateX(-1rem);
+        }
+        &::after {
+          transform: translateX(1rem) rotateY(180deg);
+        }
+      }
+    }
+  }
+}
+
+@include laptop {
+  .about {
+    &-profileBox1 p {
+      @include font($s: 150);
+    }
+
+    &-infoBox {
+      width: 35vw;
+    }
+  }
+}
+
+@include laptopL {
+  .about-infoBox {
+    width: 33vw;
+  }
+}
+
+@include tablet {
+  .about {
+    &-profile {
+      &Box1 {
+        width: vw(275, $mobileVW);
+        margin: vh(38, $mobileVH) auto vw(120, $mobileVW);
+        transform: translateX(-2rem);
+      }
+      &Box2 {
+        $box2W: 250;
+        width: vw($box2W, $mobileVW);
+        .bgImg {
+          @include position($t: -62%, $l: -43%);
+          width: per(170, $box2W);
+        }
+      }
+    }
+
+    &-keywords {
+      margin: vh(100, $mobileVH) vw(30, $mobileVW) vh(100, $mobileVH) auto;
+      transform: none;
+    }
+
+    .doubleLine {
+      position: initial;
+      transform: none;
+      margin: 0 auto;
+    }
+
+    &-greeting {
+      top: vw(140, $mobileVW);
+      left: vw(30, $mobileVW);
+      transform: none;
+    }
+
+    &-info {
+      &Wrap {
+        top: 65%;
+        left: 10%;
+        right: initial;
+        transform: translateX(0);
+      }
+      &Box {
+        width: vw(200, $mobileVW);
+      }
+    }
+    &-bgimg {
+      &_top {
+        position: inherit;
+        width: vw(240, $mobileVW);
+        margin-left: auto;
+      }
+      &_bottom {
+        position: initial;
+        width: vw(335, $mobileVW);
+        margin-top: vh(60, $mobileVH);
+        transform: none;
+      }
+    }
+  }
+}
+
+@include mobileL {
+  .about {
+    &-profileBox1 {
+      transform: translateX(-1rem);
+      p {
+        @include font($s: 100);
+        bottom: -1rem;
+        right: -1rem;
+      }
+      .caption {
+        bottom: -7rem;
+        right: -2rem;
+      }
+    }
+
+    &-greeting {
+      left: 50%;
+      transform: translateX(calc(-50% - 2rem));
+    }
+
+    &-keywords {
+      margin: {
+        top: vw(150, $mobileVH);
+        bottom: vh(60, $mobileVH);
+      }
+      @include font($s: 35);
+    }
+
+    &-info {
+      &Wrap {
+        left: 50%;
+        transform: translateX(calc(-50% + 1.6rem));
+      }
+      &Box {
+        width: vw(315, $mobileVW);
+      }
+    }
+
+    &-bgimg_bottom .caption {
+      right: 8%;
+    }
+  }
+}
+
+@include mobile {
+  .about {
+    &-greeting {
+      top: 30vw;
+
+      .tripleLayered {
+        width: auto;
+        white-space: initial;
+      }
+    }
+
+    &-keywords {
+      margin: {
+        top: vw(100, $mobileVH);
+        right: vw(20, $mobileVW);
+        bottom: vw(100, $mobileVH);
+      }
+      @include font($s: 30);
+    }
+  }
+}
+
+@include mobileS {
+  .about {
+    &-keywords {
+      margin: {
+        top: vw(100, $mobileVH);
+        right: vw(20, $mobileVW);
+        bottom: vw(100, $mobileVH);
+      }
+      @include font($s: 25);
+    }
+  }
+}

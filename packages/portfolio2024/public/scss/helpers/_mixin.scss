@@ -1,19 +1,19 @@
 @use "functions" as *;
+@use "variables" as *;
 
 // POSITION
-@mixin position (
-  $p: absolute,
-  $t: null,
-  $b: null,
-  $l: null,
-  $r: null
-){
+@mixin position($p: absolute, $t: null, $b: null, $l: null, $r: null) {
   @if (
-  $p == absolute
-  or $p == fixed
-  or not $p == relative
-  or not $p == static
-  or not $p == inherit
+    $p ==
+      absolute or
+      $p ==
+      fixed or not
+      $p ==
+      relative or not
+      $p ==
+      static or not
+      $p ==
+      inherit
   ) {
     position: $p;
     top: $t;
@@ -24,13 +24,89 @@
 }
 
 // FONT
-@mixin font($family: '', $s: '', $wght: '', $ln: '', $cr: '', $align: '', $trans: '') {
-  @if($family != '') {font-family: $family;}
-  @if($s != '') {font-size: rem($s);}
-  @if($wght != '') {font-weight: $wght;}
-  @if($ln != '') {line-height: $ln;}
-  @if($cr != '') {color: $cr;}
-  @if($align != '') {text-align: $align;}
-  @if($trans != '') {text-transform: $trans;}
+@mixin font(
+  $family: "",
+  $s: "",
+  $wght: "",
+  $ln: "",
+  $cr: "",
+  $align: "",
+  $trans: ""
+) {
+  @if ($family != "") {
+    font-family: $family;
+  }
+  @if ($s != "") {
+    font-size: rem($s);
+  }
+  @if ($wght != "") {
+    font-weight: $wght;
+  }
+  @if ($ln != "") {
+    line-height: $ln;
+  }
+  @if ($cr != "") {
+    color: $cr;
+  }
+  @if ($align != "") {
+    text-align: $align;
+  }
+  @if ($trans != "") {
+    text-transform: $trans;
+  }
   @content;
+}
+
+// responsive breakpoint
+// 모바일
+@mixin mobileS {
+  @media (max-width: $mobileS) {
+    @content;
+  }
+}
+@mixin mobile {
+  @media (max-width: $mobile) {
+    @content;
+  }
+}
+@mixin mobileL {
+  @media (max-width: $mobileL) {
+    @content;
+  }
+}
+
+// 태블릿
+@mixin tabletS {
+  @media (max-width: $tabletS) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media (max-width: $tablet) {
+    @content;
+  }
+}
+@mixin tabletL {
+  @media (max-width: $tabletL) {
+    @content;
+  }
+}
+
+// 노트북
+@mixin laptop {
+  @media (max-width: $laptop) {
+    @content;
+  }
+}
+@mixin laptopL {
+  @media (max-width: $laptopL) {
+    @content;
+  }
+}
+
+// 데스크탑
+@mixin desktop {
+  @media (min-width: $desktop) {
+    @content;
+  }
 }

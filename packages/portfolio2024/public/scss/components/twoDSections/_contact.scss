@@ -1,4 +1,4 @@
-@use "../helpers" as *;
+@use "../../helpers" as *;
 
 .contact {
   position: relative;
@@ -21,15 +21,20 @@
     align-items: center;
     gap: vw(50);
   }
+
+  &-img {
+    width: 50vh;
+  }
 }
 
 .energe {
   display: flex;
+  height: rem(140);
   @include font($s: 140, $cr: hsl(var(--gray-back-100)));
   filter: drop-shadow(0.4rem 0.4rem 0 hsla(var(--pink-back-050), 0.5));
 
   &-sup {
-    @include font($s: 70);
+    font-size: 0.5em;
     transform: translateY(-2rem);
   }
 }
@@ -39,33 +44,35 @@
   justify-content: center;
   align-items: baseline;
   gap: 2rem;
-  @include font($align: center);
+  font-size: 1em;
+  @include font($ln: 0.8, $align: center);
 }
 
 .milk,
 .coffee {
   width: vw(140);
+  font-size: 1em;
+
   [class$="-icon"] {
-    @include font($s: 30, $ln: 0.8);
+    font-size: 0.21em;
+
     p::first-letter {
-      @include font($s: 70);
+      font-size: 2em;
     }
   }
   [class$="-imgWrap"] {
-    width: vw(110);
+    width: 80%;
     margin: 0 auto;
   }
 }
 
 .xIcon {
   width: vw(40);
-  height: vw(60);
-  background: url(/icons/X.svg) no-repeat center center;
   transform: translateX(1rem);
 }
 
 .connect {
-  padding: vw(90) vw(100);
+  padding: vh(90) vw(100);
   background: hsla(var(--gray-back-100), 0.6);
   @include font($align: center);
 
@@ -96,5 +103,84 @@
   .caption {
     position: static;
     @include font($s: 20, $ln: 1.5, $align: center);
+  }
+}
+
+@include tablet {
+  .contact {
+    &-wrap {
+      gap: vh(40, $mobileVH);
+      flex-direction: column;
+      justify-content: flex-start;
+      padding-top: vh(80, $mobileVH);
+    }
+    &-img {
+      width: vw(180, $mobileVW);
+    }
+  }
+
+  .energe {
+    height: rem(120);
+    @include font($s: 100);
+  }
+
+  .milk,
+  .coffee {
+    width: vw(35, $mobileVW);
+    min-width: rem(85);
+  }
+
+  .xIcon {
+    width: vw(12, $mobileVW);
+    transform: translateX(0.5rem);
+  }
+
+  .connect {
+    $gap: vh(50, $mobileVH);
+    width: vw(324, $mobileVW);
+    max-width: rem(580);
+    padding: $gap 0;
+
+    &-title {
+      margin: 0 auto $gap;
+      @include font($s: 35);
+
+      &::before,
+      &::after {
+        width: vw(35, $mobileVW);
+      }
+    }
+
+    &-closeGreeting {
+      margin-top: $gap;
+    }
+
+    .caption {
+      &:nth-child(3) {
+        margin: vh(20, $mobileVH);
+      }
+
+      &-link {
+        display: block;
+        margin: 0 auto;
+      }
+    }
+  }
+}
+
+@include mobile {
+  .connect-title {
+    @include font($s: 30);
+  }
+}
+
+@include mobileS {
+  .energe {
+    height: rem(100);
+    @include font($s: 80);
+  }
+  .milk,
+  .coffee {
+    min-width: rem(70);
   }
 }

@@ -3,7 +3,7 @@ export const skills = {
     {
       title: "javascript",
       des: {
-        ko: "",
+        ko: "최적화 툴 Performance, lighthouse 등을 사용하여 웹 페이지를 최적화한 경험이 있으며, 렌더링 성능을 고려한 개발을 합니다. 다방면에서 사용자를 고려하여 최적의 경험을 제공하고자 합니다.",
         en: "",
       },
       per: "100",
@@ -27,7 +27,7 @@ export const skills = {
     {
       title: "next",
       des: {
-        ko: "",
+        ko: "테스트 코드를 작성할 수 있으며, 기본적인 활용을 할 수 있습니다.",
         en: "",
       },
       per: "50",
@@ -59,7 +59,7 @@ export const skills = {
     {
       title: "recoil",
       des: {
-        ko: "",
+        ko: "최적화 툴 Performance, lighthouse 등을 사용하여 웹 페이지를 최적화한 경험이 있으며, 렌더링 성능을 고려한 개발을 합니다. 다방면에서 사용자를 고려하여 최적의 경험을 제공하고자 합니다. 최적화 툴 Performance, lighthouse 등을 사용하여 웹 페이지를 최적화한 경험이 있으며, 렌더링 성능을 고려한 개발을 합니다. 다방면에서 사용자를 고려하여 최적의 경험을 제공하고자 합니다.",
         en: "",
       },
       per: "50",

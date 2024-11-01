@@ -1,0 +1,35 @@
+@use "../../helpers" as *;
+
+.intro {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  white-space: nowrap;
+
+  &-item {
+    position: absolute;
+    color: hsl(var(--pink-fore-030));
+    text-shadow: 0.25em 0.25em 0 hsl(var(--pink-fore-020));
+
+    &:nth-child(1) {
+      font-size: 18em;
+      top: vh(30);
+    }
+    &:nth-child(2) {
+      font-size: 10em;
+      opacity: 0.6;
+      top: vh(280);
+    }
+    &:nth-child(3) {
+      font-size: 10em;
+      opacity: 0.7;
+      bottom: vh(310);
+    }
+    &:nth-child(4) {
+      font-size: 18em;
+      opacity: 0.6;
+      bottom: vh(60);
+    }
+  }
+}
