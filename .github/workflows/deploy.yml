@@ -36,8 +36,14 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H dlfly.seoul.kr >> ~/.ssh/known_hosts
 
+      - name: Create target directory on server
+        run: |
+          ssh -o StrictHostKeyChecking=no dlfly@dlfly.seoul.kr "mkdir -p /path/to/deploy"
+
       - name: Deploy to Server
         run: |
-          rsync -avz --delete packages/portfolio2024/dist/ dlfly@dlfly.seoul.kr:/path/to/deploy
+          rsync -avz --delete packages/portfolio2024/ dlfly@dlfly.seoul.kr:/path/to/deploy/portfolio2024
+        # run: |
+        #   rsync -avz --delete packages/portfolio2024/dist/ dlfly@dlfly.seoul.kr:/path/to/deploy
         # env:
         #   SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
