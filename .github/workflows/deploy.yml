@@ -22,12 +22,12 @@ jobs:
         run: npm install -g pnpm
 
       - name: Install dependencies
+        working-directory: packages/portfolio2024
         run: pnpm install
 
       - name: Build project
-        run: |
-          cd packages/portfolio2024
-          pnpm run build
+        working-directory: packages/portfolio2024
+        run: pnpm run build
 
       - name: Add SSH key and known hosts
         run: |
@@ -38,12 +38,17 @@ jobs:
 
       - name: Create target directory on server
         run: |
-          ssh -o StrictHostKeyChecking=no dlfly@dlfly.seoul.kr "mkdir -p /path/to/deploy"
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa username@server_ip "mkdir -p /path/to/deploy"
 
       - name: Deploy to Server
         run: |
-          rsync -avz --delete packages/portfolio2024/ dlfly@dlfly.seoul.kr:/path/to/deploy/portfolio2024
-        # run: |
-        #   rsync -avz --delete packages/portfolio2024/dist/ dlfly@dlfly.seoul.kr:/path/to/deploy
-        # env:
-        #   SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          rsync -avz -e "ssh -i ~/.ssh/id_rsa" packages/portfolio2024/dist/ username@server_ip:/path/to/deploy
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      # - name: Deploy to Server
+      #   run: |
+      #     rsync -avz --delete packages/portfolio2024/ dlfly@dlfly.seoul.kr:/path/to/deploy/portfolio2024
+      #   run: |
+      #     rsync -avz --delete packages/portfolio2024/dist/ dlfly@dlfly.seoul.kr:/path/to/deploy
+      #   env:
+      #     SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
