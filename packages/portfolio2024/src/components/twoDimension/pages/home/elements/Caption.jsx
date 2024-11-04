@@ -3,18 +3,12 @@ import { useRecoilValue } from "recoil";
 import { LanguageAtom } from "../../../../../stores";
 import { captions } from "../../../../../data/captions";
 
-const Caption = ({ type, link, lang }) => {
+const Caption = ({ type, link, lang, isBlock = false }) => {
   const language = useRecoilValue(LanguageAtom);
 
-  const renderCaptionLink = (linkText, isDiv) => {
-    return isDiv ? (
-      <div className="caption-link">
-        <a href={link} target="_blank">
-          {linkText}
-        </a>
-      </div>
-    ) : (
-      <span className="caption-link">
+  const renderCaptionLink = (linkText, isBlock) => {
+    return (
+      <span className={`caption-link${isBlock ? " block" : ""}`}>
         <a href={link} target="_blank">
           {linkText}
         </a>
@@ -33,10 +27,7 @@ const Caption = ({ type, link, lang }) => {
       {currentCaption ? (
         <>
           {currentCaption.text[displayLanguage]}
-          {renderCaptionLink(
-            currentCaption.linkText[displayLanguage],
-            currentCaption.isDiv
-          )}
+          {renderCaptionLink(currentCaption.linkText[displayLanguage], isBlock)}
         </>
       ) : (
         console.log(`This type (${type}) is not valid.`)

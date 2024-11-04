@@ -22,7 +22,7 @@ const About = forwardRef((props, ref) => {
           alt="flower picture"
         />
         {getSayHello(language)}
-        <Caption type="resume" />
+        <Caption type="resume" isBlock={true} />
         <img
           className="icon_smile"
           src="/icons/sparkle_smile.svg"
@@ -82,7 +82,7 @@ const About = forwardRef((props, ref) => {
             src="/icons/sparkle_roseS.svg"
             alt="rose icon"
           />
-          <Caption type="study" />
+          <Caption type="study" isBlock={true} />
 
           <div className="about-infoWrap">
             <div className="about-infoBox tripleLayered">

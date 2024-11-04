@@ -75,7 +75,7 @@ const Skills = forwardRef((props, ref) => {
             </li>
           ))}
         </ul>
-        <Caption type="code" />
+        <Caption type="code" isBlock={true} />
       </div>
     </section>
   );

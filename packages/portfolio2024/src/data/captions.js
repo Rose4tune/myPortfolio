@@ -8,7 +8,6 @@ export const captions = {
       en: "MY RESUME IS HERE",
       ko: "이력서 보러가기",
     },
-    isDiv: true,
   },
   study: {
     text: {
@@ -19,7 +18,6 @@ export const captions = {
       en: "MY STUDY IS HERE",
       ko: "공부 기록 보러가기",
     },
-    isDiv: true,
   },
   code: {
     text: {
@@ -30,7 +28,6 @@ export const captions = {
       en: "MY CODE IS HERE",
       ko: "코드 기록 보러가기",
     },
-    isDiv: true,
   },
   more: {
     text: {
@@ -41,7 +38,6 @@ export const captions = {
       en: "MORE CURIOUS ABOUT THIS?",
       ko: "이 프로젝트가 더 궁금하신가요?",
     },
-    isDiv: false,
   },
   email: {
     text: {
@@ -52,7 +48,6 @@ export const captions = {
       en: "SEND ME AN EMAIL",
       ko: "메일을 보내주세요.",
     },
-    isDiv: false,
   },
   git: {
     text: {
@@ -63,7 +58,6 @@ export const captions = {
       en: "GO GITHUB",
       ko: "깃헙을 방문해보세요.",
     },
-    isDiv: false,
   },
   blog: {
     text: {
@@ -74,6 +68,5 @@ export const captions = {
       en: "GO BLOG",
       ko: "블로그를 방문해주세요.",
     },
-    isDiv: false,
   },
 };
