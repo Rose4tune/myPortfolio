@@ -1085,7 +1085,7 @@ body {
   font-weight: 400;
   color: hsl(var(--gray-fore-040));
 }
-.project-detail-role {
+.project-detail-stack {
   margin: 1rem 0;
 }
 .project-detail-des {

@@ -119,7 +119,7 @@
     &-period {
       @include font($s: 20, $wght: 400, $cr: hsl(var(--gray-fore-040)));
     }
-    &-role {
+    &-stack {
       margin: 1rem 0;
     }
     &-des {

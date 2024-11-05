@@ -1,10 +1,11 @@
 import React from "react";
 import { useRecoilValue } from "recoil";
 import { LanguageAtom } from "../../../../../stores";
-import { captions } from "../../../../../data/captions";
+import getData from "../../../../../api/getData";
 
 const Caption = ({ type, link, lang, isBlock = false }) => {
   const language = useRecoilValue(LanguageAtom);
+  const captions = getData("captions");
 
   const renderCaptionLink = (linkText, isBlock) => {
     return (
@@ -18,6 +19,8 @@ const Caption = ({ type, link, lang, isBlock = false }) => {
 
   const currentCaption = captions[type];
   const displayLanguage = lang ? lang : language;
+
+  if (captions.length === 0) return;
 
   return (
     <div

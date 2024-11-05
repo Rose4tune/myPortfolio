@@ -1,10 +1,11 @@
-import React, { forwardRef, useState } from "react";
+import React, { forwardRef, useEffect, useState } from "react";
 import Caption from "./elements/Caption";
-import { skills } from "../../../../data/skills";
 import { useRecoilValue } from "recoil";
 import { LanguageAtom } from "../../../../stores";
+import getData from "../../../../api/getData";
 
 const Skills = forwardRef((props, ref) => {
+  const skills = getData("skills");
   const language = useRecoilValue(LanguageAtom);
   const [selectedTab, setSelectedTab] = useState("front");
   const [flippedCards, setFlippedCards] = useState(
@@ -23,6 +24,8 @@ const Skills = forwardRef((props, ref) => {
       return newFlippedState;
     });
   };
+
+  if (skills.length === 0) return;
 
   return (
     <section ref={ref} className="skills">
@@ -46,7 +49,10 @@ const Skills = forwardRef((props, ref) => {
             >
               <div className="skills-front" style={cardBg}>
                 <div className="skills-front-imgWrap">
-                  <img src={`/icons/skills/${title}.png`} alt={title} />
+                  <img
+                    src={`/icons/skills/${title.toLowerCase()}.png`}
+                    alt={title}
+                  />
                 </div>
                 {Title}
               </div>
