@@ -24,7 +24,7 @@ const Projects = forwardRef((props, ref) => {
         end: "bottom top",
         scrub: true,
         onUpdate: (self) => {
-          const index = Math.floor(self.progress * projects.length);
+          const index = Math.floor(self.progress * projects.length - 1);
           setActiveIndex(index);
         },
       },
