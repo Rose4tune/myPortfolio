@@ -1,20 +1,22 @@
 import { forwardRef, useEffect, useState } from "react";
-import styled from "styled-components";
 import DoubleLineBox from "./elements/DoubleLineBox";
 import { useRecoilValue } from "recoil";
 import { LanguageAtom } from "../../../../stores";
 import Caption from "./elements/Caption";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { projects } from "../../../../data/projects";
+import getData from "../../../../api/getData";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Projects = forwardRef((props, ref) => {
   const language = useRecoilValue(LanguageAtom);
   const [activeIndex, setActiveIndex] = useState(0);
+  const projects = getData("projects");
 
   useEffect(() => {
+    if (projects.length === 0) return;
+
     gsap.to(".project", {
       scrollTrigger: {
         trigger: ".project",
@@ -22,7 +24,7 @@ const Projects = forwardRef((props, ref) => {
         end: "bottom top",
         scrub: true,
         onUpdate: (self) => {
-          const index = Math.floor(self.progress * projects.length - 1);
+          const index = Math.floor(self.progress * projects.length);
           setActiveIndex(index);
         },
       },
@@ -57,9 +59,9 @@ const Projects = forwardRef((props, ref) => {
           />
           <div className="project-nav">
             <DoubleLineBox
-              contents={projects.map(({ key, value }, i) => ({
-                key,
-                value,
+              contents={projects.map(({ title, sub_title }, i) => ({
+                key: sub_title,
+                value: title,
                 isActive: i === activeIndex,
               }))}
               style={{
@@ -76,22 +78,24 @@ const Projects = forwardRef((props, ref) => {
           <div className="section-title font_rampartOne">Projects</div>
           <div className="project-detail">
             <div className="tripleLayered">
-              {projects.map(({ title, period, role, des, link }, i) => (
-                <div
-                  key={`project${i}`}
-                  className={`project-detail-wrap ${
-                    i === activeIndex ? "active" : ""
-                  }`}
-                >
-                  <h3 className="project-detail-title">
-                    {title[language]}
-                    <span className="project-detail-period">'{period}</span>
-                  </h3>
-                  <p className="project-detail-role">{role}</p>
-                  <div className="project-detail-des">{des[language]}</div>
-                  <Caption type="more" link={link} />
-                </div>
-              ))}
+              {projects.map(
+                ({ title, sub_title, period, stack, des, link }, i) => (
+                  <div
+                    key={`project${i}`}
+                    className={`project-detail-wrap ${
+                      i === activeIndex ? "active" : ""
+                    }`}
+                  >
+                    <h3 className="project-detail-title">
+                      {`${title} ${sub_title}`}
+                      <span className="project-detail-period">'{period}</span>
+                    </h3>
+                    <p className="project-detail-stack">{stack}</p>
+                    <div className="project-detail-des">{des[language]}</div>
+                    <Caption type="more" getlink={link} />
+                  </div>
+                )
+              )}
               <img
                 className="project-sparkle"
                 src="/icons/sparkle.svg"

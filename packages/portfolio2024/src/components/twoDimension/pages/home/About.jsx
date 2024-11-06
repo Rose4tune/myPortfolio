@@ -4,7 +4,7 @@ import { LanguageAtom } from "../../../../stores";
 import DoubleLineBox from "./elements/DoubleLineBox";
 import Caption from "./elements/Caption";
 import { introduction, keywords, information } from "../../../../data/about";
-import { getGreetings, getSayHello } from "../../../../data/getAbout";
+import { getGreetings, getSayHello } from "./elements/getAbout";
 
 const About = forwardRef((props, ref) => {
   const language = useRecoilValue(LanguageAtom);
@@ -22,7 +22,7 @@ const About = forwardRef((props, ref) => {
           alt="flower picture"
         />
         {getSayHello(language)}
-        <Caption type="resume" />
+        <Caption type="resume" isBlock={true} />
         <img
           className="icon_smile"
           src="/icons/sparkle_smile.svg"
@@ -82,7 +82,7 @@ const About = forwardRef((props, ref) => {
             src="/icons/sparkle_roseS.svg"
             alt="rose icon"
           />
-          <Caption type="study" />
+          <Caption type="study" isBlock={true} />
 
           <div className="about-infoWrap">
             <div className="about-infoBox tripleLayered">

@@ -1,0 +1,19 @@
+@use "../../helpers" as *;
+
+.section {
+  &-title {
+    display: none;
+    width: max-content;
+    @include font(
+      $s: 45,
+      $ln: 1.2,
+      $align: right,
+      $cr: hsl(var(--pink-fore-010))
+    );
+    white-space: pre-line;
+
+    @include tablet {
+      display: block;
+    }
+  }
+}

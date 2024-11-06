@@ -1,29 +1,25 @@
 import React from "react";
 import { useRecoilValue } from "recoil";
 import { LanguageAtom } from "../../../../../stores";
-import { captions } from "../../../../../data/captions";
+import getData from "../../../../../api/getData";
 
-const Caption = ({ type, link, lang }) => {
+const Caption = ({ type, getlink, lang, isBlock = false }) => {
   const language = useRecoilValue(LanguageAtom);
+  const displayLang = lang ? lang : language;
+  const captions = getData("captions");
 
-  const renderCaptionLink = (linkText, isDiv) => {
-    return isDiv ? (
-      <div className="caption-link">
-        <a href={link} target="_blank">
-          {linkText}
-        </a>
-      </div>
-    ) : (
-      <span className="caption-link">
-        <a href={link} target="_blank">
-          {linkText}
+  const renderCaptionLink = ({ linkText, link }, isBlock) => {
+    return (
+      <span className={`caption-link${isBlock ? " block" : ""}`}>
+        <a href={link ? link : getlink} target="_blank">
+          {linkText[displayLang]}
         </a>
       </span>
     );
   };
 
+  if (captions.length === 0) return;
   const currentCaption = captions[type];
-  const displayLanguage = lang ? lang : language;
 
   return (
     <div
@@ -32,11 +28,8 @@ const Caption = ({ type, link, lang }) => {
     >
       {currentCaption ? (
         <>
-          {currentCaption.text[displayLanguage]}
-          {renderCaptionLink(
-            currentCaption.linkText[displayLanguage],
-            currentCaption.isDiv
-          )}
+          {currentCaption.text[displayLang]}
+          {renderCaptionLink(currentCaption, isBlock)}
         </>
       ) : (
         console.log(`This type (${type}) is not valid.`)
