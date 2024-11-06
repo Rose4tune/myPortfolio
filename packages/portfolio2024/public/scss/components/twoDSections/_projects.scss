@@ -120,10 +120,11 @@
       @include font($s: 20, $wght: 400, $cr: hsl(var(--gray-fore-040)));
     }
     &-stack {
-      margin: 1rem 0;
+      margin: 1rem 0 3rem;
+      @include font($cr: hsl(var(--gray-fore-040)));
     }
     &-des {
-      height: calc(100% - 7.5rem);
+      height: calc(100% - 8.5rem);
       overflow-y: clip;
       column-count: 2;
       column-gap: vw(30);

@@ -1086,10 +1086,11 @@ body {
   color: hsl(var(--gray-fore-040));
 }
 .project-detail-stack {
-  margin: 1rem 0;
+  margin: 1rem 0 3rem;
+  color: hsl(var(--gray-fore-040));
 }
 .project-detail-des {
-  height: calc(100% - 7.5rem);
+  height: calc(100% - 8.5rem);
   overflow-y: clip;
   -webkit-column-count: 2;
      -moz-column-count: 2;
