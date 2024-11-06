@@ -4,7 +4,7 @@ import { LanguageAtom } from "../../../../stores";
 import DoubleLineBox from "./elements/DoubleLineBox";
 import Caption from "./elements/Caption";
 import { introduction, keywords, information } from "../../../../data/about";
-import { getGreetings, getSayHello } from "../../../../data/getAbout";
+import { getGreetings, getSayHello } from "./elements/getAbout";
 
 const About = forwardRef((props, ref) => {
   const language = useRecoilValue(LanguageAtom);

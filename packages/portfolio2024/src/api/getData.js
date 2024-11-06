@@ -6,7 +6,7 @@ const getData = (table) => {
 
   const fetchData = async () => {
     const { data: response, error } = await supabase.rpc(
-      `get_${table}_by_category`
+      `get_${table === "skills" ? `${table}_by_category` : table}`
     );
 
     if (error) throw error;
