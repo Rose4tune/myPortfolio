@@ -1,4 +1,5 @@
 import { forwardRef, useEffect, useState } from "react";
+import { throttle } from "lodash";
 import { sections } from "../../data/constants";
 import gsap from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
@@ -14,6 +15,8 @@ const NavBar = forwardRef((props, ref) => {
   const [showNav, setShowNav] = useRecoilState(ShowNavAtom);
 
   const scrollToSection = (i) => {
+    if (isScrolling) return;
+    setIsScrolling(true);
     ref.current[i].scrollIntoView({ behavior: "smooth" });
     setCurrentSection(i);
     setActiveMenu(i);
@@ -27,27 +30,26 @@ const NavBar = forwardRef((props, ref) => {
     navBtns[i].classList.add("active");
   };
 
-  const handleKeyDown = (e) => {
-    if (e.key === "ArrowDown") {
-      if (currentSection < ref.current.length - 1) {
-        setCurrentSection(currentSection + 1);
-      }
-    } else if (e.key === "ArrowUp") {
-      if (currentSection > 0) {
-        setCurrentSection(currentSection - 1);
-      }
+  const handleKeyDown = throttle((e) => {
+    if (isScrolling) return;
+    if (e.key === "ArrowDown" && currentSection < ref.current.length - 1) {
+      setCurrentSection(currentSection + 1);
+    } else if (e.key === "ArrowUp" && currentSection > 0) {
+      setCurrentSection(currentSection - 1);
     }
-  };
+  }, 700);
 
-  const handleScroll = () => {
+  const handleScroll = throttle(() => {
+    if (isScrolling) return;
     const currentScrollY = window.scrollY;
+
     if (currentScrollY === 0) {
       setShowNav(false);
     } else {
       setShowNav(true);
     }
     setLastScrollY(currentScrollY);
-  };
+  }, 300);
 
   useEffect(() => {
     const observerOptions = {
