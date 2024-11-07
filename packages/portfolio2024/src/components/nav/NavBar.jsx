@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { useRecoilState } from "recoil";
 import { ShowNavAtom } from "../../stores";
+import classNames from "classnames";
 
 gsap.registerPlugin(ScrollToPlugin);
 
@@ -107,7 +108,9 @@ const NavBar = forwardRef((props, ref) => {
             return (
               <li key={`navItem${i}`}>
                 <button
-                  className={`nav-menu-btn ${i === 0 && "active"}`}
+                  className={classNames("nav-menu-btn", {
+                    active: currentSection === i,
+                  })}
                   onClick={() => scrollToSection(i)}
                 >
                   {title}
