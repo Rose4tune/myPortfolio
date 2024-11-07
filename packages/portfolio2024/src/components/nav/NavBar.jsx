@@ -1,4 +1,4 @@
-import { forwardRef, useEffect, useState } from "react";
+import { forwardRef, useEffect, useState, useCallback } from "react";
 import { throttle } from "lodash";
 import { sections } from "../../data/constants";
 import gsap from "gsap";
@@ -17,9 +17,7 @@ const NavBar = forwardRef((props, ref) => {
   const scrollToSection = (i) => {
     if (isScrolling) return;
     setIsScrolling(true);
-    ref.current[i].scrollIntoView({ behavior: "smooth" });
     setCurrentSection(i);
-    setActiveMenu(i);
   };
 
   const setActiveMenu = (i) => {
@@ -30,26 +28,27 @@ const NavBar = forwardRef((props, ref) => {
     navBtns[i].classList.add("active");
   };
 
-  const handleKeyDown = throttle((e) => {
-    if (isScrolling) return;
-    if (e.key === "ArrowDown" && currentSection < ref.current.length - 1) {
-      setCurrentSection(currentSection + 1);
-    } else if (e.key === "ArrowUp" && currentSection > 0) {
-      setCurrentSection(currentSection - 1);
-    }
-  }, 700);
+  const handleKeyDown = useCallback(
+    throttle((e) => {
+      if (isScrolling) return;
+      if (e.key === "ArrowDown" && currentSection < ref.current.length - 1) {
+        setCurrentSection(currentSection + 1);
+      } else if (e.key === "ArrowUp" && currentSection > 0) {
+        setCurrentSection(currentSection - 1);
+      }
+    }, 700),
+    [currentSection, isScrolling, ref]
+  );
 
-  const handleScroll = throttle(() => {
-    if (isScrolling) return;
-    const currentScrollY = window.scrollY;
-
-    if (currentScrollY === 0) {
-      setShowNav(false);
-    } else {
-      setShowNav(true);
-    }
-    setLastScrollY(currentScrollY);
-  }, 300);
+  const handleScroll = useCallback(
+    throttle(() => {
+      if (isScrolling) return;
+      const currentScrollY = window.scrollY;
+      setShowNav(currentScrollY > 0);
+      setLastScrollY(currentScrollY);
+    }, 300),
+    [isScrolling, setShowNav]
+  );
 
   useEffect(() => {
     const observerOptions = {
@@ -59,11 +58,9 @@ const NavBar = forwardRef((props, ref) => {
 
     const observerCallback = (entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && !isScrolling) {
           const index = ref.current.indexOf(entry.target);
-          if (!isScrolling) {
-            setCurrentSection(index);
-          }
+          setCurrentSection(index);
         }
       });
     };
