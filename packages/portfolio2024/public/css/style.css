@@ -1230,6 +1230,14 @@ body {
   .project .doubleLine::after {
     margin: 2rem 0 0 auto;
   }
+  .project-detail-des {
+    -webkit-column-count: 1;
+       -moz-column-count: 1;
+            column-count: 1;
+    -webkit-column-gap: 0;
+       -moz-column-gap: 0;
+            column-gap: 0;
+  }
 }
 .contact {
   position: relative;

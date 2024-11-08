@@ -211,13 +211,22 @@
 }
 
 @include mobileL {
-  .project .doubleLine {
-    $lineMargin: rem(20);
-    &::before {
-      margin: 0 0 $lineMargin auto;
+  .project {
+    .doubleLine {
+      $lineMargin: rem(20);
+      &::before {
+        margin: 0 0 $lineMargin auto;
+      }
+      &::after {
+        margin: $lineMargin 0 0 auto;
+      }
     }
-    &::after {
-      margin: $lineMargin 0 0 auto;
+
+    &-detail {
+      &-des {
+        column-count: 1;
+        column-gap: 0;
+      }
     }
   }
 }
