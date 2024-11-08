@@ -709,7 +709,7 @@ body {
 .skills .section-title {
   position: absolute;
   top: 60%;
-  right: 5rem;
+  right: 10vw;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
 }
@@ -846,8 +846,8 @@ body {
   margin-left: 0;
 }
 .skills-nav {
-  width: 15.1vw;
-  height: 20.05vw;
+  width: 18.25vw;
+  height: 20.85vw;
   padding: 19% 3rem 0;
   margin-bottom: 5rem;
   background: url(/images/skill-bg.svg) no-repeat center center;
@@ -919,12 +919,12 @@ body {
     margin-left: auto;
   }
   .skills-nav {
-    width: 14.5rem;
-    height: 21rem;
-    padding: 3rem 1rem 0;
+    width: 20.85vw;
+    height: 25vw;
+    padding: 2rem 1rem 0;
     margin-left: auto;
     margin-bottom: 4rem;
-    font-size: 2.3rem;
+    font-size: 2rem;
   }
   .skills-nav::before {
     width: 100%;
@@ -938,10 +938,58 @@ body {
   }
 }
 @media (max-width: 600px) {
+  .skills .section-title {
+    position: initial;
+    -webkit-transform: none;
+            transform: none;
+  }
   .skills-board {
     width: calc(100% - 2rem);
     height: calc(66.5vh - 2rem);
     margin: 0 0 2rem 2rem;
+  }
+  .skills-navWrap {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
+  }
+  .skills-nav {
+    background: none;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+    gap: 1rem;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 1rem 0;
+  }
+  .skills-nav::before, .skills-nav::after {
+    display: none;
+  }
+  .skills-nav-menu {
+    padding: 0.4rem 1.2rem;
+    margin: 0;
+    border: 1px solid hsl(var(--pink-back-080));
+    border-radius: 2rem;
+  }
+  .skills-nav-menu::before {
+    display: none;
+  }
+  .skills-nav-menu.active {
+    border: 1px solid hsl(var(--pink-back-070));
   }
 }
 @media (max-width: 420px) {
@@ -958,11 +1006,6 @@ body {
 }
 @media (max-width: 360px) {
   .skills .section-title {
-    top: 45%;
-    right: 12rem;
-    width: -webkit-min-content;
-    width: -moz-min-content;
-    width: min-content;
     font-size: 4rem;
     text-transform: capitalize;
   }

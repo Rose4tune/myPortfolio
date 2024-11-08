@@ -19,7 +19,7 @@
   .section-title {
     position: absolute;
     top: 60%;
-    right: 5rem;
+    right: 10vw;
     transform: translate(-50%, -50%);
   }
 
@@ -147,8 +147,8 @@
   }
 
   &-nav {
-    width: vw(290);
-    height: vw(385);
+    width: vw(350);
+    height: vw(400);
     padding: 19% 3rem 0;
     margin-bottom: 5rem;
     background: url(/images/skill-bg.svg) no-repeat center center;
@@ -230,12 +230,12 @@
     }
 
     &-nav {
-      width: 14.5rem;
-      height: 21rem;
-      padding: 3rem 1rem 0;
+      width: vw(400);
+      height: vw(480);
+      padding: 2rem 1rem 0;
       margin-left: auto;
       margin-bottom: 4rem;
-      @include font($s: 23);
+      @include font($s: 20);
 
       &::before {
         width: 100%;
@@ -255,10 +255,53 @@
 @include mobileL {
   $shadowDepth: 2rem;
   .skills {
+    .section-title {
+      position: initial;
+      transform: none;
+    }
+
     &-board {
       width: calc(100% - 2rem);
       height: calc(vh(540, $mobileVH) - 2rem);
       margin: 0 0 #{$shadowDepth} #{$shadowDepth};
+    }
+
+    &-navWrap {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
+    &-nav {
+      background: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 1rem;
+      width: auto;
+      height: auto;
+      padding: 0;
+      margin: 1rem 0;
+
+      &::before,
+      &::after {
+        display: none;
+      }
+
+      &-menu {
+        padding: 0.4rem 1.2rem;
+        margin: 0;
+        border: 1px solid hsl(var(--pink-back-080));
+        border-radius: 2rem;
+
+        &::before {
+          display: none;
+        }
+
+        &.active {
+          border: 1px solid hsl(var(--pink-back-070));
+        }
+      }
     }
   }
 }
@@ -283,9 +326,6 @@
 @include mobileS {
   .skills {
     .section-title {
-      top: 45%;
-      right: 12rem;
-      width: min-content;
       @include font($s: 40, $trans: capitalize);
     }
   }
