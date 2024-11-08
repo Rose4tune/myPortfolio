@@ -7,7 +7,7 @@ import getData from "../../../../api/getData";
 const Skills = forwardRef((props, ref) => {
   const skills = getData("skills");
   const language = useRecoilValue(LanguageAtom);
-  const [selectedTab, setSelectedTab] = useState("front");
+  const [selectedTab, setSelectedTab] = useState("frontend");
   const [flippedCards, setFlippedCards] = useState(
     Array(skills[selectedTab]).fill(false)
   );
