@@ -6,6 +6,7 @@ import Caption from "./elements/Caption";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import getData from "../../../../api/getData";
+import ProjectFeature from "./elements/ProjectFeature";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -79,7 +80,10 @@ const Projects = forwardRef((props, ref) => {
           <div className="project-detail">
             <div className="tripleLayered">
               {projects.map(
-                ({ title, sub_title, period, stack, des, link }, i) => (
+                (
+                  { title, sub_title, period, stack, des, link, features },
+                  i
+                ) => (
                   <div
                     key={`project${i}`}
                     className={`project-detail-wrap ${
@@ -92,7 +96,10 @@ const Projects = forwardRef((props, ref) => {
                     </h3>
                     <p className="project-detail-stack">{stack}</p>
                     <div className="project-detail-des">
-                      <p>{des[language]}</p>
+                      {des[language].split(`\n`).map((para, i) => (
+                        <p key={`projectDesPara${i}`}>{para}</p>
+                      ))}
+                      {ProjectFeature(features[language])}
                     </div>
                     <Caption type="more" getlink={link} />
                   </div>
