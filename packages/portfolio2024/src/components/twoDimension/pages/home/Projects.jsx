@@ -101,11 +101,13 @@ const Projects = forwardRef((props, ref) => {
                       <span className="project-detail-period">'{period}</span>
                     </h3>
                     <p className="project-detail-stack">{stack}</p>
-                    <div className="project-detail-des">
-                      {des[language].split(`\n`).map((para, i) => (
-                        <p key={`projectDesPara${i}`}>{para}</p>
-                      ))}
-                      {ProjectFeature(features[language])}
+                    <div className="project-detail-desWrap">
+                      <div className="project-detail-des">
+                        {des[language].split(`\n`).map((para, i) => (
+                          <p key={`projectDesPara${i}`}>{para}</p>
+                        ))}
+                        {ProjectFeature(features[language])}
+                      </div>
                     </div>
                     <Caption type="more" getlink={link} />
                   </div>
