@@ -6,6 +6,7 @@ import Caption from "./elements/Caption";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import getData from "../../../../api/getData";
+import ProjectFeature from "./elements/ProjectFeature";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -17,25 +18,31 @@ const Projects = forwardRef((props, ref) => {
   useEffect(() => {
     if (projects.length === 0) return;
 
-    gsap.to(".project", {
-      scrollTrigger: {
-        trigger: ".project",
-        start: "0% bottom",
-        end: "bottom top",
-        scrub: true,
-        onUpdate: (self) => {
-          const index = Math.floor(self.progress * projects.length);
-          setActiveIndex(index);
-        },
+    const trigger = ScrollTrigger.create({
+      trigger: ".project",
+      start: "top top",
+      end: "bottom bottom",
+      scrub: 1,
+      onUpdate: (self) => {
+        let index = Math.floor(self.progress * projects.length);
+        if (self.progress === 1) {
+          index = projects.length - 1;
+        }
+        setActiveIndex(index);
       },
     });
-  }, [projects, setActiveIndex]);
+
+    return () => {
+      trigger.kill();
+      setActiveIndex(0);
+    };
+  }, [projects, ref]);
 
   return (
     <section
       ref={ref}
       className="project"
-      style={{ height: `${(projects.length + 1) * 100}vh` }}
+      style={{ height: `${projects.length * 100}vh` }}
     >
       <div className="project-stickyFrame">
         <div className="project-wrap">
@@ -79,7 +86,10 @@ const Projects = forwardRef((props, ref) => {
           <div className="project-detail">
             <div className="tripleLayered">
               {projects.map(
-                ({ title, sub_title, period, stack, des, link }, i) => (
+                (
+                  { title, sub_title, period, stack, des, link, features },
+                  i
+                ) => (
                   <div
                     key={`project${i}`}
                     className={`project-detail-wrap ${
@@ -91,7 +101,14 @@ const Projects = forwardRef((props, ref) => {
                       <span className="project-detail-period">'{period}</span>
                     </h3>
                     <p className="project-detail-stack">{stack}</p>
-                    <div className="project-detail-des">{des[language]}</div>
+                    <div className="project-detail-desWrap">
+                      <div className="project-detail-des">
+                        {des[language].split(`\n`).map((para, i) => (
+                          <p key={`projectDesPara${i}`}>{para}</p>
+                        ))}
+                        {ProjectFeature(features[language])}
+                      </div>
+                    </div>
                     <Caption type="more" getlink={link} />
                   </div>
                 )

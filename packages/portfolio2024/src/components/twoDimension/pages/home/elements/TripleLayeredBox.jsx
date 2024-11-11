@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 
 function TripleLayeredBox({
@@ -6,10 +5,9 @@ function TripleLayeredBox({
   position,
   style,
   redText = false,
-  classNames = "",
+  klassName = "",
 }) {
-  classNames =
-    classNames !== "" ? `tripleLayered ${classNames}` : "tripleLayered";
+  klassName = klassName !== "" ? `tripleLayered ${klassName}` : "tripleLayered";
 
   const styles = {
     ...style,
@@ -18,7 +16,7 @@ function TripleLayeredBox({
 
   return (
     <Wrap style={position}>
-      <div className={classNames} style={styles}>
+      <div className={klassName} style={styles}>
         {contents}
       </div>
     </Wrap>

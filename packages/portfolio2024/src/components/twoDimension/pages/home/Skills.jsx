@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect, useState } from "react";
+import React, { forwardRef, useState } from "react";
 import Caption from "./elements/Caption";
 import { useRecoilValue } from "recoil";
 import { LanguageAtom } from "../../../../stores";
@@ -7,7 +7,7 @@ import getData from "../../../../api/getData";
 const Skills = forwardRef((props, ref) => {
   const skills = getData("skills");
   const language = useRecoilValue(LanguageAtom);
-  const [selectedTab, setSelectedTab] = useState("front");
+  const [selectedTab, setSelectedTab] = useState("frontend");
   const [flippedCards, setFlippedCards] = useState(
     Array(skills[selectedTab]).fill(false)
   );
@@ -51,6 +51,8 @@ const Skills = forwardRef((props, ref) => {
                 <div className="skills-front-imgWrap">
                   <img
                     src={`/icons/skills/${title.toLowerCase()}.png`}
+                    width="150"
+                    height="150"
                     alt={title}
                   />
                 </div>

@@ -1,5 +1,3 @@
-import React from "react";
-
 const DoubleLineBox = ({ contents, style, even = false, children }) => {
   return (
     <div className={`doubleLine ${even ? `even` : ""}`} style={style}>

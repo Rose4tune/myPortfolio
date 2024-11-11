@@ -47,8 +47,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: hsla(var(--gray-fore-080), 0.1);
-      background-blend-mode: multiply;
+      background: hsla(var(--pink-back-060), 0.1);
     }
 
     &-img {
@@ -70,7 +69,7 @@
       position: absolute;
       bottom: vh(30);
       left: vw(20);
-      @include font($s: 90, $cr: hsl(var(--white)));
+      @include font($s: 90, $cr: hsl(var(--pink-fore-030)));
       z-index: 10;
     }
   }
@@ -120,14 +119,39 @@
       @include font($s: 20, $wght: 400, $cr: hsl(var(--gray-fore-040)));
     }
     &-stack {
-      margin: 1rem 0 3rem;
+      margin: 1rem 0;
       @include font($cr: hsl(var(--gray-fore-040)));
     }
     &-des {
-      height: calc(100% - 8.5rem);
-      overflow-y: clip;
-      column-count: 2;
-      column-gap: vw(30);
+      &Wrap {
+        height: calc(100% - 9rem);
+        padding: 1rem 0;
+        border: {
+          top: 1px solid hsl(var(--gray-back-070));
+          bottom: 1px solid hsl(var(--gray-back-070));
+        }
+      }
+      height: 100%;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      @include font($ln: 1.3);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      &-title {
+        @include font($wght: 600);
+
+        &::before {
+          display: inline-block;
+          content: "•";
+          margin-right: 1rem;
+        }
+      }
+
+      p {
+        text-indent: 1rem;
+      }
     }
 
     .caption {
@@ -200,6 +224,7 @@
 
       .tripleLayered {
         width: vw(286, $mobileVW);
+        min-height: 50vh;
       }
     }
 
@@ -211,13 +236,15 @@
 }
 
 @include mobileL {
-  .project .doubleLine {
-    $lineMargin: rem(20);
-    &::before {
-      margin: 0 0 $lineMargin auto;
-    }
-    &::after {
-      margin: $lineMargin 0 0 auto;
+  .project {
+    .doubleLine {
+      $lineMargin: rem(20);
+      &::before {
+        margin: 0 0 $lineMargin auto;
+      }
+      &::after {
+        margin: $lineMargin 0 0 auto;
+      }
     }
   }
 }
