@@ -1056,8 +1056,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: hsla(var(--gray-fore-080), 0.1);
-  background-blend-mode: multiply;
+  background: hsla(var(--pink-back-060), 0.1);
 }
 .project-picture-img {
   position: absolute;
@@ -1079,7 +1078,7 @@ body {
   bottom: 2.8vh;
   left: 1.05vw;
   font-size: 9rem;
-  color: hsl(var(--white));
+  color: hsl(var(--pink-fore-030));
   z-index: 10;
 }
 .project-detail {

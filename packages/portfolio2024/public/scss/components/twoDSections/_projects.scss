@@ -47,8 +47,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: hsla(var(--gray-fore-080), 0.1);
-      background-blend-mode: multiply;
+      background: hsla(var(--pink-back-060), 0.1);
     }
 
     &-img {
@@ -70,7 +69,7 @@
       position: absolute;
       bottom: vh(30);
       left: vw(20);
-      @include font($s: 90, $cr: hsl(var(--white)));
+      @include font($s: 90, $cr: hsl(var(--pink-fore-030)));
       z-index: 10;
     }
   }
