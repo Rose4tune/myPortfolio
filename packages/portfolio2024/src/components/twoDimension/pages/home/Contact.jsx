@@ -69,7 +69,12 @@ const Contact = forwardRef((props, ref) => {
               </div>
               <div className="milk-icon" ref={milkRef}>
                 <div className="milk-imgWrap">
-                  <img src="/icons/milk.svg" alt="milk" />
+                  <img
+                    src="/icons/milk.svg"
+                    width="110"
+                    height="130"
+                    alt="milk"
+                  />
                 </div>
                 <p>milk</p>
               </div>
@@ -81,7 +86,12 @@ const Contact = forwardRef((props, ref) => {
               </div>
               <div className="coffee-icon" ref={coffeeRef}>
                 <div className="coffee-imgWrap">
-                  <img src="/icons/coffee.svg" alt="coffee" />
+                  <img
+                    src="/icons/coffee.svg"
+                    width="110"
+                    height="130"
+                    alt="coffee"
+                  />
                 </div>
                 <p>coffee</p>
               </div>

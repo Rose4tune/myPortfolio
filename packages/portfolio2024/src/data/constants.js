@@ -1,4 +1,4 @@
-export const loadingAniTime = 6;
+export const loadingAniTime = 3;
 
 export const introTexts = [
   `ROSE'S PORTFOLIO`,

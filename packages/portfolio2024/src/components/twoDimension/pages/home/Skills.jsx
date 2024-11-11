@@ -51,6 +51,8 @@ const Skills = forwardRef((props, ref) => {
                 <div className="skills-front-imgWrap">
                   <img
                     src={`/icons/skills/${title.toLowerCase()}.png`}
+                    width="150"
+                    height="150"
                     alt={title}
                   />
                 </div>

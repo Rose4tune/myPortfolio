@@ -12,13 +12,20 @@ const About = forwardRef((props, ref) => {
   return (
     <section className="about" ref={ref}>
       <div className="about-bgimg_top">
-        <img src="/images/flower-img1.jpg" alt="flower picture" />
+        <img
+          src="/images/flower-img1.jpg"
+          width="480"
+          height="460"
+          alt="flower picture"
+        />
       </div>
 
       <div className="about-profileBox1">
         <img
           className="frameShadow_right"
           src="/images/profile1.jpg"
+          width="815"
+          height="840"
           alt="flower picture"
         />
         {getSayHello(language)}
@@ -51,11 +58,15 @@ const About = forwardRef((props, ref) => {
         <img
           className="frameShadow_left"
           src="/images/profile2.jpg"
+          width="600"
+          height="970"
           alt="flower picture"
         />
         <img
           className="bgImg"
           src="/images/flower-img2.jpg"
+          width="300"
+          height="485"
           alt="flower picture"
         />
         <img className="fyi" src="/images/FYI.svg" alt="for your information" />
@@ -75,6 +86,8 @@ const About = forwardRef((props, ref) => {
           <img
             className="bgImg"
             src="/images/flower-img3.jpg"
+            width="800"
+            height="640"
             alt="flower picture"
           />
           <img

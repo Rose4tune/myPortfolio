@@ -30,29 +30,30 @@ const ModeBar = () => {
 
   return (
     <Wrap className={`nav ${showNav ? "show" : "hide"}`}>
-      <select id="dimensionSelect" onChange={handleDimension}>
-        <option name="dimension" value={"2D"}>
-          2D
-        </option>
-        <option name="dimension" value={"3D"}>
-          3D
-        </option>
+      <select
+        aria-label="dimensionSelect"
+        name="dimension"
+        onChange={handleDimension}
+      >
+        <option value={"2D"}>2D</option>
+        <option value={"3D"}>3D</option>
       </select>
-      <select id="themeSelect" onChange={handleTheme} hidden>
-        <option name="theme" value={"light"}>
-          light
-        </option>
-        <option name="theme" value={"dark"}>
-          dark
-        </option>
+      <select
+        aria-label="themeSelect"
+        name="theme"
+        onChange={handleTheme}
+        hidden
+      >
+        <option value={"light"}>light</option>
+        <option value={"dark"}>dark</option>
       </select>
-      <select id="languageSelect" onChange={handleLanguage}>
-        <option name="language" value="ko">
-          한국어
-        </option>
-        <option name="language" value="en">
-          English
-        </option>
+      <select
+        aria-label="languageSelect"
+        name="language"
+        onChange={handleLanguage}
+      >
+        <option value="ko">한국어</option>
+        <option value="en">English</option>
       </select>
       <div>
         <input type="color" name="theme" id="themeSelect" hidden />

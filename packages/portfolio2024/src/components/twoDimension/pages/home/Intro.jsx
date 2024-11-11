@@ -66,7 +66,12 @@ const Intro = forwardRef((props, ref) => {
         );
       })}
       <MyChracter>
-        <img src="/icons/mainCharacter.svg" alt="rose's fortune cookie" />
+        <img
+          src="/icons/mainCharacter.svg"
+          width="195"
+          height="103"
+          alt="rose's fortune cookie"
+        />
       </MyChracter>
     </Section>
   );
