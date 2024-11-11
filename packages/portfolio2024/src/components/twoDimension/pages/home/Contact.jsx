@@ -2,7 +2,7 @@ import { forwardRef, useRef, useEffect } from "react";
 import Caption from "./elements/Caption";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import FortuneCoffee from "./icons/FortuneCoffee";
+import FortuneCoffee from "../../../../assets/icons/FortuneCoffee";
 
 gsap.registerPlugin(ScrollTrigger);
 
