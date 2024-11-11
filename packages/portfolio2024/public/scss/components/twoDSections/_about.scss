@@ -137,29 +137,6 @@
       gap: 2rem;
       width: vw(518);
       padding: 4rem 3rem;
-
-      &-content {
-        margin-top: rem(5);
-        margin-left: rem(40);
-        line-height: 1.2;
-
-        &::before,
-        &::after {
-          display: inline-block;
-          content: "";
-          width: rem(10);
-          height: rem(16);
-          background: url(../icons/arrow_red.svg) no-repeat center center;
-          background-size: contain;
-        }
-
-        &::before {
-          transform: translateX(-1rem);
-        }
-        &::after {
-          transform: translateX(1rem) rotateY(180deg);
-        }
-      }
     }
   }
 }

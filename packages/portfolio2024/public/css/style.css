@@ -534,27 +534,6 @@ body {
   width: 27vw;
   padding: 4rem 3rem;
 }
-.about-infoBox-content {
-  margin-top: 0.5rem;
-  margin-left: 4rem;
-  line-height: 1.2;
-}
-.about-infoBox-content::before, .about-infoBox-content::after {
-  display: inline-block;
-  content: "";
-  width: 1rem;
-  height: 1.6rem;
-  background: url(../icons/arrow_red.svg) no-repeat center center;
-  background-size: contain;
-}
-.about-infoBox-content::before {
-  -webkit-transform: translateX(-1rem);
-          transform: translateX(-1rem);
-}
-.about-infoBox-content::after {
-  -webkit-transform: translateX(1rem) rotateY(180deg);
-          transform: translateX(1rem) rotateY(180deg);
-}
 
 @media (max-width: 1300px) {
   .about-profileBox1 p {

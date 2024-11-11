@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect, useState } from "react";
+import React, { forwardRef, useState } from "react";
 import Caption from "./elements/Caption";
 import { useRecoilValue } from "recoil";
 import { LanguageAtom } from "../../../../stores";

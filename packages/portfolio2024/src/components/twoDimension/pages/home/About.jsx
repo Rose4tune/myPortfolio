@@ -87,9 +87,9 @@ const About = forwardRef((props, ref) => {
           <div className="about-infoWrap">
             <div className="about-infoBox tripleLayered">
               {information.map(({ title, content }, i) => (
-                <div className="infoBox-item" key={`info${i}`}>
+                <div key={`info${i}`}>
                   <div className="boldUpper">{title}</div>
-                  <p className="infoBox-content">{content[language]}</p>
+                  <p>{content[language]}</p>
                 </div>
               ))}
             </div>
