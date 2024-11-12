@@ -576,7 +576,7 @@ body {
 }
 .about-bgimg_bottom .caption {
   position: absolute;
-  top: 35%;
+  top: 13rem;
   right: 35%;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
@@ -659,11 +659,9 @@ body {
             transform: none;
   }
   .about-infoWrap {
-    top: 65%;
-    left: 10%;
-    right: initial;
-    -webkit-transform: translateX(0);
-            transform: translateX(0);
+    position: initial;
+    -webkit-transform: translate(5vw, -10rem);
+            transform: translate(5vw, -10rem);
   }
   .about-infoBox {
     width: 53.35vw;
@@ -679,6 +677,10 @@ body {
     margin-top: 7.4vh;
     -webkit-transform: none;
             transform: none;
+  }
+  .about-bgimg_bottom .parkle_roseS {
+    -webkit-transform: translate(4vw, 0);
+            transform: translate(4vw, 0);
   }
 }
 @media (max-width: 600px) {
@@ -704,11 +706,6 @@ body {
     margin-top: 18.45vw;
     margin-bottom: 7.4vh;
     font-size: 3.5rem;
-  }
-  .about-infoWrap {
-    left: 50%;
-    -webkit-transform: translateX(calc(-50% + 1.6rem));
-            transform: translateX(calc(-50% + 1.6rem));
   }
   .about-infoBox {
     width: 84vw;

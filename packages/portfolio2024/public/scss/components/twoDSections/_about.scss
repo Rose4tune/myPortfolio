@@ -110,7 +110,7 @@
       transform: translateY(25%);
 
       .caption {
-        @include position($t: 35%, $r: 35%);
+        @include position($t: rem(130), $r: 35%);
         transform: translateY(-50%);
       }
 
@@ -196,15 +196,14 @@
 
     &-info {
       &Wrap {
-        top: 65%;
-        left: 10%;
-        right: initial;
-        transform: translateX(0);
+        position: initial;
+        transform: translate(5vw, -10rem);
       }
       &Box {
         width: vw(200, $mobileVW);
       }
     }
+
     &-bgimg {
       &_top {
         position: inherit;
@@ -216,6 +215,10 @@
         width: vw(335, $mobileVW);
         margin-top: vh(60, $mobileVH);
         transform: none;
+
+        .parkle_roseS {
+          transform: translate(4vw, 0);
+        }
       }
     }
   }
@@ -250,10 +253,6 @@
     }
 
     &-info {
-      &Wrap {
-        left: 50%;
-        transform: translateX(calc(-50% + 1.6rem));
-      }
       &Box {
         width: vw(315, $mobileVW);
       }
