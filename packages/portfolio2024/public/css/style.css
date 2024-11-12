@@ -1136,7 +1136,7 @@ body {
 .project-detail .tripleLayered,
 .project-detail .tripleLayered::before,
 .project-detail .tripleLayered::after {
-  background: linear-gradient(250deg, hsla(var(--gray-back-100), 0.1) 0%, hsl(var(--gray-back-100), 0.8) 40%);
+  background: linear-gradient(250deg, hsla(var(--gray-back-100), 0.1) 0%, hsl(var(--gray-back-100), 1) 40%);
 }
 .project-detail .tripleLayered {
   width: 52.1vw;
@@ -1193,7 +1193,7 @@ body {
   gap: 1rem;
 }
 .project-detail-desWrap {
-  height: 30vh;
+  height: 25vh;
   overflow: hidden;
   padding: 1rem 0;
   border-top: 1px solid hsl(var(--gray-back-070));
@@ -1280,11 +1280,20 @@ body {
     display: none;
   }
   .project-detail {
-    bottom: 0;
+    top: 50%;
+    bottom: initial;
     left: 13.35vw;
   }
   .project-detail .tripleLayered {
     width: 76.25vw;
+  }
+  .project-detail-title {
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .project-detail-desWrap {
+    height: 27.1vh;
   }
   .project-arrow_curved {
     width: 20.25vw;

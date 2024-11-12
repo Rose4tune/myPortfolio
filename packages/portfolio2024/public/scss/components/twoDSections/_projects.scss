@@ -85,7 +85,7 @@
       background: linear-gradient(
         250deg,
         hsla(var(--gray-back-100), 0.1) 0%,
-        hsl(var(--gray-back-100), 0.8) 40%
+        hsl(var(--gray-back-100), 1) 40%
       );
     }
 
@@ -123,7 +123,7 @@
     }
     &-des {
       &Wrap {
-        height: 30vh;
+        height: vh(270);
         overflow: hidden;
         padding: 1rem 0;
         border: {
@@ -220,11 +220,22 @@
     }
 
     &-detail {
-      bottom: 0;
+      top: 50%;
+      bottom: initial;
       left: vw(50, $mobileVW);
 
       .tripleLayered {
         width: vw(286, $mobileVW);
+      }
+
+      &-title {
+        justify-content: space-between;
+      }
+
+      &-des {
+        &Wrap {
+          height: vh(220, $mobileVH);
+        }
       }
     }
 
