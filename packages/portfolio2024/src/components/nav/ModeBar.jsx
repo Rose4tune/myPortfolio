@@ -1,5 +1,6 @@
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import {
+  ActiveNavAtom,
   DimensionModeAtom,
   LanguageAtom,
   ShowNavAtom,
@@ -8,6 +9,7 @@ import {
 import styled from "styled-components";
 
 const ModeBar = () => {
+  const activeNav = useRecoilValue(ActiveNavAtom);
   const showNav = useRecoilValue(ShowNavAtom);
   const setDemension = useSetRecoilState(DimensionModeAtom);
   const setLanguage = useSetRecoilState(LanguageAtom);
@@ -29,48 +31,50 @@ const ModeBar = () => {
   };
 
   return (
-    <Wrap className={`nav ${showNav ? "show" : "hide"}`}>
-      <select
-        aria-label="dimensionSelect"
-        name="dimension"
-        onChange={handleDimension}
-      >
-        <option value={"2D"}>2D</option>
-        <option value={"3D"}>3D</option>
-      </select>
-      <select
-        aria-label="themeSelect"
-        name="theme"
-        onChange={handleTheme}
-        hidden
-      >
-        <option value={"light"}>light</option>
-        <option value={"dark"}>dark</option>
-      </select>
-      <select
-        aria-label="languageSelect"
-        name="language"
-        onChange={handleLanguage}
-      >
-        <option value="ko">한국어</option>
-        <option value="en">English</option>
-      </select>
-      <div>
-        <input type="color" name="theme" id="themeSelect" hidden />
-      </div>
-    </Wrap>
+    <div
+      className={`nav ${showNav ? "show" : "hide"}
+      ${activeNav ? "active" : ""}`}
+    >
+      <ModeMenu className="nav-menu">
+        <select
+          aria-label="dimensionSelect"
+          name="dimension"
+          onChange={handleDimension}
+        >
+          <option value={"2D"}>2D</option>
+          <option value={"3D"}>3D</option>
+        </select>
+        <select
+          aria-label="themeSelect"
+          name="theme"
+          onChange={handleTheme}
+          hidden
+        >
+          <option value={"light"}>light</option>
+          <option value={"dark"}>dark</option>
+        </select>
+        <select
+          aria-label="languageSelect"
+          name="language"
+          onChange={handleLanguage}
+        >
+          <option value="ko">한국어</option>
+          <option value="en">English</option>
+        </select>
+        <div>
+          <input type="color" name="theme" id="themeSelect" hidden />
+        </div>
+      </ModeMenu>
+    </div>
   );
 };
 
-const Wrap = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-top: 4rem;
-
-  &.hide {
-    transform: translateY(-250%);
-  }
-
-`;
+const ModeMenu = styled.div`
+    margin-top: 5rem;
+    margin-left: 5rem;
+    min-width: auto;
+    min-height: auto;
+    transform: translateY(-500%);
+    `;
 
 export default ModeBar;
