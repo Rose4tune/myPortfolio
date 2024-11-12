@@ -91,14 +91,13 @@
 
     .tripleLayered {
       width: vw(1000);
-      height: vh(430);
+      height: auto;
       padding: vw(40);
     }
 
     &-wrap {
       position: relative;
       display: none;
-      padding-bottom: 2rem;
       opacity: 0;
       transition: opacity 0.3s ease, transform 0.3s ease;
 
@@ -124,7 +123,8 @@
     }
     &-des {
       &Wrap {
-        height: calc(100% - 9rem);
+        height: 30vh;
+        overflow: hidden;
         padding: 1rem 0;
         border: {
           top: 1px solid hsl(var(--gray-back-070));
@@ -155,7 +155,8 @@
     }
 
     .caption {
-      @include position($b: 0, $l: 0);
+      width: fit-content;
+      margin-top: 1rem;
     }
   }
 
@@ -224,7 +225,6 @@
 
       .tripleLayered {
         width: vw(286, $mobileVW);
-        min-height: 50vh;
       }
     }
 

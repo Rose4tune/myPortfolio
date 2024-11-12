@@ -1072,13 +1072,12 @@ body {
 }
 .project-detail .tripleLayered {
   width: 52.1vw;
-  height: 39.8vh;
+  height: auto;
   padding: 2.1vw;
 }
 .project-detail-wrap {
   position: relative;
   display: none;
-  padding-bottom: 2rem;
   opacity: 0;
   -webkit-transition: opacity 0.3s ease, -webkit-transform 0.3s ease;
   transition: opacity 0.3s ease, -webkit-transform 0.3s ease;
@@ -1126,7 +1125,8 @@ body {
   gap: 1rem;
 }
 .project-detail-desWrap {
-  height: calc(100% - 9rem);
+  height: 30vh;
+  overflow: hidden;
   padding: 1rem 0;
   border-top: 1px solid hsl(var(--gray-back-070));
   border-bottom: 1px solid hsl(var(--gray-back-070));
@@ -1143,9 +1143,10 @@ body {
   text-indent: 1rem;
 }
 .project-detail .caption {
-  position: absolute;
-  bottom: 0;
-  left: 0;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-top: 1rem;
 }
 .project-sparkle_double {
   width: 5.45vw;
@@ -1216,7 +1217,6 @@ body {
   }
   .project-detail .tripleLayered {
     width: 76.25vw;
-    min-height: 50vh;
   }
   .project-arrow_curved {
     width: 20.25vw;
