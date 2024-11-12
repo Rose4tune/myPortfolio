@@ -4,7 +4,7 @@ import { sections } from "../../data/constants";
 import gsap from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { useRecoilState } from "recoil";
-import { ShowNavAtom } from "../../stores";
+import { ActiveNavAtom, ShowNavAtom } from "../../stores";
 import classNames from "classnames";
 
 gsap.registerPlugin(ScrollToPlugin);
@@ -13,6 +13,7 @@ const NavBar = forwardRef((props, ref) => {
   const [currentSection, setCurrentSection] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [activeNav, setActiveNav] = useRecoilState(ActiveNavAtom);
   const [showNav, setShowNav] = useRecoilState(ShowNavAtom);
 
   const scrollToSection = useCallback(
@@ -45,6 +46,10 @@ const NavBar = forwardRef((props, ref) => {
     }, 300),
     [isScrolling, setShowNav]
   );
+
+  const handleNavToggle = () => {
+    setActiveNav((prev) => !prev);
+  };
 
   useEffect(() => {
     if (!ref.current[currentSection]) return;
@@ -91,7 +96,17 @@ const NavBar = forwardRef((props, ref) => {
   }, [handleKeyDown, handleScroll]);
 
   return (
-    <nav className={`nav ${showNav ? "show" : "hide"}`}>
+    <nav
+      className={`nav ${showNav ? "show" : "hide"}
+      ${activeNav ? "active" : ""}`}
+    >
+      <div className="nav-icon" onClick={handleNavToggle}>
+        <div className="nav-trigger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
       <ul className="nav-menu">
         {sections.map((title, i) => (
           <li key={`navItem${i}`}>

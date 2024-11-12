@@ -21,6 +21,11 @@ export const ShowNavAtom = atom({
   default: false,
 });
 
+export const ActiveNavAtom = atom({
+  key: "ActiveNavAtom",
+  default: false,
+});
+
 export const LanguageAtom = atom({
   key: "LanguageAtom",
   default: "ko",
