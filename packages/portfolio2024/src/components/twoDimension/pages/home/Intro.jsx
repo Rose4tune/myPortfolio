@@ -32,7 +32,7 @@ const Intro = forwardRef((props, ref) => {
       if (textRef) {
         const anim = gsap.fromTo(
           textRef,
-          { x: "130%" },
+          { x: "110vw" },
           {
             duration: textDurations[i],
             repeat: -1,
