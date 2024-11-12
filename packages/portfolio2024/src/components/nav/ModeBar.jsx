@@ -40,6 +40,7 @@ const ModeBar = () => {
           aria-label="dimensionSelect"
           name="dimension"
           onChange={handleDimension}
+          hidden
         >
           <option value={"2D"}>2D</option>
           <option value={"3D"}>3D</option>
