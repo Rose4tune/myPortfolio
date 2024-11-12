@@ -8,12 +8,7 @@ export default function EnterBtn({ onclick }) {
   return (
     <BtnWrap>
       <Icon onClick={onclick}>
-        <img
-          src="/icons/mainCharacter.svg"
-          width="195"
-          height="103"
-          alt="rose's fortune cookie"
-        />
+        <img src="/icons/mainCharacter.svg" alt="rose's fortune cookie" />
       </Icon>
       <Text className="font_rammettoOne">click !</Text>
     </BtnWrap>
@@ -125,7 +120,6 @@ const Text = styled.span`
   display: block;
   margin-top: 1rem;
   transform: translateX(-5%);
-  font-size: 3rem;
   text-align: center;
   color: hsl(var(--pink-fore-030));
 `;
