@@ -146,6 +146,23 @@ body {
   display: block;
 }
 
+@-webkit-keyframes slideBg {
+  0% {
+    background-position: 1% 0%;
+  }
+  100% {
+    background-position: 100% 0%;
+  }
+}
+
+@keyframes slideBg {
+  0% {
+    background-position: 1% 0%;
+  }
+  100% {
+    background-position: 100% 0%;
+  }
+}
 .caption {
   font-size: 1.5rem;
   font-weight: 200;
@@ -167,6 +184,8 @@ body {
   transition: color 1s cubic-bezier(0.075, 0.82, 0.165, 1);
   -webkit-transition: all 0.5s ease-out;
   transition: all 0.5s ease-out;
+  -webkit-animation: slideBg 0.8s ease-in Infinite Alternate;
+          animation: slideBg 0.8s ease-in Infinite Alternate;
   background: linear-gradient(110deg, hsla(var(--pink-back-080), 0.2), hsla(var(--pink-back-080), 0.2), hsla(var(--white), 1), hsla(var(--pink-back-080), 0.4), hsla(var(--pink-back-080), 0.4));
   background-position: 1% 0%;
   background-size: 400% 100%;
@@ -186,7 +205,7 @@ body {
   width: -moz-fit-content;
   width: fit-content;
   line-height: 1.4;
-  color: hsl(var(--red-fore-030));
+  color: hsl(var(--red-fore-020));
   text-align: center;
   white-space: pre-line;
 }
@@ -415,7 +434,7 @@ body {
   width: max-content;
   font-size: 4.5rem;
   line-height: 1.2;
-  color: hsl(var(--pink-fore-010));
+  color: hsl(var(--pink-fore-030));
   text-align: right;
   white-space: pre-line;
 }
@@ -1047,10 +1066,6 @@ body {
   }
 }
 @media (max-width: 420px) {
-  .skills-item {
-    width: 50vw;
-    height: 50vw;
-  }
   .skills-item-title {
     font-size: 1.6rem;
   }
@@ -1059,6 +1074,10 @@ body {
   }
 }
 @media (max-width: 360px) {
+  .skills-item {
+    width: 50vw;
+    height: 50vw;
+  }
   .skills .section-title {
     font-size: 4rem;
     text-transform: capitalize;

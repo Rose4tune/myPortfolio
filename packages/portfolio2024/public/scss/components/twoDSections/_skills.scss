@@ -309,9 +309,6 @@
 @include mobile {
   .skills {
     &-item {
-      width: 50vw;
-      height: 50vw;
-
       &-title {
         @include font($s: 16);
       }
@@ -325,6 +322,10 @@
 
 @include mobileS {
   .skills {
+    &-item {
+      width: 50vw;
+      height: 50vw;
+    }
     .section-title {
       @include font($s: 40, $trans: capitalize);
     }

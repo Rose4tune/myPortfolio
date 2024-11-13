@@ -4,7 +4,7 @@ $lineMargin: rem(60);
 
 .doubleLine {
   width: fit-content;
-  @include font($align: center, $ln: 1.4, $cr: hsl(var(--red-fore-030)));
+  @include font($align: center, $ln: 1.4, $cr: hsl(var(--red-fore-020)));
   white-space: pre-line;
 
   &::before,
