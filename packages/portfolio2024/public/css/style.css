@@ -175,7 +175,7 @@ body {
   width: -moz-fit-content;
   width: fit-content;
   margin-left: auto;
-  padding: 0 0.5rem;
+  padding: 0 1rem;
   font-weight: 600;
   color: inherit;
   text-transform: uppercase;
@@ -186,7 +186,7 @@ body {
   transition: all 0.5s ease-out;
   -webkit-animation: slideBg 0.8s ease-in Infinite Alternate;
           animation: slideBg 0.8s ease-in Infinite Alternate;
-  background: linear-gradient(110deg, hsla(var(--pink-back-080), 0.2), hsla(var(--pink-back-080), 0.2), hsla(var(--white), 1), hsla(var(--pink-back-080), 0.4), hsla(var(--pink-back-080), 0.4));
+  background: linear-gradient(110deg, hsla(var(--pink-back-080), 0.2), hsla(var(--pink-back-080), 0.4), hsla(var(--white), 1), hsla(var(--pink-back-080), 0.6), hsla(var(--pink-back-080), 0.8));
   background-position: 1% 0%;
   background-size: 400% 100%;
 }

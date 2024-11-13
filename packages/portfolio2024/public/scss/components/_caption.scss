@@ -21,7 +21,7 @@
   &-link {
     width: fit-content;
     margin-left: auto;
-    padding: 0 0.5rem;
+    padding: 0 1rem;
     @include font($wght: 600, $trans: uppercase, $cr: inherit);
     cursor: pointer;
     transition: color 1s cubic-bezier(0.075, 0.82, 0.165, 1);
@@ -30,10 +30,10 @@
     background: linear-gradient(
       110deg,
       hsla(var(--pink-back-080), 0.2),
-      hsla(var(--pink-back-080), 0.2),
-      hsla(var(--white), 1),
       hsla(var(--pink-back-080), 0.4),
-      hsla(var(--pink-back-080), 0.4)
+      hsla(var(--white), 1),
+      hsla(var(--pink-back-080), 0.6),
+      hsla(var(--pink-back-080), 0.8)
     );
     background-position: 1% 0%;
     background-size: 400% 100%;
