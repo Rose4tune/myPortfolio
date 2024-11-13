@@ -35,7 +35,7 @@ $distance: -2rem;
   }
 
   @include tablet {
-    $distance: -1.6rem;
+    $distance: -1rem;
 
     &::before {
       top: $distance;

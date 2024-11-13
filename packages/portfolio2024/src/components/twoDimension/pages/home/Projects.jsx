@@ -74,6 +74,7 @@ const Projects = forwardRef((props, ref) => {
               style={{
                 position: "relative",
               }}
+              isBold={false}
             >
               <img
                 className="project-arrow_curved"

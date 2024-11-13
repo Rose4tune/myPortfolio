@@ -112,7 +112,7 @@
       display: flex;
       align-items: flex-start;
       gap: 1rem;
-      @include font($s: 28, $wght: 600);
+      @include font($s: 25, $wght: 600);
     }
     &-period {
       @include font($s: 20, $wght: 400, $cr: hsl(var(--gray-fore-040)));
@@ -234,7 +234,7 @@
 
       &-des {
         &Wrap {
-          height: vh(220, $mobileVH);
+          height: vh(240, $mobileVH);
         }
       }
     }

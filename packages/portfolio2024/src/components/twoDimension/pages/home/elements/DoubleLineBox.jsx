@@ -1,4 +1,10 @@
-const DoubleLineBox = ({ contents, style, even = false, children }) => {
+const DoubleLineBox = ({
+  contents,
+  style,
+  even = false,
+  children,
+  isBold = true,
+}) => {
   return (
     <div className={`doubleLine ${even ? `even` : ""}`} style={style}>
       {contents.map(({ key, value, isActive }, i) => {
@@ -7,7 +13,7 @@ const DoubleLineBox = ({ contents, style, even = false, children }) => {
             key={`doubleLine-item${i}`}
             className={`doubleLine-item${isActive ? " active" : ""}`}
           >
-            {key} <span className="boldUpper">{value}</span>
+            {key} <span className={isBold ? `boldUpper` : ""}>{value}</span>
           </div>
         );
       })}

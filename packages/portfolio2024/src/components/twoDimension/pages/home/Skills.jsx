@@ -36,9 +36,9 @@ const Skills = forwardRef((props, ref) => {
             background: `
               linear-gradient(
               180deg,
-              #ffffff ${100 - per}%,
-              #FFE4EF ${100 - per + 10}%,
-            #FFE4EF 100%)`,
+              hsl(var(--gray-back-100)) ${100 - per}%,
+              hsla(var(--pink-back-080), 0.7) ${100 - per + 10}%,
+              hsla(var(--pink-back-080), 0.7) 100%)`,
           };
 
           return (

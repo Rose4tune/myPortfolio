@@ -146,6 +146,23 @@ body {
   display: block;
 }
 
+@-webkit-keyframes slideBg {
+  0% {
+    background-position: 1% 0%;
+  }
+  100% {
+    background-position: 100% 0%;
+  }
+}
+
+@keyframes slideBg {
+  0% {
+    background-position: 1% 0%;
+  }
+  100% {
+    background-position: 100% 0%;
+  }
+}
 .caption {
   font-size: 1.5rem;
   font-weight: 200;
@@ -158,7 +175,7 @@ body {
   width: -moz-fit-content;
   width: fit-content;
   margin-left: auto;
-  padding: 0 0.5rem;
+  padding: 0 1rem;
   font-weight: 600;
   color: inherit;
   text-transform: uppercase;
@@ -167,7 +184,9 @@ body {
   transition: color 1s cubic-bezier(0.075, 0.82, 0.165, 1);
   -webkit-transition: all 0.5s ease-out;
   transition: all 0.5s ease-out;
-  background: linear-gradient(110deg, hsla(var(--pink-back-080), 0.2), hsla(var(--pink-back-080), 0.2), hsla(var(--white), 1), hsla(var(--pink-back-080), 0.4), hsla(var(--pink-back-080), 0.4));
+  -webkit-animation: slideBg 0.8s ease-in Infinite Alternate;
+          animation: slideBg 0.8s ease-in Infinite Alternate;
+  background: linear-gradient(110deg, hsla(var(--pink-back-080), 0.2), hsla(var(--pink-back-080), 0.4), hsla(var(--white), 1), hsla(var(--pink-back-080), 0.6), hsla(var(--pink-back-080), 0.8));
   background-position: 1% 0%;
   background-size: 400% 100%;
 }
@@ -186,7 +205,7 @@ body {
   width: -moz-fit-content;
   width: fit-content;
   line-height: 1.4;
-  color: hsl(var(--red-fore-030));
+  color: hsl(var(--red-fore-020));
   text-align: center;
   white-space: pre-line;
 }
@@ -380,12 +399,12 @@ body {
 }
 @media (max-width: 960px) {
   .tripleLayered::before {
-    top: -1.6rem;
-    right: -1.6rem;
+    top: -1rem;
+    right: -1rem;
   }
   .tripleLayered::after {
-    top: -3.2rem;
-    right: -3.2rem;
+    top: -2rem;
+    right: -2rem;
   }
 }
 
@@ -415,7 +434,7 @@ body {
   width: max-content;
   font-size: 4.5rem;
   line-height: 1.2;
-  color: hsl(var(--pink-fore-010));
+  color: hsl(var(--pink-fore-030));
   text-align: right;
   white-space: pre-line;
 }
@@ -744,6 +763,7 @@ body {
   padding: 1.5rem;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
+  border-radius: 2rem;
 }
 
 .skills {
@@ -800,6 +820,9 @@ body {
   width: 13vw;
   height: 13vw;
   border: 1px solid hsl(var(--pink-back-070));
+  border-radius: 2rem;
+  -webkit-box-shadow: 0 0 3px hsl(var(--gray-back-010));
+          box-shadow: 0 0 3px hsl(var(--gray-back-010));
   word-break: break-all;
   cursor: pointer;
   -webkit-transform-style: preserve-3d;
@@ -831,6 +854,15 @@ body {
   -webkit-transform: translate(0.5rem, 0.3rem) rotateY(180deg);
           transform: translate(0.5rem, 0.3rem) rotateY(180deg);
 }
+.skills-item:hover {
+  background: hsl(var(--ylw-back-070));
+  -webkit-box-shadow: 0 0 3px hsl(var(--gray-back-020));
+          box-shadow: 0 0 3px hsl(var(--gray-back-020));
+  -webkit-transform: translateZ(-2rem);
+          transform: translateZ(-2rem);
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
 .skills-item.flipped {
   -webkit-transform: rotateY(-180deg) translateZ(-15rem);
           transform: rotateY(-180deg) translateZ(-15rem);
@@ -841,9 +873,6 @@ body {
           box-shadow: 1rem 1rem 1.5rem hsla(var(--pink-back-070), 0.5);
   background: hsl(var(--gray-back-100));
   border: none;
-}
-.skills-item.flipped:hover {
-  background: hsl(var(--pink-back-100));
 }
 .skills-front {
   display: -webkit-box;
@@ -860,6 +889,8 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-shadow: inset 0 0 10px hsl(var(--pink-back-070));
+          box-shadow: inset 0 0 10px hsl(var(--pink-back-070));
 }
 .skills-front:hover {
   background: hsl(var(--pink-back-070));
@@ -1047,10 +1078,6 @@ body {
   }
 }
 @media (max-width: 420px) {
-  .skills-item {
-    width: 50vw;
-    height: 50vw;
-  }
   .skills-item-title {
     font-size: 1.6rem;
   }
@@ -1059,6 +1086,10 @@ body {
   }
 }
 @media (max-width: 360px) {
+  .skills-item {
+    width: 50vw;
+    height: 50vw;
+  }
   .skills .section-title {
     font-size: 4rem;
     text-transform: capitalize;
@@ -1172,7 +1203,7 @@ body {
       -ms-flex-align: start;
           align-items: flex-start;
   gap: 1rem;
-  font-size: 2.8rem;
+  font-size: 2.5rem;
   font-weight: 600;
 }
 .project-detail-period {
@@ -1299,7 +1330,7 @@ body {
             justify-content: space-between;
   }
   .project-detail-desWrap {
-    height: 27.1vh;
+    height: 29.55vh;
   }
   .project-arrow_curved {
     width: 20.25vw;
