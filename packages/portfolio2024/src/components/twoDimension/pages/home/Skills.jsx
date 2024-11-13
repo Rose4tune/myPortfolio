@@ -32,13 +32,15 @@ const Skills = forwardRef((props, ref) => {
       <ul className="frameShadow_left skills-board">
         {skills[selectedTab].map(({ title, des, per }, i) => {
           const Title = <div className="skills-item-title">{`${title} /`}</div>;
-          const cardBg = {
-            background: `
-              linear-gradient(
-              180deg,
-              hsl(var(--gray-back-100)) ${100 - per}%,
-              hsla(var(--pink-back-080), 0.7) ${100 - per + 10}%,
-              hsla(var(--pink-back-080), 0.7) 100%)`,
+          const cardBg = (opacity) => {
+            return {
+              background: `
+                linear-gradient(
+                180deg,
+                hsl(var(--gray-back-100)) ${100 - per}%,
+                hsla(var(--pink-back-080), ${opacity}) ${100 - per + 10}%,
+                hsla(var(--pink-back-080), ${opacity}) 100%)`,
+            };
           };
 
           return (
@@ -47,7 +49,7 @@ const Skills = forwardRef((props, ref) => {
               className={`skills-item${flippedCards[i] ? " flipped" : ""}`}
               onClick={() => handleCardClick(i)}
             >
-              <div className="skills-front" style={cardBg}>
+              <div className="skills-front" style={cardBg(0.7)}>
                 <div className="skills-front-imgWrap">
                   <img
                     src={`/icons/skills/${title.toLowerCase()}.png`}
@@ -56,7 +58,7 @@ const Skills = forwardRef((props, ref) => {
                 </div>
                 {Title}
               </div>
-              <div className="skills-back" style={cardBg}>
+              <div className="skills-back" style={cardBg(1)}>
                 {Title}
                 <div className="skills-back-des">{des[language]}</div>
               </div>
