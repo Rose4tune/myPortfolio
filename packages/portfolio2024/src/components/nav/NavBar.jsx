@@ -6,10 +6,12 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { useRecoilState } from "recoil";
 import { ActiveNavAtom, ShowNavAtom } from "../../stores";
 import classNames from "classnames";
+import useScrollHintAnimation from "../hooks/useScrollHintAnimation";
 
 gsap.registerPlugin(ScrollToPlugin);
 
 const NavBar = forwardRef((props, ref) => {
+  useScrollHintAnimation();
   const [currentSection, setCurrentSection] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -41,7 +43,7 @@ const NavBar = forwardRef((props, ref) => {
     throttle(() => {
       if (isScrolling) return;
       const currentScrollY = window.scrollY;
-      setShowNav(currentScrollY > 0);
+      setShowNav(currentScrollY > 200);
       setLastScrollY(currentScrollY);
     }, 300),
     [isScrolling, setShowNav]
