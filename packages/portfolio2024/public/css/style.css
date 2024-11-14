@@ -961,8 +961,8 @@ body {
   margin: 1rem 0;
   cursor: pointer;
 }
-.skills-nav-menu.active {
-  color: hsl(var(--pink-fore-030));
+.skills-nav-menu:hover {
+  color: hsl(var(--gray-fore-030));
 }
 .skills-nav-menu::before {
   display: inline-block;
@@ -970,6 +970,9 @@ body {
   margin-right: 0.5rem;
   -webkit-transform: translateY(0.5rem);
           transform: translateY(0.5rem);
+}
+.skills-nav-menu.active {
+  color: hsl(var(--pink-fore-030));
 }
 
 @media (max-width: 960px) {
