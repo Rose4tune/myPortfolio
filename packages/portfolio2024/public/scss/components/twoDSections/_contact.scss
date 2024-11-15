@@ -1,4 +1,5 @@
 @use "../../helpers" as *;
+@use "../../animation" as *;
 
 .contact {
   position: relative;
@@ -103,6 +104,16 @@
   .caption {
     position: static;
     @include font($s: 20, $ln: 1.5, $align: center);
+
+    &:nth-child(1) .caption-link {
+      animation: slideCaptionBg 1s ease-in Infinite Alternate;
+    }
+    &:nth-child(2) .caption-link {
+      animation: slideCaptionBg 1s ease-in 0.1s Infinite Alternate;
+    }
+    &:nth-child(3) .caption-link {
+      animation: slideCaptionBg 1s ease-in 0.2s Infinite Alternate;
+    }
   }
 }
 
