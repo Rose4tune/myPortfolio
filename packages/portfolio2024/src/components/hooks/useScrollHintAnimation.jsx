@@ -10,7 +10,7 @@ const useScrollHintAnimation = () => {
       }
     };
 
-    const intervalId = setInterval(scrollHint, 5000);
+    const intervalId = setInterval(scrollHint, 10000);
 
     return () => clearInterval(intervalId);
   }, []);

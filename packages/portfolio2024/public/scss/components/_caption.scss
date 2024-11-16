@@ -1,13 +1,5 @@
 @use "../helpers" as *;
-
-@keyframes slideBg {
-  0% {
-    background-position: 1% 0%;
-  }
-  100% {
-    background-position: 100% 0%;
-  }
-}
+@use "../animation" as *;
 
 .caption {
   @include font(
@@ -22,11 +14,9 @@
     width: fit-content;
     margin-left: auto;
     padding: 0 1rem;
-    @include font($wght: 600, $trans: uppercase, $cr: inherit);
     cursor: pointer;
-    transition: color 1s cubic-bezier(0.075, 0.82, 0.165, 1);
-    transition: all 0.5s ease-out;
-    animation: slideBg 0.8s ease-in Infinite Alternate;
+    @include font($wght: 600, $trans: uppercase, $cr: inherit);
+    animation: slideCaptionBg 1s ease-in Infinite Alternate;
     background: linear-gradient(
       110deg,
       hsla(var(--pink-back-080), 0.2),
