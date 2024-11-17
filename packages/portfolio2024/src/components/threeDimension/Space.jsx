@@ -9,10 +9,13 @@ import { useRecoilValue } from "recoil";
 import { IsEnteredAtom } from "../../stores";
 import { introTexts } from "../../data/constants";
 import { chunk } from "../../util/Calculate";
+import useDrawCallDebugger from "../hooks/useDrawCallDebugger";
+import InstancedStars from "./elements/InstancedStars";
 
 let timeline;
 
 export default function Space() {
+  useDrawCallDebugger();
   const three = useThree();
   const isEntered = useRecoilValue(IsEnteredAtom);
 
@@ -23,18 +26,18 @@ export default function Space() {
   const hemisphereLightRef = useRef(null);
 
   const texture = useTexture("texture/star.png");
-  const { positions } = useMemo(() => {
-    const count = 5100;
-    const positions = new Float32Array(count * 3);
+  // const { positions } = useMemo(() => {
+  //   const count = 5100;
+  //   const positions = new Float32Array(count * 3);
 
-    for (let i = 0; i < positions.length; i++) {
-      let randomValue = (Math.random() - 0.5) * 118;
-      if (isNaN(randomValue)) randomValue = 0;
-      positions[i] = randomValue;
-    }
+  //   for (let i = 0; i < positions.length; i++) {
+  //     let randomValue = (Math.random() - 0.5) * 118;
+  //     if (isNaN(randomValue)) randomValue = 0;
+  //     positions[i] = randomValue;
+  //   }
 
-    return { positions: chunk(positions, count) };
-  }, []);
+  //   return { positions: chunk(positions, count) };
+  // }, []);
 
   const scroll = useScroll();
   const starValues = [
@@ -198,7 +201,9 @@ export default function Space() {
           );
         })}
 
-        {positions.map((position, i) => {
+        <InstancedStars count={1500} size={0.3} spread={120} />
+
+        {/* {positions.map((position, i) => {
           return (
             <Points key={`starKey${i}`} positions={position}>
               <pointsMaterial
@@ -213,7 +218,7 @@ export default function Space() {
               />
             </Points>
           );
-        })}
+        })} */}
       </>
     );
   }

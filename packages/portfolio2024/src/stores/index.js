@@ -8,7 +8,7 @@ export const IsEnteredAtom = atom({
 
 export const DimensionModeAtom = atom({
   key: `DimensionModeAtom/${v1()}`,
-  default: "2D",
+  default: "3D",
 });
 
 export const ThemeModeAtom = atom({
