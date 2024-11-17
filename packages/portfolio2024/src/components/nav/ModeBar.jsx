@@ -40,11 +40,17 @@ const ModeBar = () => {
           aria-label="dimensionSelect"
           name="dimension"
           onChange={handleDimension}
+          hidden
         >
           <option value={"2D"}>2D</option>
           <option value={"3D"}>3D</option>
         </select>
-        <select aria-label="themeSelect" name="theme" onChange={handleTheme}>
+        <select
+          aria-label="themeSelect"
+          name="theme"
+          onChange={handleTheme}
+          hidden
+        >
           <option value={"light"}>light</option>
           <option value={"dark"}>dark</option>
         </select>
