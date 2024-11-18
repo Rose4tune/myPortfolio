@@ -9,7 +9,7 @@ export const introduction = {
       key: "요즘 취미",
       value: "클라이밍, 독서토론, \n전시회, 영화, 여행",
     },
-    { key: "좋아하는 것", value: "\n디자인, 토론, 물놀이, 남친" },
+    { key: "좋아하는 것", value: "\n새로운거 배우기, 토론, 디자인" },
   ],
   en: [
     { key: "Goals", value: "brand value growth" },
