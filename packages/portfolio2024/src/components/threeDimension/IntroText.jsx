@@ -1,6 +1,6 @@
 import { Text3D } from "@react-three/drei";
 
-const fontUrl = "/src/assets/fonts/RammettoOne.json";
+const fontUrl = "/fonts/RammettoOne.json";
 const fontStyle = {
   font: fontUrl,
   size: 1,
